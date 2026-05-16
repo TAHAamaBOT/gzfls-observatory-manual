@@ -5,6 +5,8 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -32,6 +34,10 @@ const config = {
 
   onBrokenLinks: 'throw',
 
+  markdown: {
+    mermaid: true,
+  },
+
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
@@ -40,6 +46,8 @@ const config = {
     locales: ['en'],
   },
 
+  themes: ['@docusaurus/theme-mermaid'],
+
   presets: [
     [
       'classic',
@@ -47,6 +55,8 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -111,7 +121,7 @@ const config = {
             items: [
               {
                 label: 'Tutorial',
-                to: '/docs/intro',
+                to: '/docs/tianqiu-zuobiao',
               },
             ],
           },
