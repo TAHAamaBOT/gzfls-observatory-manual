@@ -6,6 +6,7 @@
 
 import {themes as prismThemes} from 'prism-react-renderer';
 import remarkMath from 'remark-math';
+import remarkDirective from 'remark-directive';
 import rehypeKatex from 'rehype-katex';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -49,7 +50,7 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          remarkPlugins: [remarkMath],
+          remarkPlugins: [remarkMath, remarkDirective],
           rehypePlugins: [rehypeKatex],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -152,15 +153,6 @@ const config = {
         ],
         copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
       },
-      stylesheets: [
-        {
-          href: 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css',
-          type: 'text/css',
-          integrity:
-            'sha384-n8MVd4RsNFTU9JhnKP2BGnicAwLH1Xx0bKOCn7G+4WBunHN6PBPBpxDmVDw7jKRo',
-          crossorigin: 'anonymous',
-        },
-      ],
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
