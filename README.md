@@ -1,41 +1,90 @@
-# Website
+# 🌌 广外译星者 · 天文台指南
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+欢迎来到**译星者天文社**的知识基地！
 
-## Installation
+这里是我们一起学天文、用天文的地方——从仰望星空的第一课，到亲手操作望远镜拍下第一张深空照片。
+
+## ✨ 零基础？完全没问题
+
+我们社的大多数人在入社之前都没接触过天文观测——不知道赤道仪怎么转、看不懂星图、甚至连北极星在哪都不确定。这太正常了。
+
+这个手册就是为此而写的。**每一篇文章都假设你是第一次听说这些概念**，从最基础的东西开始，一步一步来。
+
+## 📚 内容板块（计划中）
+
+| 板块 | 内容 |
+|:-----|:-----|
+| 🧭 基础理论 | 天球坐标系、时间与历法、星等与光谱……天文观测必备的理论基础 |
+| 🔭 设备手册 | 学校天文台的每一台设备怎么用——从赤道仪到 CCD 相机 |
+| 🌙 观测指南 | 今晚能看什么？怎么找？怎么记录？ |
+| 🚀 实践项目 | 月球环形山测绘、梅西耶马拉松、行星冲日观测……动手才是硬道理 |
+
+## 🚧 刚刚起步
+
+这个网站还处于**早期建设阶段**，很多内容还在路上。你看到的每一个页面都是社员们一点一点写出来的。
+
+**如果你发现错误、有更好的解释方式、或者有想写的选题**——欢迎参与！
+
+## ✨ 如何参与
+
+**方式一：在 Github 提交 PR**
+
+1. Fork 本仓库
+2. 认领一个你想写的选题（或者自己提一个）
+3. 写文档、拍照片、画示意图
+4. 提交 Pull Request 到 `develop` 分支
+5. 你的名字会出现在贡献者名单里 📝
+
+**方式二：投稿给负责人**
+
+不会用 Git？没关系。把你写的文章、拍的照片、画的示意图发给**指定负责人**，由他们帮你整理上传。
+
+> **一个天文社能留下什么？** 除了照片、记忆，还有一本几届人接力写完的手册。等你毕业了再回来看，还能说一句——*"这是我写的。"*
+
+---
+
+## 技术栈
+
+网站使用 [Docusaurus](https://docusaurus.io/) 构建，基于 React 和 MDX。
+
+## 本地开发
 
 ```bash
-yarn
+# 安装依赖（需要 Node.js 20+）
+npm install
+
+# 启动开发服务器
+npm run start
 ```
 
-## Local Development
+启动后浏览器自动打开 `http://localhost:3000`，大部分修改会实时热更新。
+
+## 构建
 
 ```bash
-yarn start
+npm run build
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+生成静态文件到 `./build` 目录，可部署到任意静态托管服务。
 
-## Build
+## 部署
+
+使用 GitHub Pages：
 
 ```bash
-yarn build
+GIT_USER=<你的 GitHub 用户名> npm run deploy
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-## Deployment
-
-Using SSH:
+使用 SSH：
 
 ```bash
-USE_SSH=true yarn deploy
+USE_SSH=true npm run deploy
 ```
 
-Not using SSH:
+此命令会自动构建并推送到 `gh-pages` 分支。
 
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
+## 分支说明
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+- `develop` — 主要开发分支，所有内容更新都在这里进行
+- `master` — 稳定分支
+- `openclaw` — OpenClaw 内容生成分支（**请勿直接向此分支提交**）
