@@ -5,13 +5,15 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: '译星者天文社',
+  tagline: '欢迎来到广州外国语学校译星者天文社网站',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -32,13 +34,19 @@ const config = {
 
   onBrokenLinks: 'throw',
 
+  markdown: {
+    mermaid: true,
+  },
+
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'zh-Hans',
+    locales: ['zh-Hans'],
   },
+
+  themes: ['@docusaurus/theme-mermaid'],
 
   presets: [
     [
@@ -47,10 +55,12 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/TAHAamaBOT/gzfls-observatory-manual/tree/master/',
         },
         blog: {
           showReadingTime: true,
@@ -61,7 +71,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/TAHAamaBOT/gzfls-observatory-manual/tree/master/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -83,21 +93,21 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'My Site',
+        title: '广外天文社',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          src: 'img/logo.png',
         },
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            sidebarId: 'docSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: '天文台指南📚',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+//          {to: '/blog', label: '观测记录', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/TAHAamaBOT/gzfls-observatory-manual',
             label: 'GitHub',
             position: 'right',
           },
@@ -107,46 +117,46 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: '指南',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: '天球坐标系介绍',
+                to: '/docs/theory/celestial-coordinates',
               },
             ],
           },
+          // {
+            // title: '社团',
+            // items: [
+              // {
+                // label: 'Stack Overflow',
+                // href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              // },
+              // {
+                // label: 'Discord',
+                // href: 'https://discordapp.com/invite/docusaurus',
+              // },
+              // {
+                // label: 'X',
+                // href: 'https://x.com/docusaurus',
+              // },
+            // ],
+          // },
           {
-            title: 'Community',
+            title: '更多',
             items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
+              // {
+                // label: 'Blog',
+                // to: '/blog',
+              // },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/TAHAamaBOT/gzfls-observatory-manual',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} 广州外国语学校天文社 Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
