@@ -1,103 +1,106 @@
-The Sky Atlas lets you search N.I.N.A.'s deep sky object database and narrow the results with planning-oriented filters. From the result list you can send an object to the sequencer, the Framing Assistant, or directly to the mount.
+天图集允许你搜索 N.I.N.A. 的深空天体数据库，并使用面向拍摄规划的筛选器缩小结果范围。从结果列表中，你可以将对象发送到序列器、构图助手，或直接发送到赤道仪。
 
-The Sky Atlas interface consists of the following main areas:
+天图集界面包含以下主要区域：
 
-![The SkyAtlas tab](../images/tabs/skyAtlas1.png)
+![天图集选项卡](../images/tabs/skyAtlas1.png)
 
-### Search Field
+### 搜索字段
 
-Search for an object by name or by catalog designation. Press **Enter** or use the **Search** button to start the search.
+按名称或星表编号搜索天体。按**回车键**或使用**搜索**按钮开始搜索。
 
-### Reset
+### 重置
 
-The reset button next to the search field clears the current filters and returns the filter set to its default state.
+搜索字段旁边的重置按钮会清除当前筛选条件，并将筛选器集恢复到默认状态。
 
-### Filters
+### 筛选器
 
-The filter panel on the left groups the available search filters into expandable sections. Leave a field empty if you do not want to filter by that value.
+左侧的筛选器面板将可用搜索筛选器组织到可展开的区域中。如果不想按某个值筛选，请将该字段留空。
 
-#### Observation
+#### 观测
 
-![The SkyAtlas tab](../images/tabs/SkyAtlas_Altitude_Filter.png)  
+![天图集选项卡](../images/tabs/SkyAtlas_Altitude_Filter.png)
 
-Use the observation section to filter by:
+使用观测部分可按以下条件筛选：
 
-* observing date
-* minimum altitude or above-horizon visibility
-* the visible time range (`From` / `Through`)
-* how long the target must remain visible during that time range
+* 观测日期
+* 最低高度角或地平线以上可见性
+* 可见时间范围（`起始` / `截止`）
+* 在该时间范围内目标必须保持可见的时长
 
-This is the quickest way to find targets that fit a specific night.
+这是找到适合特定夜晚目标的最快捷方式。
 
-#### Apparent Size
+#### 视尺寸
 
-Filters the object size with `From` and `Through` limits.
+使用`起始`和`截止`限制筛选天体尺寸。
 
-#### Moon
+#### 月球
 
-Lets you require a minimum separation from the Moon.
+允许你设置与月球的最低分离角度要求。
 
-#### Object Type and Constellation
+#### 天体类型与星座
 
-Lets you restrict the search to selected object types and, optionally, a single constellation.
+允许你将搜索限制在选定的天体类型范围内，并可选择限制在单个星座内。
 
-#### Coordinates
+#### 坐标
 
-Lets you filter by RA and Dec ranges.
+允许按赤经和赤纬范围筛选。
 
-#### Surface Brightness and Magnitude
+#### 表面亮度与星等
 
-Lets you filter by surface brightness and apparent magnitude ranges.
+允许按表面亮度和视星等范围筛选。
 
-#### Transit
+#### 中天
 
-Lets you keep only targets whose transit falls inside a selected time range.
+允许仅保留中天时间落在所选时间范围内的目标。
 
-### Search Result Order
+### 搜索结果排序
 
-Search results can be ordered by:
+搜索结果可按以下条件排序：
 
-* size
-* apparent magnitude
-* constellation
-* RA
-* Dec
-* surface brightness
-* object type
+* 尺寸
+* 视星等
+* 星座
+* 赤经
+* 赤纬
+* 表面亮度
+* 天体类型
 
-Display order can be either ascending or descending, and you can set the number of results shown per page.
+显示顺序可以是升序或降序，并且可以设置每页显示的结果数量。
 
-!!! important
-    Very large page sizes can affect performance.
+:::warning
+页面尺寸过大会影响性能。
+:::
 
-### Search
+### 搜索
 
-Use the **Search** button to run the query. While a search is running, it can also be cancelled.
+使用**搜索**按钮运行查询。搜索运行期间也可以取消。
 
-!!! important
-    Sky Atlas calculations depend on the observing location set under **Options > General > Astrometry**. Incorrect latitude, longitude, elevation, or horizon data will lead to incorrect visibility information.
+:::warning
+天图集的计算依赖于**选项 > 常规 > 天文测量**中设置的观测地点信息。不正确的纬度、经度、海拔或地平线数据将导致不正确的可见性信息。
+:::
 
-### Moon Phase and Night Information
+### 月相与夜晚信息
 
-This area shows the current moon phase and the night information for the selected observing date and location.
+此区域显示当前月相以及所选观测日期和地点的夜晚信息。
 
-## Object List Display
+## 天体列表显示
 
-An example of a search result:
+搜索结果示例：
 
-![Sky Atlas](../images/advanced/objectbrowser2.png)
+![天图集](../images/advanced/objectbrowser2.png)
 
-1. Object name and available aliases
-2. Coordinates in RA and Dec
-3. Object type
-4. Constellation
-5. Apparent magnitude, if available
-6. Surface brightness, if available
-7. Apparent size, shown in arcminutes or degrees as appropriate
-8. Altitude chart for the selected observing date. The chart also shows the current time marker, darkness markers, and a custom horizon if one is configured.
-9. **Add Target to Sequence**. Depending on your sequencer setup, this can offer the legacy sequencer, advanced sequencer templates, or only advanced sequencer templates.
-10. Sends the object to the [Framing Assistant](../tabs/framing.md)
-11. Slews the mount to the selected target coordinates
+1. 天体名称和可用别名
+2. 赤经赤纬坐标
+3. 天体类型
+4. 星座
+5. 视星等（如果可用）
+6. 表面亮度（如果可用）
+7. 视尺寸，以角分或度为单位显示（视情况而定）
+8. 所选观测日期的高度角图表。图表还显示当前时间标记、天黑标记以及自定义地平线（如果已配置）。
+9. **将目标添加到序列**。根据序列器设置，可提供传统序列器、高级序列器模板或仅高级序列器模板。
+10. 将天体发送到[构图助手](../tabs/framing.md)。
+11. 将赤道仪转向所选目标坐标。
 
-!!! tip
-    If a preview image is available for an object, it is shown in the result entry.
+:::tip
+如果有天体的预览图像，它将显示在搜索结果条目中。
+:::

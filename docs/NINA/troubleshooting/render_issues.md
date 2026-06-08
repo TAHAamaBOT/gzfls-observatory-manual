@@ -1,20 +1,20 @@
-## Blank screen when using remote access
-When you are experience a blank screen of N.I.N.A. during usage of a remote access software it is most likely caused by not having any screen connected at the target machine. As N.I.N.A. is hardware accelerated and Windows will not render anything that is hardware accelerated when no display is connected, the application will be just a blank screen.
-To get around this issue, you can disable hardware acceleration in N.I.N.A. by navigating to Options > General > Advanced > Hardware Acceleration and setting it to off. After a restart the application should now show properly when using the remote access software.
+## 使用远程访问时出现空白屏幕
+当您在使用远程访问软件时遇到 N.I.N.A. 显示空白屏幕，很可能是由于目标计算机未连接任何屏幕导致。由于 N.I.N.A. 是硬件加速的，而 Windows 在没有显示器连接时不会渲染任何硬件加速的内容，因此应用程序将仅显示空白屏幕。
+要绕过此问题，您可以在 N.I.N.A. 中禁用硬件加速，方法是导航到 选项 > 通用 > 高级 > 硬件加速 并将其设为关闭。重启后，应用程序在使用远程访问软件时应正常显示。
 
-## Artifacts and missing graphics
+## 显示伪影和缺失图形
 
-In the past there were reports where the application was not rendering correctly. Follow this guide if your application looks like the window below, where some icons are disappearing and windows are not rendering:  
+过去有报告称应用程序渲染不正确。如果您的应用程序看起来像下面的窗口，图标消失且窗口无法渲染，请按照本指南操作：
 
-![Display Issues](../images/troubleshooting/renderissues.png) 
+![显示问题](../images/troubleshooting/renderissues.png)
 
-It has been identified that there is an audio driver service called "Nahimic service" responsible for causing side effects on WPF applications. (WPF is the User Interface framework that N.I.N.A. is built on).
-Once this service is stopped, the application will render correctly again.  
-  
-To disable the service:  
-- Open the Windows Run menu by holding the keys `⊞ Win` + `r`   
-- Enter "services.msc" into the window and hit "Ok"  
-- A new window will open showing all available services.   
-- Check for a service called "Nahimic Service" and follow the steps in the screenshot below  
+已确认有一个名为"Nahimic service"的音频驱动服务导致 WPF 应用程序出现副作用（WPF 是 N.I.N.A. 基于的用户界面框架）。
+一旦停止此服务，应用程序将恢复正常渲染。
 
-![Disable Nahimic Service](../images/troubleshooting/disablenahimic.png) 
+要禁用此服务：
+- 通过按住 `⊞ Win` + `r` 键打开 Windows 运行菜单
+- 在窗口中输入"services.msc"并按"确定"
+- 将打开一个新窗口，显示所有可用服务
+- 找到名为"Nahimic Service"的服务，按下方截图中的步骤操作
+
+![禁用 Nahimic Service](../images/troubleshooting/disablenahimic.png)

@@ -1,112 +1,112 @@
-## Overview
+## 概述
 
-The Framing tab is a powerful tool to decide which deep sky object to image and how to frame it.
-Using the Framing Assistant you can set the perfect framing for your target and, if it does not fit into your current frame, also set up a mosaic easily.
-To accomplish this, the application offers a variety of tools. There are multiple online Sky Survey sources available, a powerful offline planetarium-like view, as well as the ability to load images from a previous session into the framing view.
+构图选项卡是一个强大的工具，用于决定拍摄哪个深空天体以及如何构图。
+使用构图助手，你可以为目标设置完美的构图，如果目标放不进当前的画幅，还可以轻松设置马赛克拍摄方案。
+为了实现这些，应用程序提供了多种工具。有多个在线巡天天图源、一个强大的离线星图视图，以及将之前拍摄会话中的图像加载到构图视图中的能力。
 
-## Getting Started
+## 入门指南
 
-The first choice you have to make is choosing the image source to suit your needs. A brief summary of each source can be found in the general [Framing Tab Overview](../tabs/framing.md).
-To know which source is best suited, we will divide the guide into three different use cases:
+你需要做的第一个选择是根据你的需求选择合适的图像来源。每个来源的简要概述可在[构图选项卡总览](../tabs/framing.md)中找到。
+为了知道哪种来源最适合，我们将指南分为三种不同的使用场景：
 
-1. You do not yet know of a good target and want to search for a good opportunity for tonight's imaging run
-2. The Target is well known and you want to plan a good framing for it
-3. A previous session was already done and you want to continue the session with a similar framing
+1. 你还没有好的目标，想为今晚的拍摄寻找一个好机会。
+2. 目标已经十分明确，你想为它规划一个好的构图。
+3. 之前已进行过一次拍摄，你想以类似的构图继续。
 
-## Choosing an opportunity to image
+## 选择拍摄机会
 
-The framing tab can be utilized to choose a good target for your upcoming night. To achieve this the Offline Sky Survey is a good choice.
-This source is an interactive map of the sky and uses Right Ascension and Declination axes as well as a rough circle to display the outlines of targets. It does not have any actual images available, but will give a good idea about the size.
-In conjunction with the altitude chart in the framing tab a perfect target for the night can be chosen.
+构图选项卡可以用来为即将到来的夜晚选择合适的目标。为此，离线天图是一个不错的选择。
+这个来源是一个交互式天图，使用赤经和赤纬轴以及粗略的圆形来显示目标轮廓。它没有任何实际的图像，但可以很好地了解目标的大小。
+结合构图选项卡中的高度角图表，可以为今晚选择一个完美的目标。
 
-### Loading the Offline Sky Survey
+### 加载离线天图
 
-First select the "Sky Atlas (Offline Framing)" as your image source. Then without looking at any coordinates click on "Load Image" and the right side will load the offline map.
-As you can see below you won't see much there yet, but don't worry this is an interactive map and you will see its potential soon!
+首先选择"天图集（离线构图）"作为图像来源。然后，在不查看任何坐标的情况下点击"加载图像"，右侧将加载离线天图。
+正如你下面所看到的，一开始不会看到太多内容，但别担心，这是一张交互式天图，你很快就会看到它的潜力！
 
-![Offline Sky Survey](../images/advanced/framing/OfflineSkySurveyStart.png)
+![离线天图](../images/advanced/framing/OfflineSkySurveyStart.png)
 
-### Moving around inside the Offline Sky Survey
+### 在离线天图中移动
 
-Once the sky atlas is initialized move your mouse cursor onto the image and use the mouse wheel to scroll out as well as drag the map around using the left mouse button.
-While moving around the sky atlas and getting yourself familiar with the controls, keep an eye on the coordinates on the lower left corner of the image as well as the altitude chart on the lower left of the tab. Both are displaying the coordinates and altitude for the center pixel of the currently displayed section of the sky!
+天图集初始化后，将鼠标光标移到图像上，使用鼠标滚轮缩小画面，并使用鼠标左键拖动天图。
+在移动天图集并熟悉控制方式的同时，注意图像左下角的坐标以及选项卡左下方的高度角图表。两者都显示当前天图显示区域中心像素的坐标和高度角！
 
-![Sky Survey Coordinates and Altitude](../images/advanced/framing/OfflineSkySurveyReferences.png)
+![天图坐标和高度角](../images/advanced/framing/OfflineSkySurveyReferences.png)
 
-### Choosing a good target
+### 选择合适的目标
 
-As a general rule of thumb, a good target has its altitude peak in the middle of your imaging run. For this guide, I'll assume imaging for the complete night.
-Now move the center of the image to a point where the altitude chart has its peak in the center of the night, as shown below.
+一般来说，好的目标其高度角峰值应位于拍摄时段的中间。本指南假设你整晚拍摄。
+现在将图像中心移动到高度角图表的峰值位于夜晚中间的位置，如下所示。
 
-![Sky Survey Coordinates and Altitude](../images/advanced/framing/OfflineSkySurveyCentering.png)
+![天图坐标和高度角](../images/advanced/framing/OfflineSkySurveyCentering.png)
 
-All you have to do now is move the box up or down, as the peak of the altitude will stay inside the center due to the way the coordinate system is laid out. See which target is near that imaginary vertical line and then drag the rectangle over the target.
-Remember that you can also zoom in and out to see more or less targets inside the frame. In this example here, I have chosen the "Hercules Galaxy Cluster".  As you can see the target fits perfectly into the night and its dimensions will also fit into the current frame.
+现在你只需要将矩形框上下移动即可，因为由于坐标系的布局方式，高度角的峰值将保持在中心位置。看看哪个目标靠近那条想象中的垂直线，然后将矩形框拖到目标上。
+记住，你还可以放大和缩小画面，以在画框中看到更多或更少的目标。在本示例中，我选择了"武仙座星系团"。如你所见，该目标完美地融入了夜晚时间，其尺寸也适合当前画框。
 
-![Sky Survey Coordinates and Altitude](../images/advanced/framing/OfflineSkySurveyTarget.png)
+![天图坐标和高度角](../images/advanced/framing/OfflineSkySurveyTarget.png)
 
-### Adjusting the framing with a visual image (optional)
+### 用可视化图像调整构图（可选）
 
-As the Offline Sky Survey does not have any images, you can now finalize the framing using a different source (this will require internet connection). Choose one of the online Sky Surveys from the dropdown on the top left, adjust your Field Of View to a smaller value that just fits for your framing (alternatively just zoom into the offline framing so that the rectangle almost fills the screen) and afterwards click **"Recenter Image"**. For this example I'm using the NASA Sky Survey. When you hit Recenter the image will be downloaded from the web and then be displayed. This can take a short while. Finally drag and rotate the rectangle to your desired framing.
+由于离线天图没有实际图像，现在你可以使用不同的来源来最终确定构图（这需要互联网连接）。从左上角下拉菜单中选择一个在线巡天天图源，将视场角调整到一个恰好适合你构图的小值（或者直接在离线构图中缩小，使矩形几乎填满整个屏幕），然后点击**"重新对中图像"**。本示例中我使用的是 NASA Sky Survey。当你点击重新对中后，图像将从网络下载并显示。这可能需要一点时间。最后，拖动并旋转矩形到你想要的构图。
 
-![Sky Survey Coordinates and Altitude](../images/advanced/framing/OnlineSkySurveyTarget.png)
+![天图坐标和高度角](../images/advanced/framing/OnlineSkySurveyTarget.png)
 
-## Framing a specific target
+## 为特定目标构图
 
-Framing a specific target will follow the same flow as described in the previous section. Basically you skip the steps where you search for a target and directly enter some coordinates for a target and use either the Offline Sky Survey or any of the Online Sky Surveys to frame it. 
+为特定目标构图的流程与上一节所述相同。基本上，你跳过搜索目标的步骤，直接输入目标的坐标，然后使用离线天图或任何在线巡天天图来构图。
 
-## Continuing a previous session
+## 继续之前的拍摄会话
 
-When you have shot a specific target already and want to have the same framing again, you can conveniently load in an image from a previous session into the application. By choosing the image source "File" you can quickly load in a single image or a stacked image and it will be loaded into the application. Once loaded you just need to drag and rotate the rectangle to your desired framing.
+当你已经拍摄过某个特定目标，并希望获得相同的构图时，可以方便地将之前拍摄会话中的图像加载到应用程序中。通过选择图像来源"文件"，你可以快速加载单张图像或叠加图像，它将被加载到应用程序中。加载后，你只需拖动并旋转矩形到你想要的构图。
 
-There are three possible scenarios for loading a file:
+加载文件有三种可能的情况：
 
-### Image is already solved and has all required header information (XISF or FITS only)
+### 图像已解析且包含所有必需的头信息（仅 XISF 或 FITS）
 
-This one is the most convenient type to use. Here an image already contains all info required to be displayed inside N.I.N.A. Just load the file and it will almost instantly render the image and the rectangle with the correct scale without any need to plate solve it again. Furthermore, the target name is set as your current reference.
+这是使用起来最方便的类型。图像已经包含了在 N.I.N.A. 中显示所需的所有信息。只需加载文件，它将几乎立即渲染图像和具有正确比例的矩形，而无需重新解析。此外，目标名称会设置为你当前的参考坐标。
 
-![Image is ready to use](../images/advanced/framing/WCS.png)
+![图像即可使用](../images/advanced/framing/WCS.png)
 
-### Image does not have solved coordinates, but already has reference coordinates (XISF or FITS only)
+### 图像没有解析坐标，但有参考坐标（仅 XISF 或 FITS）
 
-When an image was not solved already and only contains header information like the target name and the target coordinates, N.I.N.A. does not know the actual image scale and the center of the frame. For this, a quick solve of the frame needs to happen. As the header information is already there for a reference, plate solving should be very quick. A dialog will appear asking you to use the found coordinates as a reference and afterwards solve the image. Once the image is solved, it will be displayed for framing.
+当图像尚未解析，仅包含诸如目标名称和目标坐标之类的头信息时，N.I.N.A. 不知道实际的图像比例和画框中心位置。为此，需要快速解析该帧图像。由于已有头信息作为参考，解析应该非常快。将弹出一个对话框，询问你是否使用找到的坐标作为参考，然后解析图像。图像解析后，将显示以供构图。
 
-![Use Reference Coordinates](../images/advanced/framing/Platesolve.png)
+![使用参考坐标](../images/advanced/framing/Platesolve.png)
 
-### Image does not contain any relevant information
+### 图像不包含任何相关信息
 
-In case your image does not contain the required headers, or the image format does not have any header information at all (e.g. JPG or RAW formats), the application will need some user assistance to get the correct reference coordinates so it can solve the image quickly. Instead of clicking on "Load Image" first, you should specify the target's coordinates instead. Either you can do a quick search by typing a name inside the **Coordinates** field and, if found, choose the correct coordinates, or you need to enter the coordinates manually. Once the coordinates are filled, you click on "Load image" and the application will ask you if these coordinates should be used for solving the image.
-When the solve is successful, the image will finally be displayed.
+如果你的图像不包含所需的头信息，或者图像格式根本没有任何头信息（如 JPG 或 RAW 格式），应用程序将需要一些用户协助来获取正确的参考坐标，以便能够快速解析图像。在点击"加载图像"之前，你应该先指定目标的坐标。你可以在**坐标**字段中输入名称进行快速搜索，如果找到，选择正确的坐标；或者你需要手动输入坐标。坐标填好后，点击"加载图像"，应用程序将询问你是否应使用这些坐标进行解析。
+解析成功后，图像最终将显示出来。
 
-![Choose Target](../images/advanced/framing/ChooseTarget.png)
-![Use Reference Coordinates](../images/advanced/framing/ReferenceCoordinates.png)
+![选择目标](../images/advanced/framing/ChooseTarget.png)
+![使用参考坐标](../images/advanced/framing/ReferenceCoordinates.png)
 
-## Finalizing the framing
+## 最终确定构图
 
-Your rectangle is dragged to where it is supposed to be, and your rotation is also settled. To finalize this process and put it to use, you need to create a sequence out of it.
-There are two options for this available:
+你的矩形框已拖到了预定位置，旋转角度也已确定。要最终完成此过程并投入使用，你需要基于它创建一个序列。
+有两个选项可用：
 
-*"Replace as Sequence Target"*: This will replace **all** currently set sequences with the current framing target.
-*"Add as Sequence Target"*: When you have already added a target from a previous framing, you can add this current one to the overall sequences. This is especially useful when you plan on imaging multiple targets in one night.
+*"替换为序列目标"*：这将用当前的构图目标替换**所有**当前设置的序列。
+*"添加为序列目标"*：当你已经从之前的构图中添加了目标时，你可以将当前目标添加到整体序列中。这对于计划在一晚内拍摄多个目标特别有用。
 
-## Remember the rotation!
+## 记住旋转角度！
 
-Your framing was done, you start imaging, but the image rotation is completely different from what you have set inside the Framing Tab?
-Well the application unfortunately can't rotate your camera magically (unless you have a motorized rotator). For the majority of people not having a rotator N.I.N.A. offers a quick way to ensure that the rotation for your sequence will match the rotation you set up for framing.  
-Inside **Equipment -> Rotator** you have to choose the "Manual Rotator" and connect to it. When this little tool is "connected" the application will consider the rotation during `Slew, center and rotate` commands. During the centering of the object, the plate solver will determine the actual rotation, compare it with the desired rotation, and then send a signal to the rotator to turn. As we have the manual rotator enabled, a small pop-up window will prompt you to turn the camera by the required number of degrees until you are within the rotational tolerance (set inside [Options -> Plate Solving -> Rotation Tolerance](../tabs/options/platesolving.md#rotation-tolerance)).
+你的构图完成了，你开始拍摄，但图像的旋转角度与你构图选项卡中设置的角度完全不同？
+很遗憾，除非你有电动旋转器，否则应用程序无法神奇地旋转你的相机。对于大多数没有旋转器的用户，N.I.N.A. 提供了一种快速的方法，以确保你的序列旋转角度与构图中设置的旋转角度匹配。
+在**设备 -> 旋转器**中，你需要选择"手动旋转器"并连接到它。当这个小型工具"已连接"时，应用程序将在`转向、对中并旋转`命令期间考虑旋转角度。在目标对中过程中，解析器将确定实际旋转角度，将其与所需旋转角度进行比较，然后向旋转器发送旋转信号。由于我们已启用手动旋转器，会弹出一个提示窗口，引导你按所需角度旋转相机，直到你进入旋转容差范围（在[选项 -> 解析 -> 旋转容差](../tabs/options/platesolving.md#旋转容差)中设置）。
 
-![Use Reference Coordinates](../images/advanced/framing/CameraRotator.png)
+![使用参考坐标](../images/advanced/framing/CameraRotator.png)
 
-## Framing a Mosaic
+## 马赛克构图
 
-Framing a mosaic is really simple. You can follow all the previously mentioned steps to choose a good target for the framing and orientation of your mosaic. The only difference will be that you additionally set **"Horizontal Panels"** and **"Vertical Panels"** as well as the overlap of these panels.
-When more than one panel is selected, the single rectangle gets expanded and divided into multiples using the number of panels as well as the overlap percentage. Furthermore, each panel will be assigned a number.
+马赛克构图非常简单。你可以遵循前面提到的所有步骤来为马赛克的构图和方向选择合适的目标。唯一不同的是，你需要另外设置**"水平面板"**和**"垂直面板"**以及这些面板的重叠百分比。
+当选择多于一个面板时，单个矩形会扩展并根据面板数量和重叠百分比分割为多个矩形。此外，每个面板都会被分配一个编号。
 
-![Mosaic](../images/advanced/framing/Mosaic.png)
+![马赛克](../images/advanced/framing/Mosaic.png)
 
-Once you are done with the mosaic planning you can put it into the sequence by replacing or adding it. It is advised to have a sequence template set up prior to adding a mosaic plan to the sequence, so you don't have to set up each panel separately.
-When adding the mosaic to the sequence, the target names will be your target name chosen inside the Coordinates section, and a suffix of "Panel X" will be appended based on the panel number to easily distinguish these panels. The coordinates will be automatically shifted based on the panels, and your mosaic should work without having to worry about anything.
+完成马赛克规划后，你可以通过替换或添加到序列中。建议在将马赛克计划添加到序列之前，先设置好序列模板，这样就不必单独设置每个面板。
+将马赛克添加到序列时，目标名称将是在坐标区域中选择的目标名称，并根据面板编号附加"Panel X"后缀，以便轻松区分这些面板。坐标将根据面板自动偏移，你的马赛克应该可以顺利工作，无需担心任何事情。
 
-![Mosaic](../images/advanced/framing/MosaicPlan.png)
+![马赛克](../images/advanced/framing/MosaicPlan.png)
 
-**It is important to have the actual camera correctly rotated for a successful mosaic**
+**要让马赛克成功拍摄，确保相机实际旋转正确至关重要。**

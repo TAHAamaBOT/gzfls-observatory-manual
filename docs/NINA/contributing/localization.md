@@ -1,29 +1,29 @@
-# Localization
+# 本地化
 
-N.I.N.A. uses an external translation management software called Crowdin to localize the application.
-This software offers an easy access for all people that are interested in contributing to the localization without having to know anything about coding.
-The software can be found at  
-  
+N.I.N.A. 使用名为 Crowdin 的外部翻译管理软件来进行应用程序的本地化。
+此软件为所有有兴趣参与本地化的人提供了便捷的访问方式，无需了解任何编程知识。
+该软件位于
+
 **[nina.crowdin.com](http://nina.crowdin.com/)**
 
-## Quick Start
+## 快速入门
 
-1. Visit the project's localization overview via the link above and click on "Translate" ![N.I.N.A Projects](../images/contributing/crowdin-projects.png)
-2. You will see an overview of all currently available languages where you can add new or improved translations 
-3. Hover over the language where you want to start and click on "Translate" ![N.I.N.A. Language Overview](../images/contributing/crowdin-language-overview.png)
-4. In case you are not logged in yet, you need to log into Crowdin now. Either register a new user or use one of the alternative OAuth logins ![Crowdin Login](../images/contributing/crowdin-login.png)
-5. The next screen will greet you with the actual translation interface and you can now start your translations ![Crowdin Translation Suite](../images/contributing/crowdin-translation-ui.png)
-   1. On the left side you can find a list of all available Labels. A red box indicates if no good translation is available yet and these are shown first by default.
-   2. In the top middle section you will see the original Text of the label for the default language as well as the label code
-   3. To provide a new translation you have to enter your proposal into the textbox here
-   4. In the bottom list you can see all previous translation proposals as well as some proposals given by machine learning
-   5. Once you are happy with your translated string you click on "Save"
-   6. On the right section you can find comments of other contributors as well as a convenient quick search for some terms and uses.
+1. 通过上方链接访问项目的本地化概览页面，点击"翻译" ![N.I.N.A 项目](../images/contributing/crowdin-projects.png)
+2. 您将看到当前所有可用语言的概览，可以在此添加新的或改进的翻译
+3. 将鼠标悬停在您想要开始的语言上，点击"翻译" ![N.I.N.A. 语言概览](../images/contributing/crowdin-language-overview.png)
+4. 如果您尚未登录，需要先登录 Crowdin。可以注册新用户或使用替代的 OAuth 登录方式 ![Crowdin 登录](../images/contributing/crowdin-login.png)
+5. 下一屏将显示实际的翻译界面，您现在可以开始翻译了 ![Crowdin 翻译工作台](../images/contributing/crowdin-translation-ui.png)
+   1. 左侧是所有可用标签的列表。如果还没有可用的翻译，红色框会提示，这些标签默认优先显示。
+   2. 顶部中间区域显示原始语言的标签文本以及标签代码
+   3. 要提供新翻译，需要在此处的文本框中输入您的译文
+   4. 底部列表中可以看到之前所有翻译建议以及一些机器学习提供的建议
+   5. 对翻译字符串满意后，点击"保存"
+   6. 右侧区域可以查看其他贡献者的评论，以及便捷的术语和用法的快速搜索。
 
-## Integration into N.I.N.A.
+## 集成到 N.I.N.A.
 
-The crowdin platform offers an automatic synchronization into the project's code repository.
-Every *30 minutes* a sync is triggered and new translations will be pushed into a separate branch inside N.I.N.A.'s repository and a pull request will be opened to be reviewed.
-Once that pull request is approved and the new version is installed, all the translations will be reflected inside the User Interface
+Crowdin 平台提供与项目代码仓库的自动同步功能。
+每 *30 分钟*触发一次同步，新翻译将被推送到 N.I.N.A. 仓库中一个单独的分支，并打开拉取请求以供审核。
+一旦拉取请求被批准并安装新版本，所有翻译将反映在用户界面中。
 
 

@@ -1,101 +1,102 @@
-Loop conditions will drive the behavior of an instruction set. Without a condition, an instruction set will just process each sequence item inside once and is finished. This behavior will be changed, when loop conditions are attached. When an instruction set has a loop condition attached, it will process its items and loop itself again as long as the attached loop conditions are fulfilled. Once at least one of these loop conditions is not fulfilled anymore (e.g. a condition to loop until a specific time and the time has passed) the current instruction will be finished and afterwards the rest of the instructions inside this set will be skipped as well as the instruction set marked as finished. Conditions will be evaluated constantly in the background, so things like time based conditions or safety monitor conditions will interrupt ongoing instructions once they are no longer fulfilled.    
+循环条件驱动指令集的行为。没有条件时，指令集只会处理每个序列项目一次便完成。当附加了循环条件后，此行为将改变。当指令集附有循环条件时，它会处理其项目，并在附加的循环条件满足期间重复循环自身。一旦这些循环条件中至少有一个不再满足（例如，循环到特定时间的条件，且时间已过），当前指令将完成，之后该集内剩余的指令将被跳过，指令集也将标记为已完成。条件会在后台持续评估，因此基于时间的条件或安全监控器条件一旦不再满足，就会中断正在进行的指令。
 
-Conditions can be identified by the highlighted icon next to them in the sequencer sidebar.  
-![Loop Conditions](../../images/sequencer/conditions/conditions.png)  
+条件可以通过序列器侧边栏中它们旁边的高亮图标来识别。
+![循环条件](../../images/sequencer/conditions/conditions.png)
 
-### Loop For Iterations
-![Loop For Iterations](../../images/sequencer/conditions/loopforiterations.png)  
-Loop the instruction set for the specified amount of iterations.
+### 循环指定次数
+![循环指定次数](../../images/sequencer/conditions/loopforiterations.png)
+将指令集循环执行指定的迭代次数。
 
-### Loop For Time Span
-![Loop For Time Span](../../images/sequencer/conditions/loopfortimespan.png)  
-Loop the instruction set for the specified amount of seconds.
+### 循环指定时长
+![循环指定时长](../../images/sequencer/conditions/loopfortimespan.png)
+将指令集循环执行指定的秒数。
 
-### Loop Until Altitude Sets Below
-![Loop Until Altitude Sets Below](../../images/sequencer/conditions/loopuntilaltitude2.png)  
-For a given target coordinates the condition will loop until the altitude sets below the specified amount.
-When this condition is part of a "Deep Sky Object Sequence" the coordinates will be inherited by this set and no coordinates need to be entered  
-![Loop Until Altitude Sets Below](../../images/sequencer/conditions/loopuntilaltitude.png)  
+### 循环直到高度角低于
+![循环直到高度角低于](../../images/sequencer/conditions/loopuntilaltitude2.png)
+对于给定的目标坐标，该条件将循环直到高度角低于指定值。
+当此条件属于"深空天体序列"的一部分时，坐标将由此序列继承，无需手动输入坐标。
+![循环直到高度角低于](../../images/sequencer/conditions/loopuntilaltitude.png)
 
-### Loop Until Time
-![Loop Until Time](../../images/sequencer/conditions/loopuntiltime.png)  
-Loops an instruction set until a specific local time or astronomy-based event. The source can be a manually entered time, a sun event, or the current target's meridian crossing. For calculated sources, the time fields are populated automatically and can be shifted earlier or later by setting an offset in minutes.
+### 循环直到指定时间
+![循环直到指定时间](../../images/sequencer/conditions/loopuntiltime.png)
+将指令集循环直到特定的本地时间或天文事件。时间源可以是手动输入的时间、太阳事件或当前目标的中天时刻。对于计算型时间源，时间字段会自动填充，并可通过设置分钟偏移量将其提前或推迟。
 
-This condition remains true while there is enough time left to run the next instruction. If the selected time has already passed for the current observing day, or if the next instruction's estimated duration would exceed the selected time, the condition becomes false and the instruction set stops.
+此条件在剩余时间足以运行下一条指令时保持为真。如果对于当前观测日所选时间已过，或者下一条指令的预估耗时将超过所选时间，则该条件变为假，指令集停止。
 
-* **Time**: Manually entered local time in `hh:mm:ss`
-* **Sunset**: The time when the sun goes below 0 degrees altitude
-* **Civil Dusk**: The time when the sun goes below -6 degrees altitude
-* **Nautical Dusk**: The time when the sun goes below -12 degrees altitude
-* **Astronomical Dusk**: The time when the sun goes below -18 degrees altitude
-* **Astronomical Dawn**: The time when the sun rises above -18 degrees altitude
-* **Nautical Dawn**: The time when the sun rises above -12 degrees altitude
-* **Civil Dawn**: The time when the sun rises above -6 degrees altitude
-* **Sunrise**: The time when the sun rises above 0 degrees altitude
-* **Meridian**: The time when the current target crosses the meridian. If no target coordinates are available, this resolves to the current time.
+* **时间**：手动输入的本地时间，格式为 `hh:mm:ss`
+* **日落**：太阳降至 0° 高度角以下的时刻
+* **民用黄昏**：太阳降至 -6° 高度角以下的时刻
+* **航海黄昏**：太阳降至 -12° 高度角以下的时刻
+* **天文黄昏**：太阳降至 -18° 高度角以下的时刻
+* **天文黎明**：太阳升起超过 -18° 高度角的时刻
+* **航海黎明**：太阳升起超过 -12° 高度角的时刻
+* **民用黎明**：太阳升起超过 -6° 高度角的时刻
+* **日出**：太阳升起超过 0° 高度角的时刻
+* **中天**：当前目标经过中天的时刻。如果没有目标坐标可用，则解析为当前时间。
 
-| Time source         | Rollover time |
+| 时间源              | 翻转时间 |
 |---------------------|---------------|
-| Time                | Sunrise, or noon if sunrise is unavailable |
-| Sunset              | Sunrise, or noon if sunrise is unavailable |
-| Civil Dusk          | Sunrise, or noon if sunrise is unavailable |
-| Nautical Dusk       | Sunrise, or noon if sunrise is unavailable |
-| Astronomical Dusk   | Sunrise, or noon if sunrise is unavailable |
-| Astronomical Dawn   | Sunset, or noon if sunset is unavailable |
-| Nautical Dawn       | Sunset, or noon if sunset is unavailable |
-| Civil Dawn          | Sunset, or noon if sunset is unavailable |
-| Sunrise             | Sunset, or noon if sunset is unavailable |
-| Meridian            | Meridian + 12 hours |
+| 时间                | 日出，若日出不可用则为正午 |
+| 日落                | 日出，若日出不可用则为正午 |
+| 民用黄昏            | 日出，若日出不可用则为正午 |
+| 航海黄昏            | 日出，若日出不可用则为正午 |
+| 天文黄昏            | 日出，若日出不可用则为正午 |
+| 天文黎明            | 日落，若日落不可用则为正午 |
+| 航海黎明            | 日落，若日落不可用则为正午 |
+| 民用黎明            | 日落，若日落不可用则为正午 |
+| 日出                | 日落，若日落不可用则为正午 |
+| 中天                | 中天 + 12 小时 |
 
-!!! note
-    `Loop Until Time` has no date field, so N.I.N.A. uses the rollover time to decide whether the selected time belongs to the current observing day or the next one. The rollover time shown in the condition is the value currently being used.
+:::note
+`Loop Until Time` 没有日期字段，因此 N.I.N.A. 使用翻转时间来判断所选时间属于当前观测日还是下一个观测日。条件中显示的翻转时间是当前使用的值。
+:::
 
-    Examples, assuming sunrise is at 09:00:
+    以下示例假设日出时间为 09:00：
 
-    * Current time: 18:00 | Loop until time: 19:00 -> loops for one hour
-    * Current time: 20:00 | Loop until time: 19:00 -> condition is false because 19:00 has already passed
-    * Current time: 18:00 | Loop until time: 02:00 -> loops for eight hours
-    * Current time: 02:00 | Loop until time: 03:00 -> loops for one hour
-    * Current time: 04:00 | Loop until time: 03:00 -> condition is false because 03:00 has already passed
-    * Current time: 08:00 | Loop until time: 18:00 -> condition is false because the 09:00 rollover has not happened yet, so 18:00 still belongs to the previous observing day
+    * 当前时间：18:00 | 循环到时间：19:00 -> 循环一小时
+    * 当前时间：20:00 | 循环到时间：19:00 -> 条件为假，因为 19:00 已过
+    * 当前时间：18:00 | 循环到时间：02:00 -> 循环八小时
+    * 当前时间：02:00 | 循环到时间：03:00 -> 循环一小时
+    * 当前时间：04:00 | 循环到时间：03:00 -> 条件为假，因为 03:00 已过
+    * 当前时间：08:00 | 循环到时间：18:00 -> 条件为假，因为 09:00 翻转尚未发生，所以 18:00 仍属于上一个观测日
 
-!!! note
-    If a calculated source such as sunset, astronomical dusk, or astronomical dawn is unavailable for the current location and date, N.I.N.A. marks the condition as invalid instead of using the current time.
+:::note
+如果计算型时间源（如日落、天文黄昏或天文黎明）在当前地点和日期不可用，N.I.N.A. 会将条件标记为无效，而非使用当前时间。
+:::
 
 
 
-### Loop While Altitude Above Horizon
-![Loop While Altitude Above Horizon](../../images/sequencer/conditions/loopwhilehorizon2.png)  
-This will loop the instruction set for as long as the specified target is above the horizon. When a [custom horizon](../../tabs/options/general.md) is set, the custom horizon will be considered as the altitude to be above of. When no custom horizon is set, 0° of altitude will be considered. Furthermore an altitude offset can be specified.  
-When this condition is part of a "Deep Sky Object Sequence" the coordinates will be inherited by this set and no coordinates need to be entered  
-![Loop While Altitude Above Horizon](../../images/sequencer/conditions/loopwhilehorizon.png)  
+### 循环直到离开地平线以下
+![循环直到离开地平线以下](../../images/sequencer/conditions/loopwhilehorizon2.png)
+此条件将在指定目标位于地平线以上期间循环指令集。若设置了[自定义地平线](../../tabs/options/general.md)，将视为目标需要位于自定义地平线以上。若未设置自定义地平线，则默认以 0° 高度角为准。还可以指定一个高度角偏移量。
+当此条件属于"深空天体序列"的一部分时，坐标将由此序列继承，无需手动输入坐标。
+![循环直到离开地平线以下](../../images/sequencer/conditions/loopwhilehorizon.png)
 
-### Loop While Safe
-![Loop While Safe](../../images/sequencer/conditions/loopwhilesafe.png)  
-Loop for as long as the safety monitor is reporting safe conditions. When the state of the safety monitor switches to unsafe, the currently running instruction will be cancelled and the rest of the instruction set will be skipped.  
-It is recommended to use this condition in conjunction with another condition, to not run in an endless loop when the safety monitor is reporting safe conditions for the whole time.  
-*Requires a safety monitor device to be connected*
+### 安全时循环
+![安全时循环](../../images/sequencer/conditions/loopwhilesafe.png)
+在安全监控器报告安全状况期间持续循环。当安全监控器状态切换为不安全时，当前正在运行的指令将被取消，指令集剩余部分将被跳过。
+建议将此条件与其他条件结合使用，以避免在安全监控器始终报告安全时陷入无限循环。
+*需要连接安全监控器设备*
 
-### Loop While Unsafe
-![Loop While Unsafe](../../images/sequencer/conditions/loopwhileunsafe.png)  
-Loop for as long as the safety monitor is reporting unsafe conditions. When the state of the safety monitor switches to safe, the currently running instruction will be cancelled and the rest of the instruction set will be skipped.  
-It is recommended to use this condition in conjunction with another condition, to not run in an endless loop when the safety monitor is reporting unsafe conditions for the whole time.  
-*Requires a safety monitor device to be connected*
+### 不安全时循环
+![不安全时循环](../../images/sequencer/conditions/loopwhileunsafe.png)
+在安全监控器报告不安全状况期间持续循环。当安全监控器状态切换为安全时，当前正在运行的指令将被取消，指令集剩余部分将被跳过。
+建议将此条件与其他条件结合使用，以避免在安全监控器始终报告不安全时陷入无限循环。
+*需要连接安全监控器设备*
 
-### Loop While (NINA 3.3)
-![Sun Altitude](../../images/sequencer/conditions/loopwhile.png)  
-Loop while the Expression is True
+### 条件循环（NINA 3.3）
+![太阳高度角](../../images/sequencer/conditions/loopwhile.png)
+在表达式为真期间循环。
 
-### Moon Altitude
-![Moon Altitude](../../images/sequencer/conditions/moonaltitude.png)  
-Loop for as long as the moon matches the specified parameters.
+### 月亮高度角
+![月亮高度角](../../images/sequencer/conditions/moonaltitude.png)
+在月亮符合指定参数期间持续循环。
 
-### Moon Illumination
-![Moon Illumination](../../images/sequencer/conditions/moonillumination.png)  
-Loop for as long as the sun matches the specified parameters.
+### 月亮光照度
+![月亮光照度](../../images/sequencer/conditions/moonillumination.png)
+在太阳符合指定参数期间持续循环。
 
-### Sun Altitude
-![Sun Altitude](../../images/sequencer/conditions/sunaltitude.png)  
-Loop while the sun altitude is above or below the specified amount of degrees
-
+### 太阳高度角
+![太阳高度角](../../images/sequencer/conditions/sunaltitude.png)
+在太阳高度角高于或低于指定度数期间循环。
 

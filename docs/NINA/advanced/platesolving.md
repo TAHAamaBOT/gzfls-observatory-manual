@@ -1,245 +1,245 @@
-## Overview
+## 概述
 
-Plate solving is a method used to determine exactly where the telescope is pointing in the sky by comparing the star field in an image to a database of star positions. Upon matching the image's stars, the plate solving application returns the right ascension (RA) and declination (Dec) of the center of the image. N.I.N.A. understands this output, and may be used to synchronize the mount to that coordinate. This gives the mount a very accurate notion of where it is pointing in space, making subsequent slews very precise.
+解析（Plate Solving）是一种通过将图像中的星场与星点位置数据库进行比对，精确确定望远镜在天空中指向位置的方法。匹配到图像中的星点后，解析应用程序会返回图像中心的赤经（RA）和赤纬（Dec）。N.I.N.A. 能够理解这一输出，并可用其将赤道仪同步到该坐标。这使赤道仪对其在空间中的指向位置有了非常精确的认识，使随后的转向操作变得非常精准。
 
-!!! important
-	Plate solving requires that your camera and telescope settings are correct. The two important settings are the camera's sensor pixel size and the focal length of the telescope. N.I.N.A. will usually be able to detect the sensor's pixel size, but the user **will** need to inform the software of the effective focal length of the optical path. This includes the focal length of the telescope itself and any focal length-affecting devices such as reducers, telecompressors, or barlows.
+:::warning
+解析要求相机和望远镜的设置正确。两个重要的设置是相机传感器的像素尺寸和望远镜的焦距。N.I.N.A. 通常能够检测到传感器的像素尺寸，但用户**必须**告知软件光路的有效焦距。这包括望远镜本身的焦距以及任何影响焦距的装置，如减焦镜、平场镜或增倍镜。
+:::
 
+## 手动解析
 
-## Manual Plate Solving
+要手动触发图像解析，需要使用图像面板中的解析工具。
+点击那里的播放按钮将拍摄一张新图像，并根据给定参数进行解析。
+如果解析尝试失败，N.I.N.A. 会提示是否应使用盲解析器来解析该图像。
+这样做的原因是，尽管大多数解析软件相当出色，但并非完美无缺。
+某个软件在解析某张图像时失败，另一个软件可能成功。
+因此，盲解析器作为备用方法。
 
-To manually trigger plate solving of an image, you need to use the Plate Solving tool in the image panel.
-Clicking on the play button there will capture a new image and solve it based on the given parameters.
-Should the solve attempt fail, N.I.N.A. will prompt if the Blind Solver should be used to solve the image.
-The reason for this is that while most plate solving software is quite good, none are infallible.
-Where one fails to solve a given image, another might succeed.
-Thus, the Blind Solver acts as a backup method.
+在 N.I.N.A. 中进行解析之前，主解析器和盲解析器所需的所有设置都必须按照各自的说明完成。
 
-Before being able to plate solve in N.I.N.A., any setup that the primary and blind solvers require must be done in accordance with their respective instructions.
+:::tip
+如果主解析和盲解析应用程序都无法产生结果，请确认图像是否已对焦，并在必要时增加曝光时间或更改滤镜类型，以使更多星点得到充分曝光。
+此外，最后一次失败的图像会存储在 `%LOCALAPPDATA%\NINA\PlateSolver\Failed` 中，供分析失败原因使用。
+:::
 
-!!! tip
-    In the event that both the Primary and Blind plate solving applications fail to produce a result, please verify that your image is in focus and, if necessary, increase the exposure time or change the filter type to allow more stars to be adequately exposed.  
-    Furthermore, the last failure is stored in `%LOCALAPPDATA%\NINA\PlateSolver\Failed` to analyze why it failed.
+要将解析结果应用到赤道仪上，需要在解析面板中启用同步选项，如果需要的话，还可以启用重新转向目标选项。
+前者将使赤道仪对其指向位置的认识与解析器确定的位置同步。
+后者将使 N.I.N.A. 将赤道仪转向它本应在的位置。
+这可以跳过通常在赤道仪启动过程中进行的恒星校准步骤。
+对于给定误差范围的精确定中，可以使用"重复直到误差 &lt;"选项。
 
-To apply the plate solving results to your mount, you need to enable the Sync option and, if desired, the Reslew To Target option in the Plate Solving panel.
-The former will synchronize your mount's notion of its pointing position to the position that the plate solver has determined it is pointed at.
-The latter option will make N.I.N.A. slew your mount to the location where it was supposed to be in the first place.
-This allows skipping the star alignment process that is typically done during a mount's start-up process.
-For precise centering with a given error margin, use the "Repeat until error &lt;" option.
+## 自动解析
 
+解析还被用于[序列器](../sequencer/overview.md)中对给定目标进行定中，以及在[自动中天翻转](meridianflip.md)功能中在翻转后重新对中望远镜。
+这里，解析将自动触发，参数来自解析选项中的设置。
+这对于 N.I.N.A. 的无人值守操作至关重要，建议将应用程序设置为配备一个盲解析器，以防首选的主解析器未按预期工作。
 
+## 解析的重要参数
 
-## Automatic Plate Solving
+为了解析正常工作，几个重要的参数必须尽可能精确地设置。当这些参数与真实硬件存在某种程度的偏差时，解析软件将难以解析图像，甚至可能一直失败。
 
-Plate solving is also utilized in the [Sequencer](../sequencer/overview.md) to center on a given target and in the [Automated Meridian Flip](meridianflip.md) feature to recenter the scope after a flip has occurred.
-Here plate solving will be triggered automatically and the parameters are used from the Plate Solving Options.
-This is essential for a hands-off operation of N.I.N.A. and it is recommended that the application is set up to have a blind solver, should the preferred primary plate solver not work as expected.
+1. *相机像素尺寸*
+前往选项->设备->相机区域，需要以微米为单位输入像素尺寸。
+2. *望远镜焦距*
+前往选项->设备->望远镜区域，以毫米为单位设置望远镜的焦距。该值必须是**有效焦距**，即考虑所有可能改变整体焦距的改正镜和光学元件。
 
-## Important Parameters for Plate Solving
+:::tip
+如果你不确定有效焦距，可以使用 nova.astrometry.net 验证实际焦距。上传一张使用你当前设备拍摄的未合并目标图像。图像解析后，将显示"像素比例"。然后你可以使用以下公式提取焦距：
+"焦距 = (相机像素尺寸 / 像素比例) * 206.26"
+:::
 
-In order for plate solving to work properly, a couple of important parameters have to be set as precisely as possible. When these deviate to some degree from the real-world hardware, plate solving software will have a hard time solving the image or may even fail all the time.
+## 解析软件
 
-1. *Camera Pixel Size*  
-Go to Options->Equipment->Camera section, the pixel size needs to be entered in micrometers.
-2. *Telescope Focal Length*  
-Go to Options->Equipment->Telescope section and set the focal length of your telescope in millimeters. The value has to be the **effective focal length** considering all correctors and optical elements that could shift the overall focal length
+N.I.N.A. 支持市面上最主流的多款解析软件，每款各有其优缺点。以下是受支持的解析软件列表及其一般特性。
 
-!!! tip
-    If you are unsure about the effective focal length, you can use nova.astrometry.net to validate your real focal length. Upload a non binned image of a target that used your current setup. Once the image is solved the "Pixel Scale" is displayed. You can extract the focal length now by using the formula  
-    "Focal Length = (Camera Pixel Size / Pixel Scale) * 206.26"
+### ASTAP - *推荐*
+作者：Han Kleijn
+网址：[www.hnsky.org/astap.htm](//www.hnsky.org/astap.htm)
 
-## Plate Solving Software
+ASTAP（Astrometric STAcking Program）天文测量求解器和 FITS 文件查看器是一款功能强大的独立解析应用程序。它分两部分下载和安装——应用程序本身及其星表数据库。
 
-N.I.N.A. supports the most popular plate solving software suites available, each of which has its own benefits and drawbacks. The following is a list of supported plate solving software and their general characteristics.
+**优点**
 
-### ASTAP - *recommended*
-Author: Han Kleijn  
-URL: [www.hnsky.org/astap.htm](//www.hnsky.org/astap.htm)
+* 快速
+* 可靠
+* 即使赤道仪偏离预期位置较远，也能进行快速的盲解析
+* 无需互联网连接
 
-The ASTAP (Astrometric STAcking Program) astrometric solver and FITS file viewer is a powerful standalone plate solve application. It is downloaded and installed in two parts - the application itself, and its star database.
+**缺点**
 
-**Benefits**
+* 需要精确的参数设置
 
- * Fast
- * Reliable
- * Capable of fast blind solves even when the mount is far off the expected position
- * Does not require an Internet connection
+**推荐**
 
-**Drawbacks**
-
- * Requires precise parameter setup
-
-**Recommendation**
-
- * Primary Solver: Recommended
- * Blind Solver: Recommended
+* 主解析器：推荐
+* 盲解析器：推荐
 
 ---
 
-### Astrometry.Net (online)
-Author: Astrometry.Net Project  
-URL: [astrometry.net](//astrometry.net/)
+### Astrometry.Net（在线）
+作者：Astrometry.Net 项目
+网址：[astrometry.net](//astrometry.net/)
 
-N.I.N.A. can upload the image to the API servers of Astrometry.Net for them to plate solve it. This requires the user to register for an account on Astrometry.Net and generate an API key that is then entered into the plate solve settings for Astrometry.Net.
+N.I.N.A. 可以将图像上传到 Astrometry.Net 的 API 服务器进行解析。这需要用户在 Astrometry.Net 上注册账户并生成 API 密钥，然后在 Astrometry.Net 的解析设置中输入该密钥。
 
-**Benefits**
+**优点**
 
- * Reliable when the mount's location is unknown or far off the expected position
- * Does not need to know the camera's sensor pixel size or telescope's focal length
+* 在赤道仪位置未知或偏离预期位置较远时可靠
+* 不需要知道相机传感器的像素尺寸或望远镜的焦距
 
-**Drawbacks**
+**缺点**
 
- * Requires an Internet connection
- * Slow
+* 需要互联网连接
+* 速度较慢
 
-**Recommendation**
+**推荐**
 
- * Primary Solver: Not recommended
- * Blind Solver: Recommended when an Internet connection is available
+* 主解析器：不推荐
+* 盲解析器：在有互联网连接时推荐
 
 ---
 
 ### Local Astrometry.Net (ansvr)
-Author: Andy Glasso  
-URL: [adgsoftware.com/ansvr/](//adgsoftware.com/ansvr/)
+作者：Andy Glasso
+网址：[adgsoftware.com/ansvr/](//adgsoftware.com/ansvr/)
 
-The local Astrometry.Net plate solver needs to be installed separately.
-It requires downloading index files, which can be installed through N.I.N.A., for your combination of focal length and pixel size. See plate solving settings.
+本地 Astrometry.Net 解析器需要单独安装。
+它需要下载索引文件（可通过 N.I.N.A. 安装），以适应你的焦距和像素尺寸组合。请参见解析设置。
 
-**Benefits**
+**优点**
 
- * Reasonably fast when the mount's location is unknown or far off the expected position
- * Fast when the mount's location is close
- * Does not require an Internet connection
+* 在赤道仪位置未知或偏离预期位置较远时，速度尚可
+* 在赤道仪位置接近时速度快
+* 无需互联网连接
 
-**Drawbacks**
+**缺点**
 
- * The downloading and installation of the correct and numerous index files is crucial for performance
- * Can mistake hot pixels for stars (a possible issue with DSLRs and other noisy sensors)
- * Most installer bundles for Windows deliver rather outdated versions
+* 下载和安装正确且众多的索引文件对性能至关重要
+* 可能将热像素误认为星点（使用 DSLR 和其他噪声较大的传感器时可能出现问题）
+* 大多数 Windows 安装包提供的版本较为过时
 
-**Recommendation**
+**推荐**
 
- * Primary Solver: Not recommended
- * Blind Solver: Not recommended 
+* 主解析器：不推荐
+* 盲解析器：不推荐
 
 ---
 
 ### All Sky Plate Solver
-Author: Giovanni Benintende  
-URL: [astrogb.com/astrogb/All_Sky_Plate_Solver.html](http://www.astrogb.com/astrogb/All_Sky_Plate_Solver.html)
+作者：Giovanni Benintende
+网址：[astrogb.com/astrogb/All_Sky_Plate_Solver.html](http://www.astrogb.com/astrogb/All_Sky_Plate_Solver.html)
 
-This application is basically a wrapper for the local astrometry.net client. 
+此应用程序本质上是本地 astrometry.net 客户端的封装程序。
 
-**Benefits**
+**优点**
 
-* Much easier to set up than the local astrometry.net client
-* Does not require an Internet connection
+* 比本地 astrometry.net 客户端更容易设置
+* 无需互联网连接
 
-**Drawbacks**
+**缺点**
 
- * Same as local astrometry.net client, except for the setup part
+* 与本地 astrometry.net 客户端相同，设置部分除外
 
-**Recommendation**
+**推荐**
 
- * Primary Solver: Not recommended
- * Blind Solver: Not recommended 
+* 主解析器：不推荐
+* 盲解析器：不推荐
 
 ---
 
 ### PlateSolve3.80
-Author: PlaneWave Instruments (Dave Rowe)
-URL: [PlateSolve 3.80](https://drive.google.com/drive/folders/1JCgzmSJGBXOtfYrqpG5Jvp_Dr_gvEOgt)
+作者：PlaneWave Instruments (Dave Rowe)
+网址：[PlateSolve 3.80](https://drive.google.com/drive/folders/1JCgzmSJGBXOtfYrqpG5Jvp_Dr_gvEOgt)
 
-N.I.N.A. was kindly selected to include the improved PlateSolve3.80 in its arsenal of plate solvers, courtesy of Dave Rowe of PlaneWave Instruments.
-PlateSolve3 is a standalone executable. It handles longer focal lengths and small FOVs, and solves quickly with few stars (&lt;10).
+N.I.N.A. 荣幸地获选在其解析工具库中纳入了改进版的 PlateSolve3.80，承蒙 PlaneWave Instruments 的 Dave Rowe 提供。
+PlateSolve3 是一个独立的可执行文件。它能够处理较长焦距和小视场，并且在星点较少时（少于 10 颗）也能快速解析。
 
-PlateSolve3.80's catalogs are included in the zip file. They must be installed before plate solving.
-Run PlateSolve3.80, then go to the File menu and click on "Configure Directory...". For the UCAC4 catalog, select the Kepler directory, and for the GaiaDR2 catalog, select the UD Catalog directory. Close the application.
+PlateSolve3.80 的星表包含在 zip 文件中，必须在使用解析前安装。
+运行 PlateSolve3.80，然后进入文件菜单并点击"Configure Directory..."。对于 UCAC4 星表，选择 Kepler 目录；对于 GaiaDR2 星表，选择 UD Catalog 目录。关闭应用程序。
 
-**Benefits**
+**优点**
 
-* Reliable with long focal lengths and small FOVs (tested up to 24000mm)
-* Very fast blind solving
-* Few stars required; stars can be moderately elongated/distorted
-* Does not require an Internet connection
+* 在长焦距和小视场下可靠（经测试可达 24000mm）
+* 盲解析速度非常快
+* 所需星点少；星点可适度拉长/失真
+* 无需互联网连接
 
-**Drawbacks**
+**缺点**
 
-* The regional settings of Windows must be set to use a point as the decimal symbol
+* Windows 的区域设置必须使用点号作为小数符号
 
-**Recommendation**
+**推荐**
 
-* Primary Solver: Recommended
-* Blind Solver: Recommended
+* 主解析器：推荐
+* 盲解析器：推荐
 
 ---
 
 ### TheSkyX ImageLink
-Author: Software Bisque
-URL: [bisque.com](//www.bisque.com/)
+作者：Software Bisque
+网址：[bisque.com](//www.bisque.com/)
 
-TheSkyX ImageLink can be used as a primary plate solver when TheSkyX is installed and reachable through its TCP server.
+当 TheSkyX 已安装并可通过其 TCP 服务器访问时，TheSkyX ImageLink 可用作主解析器。
 
-**Benefits**
+**优点**
 
-* Useful for users already running TheSkyX
-* Can integrate with an existing TheSkyX workflow
+* 对已运行 TheSkyX 的用户很有用
+* 可以与现有的 TheSkyX 工作流集成
 
-**Drawbacks**
+**缺点**
 
-* Requires TheSkyX to be installed, licensed, and configured
-* Not available as a blind solver
+* 需要安装、授权和配置 TheSkyX
+* 不可用作盲解析器
 
-**Recommendation**
+**推荐**
 
-* Primary Solver: Recommended for TheSkyX users
-* Blind Solver: Not available
+* 主解析器：推荐给 TheSkyX 用户
+* 盲解析器：不可用
 
 ---
 
 ### PinPoint
-Author: Diffraction Limited
-URL: [diffractionlimited.com](//diffractionlimited.com/)
+作者：Diffraction Limited
+网址：[diffractionlimited.com](//diffractionlimited.com/)
 
-PinPoint can be used as a primary or blind plate solver when its astrometric engine and required catalogs are installed.
+当安装了 PinPoint 的天体测量引擎和所需星表后，PinPoint 可用作主解析器或盲解析器。
 
-**Benefits**
+**优点**
 
-* Can perform local catalog-based solving
-* Can fall back to an AllSky API solve when configured
+* 可执行基于本地星表的解析
+* 配置后可回退到 AllSky API 解析
 
-**Drawbacks**
+**缺点**
 
-* Requires PinPoint and its 64-bit component to be installed
-* Requires catalog and optional AllSky API settings to be configured
+* 需要安装 PinPoint 及其 64 位组件
+* 需要配置星表和可选的 AllSky API 设置
 
-**Recommendation**
+**推荐**
 
-* Primary Solver: Recommended for PinPoint users
-* Blind Solver: Recommended for PinPoint users
+* 主解析器：推荐给 PinPoint 用户
+* 盲解析器：推荐给 PinPoint 用户
 
 ---
 
 ### PlateSolve2
-Author: PlaneWave Instruments  
-URL: [planewave.com/downloads/software/](//planewave.com/downloads/software/)
+作者：PlaneWave Instruments
+网址：[planewave.com/downloads/software/](//planewave.com/downloads/software/)
 
-PlateSolve2 is a standalone executable which can be downloaded from PlaneWave's PlateSolve2 downloads page.
-It requires the download of at least one catalog of stars so it can work properly.
-You need to start the executable once standalone and set the catalog location of the catalog that you want to use. Both the APM and UCAC3 catalogs will work fine, but it is recommended to download both of them should you encounter issues with either one of them.
+PlateSolve2 是一个独立的可执行文件，可从 PlaneWave 的 PlateSolve2 下载页面下载。
+它需要下载至少一个星星表才能正常工作。
+你需要独立启动该可执行文件一次，并设置你要使用的星表目录位置。APM 和 UCAC3 星表均能正常工作，但建议同时下载两者，以防其中任一出现问题。
 
-**Benefits**
+**优点**
 
-* Very fast when the mount's location is close to the expected position
-* Does not require an Internet connection
+* 当赤道仪位置接近预期位置时速度非常快
+* 无需互联网连接
 
-**Drawbacks**
+**缺点**
 
-* Slow plate solves when the mount's location is far off the expected position and the focal length of the telescope is long
-* The regional settings of Windows need to be set to use a point as the decimal symbol
+* 当赤道仪位置偏离预期位置较远且望远镜焦距较长时，解析较慢
+* Windows 的区域设置必须使用点号作为小数符号
 
-**Recommendation**
+**推荐**
 
-* Primary Solver: Recommended
-* Blind Solver: cannot be used as a Blind Solver
+* 主解析器：推荐
+* 盲解析器：不能用作盲解析器

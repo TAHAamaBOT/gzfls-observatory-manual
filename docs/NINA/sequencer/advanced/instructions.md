@@ -1,375 +1,379 @@
-## General
-![Generic Instruction](../../images/sequencer/instructions/instruction_generic.png)  
-An instruction is a single command that the application will execute. Each instruction has a different purpose and can control various types of equipment, set parameters, or provide utility functions to automate the imaging process.
+## 概述
+![通用指令](../../images/sequencer/instructions/instruction_generic.png)
+指令是应用程序要执行的单个命令。每个指令有不同的目的，可以控制各种设备类型、设置参数或提供辅助功能以自动化拍摄过程。
 
-![Instruction name](../../images/sequencer/instructions/instruction_name.png)  
-Each instruction can be identified by its name and its icon.
+![指令名称](../../images/sequencer/instructions/instruction_name.png)
+每条指令可通过其名称和图标来识别。
 
-### Validations
-![Instruction Validation](../../images/sequencer/instructions/instruction_validation.png)  
-Instructions are capable of validating prerequisites and warning the user about potential issues. When a red exclamation mark is visible next to the instruction, not all prerequisites to run this instruction are met. When hovering over the red circle, the details of which prerequisites are missing are shown.
-**Important**: An instruction that does not meet its prerequisites will be skipped and the instruction is considered failed.
+### 验证
+![指令验证](../../images/sequencer/instructions/instruction_validation.png)
+指令能够验证前置条件并在出现潜在问题时警告用户。当指令旁边显示红色感叹号时，表示运行该指令的前置条件尚未全部满足。将鼠标悬停在红色圆圈上，会显示缺少哪些前置条件的详细信息。
+**重要**：不满足前置条件的指令将被跳过，且该指令被视为失败。
 
-### Options
-![Instruction Validation](../../images/sequencer/instructions/instruction_options.png)  
-Most instructions also come with a variety of options to adjust their behavior at runtime. For example, you can adjust the exposure times, gain, and offset for an instruction that should take an exposure with your camera. Each instruction has a different set of options, which are explained in more detail below.
+### 选项
+![指令验证](../../images/sequencer/instructions/instruction_options.png)
+大多数指令还提供各种选项，以便在运行时调整其行为。例如，您可以调整曝光时间、增益和偏置来控制拍摄照片的指令。每条指令有不同的选项集，详见下文。
 
-### Buttons
-![Generic Instruction](../../images/sequencer/instructions/instruction_buttons.png)  
-On the right side of the instructions are buttons to delete, copy, move, or adjust advanced settings that exist for all instructions.
-### Advanced settings
+### 按钮
+![通用指令](../../images/sequencer/instructions/instruction_buttons.png)
+指令右侧有删除、复制、移动或调整高级设置的按钮，这些对所有指令都适用。
+### 高级设置
 
-![Instruction Settings](../../images/sequencer/instructions/instruction_settings.png)  
+![指令设置](../../images/sequencer/instructions/instruction_settings.png)
 
-When clicking on the three dots on the right side of an instruction, an advanced section will appear where advanced settings for an instruction are revealed.
+点击指令右侧的三个点，将展开一个高级区域，显示指令的高级设置。
 
-**Number of attempts**  
-This drives how many retry attempts an instruction should make in case of failure.
+**尝试次数**
+此设置决定指令在失败时的重试次数。
 
-**On error**  
-When all attempts have been unsuccessful this setting will drive how to continue with the sequence.  
-- *Continue*: The sequencer will just continue with the next instruction  
-- *Skip current instruction set*: The currently running instruction set will be skipped  
-- *Abort*: The sequence will be completely stopped  
-- *Skip to end of sequence instructions*: Skip any remaining instructions from the start and target area and continue with the instructions in the sequence end area  
+**错误处理**
+当所有尝试均未成功时，此设置决定如何继续序列。
+- *继续*：序列器将继续执行下一条指令
+- *跳过当前指令集*：将跳过当前正在运行的指令集
+- *中止*：序列将完全停止
+- *跳转到序列结束指令*：跳过启动区和目标区中剩余的所有指令，继续执行序列结束区中的指令
 
-**Reset**  
-This button will reset the state of the instruction, like progress exposures etc.
+**重置**
+此按钮将重置指令的状态，如曝光进度等。
 
-**Copy**  
-Create an exact copy of the current instruction set and add it below the current instruction
+**复制**
+创建当前指令集的精确副本，并将其添加到当前指令下方。
 
-**Move up**  
-Moves the instruction one row above. If it is already the first instruction of an instruction set, it will move to the parent instruction set above the current instruction set instead.
-If the previous instruction is an instruction set that is not collapsed, the instruction will move to the bottom of that instruction set
+**上移**
+将指令上移一行。如果它已是某个指令集的第一条指令，则将移到该指令集上方的父指令集中。
+如果上一条指令是一个未折叠的指令集，该指令将移到该指令集的底部。
 
-**Move down**  
-Moves the instruction one row below. If it is already the last instruction of an instruction set, it will move to the parent instruction set below the current instruction set instead.
-If the next instruction is an instruction set that is not collapsed, the instruction will move to the top of that instruction set
+**下移**
+将指令下移一行。如果它已是某个指令集的最后一条指令，则将移到该指令集下方的父指令集中。
+如果下一条指令是一个未折叠的指令集，该指令将移到该指令集的顶部。
 
-## Camera
-Control basic functions of a [Camera](../../tabs/equipment/camera.md). Each instruction in this category requires at least a Camera to be connected.
+## 相机
+控制[相机](../../tabs/equipment/camera.md)的基本功能。此类别中的每条指令至少需要连接一台相机。
 
-### Cool Camera  
-![Cool Camera](../../images/sequencer/instructions/camera_cool.png)  
-Cool your camera to the specified temperature and the specified minimum duration. For most cameras the duration can be left at 0 as the driver will handle the cooling duration.
-Once the camera has reached the specified temperature the instruction is completed.  
-*Requires a camera that is capable of set point cooling*
+### Cool Camera
+![Cool Camera](../../images/sequencer/instructions/camera_cool.png)
+将相机冷却到指定温度和指定的最短持续时间。对于大多数相机，持续时间可以设为 0，因为驱动会处理冷却时长。
+一旦相机达到指定温度，该指令即完成。
+*需要支持设定点制冷的相机*
 
-### Warm Camera  
-![Warm Camera](../../images/sequencer/instructions/camera_warm.png)  
-Warm your camera to ambient temperature using the specified minimum duration. For most cameras the duration can be left at 0 as the driver will handle the cooling duration.
-Once the camera has reached the ambient temperature the cooler is turned off and the instruction is completed.  
-*Requires a camera that is capable of set point cooling*
+### Warm Camera
+![Warm Camera](../../images/sequencer/instructions/camera_warm.png)
+使用指定的最短持续时间将相机升温至环境温度。对于大多数相机，持续时间可以设为 0，因为驱动会处理升温时长。
+一旦相机达到环境温度，制冷器将关闭，指令即完成。
+*需要支持设定点制冷的相机*
 
 ### Dew Heater
-![Dew Heater](../../images/sequencer/instructions/camera_dew.png)  
-This instruction will turn on or turn off the camera dew heater  
-*Requires a camera that has a controllable dew heater*
+![Dew Heater](../../images/sequencer/instructions/camera_dew.png)
+此指令将开启或关闭相机的结露加热器。
+*需要具有可控结露加热器的相机*
 
 ### Set Readout Mode
-![Set Readout Mode](../../images/sequencer/instructions/camera_readout.png)  
-Set your camera to a specific readout mode. The number indicates the index of the readout mode from the camera dropdown - starting with 0.  
-*Requires a camera with settable readout modes*
+![Set Readout Mode](../../images/sequencer/instructions/camera_readout.png)
+将相机设置为特定的读出模式。数字表示相机下拉列表中读出模式的索引——从 0 开始。
+*需要具有可设置读出模式的相机*
 
 ### Take Exposure
-![Take Exposure](../../images/sequencer/instructions/camera_exposure.png)  
-This instruction will take an exposure using the specified exposure time, binning, gain and offset.
+![Take Exposure](../../images/sequencer/instructions/camera_exposure.png)
+此指令使用指定的曝光时间、像素合并、增益和偏置拍摄一张曝光。
 
 ### Take Many Exposures
-![Take Many Exposures](../../images/sequencer/instructions/camera_manyexposures.png)  
-Similar to the "Take Exposure" instruction, but with the added ability to specify a number of exposures to complete before proceeding.
+![Take Many Exposures](../../images/sequencer/instructions/camera_manyexposures.png)
+与"Take Exposure"指令类似，但增加了指定在继续之前需要完成的曝光数量的功能。
 
 ### Take Subframe Exposure
 ![Take Subframe Exposure](../../images/sequencer/instructions/take_subframe_exposure.png)
-Similar to the "Take Exposure" instruction, but with the added ability to specify a subframe percentage relative to the center.
+与"Take Exposure"指令类似，但增加了指定相对于中心点的子帧百分比的功能。
 
 ### Smart Exposure
-![Smart Exposure](../../images/sequencer/instructions/camera_smartexposure.png)  
-Similar to the "Take Many Exposure" instruction, but with the added ability to also specify a specific filter and to dither after a specific amount of exposures.  
-Keep dither after exposures to 0, to skip the dither completely.  
-*Requires a connected filter wheel to switch filters and a connected guider to dither*
+![Smart Exposure](../../images/sequencer/instructions/camera_smartexposure.png)
+与"Take Many Exposure"指令类似，但增加了指定特定滤镜以及在特定曝光次数后抖动的功能。
+将抖动间隔曝光次数设为 0 可完全跳过抖动。
+*需要连接滤镜轮以切换滤镜，并需要连接导星器以执行抖动*
 
-!!!note
-    A fun fact - the "Take Many Exposures" and "Smart Exposures" are actually instruction sets with static content that is just displayed like a normal instruction and is bundling together most common imaging operations for convenience
+:::note
+有趣的知识——"Take Many Exposures"和"Smart Exposures"实际上是指令集，具有静态内容，只是以普通指令的形式显示，为方便起见捆绑了最常见的拍摄操作。
+:::
 
-## Dome
-Control basic functions of a [Dome](../../tabs/equipment/dome.md). Each instruction in this category requires at least a Dome to be connected.
+## 圆顶
+控制[圆顶](../../tabs/equipment/dome.md)的基本功能。此类别中的每条指令至少需要连接一个圆顶。
 
 ### Close Dome Shutter
-![Close Dome Shutter](../../images/sequencer/instructions/dome_close.png)  
-Closes the dome shutter  
-*Requires a controllable dome shutter*
+![Close Dome Shutter](../../images/sequencer/instructions/dome_close.png)
+关闭圆顶快门。
+*需要可控的圆顶快门*
 ### Enable Dome Sync
-![Enable Dome Sync](../../images/sequencer/instructions/dome_sync.png)  
-Enables the automatic background synchronization of the telescope and the dome  
-*Requires a telescope to be connected*
+![Enable Dome Sync](../../images/sequencer/instructions/dome_sync.png)
+启用望远镜与圆顶的自动后台同步。
+*需要连接望远镜*
 
 ### Disable Dome Sync
-![Disable Dome Sync](../../images/sequencer/instructions/disable_dome_sync.png)  
-Disables the automatic background synchronization of the telescope and the dome  
-*Requires a telescope to be connected*
+![Disable Dome Sync](../../images/sequencer/instructions/disable_dome_sync.png)
+禁用望远镜与圆顶的自动后台同步。
+*需要连接望远镜*
 
 ### Open Dome Shutter
-![Open Dome Shutter](../../images/sequencer/instructions/dome_open.png)  
-Opens the dome shutter  
-*Requires a controllable dome shutter*
+![Open Dome Shutter](../../images/sequencer/instructions/dome_open.png)
+打开圆顶快门。
+*需要可控的圆顶快门*
 
 ### Park Dome
-![Park Dome](../../images/sequencer/instructions/dome_park.png)  
-Parks the dome to its specified home position  
-*Requires a dome driver that is capable of parking*
+![Park Dome](../../images/sequencer/instructions/dome_park.png)
+将圆顶停放至其指定的归位位置。
+*需要支持停放功能的圆顶驱动*
 
 ### Slew Dome Azimuth
-![Slew Dome Azimuth](../../images/sequencer/instructions/slew_dome_azimuth.png)  
-Slews the dome to a specific azimuth position  
-*Requires a dome driver that is capable of setting azimuth*
+![Slew Dome Azimuth](../../images/sequencer/instructions/slew_dome_azimuth.png)
+将圆顶旋转到指定的方位角位置。
+*需要支持设置方位角的圆顶驱动*
 
 ### Synchronize Dome
-![Synchronize Dome](../../images/sequencer/instructions/synchronize_dome.png)  
-Synchronizes the dome to the current telescope position  
+![Synchronize Dome](../../images/sequencer/instructions/synchronize_dome.png)
+将圆顶同步到望远镜的当前位置。
 
-## Filter Wheel
-Control basic functions of a [Filter Wheel](../../tabs/equipment/filterwheel.md). Each instruction in this category requires at least a Filter Wheel to be connected.
+## 滤镜轮
+控制[滤镜轮](../../tabs/equipment/filterwheel.md)的基本功能。此类别中的每条指令至少需要连接一个滤镜轮。
 
 ### Switch Filter
-![Switch Filter](../../images/sequencer/instructions/filter_switch.png)  
-Switches the filter wheel filter to the specified filter. Like all filter wheel changes the focuser offset will be applied, when available.
+![Switch Filter](../../images/sequencer/instructions/filter_switch.png)
+将滤镜轮切换到指定的滤镜。与所有滤镜轮切换一样，如有可用偏移量，将应用调焦器偏移量。
 
-## Flat Panel
-Control basic functions of a [Flat Panel](../../tabs/equipment/flatpanel.md). Each instruction in this category requires at least a Flat Panel to be connected.
+## 平场板
+控制[平场板](../../tabs/equipment/flatpanel.md)的基本功能。此类别中的每条指令至少需要连接一个平场板。
 
 ### Close Flat Panel Cover
-![Close Flat Panel Cover](../../images/sequencer/instructions/flat_close.png)  
-Closes the flat panel  
-*Requires a flat panel that can open and close itself*
+![Close Flat Panel Cover](../../images/sequencer/instructions/flat_close.png)
+关闭平场板。
+*需要能够自动开合的平场板*
 
 ### Open Flat Panel Cover
-![Open Flat Panel Cover](../../images/sequencer/instructions/flat_open.png)  
-Opens the flat panel  
-*Requires a flat panel that can open and close itself*
+![Open Flat Panel Cover](../../images/sequencer/instructions/flat_open.png)
+打开平场板。
+*需要能够自动开合的平场板*
 
 ### Set Brightness
-![Set Brightness](../../images/sequencer/instructions/flat_brightness.png)  
-Sets the brightness of the panel to the specified value. (Does not turn on the panel automatically).
+![Set Brightness](../../images/sequencer/instructions/flat_brightness.png)
+将平场板的亮度设置为指定值。（不会自动打开平场板）。
 
 ### Toggle Light
-![Toggle Light](../../images/sequencer/instructions/flat_light.png)  
-Turns the flat panel light on or off depending on the setting
+![Toggle Light](../../images/sequencer/instructions/flat_light.png)
+根据设置打开或关闭平场板灯光。
 
 ### Trained Flat Exposure
-![Trained Flat Exposure](../../images/sequencer/instructions/flat_trainedflat.png)  
-This instruction will look up the trained flat exposures according to the specified filter, exposure time, gain and offset, close the flat panel (if available), set the flat panel brightness, turn it on, take the flat frames for the given amount, turns off the flat panel and finally opens the cover again (if available and if "keep closed" is off)  
-*Requires a camera to be connected and trained flat values being set in the [flat panel tab](../../tabs/equipment/flatpanel.md) that match the values in the instruction*
+![Trained Flat Exposure](../../images/sequencer/instructions/flat_trainedflat.png)
+此指令将根据指定的滤镜、曝光时间、增益和偏置查找已训练的平场曝光参数，关闭平场板（如有），设置平场板亮度，打开灯光，拍摄指定数量的平场帧，关闭平场板灯光，最后重新打开盖板（如有且未设置"保持关闭"）。
+*需要连接相机，且已在[平场板选项卡](../../tabs/equipment/flatpanel.md)中设置了与指令中数值匹配的训练平场值*
 
 ### Trained Dark Exposure
-![Trained Dark Exposure](../../images/sequencer/instructions/flat_traineddark.png)  
-This instruction will look up the trained flat exposures according to the specified filter, exposure time, gain and offset, close the flat panel (if available), turn it off, take the dark frames for the given amount and finally opens the cover again (if available and if "keep closed" is off)  
-*Requires a camera to be connected and trained flat values being set in the [flat panel tab](../../tabs/equipment/flatpanel.md) that match the values in the instruction*
+![Trained Dark Exposure](../../images/sequencer/instructions/flat_traineddark.png)
+此指令将根据指定的滤镜、曝光时间、增益和偏置查找已训练的平场曝光参数，关闭平场板（如有），关闭灯光，拍摄指定数量的暗场帧，最后重新打开盖板（如有且未设置"保持关闭"）。
+*需要连接相机，且已在[平场板选项卡](../../tabs/equipment/flatpanel.md)中设置了与指令中数值匹配的训练平场值*
 
-## Focuser
-Control basic functions of a [Focuser](../../tabs/equipment/focuser.md). Each instruction in this category requires at least a Focuser to be connected.
+## 调焦器
+控制[调焦器](../../tabs/equipment/focuser.md)的基本功能。此类别中的每条指令至少需要连接一个调焦器。
 
 ### Move Focuser
-![Move Focuser](../../images/sequencer/instructions/focuser_move.png)  
-Moves the focuser to the specified absolute position
+![Move Focuser](../../images/sequencer/instructions/focuser_move.png)
+将调焦器移动到指定的绝对位置。
 
 ### Move Focuser By Temp.
-![Move Focuser By Temp](../../images/sequencer/instructions/focuser_movebytemp.png)  
-Moves the focuser to a position that is based on the temperature reported by the focuser. This can be used to "follow" the point of best focus in its temperature dependency.
+![Move Focuser By Temp](../../images/sequencer/instructions/focuser_movebytemp.png)
+将调焦器移动到基于调焦器报告温度计算出的位置。这可用于"跟踪"最佳对焦点随温度变化的趋势。
 
-The dependency is modeled with a simple linear model. This can work in two ways:
+依赖关系通过简单的线性模型建模。有两种工作模式：
 
-* Absolute mode: New focus position = Slope * Current Temperature + Intercept
-* Relative mode: New focus position = Current focus position + Slope * (Current Temperature - Temperature at last focuser movement)
+* 绝对模式：新对焦位置 = 斜率 × 当前温度 + 截距
+* 相对模式：新对焦位置 = 当前对焦位置 + 斜率 × (当前温度 - 上次调焦器移动时的温度)
 
-When used in relative mode, if the focus position change is less than one step, the focuser doesn't actually move, but the fractional part is carried over for the next time the Move Focuser By Temp. element is executed, so that even very gradual temperature shifts are not lost due to rounding errors.
+使用相对模式时，如果对焦位置变化小于一步，调焦器实际上不移动，但小数部分会累积到下次执行 Move Focuser By Temp. 指令时，这样即使非常缓慢的温度变化也不会因舍入误差而丢失。
 
-*Requires a focuser with a temperature probe*
+*需要带温度探头的调焦器*
 
-!!!note  
-    To determine the slope and intercept, you can use the history of your autofocus runs and run a linear regression on these best focus points. The intercept will be where the line crosses the y-axis at 0°C, and the slope will be the temperature gradient.
-    For the best fit try to only use autofocus points from a single session and make sure the telescope is cooled down fully.
-    The plugin `Autofocus Report Analysis` can help you in determining these parameters, but be careful to have good data points with a good fit, otherwise these values will be error prone.
+:::note
+要确定斜率和截距，您可以使用自动对焦运行的历史记录，对这些最佳对焦点进行线性回归。截距是直线在 0°C 处与 y 轴的交点，斜率是温度梯度。
+为获得最佳拟合效果，尽量仅使用单个观测夜的自动对焦点，并确保望远镜已完全冷却。
+插件 `Autofocus Report Analysis` 可以帮助您确定这些参数，但注意要有良好的、拟合度高的数据点，否则这些值容易出错。
+:::
 
 ### Move Focuser Relative
-![Move Focuser Relative](../../images/sequencer/instructions/focuser_moverelative.png)  
-Moves the focuser to a target position based on the current position and a specified amount from that position
+![Move Focuser Relative](../../images/sequencer/instructions/focuser_moverelative.png)
+基于当前位置和从该位置指定的偏移量，将调焦器移动到目标位置。
 
 ### Run Autofocus
-![Run Autofocus](../../images/sequencer/instructions/focuser_autofocus.png)  
-Starts an [autofocus run](../../advanced/autofocus.md) based on the [autofocus settings](../../tabs/options/autofocus.md)
+![Run Autofocus](../../images/sequencer/instructions/focuser_autofocus.png)
+基于[自动对焦设置](../../tabs/options/autofocus.md)启动[自动对焦运行](../../advanced/autofocus.md)。
 
-## Guider
-Control basic functions of a [Guider](../../tabs/equipment/guider.md). Each instruction in this category requires at least a Guider to be connected.
+## 导星器
+控制[导星器](../../tabs/equipment/guider.md)的基本功能。此类别中的每条指令至少需要连接一个导星器。
 
 ### Dither
-![Dither](../../images/sequencer/instructions/guider_dither.png)  
-Issues the guider to [dither](../../advanced/dithering.md)
+![Dither](../../images/sequencer/instructions/guider_dither.png)
+命令导星器执行[抖动](../../advanced/dithering.md)。
 
 ### Start Guiding
-![Start Guiding](../../images/sequencer/instructions/guider_start.png)  
-Starts guiding if not already started. In addition, a toggle to force the calibration can be enabled. Then the guider will be forced to run a calibration, even if a valid calibration is already available. When this toggle is off, the guider will determine by itself if calibration is necessary.
+![Start Guiding](../../images/sequencer/instructions/guider_start.png)
+如果尚未开始导星，则开始导星。此外，可以启用强制校准的开关。启用后，导星器将被强制运行校准，即使已有有效的校准数据。当此开关关闭时，导星器将自行判断是否需要校准。
 
 ### Stop Guiding
-![Stop Guiding](../../images/sequencer/instructions/guider_stop.png)  
-Stops active guiding when guiding is active.
+![Stop Guiding](../../images/sequencer/instructions/guider_stop.png)
+当导星处于活动状态时，停止导星。
 
-## Rotator
-Control basic functions of a [Rotator](../../tabs/equipment/rotator.md). Each instruction in this category requires at least a Rotator to be connected.
+## 旋转器
+控制[旋转器](../../tabs/equipment/rotator.md)的基本功能。此类别中的每条指令至少需要连接一个旋转器。
 
 ### Rotate By Mechanical Angle
-![Rotate By Mechanical Angle](../../images/sequencer/instructions/rotator_movemechanical.png)  
-Rotates the rotator to the specified absolute mechanical angle.
+![Rotate By Mechanical Angle](../../images/sequencer/instructions/rotator_movemechanical.png)
+将旋转器旋转到指定的绝对机械角度。
 
 ### Solve and Rotate
-![Solve and Rotate](../../images/sequencer/instructions/rotator_solveandsync.png)  
-Takes an image from the current position the telescope is pointing at, plate solves it, and moves the rotator to the specified sky angle. It will repeat until the rotator is within the rotation tolerance.
-**This instruction will not move the mount, it will just sync and move the rotator to the target sky angle!**  
+![Solve and Rotate](../../images/sequencer/instructions/rotator_solveandsync.png)
+从望远镜当前指向位置拍摄图像，进行解析，然后将旋转器移动到指定的天空角度。将重复此过程，直到旋转器在旋转容差范围内。
+**此指令不会移动赤道仪，只会同步并移动旋转器到目标天空角度！**
 
-## Safety Monitor
-Control basic functions of a [safety monitor](../../tabs/equipment/safetymonitor.md). Each instruction in this category requires at least a safety monitor to be connected.
+## 安全监控器
+控制[安全监控器](../../tabs/equipment/safetymonitor.md)的基本功能。此类别中的每条指令至少需要连接一个安全监控器。
 
 ### Wait Until Safe
-![Safety Monitor](../../images/sequencer/instructions/safety_wait.png)  
-Waits until the safety monitor is reporting safe conditions again.
+![Safety Monitor](../../images/sequencer/instructions/safety_wait.png)
+等待直到安全监控器再次报告安全状况。
 
-## Switch
-Control basic functions of a [Switch](../../tabs/equipment/switch.md). Each instruction in this category requires at least a Switch to be connected.
+## 开关
+控制[开关](../../tabs/equipment/switch.md)的基本功能。此类别中的每条指令至少需要连接一个开关。
 
 ### Set Switch Value
-![Set Switch Value](../../images/sequencer/instructions/switch_set.png)  
-Sets a switch to a specified value. When no switch is connected, a list of generic switches by number are available. The list will update itself to the actual switches on device connection. When a specified switch value is out of range, the instruction will show a validation error.
+![Set Switch Value](../../images/sequencer/instructions/switch_set.png)
+将开关设置为指定值。当没有开关连接时，会显示按编号排列的通用开关列表。设备连接后，列表将更新为实际的开关。当指定的开关值超出范围时，指令将显示验证错误。
 
-## Telescope
-Control basic functions of a [Telescope](../../tabs/equipment/telescope.md). Each instruction in this category requires at least a Telescope to be connected.
+## 望远镜
+控制[望远镜](../../tabs/equipment/telescope.md)的基本功能。此类别中的每条指令至少需要连接一台望远镜。
 
 ### Find Home
-![Find Home](../../images/sequencer/instructions/telescope_findhome.png)  
-Moves the mount to the home position.
-*Requires a mount driver that is capable of finding the home position*
+![Find Home](../../images/sequencer/instructions/telescope_findhome.png)
+将赤道仪移动到归位位置。
+*需要支持归位功能的赤道仪驱动*
 
 ### Park Scope
-![Park Scope](../../images/sequencer/instructions/telescope_park.png)  
-Moves the mount to the park position. A mount that is parked will not accept slew commands.
-*Requires a mount driver that is capable of parking*
+![Park Scope](../../images/sequencer/instructions/telescope_park.png)
+将赤道仪移动到停放位置。已停放的赤道仪不会接受 GOTO 命令。
+*需要支持停放功能的赤道仪驱动*
 
 ### Set Tracking
-![Park Scope](../../images/sequencer/instructions/telescope_settracking.png)  
-Enables mount tracking to the specified tracking rate.
+![Park Scope](../../images/sequencer/instructions/telescope_settracking.png)
+启用赤道仪跟踪，设为指定的跟踪速率。
 
 ### Slew and center
 ![Slew and center](../../images/sequencer/instructions/telescope_slewcenter.png)
-Stops Guiding (if it was active), slews to the specified coordinates, calls the plate solver to center to the specified coordinates, and resumes guiding (if it was stopped at the start).
-When this instruction is part of a "Deep Sky Object Sequence", the coordinates will be inherited and no coordinates need to be entered here.
-*Requires a [plate solver](../../advanced/platesolving.md) to be set up*
+停止导星（如果正在运行），GOTO 到指定坐标，调用解析引擎居中到指定坐标，然后恢复导星（如果之前在开始时停止了）。
+当此指令属于"深空天体序列"的一部分时，坐标将被继承，此处无需输入坐标。
+*需要设置好[解析](../../advanced/platesolving.md)引擎*
 
 ### Slew To Alt/Az
-![Slew To Alt/Az](../../images/sequencer/instructions/telescope_slewaltaz.png)  
-Slews to the specified coordinates.
+![Slew To Alt/Az](../../images/sequencer/instructions/telescope_slewaltaz.png)
+GOTO 到指定坐标。
 
 ### Slew To Ra/Dec
-![Slew To Ra/Dec](../../images/sequencer/instructions/telescope_slewradec.png)  
-Stops Guiding (if it was active), slews to the specified coordinates, and resumes guiding (if it was stopped at the start).
-When this instruction is part of a "Deep Sky Object Sequence", the coordinates will be inherited and no coordinates need to be entered here.
+![Slew To Ra/Dec](../../images/sequencer/instructions/telescope_slewradec.png)
+停止导星（如果正在运行），GOTO 到指定坐标，然后恢复导星（如果之前在开始时停止了）。
+当此指令属于"深空天体序列"的一部分时，坐标将被继承，此处无需输入坐标。
 
 ### Slew, center and rotate
 ![Slew, center and rotate](../../images/sequencer/instructions/telescope_slewcenterrotate.png)
-Stops Guiding (if it was active), slews to the specified coordinates, calls the plate solver to center to the specified coordinates while considering the rotation together with a [rotator](../../tabs/equipment/rotator.md), and resumes guiding (if it was stopped at the start).
-When this instruction is part of a "Deep Sky Object Sequence", the coordinates will be inherited and no coordinates need to be entered here.
-*Requires a [plate solver](../../advanced/platesolving.md) to be set up and a rotator to be connected*
+停止导星（如果正在运行），GOTO 到指定坐标，调用解析引擎居中到指定坐标，同时结合[旋转器](../../tabs/equipment/rotator.md)考虑旋转角度，然后恢复导星（如果之前在开始时停止了）。
+当此指令属于"深空天体序列"的一部分时，坐标将被继承，此处无需输入坐标。
+*需要设置好[解析](../../advanced/platesolving.md)引擎并连接旋转器*
 
 ### Solve And Sync
-Uses the current mount position to solve the position and sync it based on the plate solver result.
-**This instruction will not center the mount, it will just sync the mount to where it is currently pointing at!**  
-*Requires a [plate solver](../../advanced/platesolving.md) to be set up*
+使用当前赤道仪位置进行解析，并根据解析结果同步位置。
+**此指令不会将赤道仪居中，只是将赤道仪同步到其当前指向的位置！**
+*需要设置好[解析](../../advanced/platesolving.md)引擎*
 
 ### Unpark Scope
-![Unpark Scope](../../images/sequencer/instructions/telescope_unpark.png)  
-Unparks the mount so it is able to receive slew commands.  
-*Requires a mount driver that is capable of parking*
+![Unpark Scope](../../images/sequencer/instructions/telescope_unpark.png)
+解除赤道仪的停放状态，使其能够接收 GOTO 命令。
+*需要支持停放功能的赤道仪驱动*
 
-## Utility
-The instructions in this category are utility commands that don't necessarily depend on any equipment and have useful tools and helpers to improve the sequence.
+## 实用工具
+此类别中的指令是实用工具命令，不一定依赖任何设备，提供有用的工具和辅助功能来改进序列。
 
 ### Annotation
-![Annotation](../../images/sequencer/instructions/utility_annotation.png)  
-This instruction will not execute anything. It is purely there to have custom text annotations inside the sequence to remind you of things or take notes to clarify certain sequence arrangements, etc.
+![Annotation](../../images/sequencer/instructions/utility_annotation.png)
+此指令不执行任何操作。它纯粹用于在序列中添加自定义文本标注，以提醒您某些事项或记录说明来阐明特定序列布局等。
 
 ### External Script
-![External Script](../../images/sequencer/instructions/utility_script.png)  
-An instruction to start a custom executable file from your file system. Click on the three dots to browse through the file explorer and set a file path.
+![External Script](../../images/sequencer/instructions/utility_script.png)
+从文件系统启动自定义可执行文件的指令。点击三个点浏览文件资源管理器并设置文件路径。
 
 ### Message Box
-![Message Box](../../images/sequencer/instructions/utility_box.png)  
-When this instruction is starting it will spawn a message box and pauses the sequence until the user action to confirm the box is taken. The box can be used for example to stop the sequence and notify you to put a cover on to take flats etc.
+![Message Box](../../images/sequencer/instructions/utility_box.png)
+当此指令启动时，会弹出一个消息框，并暂停序列直到用户确认该对话框。例如，消息框可用于停止序列并提醒您盖上盖子以拍摄平场等。
 
 ### Wait For Altitude
-![Wait For Altitude](../../images/sequencer/instructions/utility_waitforaltitude.png)  
-For the given target coordinates, this instruction will simply wait until the altitude has been reached.
-When this instruction is part of a "Deep Sky Object Sequence" the coordinates will be inherited and no coordinates need to be entered here  
+![Wait For Altitude](../../images/sequencer/instructions/utility_waitforaltitude.png)
+对于给定的目标坐标，此指令将简单地等待直到达到指定高度角。
+当此指令属于"深空天体序列"的一部分时，坐标将被继承，此处无需输入坐标。
 
 ### Wait For Time
-![Wait For Time](../../images/sequencer/instructions/utility_waitfortime.png)  
-Waits until a specific local time or astronomy-based event. The source can be a manually entered time, a sun event, or the current target's meridian crossing. For calculated sources, the time fields are populated automatically and can be shifted earlier or later by setting an offset in minutes. If the selected time has already passed for the current observing day, the instruction waits zero seconds and continues.
+![Wait For Time](../../images/sequencer/instructions/utility_waitfortime.png)
+等待直到特定的本地时间或天文事件。时间源可以是手动输入的时间、太阳事件或当前目标的中天时刻。对于计算型时间源，时间字段会自动填充，并可通过设置分钟偏移量将其提前或推迟。如果对于当前观测日所选时间已过，该指令等待零秒并继续。
 
-* **Time**: Manually entered local time in `hh:mm:ss`
-* **Sunset**: The time when the sun goes below 0 degrees altitude
-* **Civil Dusk**: The time when the sun goes below -6 degrees altitude
-* **Nautical Dusk**: The time when the sun goes below -12 degrees altitude
-* **Astronomical Dusk**: The time when the sun goes below -18 degrees altitude
-* **Astronomical Dawn**: The time when the sun rises above -18 degrees altitude
-* **Nautical Dawn**: The time when the sun rises above -12 degrees altitude
-* **Civil Dawn**: The time when the sun rises above -6 degrees altitude
-* **Sunrise**: The time when the sun rises above 0 degrees altitude
-* **Meridian**: The time when the current target crosses the meridian. If no target coordinates are available, this resolves to the current time.
+* **时间**：手动输入的本地时间，格式为 `hh:mm:ss`
+* **日落**：太阳降至 0° 高度角以下的时刻
+* **民用黄昏**：太阳降至 -6° 高度角以下的时刻
+* **航海黄昏**：太阳降至 -12° 高度角以下的时刻
+* **天文黄昏**：太阳降至 -18° 高度角以下的时刻
+* **天文黎明**：太阳升起超过 -18° 高度角的时刻
+* **航海黎明**：太阳升起超过 -12° 高度角的时刻
+* **民用黎明**：太阳升起超过 -6° 高度角的时刻
+* **日出**：太阳升起超过 0° 高度角的时刻
+* **中天**：当前目标经过中天的时刻。如果没有目标坐标可用，则解析为当前时间。
 
-| Time source         | Rollover time |
+| 时间源              | 翻转时间 |
 |---------------------|---------------|
-| Time                | Sunrise, or noon if sunrise is unavailable |
-| Sunset              | Sunrise, or noon if sunrise is unavailable |
-| Civil Dusk          | Sunrise, or noon if sunrise is unavailable |
-| Nautical Dusk       | Sunrise, or noon if sunrise is unavailable |
-| Astronomical Dusk   | Sunrise, or noon if sunrise is unavailable |
-| Astronomical Dawn   | Sunset, or noon if sunset is unavailable |
-| Nautical Dawn       | Sunset, or noon if sunset is unavailable |
-| Civil Dawn          | Sunset, or noon if sunset is unavailable |
-| Sunrise             | Sunset, or noon if sunset is unavailable |
-| Meridian            | Meridian + 12 hours |
+| 时间                | 日出，若日出不可用则为正午 |
+| 日落                | 日出，若日出不可用则为正午 |
+| 民用黄昏            | 日出，若日出不可用则为正午 |
+| 航海黄昏            | 日出，若日出不可用则为正午 |
+| 天文黄昏            | 日出，若日出不可用则为正午 |
+| 天文黎明            | 日落，若日落不可用则为正午 |
+| 航海黎明            | 日落，若日落不可用则为正午 |
+| 民用黎明            | 日落，若日落不可用则为正午 |
+| 日出                | 日落，若日落不可用则为正午 |
+| 中天                | 中天 + 12 小时 |
 
-!!! note
-    `Wait For Time` has no date field, so N.I.N.A. uses the rollover time to decide whether the selected time belongs to the current observing day or the next one. The rollover time shown in the instruction is the value currently being used.
+:::note
+`Wait For Time` 没有日期字段，因此 N.I.N.A. 使用翻转时间来判断所选时间属于当前观测日还是下一个观测日。指令中显示的翻转时间是当前使用的值。
+:::
 
-    Examples, assuming sunrise is at 09:00:
+    以下示例假设日出时间为 09:00：
 
-    * Current time: 18:00 | Wait for time: 19:00 -> waits one hour
-    * Current time: 20:00 | Wait for time: 19:00 -> skips because 19:00 has already passed
-    * Current time: 18:00 | Wait for time: 02:00 -> waits eight hours
-    * Current time: 02:00 | Wait for time: 03:00 -> waits one hour
-    * Current time: 04:00 | Wait for time: 03:00 -> skips because 03:00 has already passed
-    * Current time: 08:00 | Wait for time: 18:00 -> skips because the 09:00 rollover has not happened yet, so 18:00 still belongs to the previous observing day
+    * 当前时间：18:00 | 等待时间：19:00 -> 等待一小时
+    * 当前时间：20:00 | 等待时间：19:00 -> 跳过，因为 19:00 已过
+    * 当前时间：18:00 | 等待时间：02:00 -> 等待八小时
+    * 当前时间：02:00 | 等待时间：03:00 -> 等待一小时
+    * 当前时间：04:00 | 等待时间：03:00 -> 跳过，因为 03:00 已过
+    * 当前时间：08:00 | 等待时间：18:00 -> 跳过，因为 09:00 翻转尚未发生，所以 18:00 仍属于上一个观测日
 
-!!! note
-    If a calculated source such as sunset, astronomical dusk, or astronomical dawn is unavailable for the current location and date, N.I.N.A. marks the instruction as invalid instead of using the current time.
+:::note
+如果计算型时间源（如日落、天文黄昏或天文黎明）在当前地点和日期不可用，N.I.N.A. 会将指令标记为无效，而非使用当前时间。
+:::
 
 ### Wait For Time Span
-![Wait For Time Span](../../images/sequencer/instructions/utility_waitfortimespan.png)  
-Wait for a specific period of time.
+![Wait For Time Span](../../images/sequencer/instructions/utility_waitfortimespan.png)
+等待一段指定的时长。
 
 ### Wait If Moon Altitude
-![Wait If Moon Altitude](../../images/sequencer/instructions/utility_waitifmoonaltitude.png)  
-Waits for as long as the moon matches the specified parameters.
+![Wait If Moon Altitude](../../images/sequencer/instructions/utility_waitifmoonaltitude.png)
+在月亮符合指定参数期间保持等待。
 
 ### Wait If Sun Altitude
-![Wait If Sun Altitude](../../images/sequencer/instructions/utility_waitifsunaltitude.png)  
-Waits for as long as the sun matches the specified parameters.
+![Wait If Sun Altitude](../../images/sequencer/instructions/utility_waitifsunaltitude.png)
+在太阳符合指定参数期间保持等待。
 
-### Wait Until (NINA 3.3)
+### Wait Until（NINA 3.3）
 ![Wait Until](../../images/sequencer/instructions/utility_waituntil.png)
 
-This will wait until the Expression becomes True.
+此指令将等待直到表达式变为真。
 ### Wait Until Above Horizon
-![Wait Until Above Horizon](../../images/sequencer/instructions/utility_waituntilabovehorizon.png)  
-This will wait for as long as the specified target is below the horizon. When a [custom horizon](../../tabs/options/general.md) is set, the custom horizon will be considered as the altitude to be above of. When no custom horizon is set, 0° of altitude will be considered. Furthermore an altitude offset can be specified.  
-When this instruction is part of a "Deep Sky Object Sequence" the coordinates will be inherited and no coordinates need to be entered here 
+![Wait Until Above Horizon](../../images/sequencer/instructions/utility_waituntilabovehorizon.png)
+此指令在指定目标位于地平线以下期间保持等待。若设置了[自定义地平线](../../tabs/options/general.md)，将视为目标需要位于自定义地平线以上。若未设置自定义地平线，则默认以 0° 高度角为准。还可以指定一个高度角偏移量。
+当此指令属于"深空天体序列"的一部分时，坐标将被继承，此处无需输入坐标。
 

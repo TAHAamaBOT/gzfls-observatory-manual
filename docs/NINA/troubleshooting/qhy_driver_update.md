@@ -1,22 +1,22 @@
-As of N.I.N.A. 1.11 version 21.3.13.17 of the QHY SDK is included with N.I.N.A.. Starting with this SDK version, you will need to make sure that your QHY USB driver is updated to at least version 21.2.20 or later by installing the latest QHY driver All-in-One pack. This is because the version of QHY SDK that N.I.N.A. ships with and QHY USB driver saw a portion of their Cypress FX3 IO libraries updated and the two must stay in sync.
+自 N.I.N.A. 1.11 起，N.I.N.A. 内置了版本 21.3.13.17 的 QHY SDK。从这个 SDK 版本开始，您需要确保 QHY USB 驱动已通过安装最新的 QHY 驱动 All-in-One 包至少更新到 21.2.20 版本或更高。这是因为 N.I.N.A. 附带的 QHY SDK 版本与 QHY USB 驱动中有部分 Cypress FX3 IO 库已更新，两者必须保持同步。
 
-To help with this requirement, these versions are included in the Equipment > Camera screen. Additionally, N.I.N.A. will emit a warning level notification if the detected driver version is lower than 2.1.20:  
-![Outdated Driver](../images/troubleshooting/qhy/outdated_driver.png)  
-The benefits of this update include improved USB error recovery. 
-*This requirement does not apply to cameras that have USB2 interfaces (CCDs, A-Series, and QHY5II 1.25″ cameras).*  
+为帮助满足此要求，这些版本信息显示在设备 > 相机界面中。此外，如果检测到驱动版本低于 2.1.20，N.I.N.A. 将发出警告级别的通知：
+![驱动过期](../images/troubleshooting/qhy/outdated_driver.png)
+此次更新的好处包括改进的 USB 错误恢复能力。
+*此要求不适用于具有 USB2 接口的相机（CCD、A 系列和 QHY5II 1.25" 相机）。*
 
-### In case of USB driver update problems
-Some folks have experienced issues updating the USB driver, where it appears that the driver update did not take. There is one thing to try if this is the case:
+### 如果遇到 USB 驱动更新问题
+有些用户在更新 USB 驱动时遇到问题，看起来驱动更新似乎没有生效。如果遇到此情况，可以尝试以下方法：
 
-1. With the camera **disconnected**, right click start and open Device Manager
-![Device Manager](../images/troubleshooting/qhy/device_manager.png)  
-2. Go to the view menu and select show hidden devices
-![Hidden Devices](../images/troubleshooting/qhy/hidden_devices.png)  
-3. Expand the AstroImaging Equipment section
-![AstroImaging Section](../images/troubleshooting/qhy/astroimaging.png)  
-4. Right click **QHY5IIISeries_FW**, select *Properties*, and then the *Driver* tab
-5. Press the *Update Driver* button, and select *search automatically for drivers*
-6. Also do steps 4 and 5 for the **QHY5IIISeries_IO** device
-7. Plug in the camera. Verify that it is on the newer device driver version
+1. 在相机**断开连接**的情况下，右键点击开始菜单并打开设备管理器
+![设备管理器](../images/troubleshooting/qhy/device_manager.png)
+2. 进入查看菜单，选择显示隐藏的设备
+![隐藏的设备](../images/troubleshooting/qhy/hidden_devices.png)
+3. 展开天文成像设备部分
+![天文成像部分](../images/troubleshooting/qhy/astroimaging.png)
+4. 右键点击 **QHY5IIISeries_FW**，选择*属性*，然后进入*驱动程序*标签页
+5. 按下*更新驱动程序*按钮，选择*自动搜索驱动程序*
+6. 对 **QHY5IIISeries_IO** 设备同样执行步骤 4 和 5
+7. 连接相机。验证它运行的是较新的设备驱动版本
 
-After the above steps are done, and barring any deeper issues, the driver and firmware loader for the camera should be updated to the version that was installed. QHY are aware of this issue and are looking into it.
+完成上述步骤后，如果没有更深层次的问题，相机的驱动和固件加载器应该已更新到安装的版本。QHY 已知晓此问题并正在处理中。

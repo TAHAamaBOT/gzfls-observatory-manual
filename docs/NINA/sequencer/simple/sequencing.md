@@ -1,37 +1,38 @@
-## Sequence Templates
+## 序列模板
 
-When creating a new sequence item via Framing or when just adding a new target from anywhere in the application the default values of a Sequence will most likely not be satisfactory for a user.
-Therefore N.I.N.A. offers the possibility to create a sequence template and set this template inside the settings.
+当通过构图创建新的序列项，或者从应用程序任何位置添加新目标时，序列的默认值很可能不能满足用户的需求。
+因此，N.I.N.A. 提供了创建序列模板并在设置中进行配置的功能。
 
-### Exporting a sequence Template
+### 导出一个序列模板
 
-To create a sequence template you just need to setup a standard sequence to your liking. In the example below I have set up a sequence for broadband. Once all sequence settings are done, just click on the save button to store the sequence xml on your hard drive. Once a template is set, each new Sequence you create will be pre-populated with this template. As you currently can only have one template for one profile, you can have two copies of your profile with different templates and take one profile for narrowband and one for broadband as an example.
+要创建序列模板，你只需要按照自己的喜好设置一个标准序列。在下面的示例中，我设置了一个用于宽带拍摄的序列。所有序列设置完成后，只需点击保存按钮将序列 XML 存储到硬盘上。模板设定后，你创建的每个新序列都将预填充此模板。由于目前每个配置文件只能有一个模板，你可以创建配置文件的两个副本并设置不同的模板，例如一个用于窄带拍摄，一个用于宽带拍摄。
 
-![Broadband](../../images/advanced/sequencing/Broadband.png)
+![宽带拍摄](../../images/advanced/sequencing/Broadband.png)
 
-This exported sequence can then be set as a template inside **Options->Imaging->Sequence**
+导出的序列可以在**选项->拍摄->序列**中设置为模板
 
-![Template](../../images/advanced/sequencing/Template.png)
+![模板](../../images/advanced/sequencing/Template.png)
 
-!!! tip
-    The best use for these templates are sequences created out of the Framing Assistant. For example when you have the broadband sequence set, that were mentioned earlier, you can just set up the mosaic, click "Replace Sequence" and the following sequence is created based on the template
+:::tip
+这些模板的最佳用途是通过构图助手创建的序列。例如，当设置好前面提到的宽带序列模板后，你只需设置好马赛克，点击"替换序列"，基于模板就能生成以下序列
+:::
 
-![Mosaic](../../images/advanced/sequencing/Mosaic.png)
+![马赛克](../../images/advanced/sequencing/Mosaic.png)
 
-## Sequence Auto-Focus
+## 序列自动对焦
 
-When having a motorized focuser, the sequence offers a variety of options to ensure that the focus is as good as possible during the sequence run. Let's look into each option and explain their usage in more depth.
+当拥有电动调焦器时，序列提供了多种选项，以确保在序列运行期间对焦尽可能良好。让我们逐一查看每个选项并更深入地解释它们的用法。
 
-![AutoFocus](../../images/advanced/sequencing/AutoFocus.png)
+![自动对焦](../../images/advanced/sequencing/AutoFocus.png)
 
-*On start* - This one is rather obvious. Most of the time you want to have this on in your first target to ensure that the initial focus position is good.  
+*开始时* - 这个选项比较明显。大多数情况下，你会希望在第一个目标中启用此选项，以确保初始对焦位置良好。
 
-*On filter change* - This option is useful when you don't know or don't have your filter offsets set and your filters aren't parfocal and thus having a different focus position. This is a good option when you only have a few filter changes during the course of the night. Otherwise it is beneficial to measure and set filter offsets instead.  
+*更换滤镜时* - 当你不知道或没有设置滤镜偏移量，且滤镜不是齐焦的，因此对应不同的对焦位置时，此选项很有用。当你在整个夜晚只进行几次滤镜更换时，这是一个不错的选择。否则，测量并设置滤镜偏移量会更有优势。
 
-*After elapsed time* - Triggering an autofocus after an elapsed time is almost always just a guesstimate and should be avoided. A better metric is the option to focus after an HFR increase.  
+*经过一定时间后* - 在经过特定时间后触发自动对焦几乎总是一种猜测，应尽量避免。更好的方法是根据 HFR 上升来触发对焦。
 
-*After temperature change* - This will use the focuser temperature probe as reference and refocuses every time the temperature drifts by the specified amount in reference to the last initiated auto focus. When you know that your equipment will shift focus after a certain amount of temperature change, this is a good option.  
+*温度变化后* - 这将使用调焦器温度传感器作为参考，每次温度相对于上次启动的自动对焦漂移指定量时重新对焦。当你知道你的设备在一定温度变化后会偏移焦点时，这是一个好选项。
 
-*After HFR increase* - This method will only trigger when the measured HFR trend is going up by a certain percentage. Having just one sub with worse focus won't necessarily trigger this, as it could just be one sub with bad guiding or worse sky conditions. In general this is a good way to ensure best Auto Focus during the run and can be used almost always. A visual representation of the HFR history can be seen in the imaging tab which is used to determine the baseline.
+*HFR 上升后* - 此方法仅在测量的 HFR 趋势上升一定百分比时触发。仅有一张对焦较差的子帧不一定会触发此操作，因为它可能只是由于导星不佳或天空条件较差导致的单张问题。总的来说，这是在拍摄运行期间确保最佳自动对焦的好方法，几乎随时可以使用。HFR 历史的可视化表示可以在拍摄选项卡中查看，用于确定基线。
 
-![HFRHistory](../../images/tabs/HFR2.png)
+![HFR历史图表](../../images/tabs/HFR2.png)

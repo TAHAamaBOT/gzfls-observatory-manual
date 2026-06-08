@@ -1,222 +1,216 @@
-The Imaging tab is your imaging cockpit.
-Here N.I.N.A. will display a variety of information regarding the captured images and will let you control all the vital parameters of your imaging session.
+拍摄选项卡是你的拍摄驾驶舱。
+在这里，N.I.N.A. 将显示关于已拍摄图像的各种信息，并让你控制拍摄过程中的所有关键参数。
 
-The Imaging tab is organized in windows that can be arranged dynamically to create your own layout.
-Available windows can be activated and deactivated from the top bar.
-To arrange a window, simply drag it from the window header and drop it according to the suggested placeholders.
+拍摄选项卡由多个窗口组成，这些窗口可以动态排列，创造出你个性化的布局。
+可用窗口可以从顶栏激活和停用。
+要排列窗口，只需从窗口标题栏拖动它，并根据建议的占位符放置即可。
 
-Depending on your connected equipment and the panels you enable, the Imaging workspace can also show additional panels for the Dome, Safety Monitor, Flat Device, and the currently active sequencer.
+根据连接的设备和启用的面板，拍摄工作区还可以显示圆顶、安全监测器、平场设备以及当前活动序列器的额外面板。
 
-The top bar is divided in two main sections: **Info** and **Tools**  
+顶栏分为两个主要区域：**信息**和**工具**。
 
-![topbarmenu](../images/tabs/Imaging_menu.PNG)  
+![顶栏菜单](../images/tabs/Imaging_menu.PNG)
 
-## Info  
-These windows provide important status information about captured images and connected equipment  
+## 信息
+这些窗口提供关于已拍摄图像和已连接设备的重要状态信息。
 
-### A. Image  ![imageicon](../images/tabs/imaging_imageicon.PNG)  
-The image panel is the central part of the Imaging tab and is used to display the latest captured images
+### A. 图像  ![图像图标](../images/tabs/imaging_imageicon.PNG)
+图像面板是拍摄选项卡的核心部分，用于显示最新拍摄的图像。
 
-![image](../images/tabs/imaging_image.png)
+![图像](../images/tabs/imaging_image.png)
 
-1.   Zoom In/out  
-2.   Zoom to Fit  
-3.   Zoom 100% (1:1 )    
-4.   Opens a 3x3 crop mosaic of the current image to check for distortion and tilt
-5.   Initiates a plate solving routine for the current image
-6.   Toggles crosshair overlay on/off
-7.   Toggles automatic display of the displayed image (for autostretch settings refer to [Options](options/imaging.md))
-8.   Toggles automatic HFR (Half-Flux-Radius) star detection analysis. HFR is used for [Autofocus](options/autofocus.md) routines. When HFR detection is ON, the average HFR value for each captured image is plotted in the HFR History window (M)
-> If _Annotate Image_ is switched ON under [Options->Imaging](options/imaging.md), the calculated HFR values will be displayed on the image  
+1.   放大/缩小
+2.   适应窗口
+3.   100% 缩放（1:1）
+4.   打开当前图像的 3x3 裁剪马赛克，以检查畸变和倾斜
+5.   对当前图像启动解析流程
+6.   开启/关闭十字线叠加
+7.   开启/关闭显示图像的自动拉伸（自动拉伸设置请参考[选项](options/imaging.md)）
+8.   开启/关闭自动 HFR（半通量半径）星点检测分析。HFR 用于[自动对焦](options/autofocus.md)流程。当 HFR 检测开启时，每张拍摄图像的平均 HFR 值将绘制在 HFR 历史记录窗口中（M）。
+> 如果在[选项->拍摄](options/imaging.md)中开启了*标注图像*，计算出的 HFR 值将显示在图像上。
    ![HFR](../images/tabs/imaging_HFR.PNG)
-9.   Activates the Bahtinov Analyzer aid tool for manual focusing with a Bahtinov Mask.
+9.   激活鱼骨板分析辅助工具，用于配合鱼骨板进行手动对焦。
 
-### B. Camera ![cameraicon](../images/tabs/imaging_cameraicon.PNG)  
-This panel displays the main camera and sensor properties and cooling status
-> Requires a connected camera
+### B. 相机 ![相机图标](../images/tabs/imaging_cameraicon.PNG)
+此面板显示主相机和传感器的属性以及制冷状态。
+> 需要连接相机
 
-1. Camera status details
-2. Camera cooling properties
-3. Camera warming 
-   
-![cameratab](../images/tabs/cameratab.png)
+1. 相机状态详情
+2. 相机制冷属性
+3. 相机升温
 
-### C. Filter Wheel ![fwicon](../images/tabs/imaging_fwicon.PNG)  
-When a Filter Wheel is connected, this panel displays the current filter (1) and lets you manually switch filters by selecting them with the drop-down menu (2)
+![相机选项卡](../images/tabs/cameratab.png)
 
-![image](../images/tabs/imaging_filterwheel.PNG)
+### C. 滤镜轮 ![滤镜轮图标](../images/tabs/imaging_fwicon.PNG)
+当连接滤镜轮时，此面板显示当前滤镜（1）并允许你通过下拉菜单（2）手动切换滤镜。
 
-### D. Focuser  ![focusericon](../images/tabs/imaging_focusericon.PNG)  
-This panel displays the focuser status and lets you manually move it to the desired position
-> Requires a connected focuser
+![图像](../images/tabs/imaging_filterwheel.PNG)
 
-![focuser](../images/tabs/imaging_focuser.png)
+### D. 调焦器  ![调焦器图标](../images/tabs/imaging_focusericon.PNG)
+此面板显示调焦器状态，并允许你手动将其移动到所需位置。
+> 需要连接调焦器
 
-1. Focuser current status (Moving or Settling)
-2. Focuser current position (for absolute stepper motor focusers)
-3. Focuser temperature (if the focuser is equipped with an ambient temperature sensor)
-4. Toggles focuser temperature compensation
-5. Here you can set the target focuser position for the focuser to move to by clicking on "Move" (6)
-6. Moves the focuser to the Target Position defined in (5)
-   > It is convenient to set the target position as the position of near-focus for your setup. This position can be determined by using a Bahtinov mask on a bright star (see **Manual Focus Targets**). Once the near-focus position is determined, input the number of steps indicated in "Position" (2) in the Target Position field. You can then instruct the focuser to move to this position at the beginning of each imaging session before starting the Auto-Focusing routine
-7. The arrows will move the focuser back and forth by a predefined amount related to the Auto Focus Step Size defined under Options - [Autofocus](options/autofocus.md):
-    * Single arrow `<`  `>` : half the Auto Focus Step Size
-    * Double arrows `<<`  `>>` : five times the Auto Focus Step Size
+![调焦器](../images/tabs/imaging_focuser.png)
 
+1. 调焦器当前状态（移动中或稳定中）
+2. 调焦器当前位置（对于绝对步进电机调焦器）
+3. 调焦器温度（如果调焦器配备环境温度传感器）
+4. 开启/关闭调焦器温度补偿
+5. 在此设置调焦器目标位置，点击"移动"（6）使调焦器移动到该位置
+6. 将调焦器移动到（5）中定义的目标位置
+   > 建议将目标位置设置为接近你设备对焦位置的值。可以使用鱼骨板对准一颗亮星来确定此位置（参见**手动对焦目标**）。确定接近对焦的位置后，将（2）"位置"中指示的步数输入到目标位置字段中。然后，你可以在每次拍摄开始时指示调焦器移动到此位置，再启动自动对焦流程。
+7. 箭头将使调焦器以预定义的量前后移动，该量与选项 - [自动对焦](options/autofocus.md)中定义的自动对焦步长相关：
+    * 单箭头 `<`  `>`：自动对焦步长的一半
+    * 双箭头 `<<`  `>>`：自动对焦步长的五倍
 
-### E. Rotator ![rotatoricon](../images/tabs/imaging_rotatoricon.PNG)  
-Here you can control the Rotator
-> Requires a connected ASCOM Rotator
+### E. 旋转器 ![旋转器图标](../images/tabs/imaging_rotatoricon.PNG)
+在此控制旋转器。
+> 需要连接 ASCOM 旋转器
 
-![rotator](../images/tabs/imaging_rotator.png)
+![旋转器](../images/tabs/imaging_rotator.png)
 
-1. Rotator current status
-2. Rotator current position
-3. Input the Rotator target position
-4. Moves the rotator to the Target Position
+1. 旋转器当前状态
+2. 旋转器当前位置
+3. 输入旋转器目标位置
+4. 将旋转器移动到目标位置
 
+### F. 望远镜 ![望远镜图标](../images/tabs/imaging_telescopeicon.PNG)
+望远镜面板提供关于望远镜的所有重要信息，如跟踪状态、恒星时、到达中天时间和当前望远镜坐标。
+> 需要连接 ASCOM 望远镜
 
-### F. Telescope ![telescopeicon](../images/tabs/imaging_telescopeicon.PNG)  
-The telescope panel provides all important information about your telescope like tracking status, sidereal time, time to meridian passing and current telescope coordinates.
-> Requires a connected ASCOM telescope
+![望远镜](../images/tabs/imaging_telescope.PNG)
 
-![telescope](../images/tabs/imaging_telescope.PNG)
+### G. 导星  ![导星图标](../images/tabs/imaging_guideicon.PNG)
+导星面板显示当前导星器状态、RMS 值，以及当已连接导星器提供导星遥测数据时的实时导星图表。
 
-### G. Guiding  ![guideicon](../images/tabs/imaging_guideicon.PNG)  
-The guider panel shows the current guider state, RMS values, and a live guide graph when the connected guider provides guide telemetry.
+![导星](../images/tabs/imaging_guider.png)
 
-![guider](../images/tabs/imaging_guider.png)
+1. 选择 y 轴的刻度范围
+2. 选择 x 轴的刻度范围
+3. 选择 y 轴的单位：
+    * 像素：导星相机像素
+    * 角秒：以角秒显示的导星误差
+4. 清除图表
+5. 图表区域，导星图表在此处可视化
 
-1. Select the scale range of the y-axis
-2. Select the scale range of the x-axis
-3. Select the units for the y-axis:
-    * Pixels: guide camera pixels
-    * Arcseconds: guide error shown in arcseconds
-4. Clears the chart
-5. Chart area, this is where the guider graph is visualized
+### H. 序列 ![序列图标](../images/tabs/imaging_sequenceicon.PNG)
+序列面板跟随当前活动序列器，让你可以从拍摄工作区快速访问运行中的序列。根据当前模式，它可以显示传统/简单序列器、高级序列器，或在没有序列器活动时显示一个导航占位符。要了解如何设置序列，请参考[序列](sequencer.md)部分。
 
-### H. Sequence ![sequenceicon](../images/tabs/imaging_sequenceicon.PNG)  
-The sequence panel follows the currently active sequencer and gives you quick access to the running sequence from the Imaging workspace. Depending on your current mode, it can show the legacy/simple sequencer, the advanced sequencer, or a navigation placeholder until a sequencer is active. To learn how to set up a sequence refer to the [Sequence](sequencer.md) section.
+![序列1](../images/tabs/imaging_sequence.png)
 
-![sequence1](../images/tabs/imaging_sequence.png)
+### I. 开关 ![开关图标](../images/tabs/imaging_switchesicon.PNG)
+此面板让你控制活动开关。
+> 需要连接开关设备
 
-### I. Switches ![switchesicon](../images/tabs/imaging_switchesicon.PNG)  
-This panel will let you control the active switches
-> Requires connected switches
+![开关](../images/tabs/imaging_switches.png)
 
-![switches](../images/tabs/imaging_switches.png)
+1. 可用开关和状态
+2. 手动选择开关
+3. 切换活动开关 ON/OFF
 
-1. Available switches and status
-2. Manually select switch
-3. Toggle active switch ON/OFF
+### J. 气象  ![气象图标](../images/tabs/imaging_weathericon.PNG)
+气象面板显示已连接气象来源报告的值。仅显示该来源提供的值。
+> 某些气象来源需要在[设备 > 气象](equipment/weather.md)中进行额外设置。
 
-### J. Weather  ![weathericon](../images/tabs/imaging_weathericon.PNG)  
-The weather panel shows the values reported by the connected weather source. Only the values provided by that source are shown.
-> Some weather sources require additional setup under [Equipment > Weather](equipment/weather.md)
+![气象](../images/tabs/imaging_weather.png)
 
-![weather](../images/tabs/imaging_weather.png)
+### K. 统计  ![统计图标](../images/tabs/imaging_statsicon.PNG)
+在此面板中，报告最后一张拍摄图像的所有重要信息。
 
-### K. Statistics  ![statsicon](../images/tabs/imaging_statsicon.PNG)  
-In this panel, all the important information about the last captured image is reported
+![统计](../images/tabs/imaging_statistics.png)
 
-![statistics](../images/tabs/imaging_statistics.png)
+1. 最后一张拍摄图像的基本统计信息：
+    * 宽度和高度（像素）
+    * 均值、标准差、中位数和 MAD 值（ADU）
+    * 图像中的最小和最大 ADU 值
+    * 检测到的星点数和平均 HFR
+        > 星点和 HFR 仅在自动 HFR 激活时显示
+    * 图像头报告的位深
 
-1. Basic statistics relative to the last captured image:
-    * Width and Height, in pixels
-    * Mean, Standard Deviation, Median and MAD values in ADU
-    * Minimum and Maximum ADU values in the image
-    * Number of detected stars and mean HFR
-        > Stars and HFR will only be displayed if Automatic HFR is active
-    * Bit Depth as reported by the image header  
+2. 最后一张拍摄图像的直方图
 
-2. Image histogram of the last captured image
+### 额外设备面板
+根据连接的硬件和所选布局，拍摄选项卡还可以显示以下额外面板：
 
-### Additional Equipment Panels
-Depending on your connected hardware and selected layout, the Imaging tab can also show these additional panels:
+* **圆顶**：报告连接状态、归位/原点状态、转动状态、跟随模式、快门状态、方位角和高度角。
+* **安全监测器**：报告所选安全监测器是否已连接以及当前是否安全。
+* **平场设备**：报告灯光状态、亮度和盖板状态，并可选择暴露灯光、亮度和盖板的手动控制。
 
-* **Dome**: reports connected state, park/home status, slewing state, following mode, shutter status, azimuth, and altitude
-* **Safety Monitor**: reports whether the selected safety monitor is connected and currently safe
-* **Flat Device**: reports light state, brightness, and cover state, and can optionally expose manual controls for the light, brightness, and cover
+### M. HFR 历史  ![HFR图标](../images/tabs/imaging_HFRicon.PNG)
+当自动 HFR（半通量半径）星点检测开启时，此面板将使用两个可配置的绘图值和自动对焦标记来显示已拍摄图像的历史记录。
 
-### M. HFR History  ![HFRicon](../images/tabs/imaging_HFRicon.PNG)  
-When automatic HFR (Half-Flux-Radius) star detection is ON, this panel will display the history of the captured images using two configurable plotted values and autofocus markers.
+![HFR历史](../images/tabs/HFR2.png)
 
-![HFRHistory](../images/tabs/HFR2.png)
+默认情况下，HFR 历史记录显示当前拍摄会话中的 HFR 和星点数量。当面板设置打开时，你可以：
 
-By default the HFR History shows HFR and star count throughout the current session. When the panel settings are open, you can:
+1. 绿色线：左侧 y 轴
+2. 黄色线：右侧 y 轴
+3. 三角标记：自动对焦运行
+4. 选择左侧和右侧绘制的值
+5. 按滤镜筛选图表
+6. 包括或排除快照
+7. 在像素和角秒之间切换星点测量单位
+8. 清除当前历史记录
+9. 将当前历史记录保存为 CSV 文件
 
-1. Green line: Left y-axis
-2. Yellow line: right y-axis
-3. Triangle marks: AF runs
-4. Choose the left and right plotted values
-5. Filter the graph by filter
-6. Include or exclude snapshots
-7. Switch star measurements between pixels and arcseconds
-8. Clear the current history
-9. Save the current history as a CSV file
+悬停在绘制的图像点上会显示该曝光的记录图像属性。悬停在自动对焦标记上会显示该次运行的记录自动对焦详情。
 
-Hovering a plotted image point shows the recorded image properties for that exposure. Hovering an autofocus marker shows the recorded autofocus details for that run.
-   
-## Tools 
+## 工具
 
-### N. Imaging ![image1icon](../images/tabs/imaging_imagingicon.PNG)  
-The imaging panel allows you to take a single exposure or live view when supported by the camera
+### N. 拍摄 ![图像1图标](../images/tabs/imaging_imagingicon.PNG)
+拍摄面板允许你拍摄单张曝光或（在相机支持的情况下）使用实时预览模式。
 
-![image1](../images/tabs/imaging_image1.png)
+![图像1](../images/tabs/imaging_image1.png)
 
-1. Capture exposure time in seconds
-2. Filter to be used for the capture (if a Filter Wheel is connected)
-3. Camera Binning
-4. Toggles ON/OFF image looping. This is particularly useful for manual focus with a Bahtinov mask
-5. Toggles ON/OFF saving the current capture to disk
-6. When supported by the camera, this will activate the Live View mode
-7. Takes the exposure
+1. 拍摄曝光时间（秒）
+2. 拍摄使用的滤镜（如果连接了滤镜轮）
+3. 相机像素合并
+4. 开启/关闭图像循环拍摄。这对使用鱼骨板进行手动对焦特别有用。
+5. 开启/关闭保存当前拍摄到磁盘
+6. 当相机支持时，激活实时预览模式
+7. 拍摄曝光
 
-### O. Image History ![imagehistory](../images/tabs/imaging_historyicon.PNG)  
-The Image History panel shows the most recent saved images as thumbnails. The list keeps up to 50 entries and can show basic image details such as mean value in ADU, average HFR, filter, duration, and capture time.
-> Clicking a thumbnail opens that image in the Image panel (A)
+### O. 图像历史  ![图像历史图标](../images/tabs/imaging_historyicon.PNG)
+图像历史面板以缩略图形式显示最近保存的图像。列表最多保留 50 条记录，可以显示基本图像详情，如 ADU 平均值、平均 HFR、滤镜、曝光时长和拍摄时间。
+> 点击缩略图可在图像面板（A）中打开该图像。
 
-Hovering a thumbnail shows the grading button so you can mark or clear that image as bad.
+悬停在缩略图上会显示评分按钮，你可以将图像标记为不良或清除不良标记。
 
-![history](../images/tabs/imaging_history.png)
+![历史](../images/tabs/imaging_history.png)
 
-### P. Plate Solving ![platesolvingicon](../images/tabs/imaging_platesolveicon.PNG)  
-Plate solving is a very important step in the imaging process. For further information on the Plate Solving process, refer to [Plate Solving](../advanced/platesolving.md) in the advanced topics. This panel lets you perform manual plate solving and keeps the history of all plate solving sessions.
-> Prerequisites for plate solving to work are:
-> * An external plate solver is defined in Options [Plate Solving](options/platesolving.md)
-> * Telescope focal length is defined in Options [Equipment](options/equipment.md)
-> * Camera pixel size is defined in Options [Equipment](options/equipment.md)
-> * The image to be plate solved has been captured with the specified focal length and pixel size
+### P. 解析 ![解析图标](../images/tabs/imaging_platesolveicon.PNG)
+解析是拍摄过程中非常重要的一步。有关解析流程的更多信息，请参考高级主题中的[解析](../advanced/platesolving.md)。此面板允许你执行手动解析，并保留所有解析会话的历史记录。
+> 解析正常工作的前提条件：
+> * 在选项[解析](options/platesolving.md)中定义了外部解析器。
+> * 在选项[设备](options/equipment.md)中定义了望远镜焦距。
+> * 在选项[设备](options/equipment.md)中定义了相机像素尺寸。
+> * 待解析的图像是使用指定的焦距和像素尺寸拍摄的。
 
-![platesolve](../images/tabs/imaging_platesolve.png)
+![解析](../images/tabs/imaging_platesolve.png)
 
-1. Plate solving results
-2. Toggles ON/OFF syncing the telescope mount with the plate solved coordinates 
-3. Toggles ON/OFF re-slewing and re-centering the mount to the plate solved coordinates if the plate solved position does not match the expected one
-4. Error threshold for (3)
-5. Exposure that will be used to capture the image for plate solving
-6. Filter that will be used to capture the image for plate solving
-7. Captures an image for plate solving
-8. History of plate solving sessions
+1. 解析结果
+2. 开启/关闭将望远镜赤道仪与解析坐标同步。
+3. 开启/关闭重新转向并重新对中赤道仪到解析坐标（如果解析位置与预期位置不匹配）。
+4. （3）的误差阈值。
+5. 用于拍摄解析图像的曝光时间。
+6. 用于拍摄解析图像的滤镜。
+7. 拍摄解析图像。
+8. 解析会话历史记录。
 
-### R. Auto Focus ![AFicon](../images/tabs/imaging_aficon.PNG)  
-This panel lets you manually trigger an Auto Focus routine based on the Auto Focus parameters set in Options [Autofocus](options/autofocus.md).
+### R. 自动对焦 ![自动对焦图标](../images/tabs/imaging_aficon.PNG)
+此面板允许你基于选项[自动对焦](options/autofocus.md)中设置的自动对焦参数手动触发自动对焦流程。
 
-![AF](../images/tabs/AF10.png)
+![自动对焦](../images/tabs/AF10.png)
 
-1. Autofocus curve 
-2. Last Auto Focus run parameters
-3. Starts Auto Focus routine
+1. 自动对焦曲线
+2. 上次自动对焦运行参数
+3. 启动自动对焦流程
 
-### S. Manual Focus Targets ![MFicon](../images/tabs/imaging_mftargetsicon.PNG)  
-When you have to manual focus your scope this tab lets you conveniently choose among the current visible brighter stars according to your location and time.
+### S. 手动对焦目标 ![手动对焦图标](../images/tabs/imaging_mftargetsicon.PNG)
+当你需要手动对焦望远镜时，此选项卡让你可以方便地从当前可见的较亮恒星中进行选择（根据你的位置和时间）。
 
-![MFtargets](../images/tabs/imaging_mftargets.png)
+![手动对焦目标](../images/tabs/imaging_mftargets.png)
 
-1. List of stars to choose from
-2. Selected star properties
-3. Slews telescope to the selected star
-
-
-
-
+1. 可供选择的恒星列表
+2. 选定恒星的属性
+3. 将望远镜转向所选恒星

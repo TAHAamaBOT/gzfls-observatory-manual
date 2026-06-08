@@ -1,82 +1,82 @@
-Triggers are instructions that should only happen when certain events occur. These triggers can be attached to an instruction set. When attached, they will get evaluated after each instruction inside the set, similar to how loop conditions are evaluated. When the defined event occurs, the trigger will execute its instruction. After the trigger has finished its execution, the sequence will continue where it left off.
-Triggers can be identified by the highlighted lightning icon next to them in the sequencer sidebar.  
-![Triggers](../../images/sequencer/trigger/trigger.png)  
+触发器是仅当特定事件发生时才应执行的指令。这些触发器可以附加到指令集。附加后，它们将在指令集内每条指令之后被评估，类似于循环条件的评估方式。当定义的事件发生时，触发器将执行其指令。触发器执行完成后，序列将从之前暂停的位置继续。
+触发器可以通过序列器侧边栏中它们旁边的高亮闪电图标来识别。
+![触发器](../../images/sequencer/trigger/trigger.png)
 
-## Dome
-Trigger actions for a dome. Each trigger in this category requires at least a dome to be connected.
+## 圆顶
+圆顶的触发动作。此类别中的每个触发器至少需要连接一个圆顶。
 
 ### Synchronize Dome
-![Synchronize Dome](../../images/sequencer/trigger/syncdome.png)  
-N.I.N.A. has the capability to automatically synchronize the dome with the telescope pointing direction. However, in some scenarios, for example with a heavy dome, the vibrations of movement can affect imaging quality. Therefore this trigger exists to only synchronize the dome between instructions, instead of having it constantly adjusted. This will also prevent dome movement during exposures.
-*Requires dome following to be disabled*
+![同步圆顶](../../images/sequencer/trigger/syncdome.png)
+N.I.N.A. 能够自动将圆顶与望远镜指向方向同步。然而在某些情况下，例如重型圆顶，移动产生的振动可能会影响拍摄质量。因此有了此触发器，仅在指令之间同步圆顶，而不是持续调整。这也将防止在曝光期间移动圆顶。
+*需要禁用圆顶跟随*
 
-## Focuser
-Trigger actions for a focuser. Each trigger in this category requires at least a focuser to be connected.
+## 调焦器
+调焦器的触发动作。此类别中的每个触发器至少需要连接一个调焦器。
 
 ### AF After # Exposures
-![AF After # Exposures](../../images/sequencer/trigger/afafterexposures.png)  
-A trigger to simply run an autofocus after a set amount of exposures. As the amount of exposures is an arbitrary metric, this trigger is not recommended.
+![AF After # Exposures](../../images/sequencer/trigger/afafterexposures.png)
+一个简单地在指定曝光次数后运行自动对焦的触发器。由于曝光次数是一个任意指标，不推荐使用此触发器。
 
 ### AF After Filter Change
-![AF After Filter Change](../../images/sequencer/trigger/afafterfilter.png)  
-When the filter wheel changes its filters and no filter offsets have been calculated to automatically adjust the focuser position for the change of focus due to the filter shift, this trigger can help to mitigate the problem by running an autofocus run when a filter changes during imaging.
+![AF After Filter Change](../../images/sequencer/trigger/afafterfilter.png)
+当滤镜轮切换滤镜且未计算滤镜偏移量来自动调整调焦器位置以补偿因滤镜切换导致的对焦变化时，此触发器可以通过在拍摄中切换滤镜时运行自动对焦来缓解问题。
 
 ### AF After HFR Increase
-![AF After HFR Increase](../../images/sequencer/trigger/afafterhfr.png)  
-This trigger will monitor the history of images taken during the sequence. It will take all exposures up until the last autofocus (or all if no autofocus has happened yet) and filter them for the currently active filter. The first point after the autofocus will be taken as a reference point as well as the last n points, where n is the specified sample size. Out of the last n points, the trend will be determined and compared to the reference point. If the trend is above the specified percentage, an autofocus will be triggered.
-This is a decent generic trigger if you don't know about the temperature sensitivity of your equipment, but it requires that your autofocus results are consistent and that the seeing is not bad.
+![AF After HFR Increase](../../images/sequencer/trigger/afafterhfr.png)
+此触发器将监控序列中拍摄的图像历史。它将获取截至上次自动对焦的所有曝光（如果尚未进行自动对焦，则为全部），并按当前活动滤镜进行筛选。自动对焦后的第一个点将作为参考点，最后 n 个点（n 为指定样本量）作为参考。从最后 n 个点中确定趋势并与参考点比较。如果趋势超过指定百分比，将触发自动对焦。
+如果您不了解设备的温度敏感性，这是一个不错的通用触发器，但它要求您的自动对焦结果一致且视宁度不差。
 
 ### AF After Temperature Change
-![AF After Temperature Change](../../images/sequencer/trigger/afaftertemp.png)  
-When the temperature rises or falls, most equipment will slightly shift its focus. When you roughly know at which temperature your equipment shifts focus enough to be out of the critical focus zone, this trigger can help you automatically run the autofocus routine when a specified amount of temperature drift has happened.
-*Requires a focuser with a temperature probe*
+![AF After Temperature Change](../../images/sequencer/trigger/afaftertemp.png)
+当温度升高或降低时，大多数设备会轻微偏移焦点。当您大致了解设备在哪个温度下焦点偏移足以超出临界对焦区域时，此触发器可以在温度漂移达到指定量时自动运行自动对焦程序。
+*需要带温度探头的调焦器*
 
 ### AF After Time
-![AF After Time](../../images/sequencer/trigger/afaftertime.png)  
-A trigger to simply run an autofocus after a set amount of time. As the amount of time is an arbitrary metric, this trigger is not recommended.
+![AF After Time](../../images/sequencer/trigger/afaftertime.png)
+一个简单地在指定时间后运行自动对焦的触发器。由于时间量是一个任意指标，不推荐使用此触发器。
 
-## Guider
-Trigger actions for a guider. Each trigger in this category requires at least a guider to be connected.
+## 导星器
+导星器的触发动作。此类别中的每个触发器至少需要连接一个导星器。
 
 ### Dither After Exposures
-![Dither After Exposures](../../images/sequencer/trigger/ditherafterexposures.png)  
-Using this trigger will initiate a dither operation after the set amount of exposures. For more information about dithering, visit the [dedicated page](../../advanced/dithering.md) about it.
+![Dither After Exposures](../../images/sequencer/trigger/ditherafterexposures.png)
+使用此触发器将在指定曝光次数后启动抖动操作。有关抖动的更多信息，请访问[专用页面](../../advanced/dithering.md)。
 
 ### Restore Guiding
-![Restore Guiding](../../images/sequencer/trigger/restoreguiding.png)  
-This trigger will start guiding each time after an instruction inside its context. When guiding is already started, no action will be taken. Using this trigger makes sure that the guiding software reacquires a guide star after some failures, like clouds.  
-This trigger is best used in combination with the "Center After Drift" trigger to guard against interruption from clouds and thus drifting off target.
+![Restore Guiding](../../images/sequencer/trigger/restoreguiding.png)
+此触发器将在其上下文中的每条指令之后重新启动导星。如果导星已在运行，则不采取任何操作。使用此触发器可确保导星软件在某些故障（如云层遮挡）后重新获取导星。
+此触发器最好与"Center After Drift"触发器结合使用，以防止因云层遮挡而偏离目标。
 
-## Safety Monitor
-Trigger actions for a [safety monitor](../../tabs/equipment/safetymonitor.md). Each trigger in this category requires at least a safety monitor to be connected.
+## 安全监控器
+[安全监控器](../../tabs/equipment/safetymonitor.md)的触发动作。此类别中的每个触发器至少需要连接一个安全监控器。
 
 ### Trigger On Unsafe
 ![Trigger On Unsafe](../../images/sequencer/trigger/triggeronunsafe.png)
 
-Runs configured instructions when the safety monitor reports unsafe conditions or disconnects after it has been connected. The trigger first runs the instructions in **Before Waiting For Safety**, then pauses with [Wait Until Safe](instructions.md#wait-until-safe), and finally runs **After Waiting For Safety** once the monitor reports safe conditions again.
-If the safety monitor disconnects after N.I.N.A. has already seen a valid connection, that disconnect is treated like an unsafe state and the trigger will run. A monitor that has never been connected yet will not trigger this behavior just because it is currently disconnected.
-If this trigger fires while N.I.N.A. is working on a Deep Sky Object target, instructions such as slew or center will automatically use that target's coordinates. That also applies when the trigger itself is placed higher up, for example in **Global Triggers**.
+当安全监控器报告不安全状况或在已连接后断开连接时，运行配置的指令。触发器首先运行**等待安全之前**中的指令，然后暂停执行 [Wait Until Safe](instructions.md#wait-until-safe)，最后在监控器再次报告安全状况后运行**等待安全之后**的指令。
+如果安全监控器在 N.I.N.A. 已看到有效连接后断开连接，该断开将被视为不安全状态，触发器将运行。如果监控器从未成功连接过，则不会仅因当前未连接而触发此行为。
+如果此触发器触发时 N.I.N.A. 正在处理深空天体目标，像 GOTO 或居中这样的指令将自动使用该目标的坐标。即使触发器本身放置在更高层级（如**全局触发器**中）也是如此。
 
-## Telescope
-Trigger actions for a telescope. Each trigger in this category requires at least a telescope to be connected.
+## 望远镜
+望远镜的触发动作。此类别中的每个触发器至少需要连接一台望远镜。
 
 ### Center After Drift
-![Center After Drift](../../images/sequencer/trigger/centerafterdrift.png)  
-After the set amount of exposures, this trigger will plate solve the saved image in the background. When the distance of the solved coordinates is above the specified amount of arcminutes compared to the current target coordinates, this trigger will initiate a recenter operation.
-*Requires a plate solver to be set up and the trigger needs to be inside a deep sky object sequence to have a target reference*
+![Center After Drift](../../images/sequencer/trigger/centerafterdrift.png)
+在指定曝光次数后，此触发器将在后台解析已保存的图像。当解析坐标与当前目标坐标的距离超过指定的角分量时，此触发器将启动重新居中操作。
+*需要设置好解析引擎，且触发器需要位于深空天体序列内部以具有目标参考*
 
 ### Meridian Flip
-![Meridian Flip](../../images/sequencer/trigger/meridianflip.png)  
-When the telescope passes the meridian according to the meridian flip settings in the [options](../../tabs/options/imaging.md), this trigger will initiate the meridian flip.  
-More information on the settings and how the flip works is available on the [meridian flip page](../../advanced/meridianflip.md).
+![Meridian Flip](../../images/sequencer/trigger/meridianflip.png)
+当望远镜根据[选项](../../tabs/options/imaging.md)中的中天翻转设置经过中天时，此触发器将启动中天翻转。
+有关设置和翻转工作方式的更多信息，请参见[中天翻转页面](../../advanced/meridianflip.md)。
 
-## Utility
-Trigger actions that let you reuse existing trigger timing with your own instruction set.
+## 实用工具
+允许您复用现有触发器时序并配合自定义指令集的触发动作。
 
 ### Custom Trigger
 ![Custom Trigger](../../images/sequencer/trigger/customtrigger.png)
 
-Use an existing trigger as the trigger source, then add your own instructions to run when that source would normally fire. This is useful when a built-in trigger has the timing you need, but you want custom actions instead of the built-in behavior.
-If this trigger fires while N.I.N.A. is working on a Deep Sky Object target, instructions such as slew or center will automatically use that target's coordinates. That also applies when the trigger itself is placed higher up, for example in **Global Triggers**.
-Not every trigger source is guaranteed to be a good fit for **Custom Trigger**. Some triggers may depend on their original built-in behavior or special runtime handling, so if a wrapped trigger does not behave as expected it may need to be used directly instead.
-*Requires a trigger source and at least one instruction*
+使用现有触发器作为触发源，然后添加您自己的指令，在原触发器本应触发时运行。当内置触发器的时序符合您的需求，但您希望用自定义动作替代内置行为时，此功能非常有用。
+如果此触发器触发时 N.I.N.A. 正在处理深空天体目标，像 GOTO 或居中这样的指令将自动使用该目标的坐标。即使触发器本身放置在更高层级（如**全局触发器**中）也是如此。
+并非每个触发器源都一定适合作为**Custom Trigger**的包装。某些触发器可能依赖其原始的内置行为或特殊的运行时处理，因此如果包装后的触发器行为不符合预期，可能需要直接使用原触发器。
+*需要一个触发器源和至少一条指令*

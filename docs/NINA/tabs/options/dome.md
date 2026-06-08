@@ -1,78 +1,82 @@
-This is the tab where you set up all the parameters related to your dome.
+此选项卡用于设置与圆顶相关的所有参数。
 
-![Dome Settings](../../images/tabs/Options-Dome0.png)
+![圆顶设置](../../images/tabs/Options-Dome0.png)
 
-## Dome & mount geometry
+## 圆顶与赤道仪几何参数
 
-### Mount Type
-Specify if your mount is an equatorial mount or a fork on a wedge. This will affect the calculation.
+### 赤道仪类型
+指定你的赤道仪是德式赤道仪还是楔架上的叉式支架。这将影响计算。
 
-### Scope Position +N/-S (mm)
-<br/>Measure the North or South offset (in mm) of the center of the mount from the center of the dome. North is true north - the same direction a polar aligned telescope would point. Use a positive number for North, and a negative number for South.
+### 望远镜位置 +北/-南（毫米）
+<br/>测量赤道仪中心相对于圆顶中心的南北偏移量（毫米）。北是指真北——极轴对准的望远镜所指的同一方向。北方向使用正数，南方向使用负数。
 
-### Scope Position +E/-W (mm)
-<br/>Measure the East or West offset (in mm) of the center of the mount from the center of the dome. East/West is relative to true north - the same direction a polar aligned telescope would point in the northern hemisphere. Use a positive number for East, and a negative number for West.
+### 望远镜位置 +东/-西（毫米）
+<br/>测量赤道仪中心相对于圆顶中心的东西偏移量（毫米）。东西方向是相对于真北而言的——与北半球极轴对准的望远镜所指方向一致。东方向使用正数，西方向使用负数。
 
-### Scope Position +Up/-Down (mm)
-<br/>Measure the height difference (in mm) of the center of the mount axis relative to the base of the dome. For an Alt/Az mount, this is from the center of the Altitude axis, and for an EQ mount this is where the RA and DEC axes intersect. A positive number indicates the center of axis is higher than the base of the dome, and a negative number means it is lower.
+### 望远镜位置 +上/-下（毫米）
+<br/>测量赤道仪轴线中心相对于圆顶底座的高度差（毫米）。对于经纬仪，是指高度轴的中心；对于赤道仪，是指 RA 轴和 DEC 轴的交点。正数表示轴线中心高于圆顶底座，负数表示低于圆顶底座。
 
-### Dome Radius (mm)
-<br/>Measure from the center to the rim of the dome, along the base.
+### 圆顶半径（毫米）
+<br/>测量从圆顶中心到底部边缘的距离。
 
-### GEM Axis Length (mm)
-<br/>If Alt/Az, this should be 0. For an EQ mount, slew RA to +/- 90 degrees, and measure the lateral distance (in mm) from the axis to center of the telescope aperture.
+### 德式赤道仪轴长（毫米）
+<br/>如果是经纬仪，此项应为 0。对于赤道仪，将 RA 轴转到 +/- 90 度，测量从轴线到望远镜镜筒中心的横向距离（毫米）。
 
-!!! note
-    The purpose of this setting is to determine what should point to the center of the Dome aperture. If you have a guide scope, you should add half the length from the OTA to the top of the guide scope. For example, if the guide scope mount is 40mm and the guide scope aperture is 60mm, you should add 70mm to **GEM Axis Length**.
+:::note
+此设置的目的是确定什么应指向圆顶开口的中心。如果你有导星镜，应在 OTA 到导星镜顶部的长度上再加一半。例如，如果导星镜支架为 40mm，导星镜口径为 60mm，则应在**德式赤道仪轴长**中增加 70mm。
+:::
 
-### Lateral axis length (mm)
-<br/>If you have a dual saddle with side-by-side OTAs, this setting specifies offset (in mm) of the center of the OTA from the mount axis. Use a positive number for offsets to the right relative to the RA and DEC axis.
+### 横轴长度（毫米）
+<br/>如果你有双抱箍并排安装的 OTA，此设置指定 OTA 中心相对于赤道仪轴线的偏移量（毫米）。相对于 RA 和 DEC 轴向右偏移使用正数。
 
-### Azimuth Tolerance (degrees)
-<br/>The Dome slews if the target azimuth is off by more than this amount. Some dome rotators have a maximum precision, so you should set this either at that precision or greater. For example, NexDome could only support 1 degree of resolution when slewing until mid-2020 when high precision slewing was added.
+### 方位角容差（度）
+<br/>当目标方位角相差超过此值时，圆顶将转动。某些圆顶旋转器具有最大精度限制，因此应将此值设为等于或大于该精度值。例如，NexDome 在 2020 年中期添加高精度转动之前，转动时仅支持 1 度的分辨率。
 
-## Dome Settings
+## 圆顶设置
 
-### Synchronization Timeout
-<br/>Actions that require an image to be taken (such as Plate Solving and Auto Focusing) depend on the dome being synchronized with the mount. If <i>Dome follows telescope</i> is enabled, imaging operations will wait until the Telescope has stopped slewing **and** the Dome is pointed to the same azimuth (within the configured tolerance). This setting specifies the maximum amount of time, in seconds, to wait for this synchronization to complete.
+### 同步超时
+<br/>需要拍照的操作（如解析和自动对焦）依赖于圆顶与赤道仪的同步。如果启用了<i>圆顶跟随望远镜</i>，拍摄操作将等待望远镜停止转向**且**圆顶指向相同的方位角（在配置的容差范围内）。此设置指定等待同步完成的最长时间（秒）。
 
-!!! important
-    This value should be no smaller than twice the precision of the Dome rotator. For example, NexDome can only slew to integer granularity, which means its precision is 1 degree. If you own a NexDome, don't set this value smaller than 2 or **Wait for Dome Synchronization** will delay periodically.
+:::warning
+此值不应小于圆顶旋转器精度的两倍。例如，NexDome 只能以整数粒度转动，这意味着其精度为 1 度。如果你拥有 NexDome，请勿将此值设为小于 2，否则**等待圆顶同步**会定期延迟。
+:::
 
-### Settle time after slew
-Add a settle time here if your dome needs to settle down for a couple of seconds.
+### 转动后稳定时间
+如果你的圆顶需要几秒钟来稳定，可在此处添加稳定时间。
 
-### Allow sync while mount slews
-<br/>When an external application or the handset slews the mount, dome synchronization will wait for the mount to stop before it rotates the dome. Turning this option on allows dome synchronization to chase the mount. If rotation is fast, you may prefer to turn this on.
+### 赤道仪转动时允许同步
+<br/>当外部应用程序或手控器使赤道仪转动时，圆顶同步将等待赤道仪停止后再旋转圆顶。开启此选项允许圆顶同步跟随赤道仪转动。如果旋转速度较快，你可能更倾向于开启此选项。
 
-### Sync slew dome when scope slews
-<br/>When enabled, N.I.N.A. slews the dome to synchronize it with the telescope when the scope slews. This does not continuously maintain dome synchronization while the scope tracks.
+### 望远镜转动时同步转动圆顶
+<br/>启用后，当望远镜转动时，N.I.N.A. 会转动圆顶使其与望远镜同步。但这并不会在望远镜跟踪期间持续保持圆顶同步。
 
-### Find Home Before Parking
-<br/>This is an innovative reliability feature. Some Domes, such as NexDome, require the Park location to be precise so that a battery powering the shutter motor can recharge. If this setting is enabled, the Dome will find the Home position (if the Dome provides one) before parking and closing the shutter. This resynchronizes the Dome azimuth to increase Park accuracy.
+### 归位前寻找原点
+<br/>这是一项创新的可靠性功能。某些圆顶（如 NexDome）需要精确的归位位置，以便为快门电机供电的电池能够充电。如果启用此设置，圆顶将在归位并关闭快门前寻找原点位置（如果圆顶提供了原点）。这将重新同步圆顶方位角，以提高归位精度。
 
-!!! note
-    Some Dome vendors also provide manuals to configure many of these same parameters. If you're stuck, try checking some of them out too.
+:::note
+一些圆顶供应商也提供手册来配置许多相同的参数。如果遇到困难，可以尝试查阅一下这些手册。
+:::
 
-## Shutter Coordination
+## 快门协调
 
-!!! important
-    These settings relate to the safety of your equipment. They govern only N.I.N.A.'s control of the dome or roof while N.I.N.A. is running and connected. Dome or roof safety mechanisms should always have hardware backup and electrical interlocks to prevent undesired shutter or roof movement.
+:::warning
+这些设置关系到你的设备安全。它们仅在 N.I.N.A. 运行并已连接时管理 N.I.N.A. 对圆顶或天窗的控制。圆顶或天窗的安全机制应始终具备硬件备份和电气联锁，以防止不当的快门或天窗移动。
+:::
 
-### Close on unsafe conditions
-When a [safety monitor](../equipment/safetymonitor.md) is connected, the dome will automatically close immediately when the monitor is reporting unsafe conditions. This will happen independent of any other action in the application like the sequencer.
+### 不安全条件下关闭
+当[安全监测器](../equipment/safetymonitor.md)连接时，如果监测器报告不安全条件，圆顶将立即自动关闭。这将独立于应用程序中的任何其他操作（如序列器）发生。
 
-### Refuse open if a Safety Monitor is not connected
-When enabled, N.I.N.A. will refuse to open the shutter or roof if a [Safety Monitor](../equipment/safetymonitor.md) device is not connected.
+### 未连接安全监测器时拒绝打开
+启用后，如果未连接[安全监测器](../equipment/safetymonitor.md)设备，N.I.N.A. 将拒绝打开快门或天窗。
 
-### Park mount before shutter operation
-When enabled, N.I.N.A. attempts to park the mount before opening or closing the shutter.
+### 快门操作前归位赤道仪
+启用后，N.I.N.A. 将在打开或关闭快门前尝试归位赤道仪。
 
-### Park dome before shutter operation
-When enabled, N.I.N.A. sends the dome to its park position before attempting to open or close the shutter.
+### 快门操作前归位圆顶
+启用后，N.I.N.A. 将在尝试打开或关闭快门前将圆顶发送到归位位置。
 
-### Refuse mount unpark if shutter is not open
-When enabled, N.I.N.A. rejects attempts to unpark the mount unless the shutter or roof reports an open state.
+### 快门未打开时拒绝解锁赤道仪
+启用后，除非快门或天窗报告已打开状态，否则 N.I.N.A. 将拒绝解锁赤道仪的尝试。
 
-### Refuse open or close if mount is unparked
-When enabled, N.I.N.A. refuses to open or close the shutter or roof if the mount is in an unparked state. This is evaluated after the "Park mount before shutter operation" setting.
+### 赤道仪已解锁时拒绝打开或关闭
+启用后，如果赤道仪处于已解锁状态，N.I.N.A. 将拒绝打开或关闭快门或天窗。此项在"快门操作前归位赤道仪"设置之后进行评估。

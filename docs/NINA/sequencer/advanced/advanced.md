@@ -1,154 +1,157 @@
-The advanced sequencer makes it possible to completely plan and customize an imaging run based on specific needs for each user by giving the capability to plan on a very granular level. Equipment can be controlled step by step with various available instructions, and each instruction can be further customized with specific parameters.
+高级序列器使得用户可以根据自己的特定需求，以非常精细的粒度完全规划和自定义拍摄运行。设备可以通过各种可用的指令逐步控制，每条指令还可以通过特定参数进一步定制。
 
-## Navigating
-The main area will contain the actual instructions. There it is possible to add the instructions, customize the parameters and see the progress of the sequencer.  
-Additionally, the area is split into three sections to manage sequence start instructions, target instructions, and end-of-sequence instructions.
-  
-On the bottom left, it is possible to lock the sequencer from any manual input, disable drag & drop, and save and load a complete sequence run. On the bottom right, it is possible to start and stop a sequence.
-The right sidebar will show all available instructions as well as templates and targets. These are described in more detail below.
-![Overview](../../images/sequencer/Sequencer_Overview.png)
+## 导航
+主区域将包含实际的指令。在这里可以添加指令、自定义参数并查看序列器的进度。
+此外，该区域分为三个部分，用于管理序列开始指令、目标指令和序列结束指令。
 
-Everything inside the advanced sequencer is enabled to use drag and drop. For example an instruction can be grabbed by holding the left mouse button and then dragged into the sequencer area to add an instruction at the mouse location.  
-However, it is also possible to plan everything without using drag and drop at all by using the available '+' buttons.
-![Drag & Drop](../../images/sequencer/Sequencer_DragDrop.png)
+在左下角，可以锁定序列器以防止任何手动输入，禁用拖放功能，以及保存和加载完整的序列运行。在右下角，可以启动和停止序列。
+右侧边栏将显示所有可用的指令，以及模板和目标。下面将更详细地介绍这些内容。
+![概览](../../images/sequencer/Sequencer_Overview.png)
 
-## The flow of the sequencer
+高级序列器中的所有内容都支持拖放操作。例如，可以通过按住鼠标左键抓取一条指令，然后将其拖到序列器区域中，在鼠标位置添加一条指令。
+不过，也可以完全不使用拖放，通过使用可用的"+"按钮来规划一切。
+![拖放](../../images/sequencer/Sequencer_DragDrop.png)
 
-On a high level, the concept of the advanced sequencer is quite simple. A sequence will consist of small building blocks that will execute some logic and the sequencer will execute these blocks one by one from top to bottom.  
-In addition to single building blocks, so-called *Instruction Sets* can be added too. Think of these as a logical group of instructions. These groups will function in the same way as the whole sequencer, as they will execute the blocks that are part of the group from top to bottom.
-The *Instruction Sets* can contain so-called *Loop Conditions* which will change the flow of operation slightly, as the Instruction Set will repeat its set of instructions for as long as all conditions that these loop conditions define are met. Some instruction sets can also change when or how their contents run, such as running in parallel or only when an Expression is true.
-![Sequencer Flow](../../images/sequencer/Sequencer_Flow.png)
+## 序列器的执行流程
+
+从高层来看，高级序列器的概念相当简单。一个序列由多个小型构件块组成，这些构件块执行一些逻辑操作，序列器将从上到下逐个执行这些块。
+除了单条构件块，还可以添加所谓的*指令集*。可以将它们视为指令的逻辑分组。这些分组的工作方式与整个序列器相同，它们将从上到下执行属于该分组内的指令块。
+*指令集*可以包含所谓的*循环条件*，这会略微改变操作流程，因为指令集会重复执行其包含的指令，只要这些循环条件所定义的所有条件仍然满足。某些指令集还可以改变其内容的运行时机或方式，例如并行运行或仅在表达式为真时运行。
+![序列器流程](../../images/sequencer/Sequencer_Flow.png)
     
-## Instructions
-An instruction is a single command that the sequencer will execute. Each instruction has a different purpose and can control various types of equipment, set parameters or are utility functions to automate the imaging process.  
-A complete list of available instructions can be found on the right side of the advanced sequencer and each instruction will have a small description as well as a tooltip of its purpose. The [Instructions page](./instructions.md) will also describe each available instruction in detail.
-Instructions can be added to the sequencer and the specific parameters can be set there. The sequencer will then go through each instruction and process them.
-From the available list, instructions can be dragged over from the right side to the left side and dropped into the sequencer.  
-![Instructions](../../images/sequencer/Sequencer_Instructions.png)
+## 指令
+指令是序列器将执行的单条命令。每条指令有不同的用途，可以控制各种类型的设备、设置参数，或者是自动化拍摄流程的实用工具函数。
+可用指令的完整列表可以在高级序列器的右侧找到，每条指令都有一个简短的描述以及其用途的提示。 [指令页面](./instructions.md) 也将详细描述每条可用的指令。
+指令可以添加到序列器中，并且可以在那里设置具体的参数。然后序列器将遍历每条指令并处理它们。
+从可用列表中，指令可以从右侧拖到左侧并放入序列器中。
+![指令](../../images/sequencer/Sequencer_Instructions.png)
 
-Furthermore, instructions can also be directly added into the sequence by clicking on the + button on the top.
-![Add Instructions](../../images/sequencer/Sequencer_AddInstruction.png)
+此外，也可以通过点击顶部的 + 按钮直接将指令添加到序列中。
+![添加指令](../../images/sequencer/Sequencer_AddInstruction.png)
 
-Once an instruction is part of the sequencer, it will show the specific options for each instruction to customize the behavior. For example an item can be set to cool down the camera to a specific temperature, another item set to switch to a specific filter etc.
-![Instructions in Detail](../../images/sequencer/Sequencer_InstructionsDetails.png)
+一旦指令成为序列器的一部分，它将显示每条指令的具体选项以自定义行为。例如，可以设置一个项目将相机冷却到特定温度，另一个项目切换到特定滤镜等。
+![指令详情](../../images/sequencer/Sequencer_InstructionsDetails.png)
 
-### Expressions (NINA 3.3)
-NINA 3.3 adds the ability to use Expressions, in addition to numeric values, to customize instruction options.  Expressions are strings of text that represent something to be *calculated* or *evaluated*; the result of this evaluation must be a valid option for the instruction.   Expressions can include numeric values, Symbols (defined below), mathematical, bitwise, and logical operators (e.g. +, -, |, &, ||, &&), and functions (e.g. if, floor, between); in specific places, a string (text surrounded by single quotes) can also be part of an Expression.  Please see [Expressions](../advanced/expressions.md) for further details.
+### 表达式（NINA 3.3）
+NINA 3.3 新增了在数值之外使用表达式来自定义指令选项的功能。表达式是文本字符串，表示需要进行*计算*或*求值*的内容；求值结果必须是该指令的有效选项。表达式可以包含数值、符号（下文定义）、数学运算、位运算和逻辑运算符（例如 +、-、|、&、||、&&），以及函数（例如 if、floor、between）；在特定位置，字符串（用单引号括起来的文本）也可以是表达式的一部分。更多详细信息请参见[表达式](../advanced/expressions.md)。
 
-### Customizing the list of instructions
-With the gear icon in the sidebar, a customization mode can be enabled. In this mode, you can flag each instruction to be hidden. When it is flagged, the instruction will no longer be visible in the sidebar or in the context menus. This is useful if, for example, you don't have a specific type of equipment and don't want to see instructions for it cluttering your user interface. Instructions that are part of the sequence, but are hidden from the sidebar, will still be visible and active in the sequence.
-![Disable instruction in sidebar](../../images/sequencer/sidebar_disable_instruction.png)
+### 自定义指令列表
+通过侧边栏中的齿轮图标，可以启用自定义模式。在此模式下，可以将每条指令标记为隐藏。标记后，该指令将不再显示在侧边栏或上下文菜单中。这对于以下情况很有用：例如，你没有某种特定类型的设备，并且不希望看到与之相关的指令占用你的界面。那些是序列的一部分但在侧边栏中被隐藏的指令，仍然会在序列中可见且有效。
+![在侧边栏中禁用指令](../../images/sequencer/sidebar_disable_instruction.png)
 
 
-### Validations
-Each instruction is capable of doing some degree of validation and will check if the preconditions are met. A red exclamation mark will appear next to an instruction when an issue is detected. Hover over the red indicator to get more details.
-For example when a camera is connected without a cooling element, and a "Cool Camera" instruction is dragged into the sequence, the instruction will show a visual indicator, as well as a tooltip showing that the camera is not capable of cooling.  
-![Issues](../../images/sequencer/Sequencer_Issues.png)
+### 验证
+每条指令都具有一定的验证能力，会检查前置条件是否满足。当检测到问题时，指令旁边会出现红色感叹号。将鼠标悬停在红色指示器上可获取更多详细信息。
+例如，当连接了一台没有制冷元件的相机时，将"冷却相机"指令拖入序列中，该指令将显示视觉指示器，同时提示信息会显示该相机不具备制冷功能。
+![问题](../../images/sequencer/Sequencer_Issues.png)
 
-!!! tip
-    Instructions that report issues will always be skipped, indicate that there was an error and will not run at all!
+:::tip
+报告问题的指令将始终被跳过，提示存在错误，并且完全不会运行！
+:::
 
-## Instruction Sets
-Instruction sets are groups of instructions. Each set will process its content based on the parameters inside the set. Their behavior can be further controlled by loop conditions and triggers, which are described further below.
-Instruction sets can be added to the sequencer in the same way as instructions. Furthermore it is possible to nest instruction sets inside of each other.
-![Add Instructions Set](../../images/sequencer/Sequencer_AddInstructionSet.png)
-### Sequential Instruction Set
-This instruction set will process the instructions one after the other, from top to bottom.
-![Sequential Instruction Set](../../images/sequencer/Sequencer_SequentialInstructions.png)
-### Conditional Instruction Set
-This instruction set checks its Expression when the set is reached. If the Expression evaluates to true, the instructions inside run once from top to bottom. If it evaluates to false, the instructions inside are skipped and the sequence continues after the set.
+## 指令集
+指令集是指令的分组。每个指令集会根据其内部的参数处理其内容。它们的行为可以通过循环条件和触发器进一步控制，下文将更详细地描述这两者。
+指令集可以以与指令相同的方式添加到序列器中。此外，还可以在指令集内部嵌套指令集。
+![添加指令集](../../images/sequencer/Sequencer_AddInstructionSet.png)
+### 顺序指令集
+此指令集将从上到下逐条处理指令。
+![顺序指令集](../../images/sequencer/Sequencer_SequentialInstructions.png)
+### 条件指令集
+此指令集在到达时检查其表达式。如果表达式求值为 true，则内部的指令从上到下运行一次。如果求值为 false，则跳过内部指令，序列在指令集之后继续执行。
 
-The Expression and its current evaluated result are shown in the set header, so the condition remains visible even when the set is collapsed.
+表达式及其当前的求值结果显示在指令集标题中，这样即使指令集折叠时条件也保持可见。
 
-### Parallel Instruction Set
-All instructions inside this special instruction set will be processed in parallel. As everything will run in parallel, there are no conditions or triggers available for this set.
-Order of instructions within the Parallel Instruction Set is not defined or implied.
+### 并行指令集
+此特殊指令集中的所有指令将并行处理。由于所有内容将并行运行，此指令集没有可用的条件或触发器。
+并行指令集中的指令顺序未定义，也没有暗示的顺序。
 
-- Note: <br/>
-   Multiple instructions for the same equipment should generally not be used in the same parallel instruction set. <br/>
-   example: Park Scope and Find Home will be executed in parallel and which one is executed first is not constant. <br/>
-   Wait instructions are executed in parallel with all other instructions so will not force an order to instruction execution. <br/>
-   Shutdown PC and Shutdown N.I.N.A instructions generally are not wise to use inside a Parallel Instruction Set. <br/>
+- 注意：<br/>
+   同一设备的多个指令通常不应在同一个并行指令集中使用。<br/>
+   例如：赤道仪锁定时寻找零位将并行执行，哪一个先执行不是固定的。<br/>
+   等待指令与其他所有指令并行执行，因此不会强制指令的执行顺序。<br/>
+   通常在并行指令集中使用关机和关闭 N.I.N.A 指令是不明智的。<br/>
         
-![Parallel Instruction Set](../../images/sequencer/Sequencer_ParallelInstructions.png)
-### Deep Sky Object Set
-This special set of instructions behaves similarly to a sequential instruction set. The main difference here is that a specific target can be specified with coordinates and rotation, and then all instructions that are dependent on coordinates or rotation will pick up these coordinates automatically, so a user does not need to enter these coordinates multiple times.
-![Deep Sky Object Set](../../images/sequencer/Sequencer_DSOSet.png)
+![并行指令集](../../images/sequencer/Sequencer_ParallelInstructions.png)
+### 深空天体指令集
+这个特殊的指令集行为类似于顺序指令集。主要区别在于可以指定带有坐标和旋转的特定目标，然后所有依赖于坐标或旋转的指令将自动获取这些坐标，这样用户无需多次输入这些坐标。
+![深空天体指令集](../../images/sequencer/Sequencer_DSOSet.png)
 
-## Loop Conditions
-Loop conditions will drive the behavior of an instruction set. Without a condition, an instruction set will just process each sequence item inside once and is finished. This behavior will be changed, when loop conditions are attached. When an instruction set has a loop condition attached, it will process its items and loop itself again as long as the attached loop conditions are fulfilled. Once at least one of these loop conditions is not fulfilled anymore (e.g. a condition to loop until a specific time and the time has passed) the current instruction will be finished and afterwards the rest of the instructions inside this set will be skipped as well as the instruction set marked as finished. Conditions will be evaluated after each instruction.
-These conditions can be dragged and dropped into the loop condition section inside an instruction set.
-![Loop Conditions](../../images/sequencer/Sequencer_LoopConditions.png)
-Loop conditions can also be directly attached to an instruction set by clicking the + icon next to the loop conditions section inside an instruction set.  
-![Add Loop Conditions](../../images/sequencer/Sequencer_AddLoopCondition.png)
+## 循环条件
+循环条件将驱动指令集的行为。没有条件时，指令集只会处理其中的每个序列项一次，然后结束。当附加了循环条件时，此行为将被改变。当指令集附有循环条件时，它将在处理完其项目后，只要附加的循环条件仍然满足，就再次循环自身。一旦至少其中一个循环条件不再满足（例如，要求循环到特定时间的条件且时间已过），当前指令将被完成，之后该指令集内的其余指令也将被跳过，并且该指令集被标记为已完成。条件将持续在后台进行评估，因此基于时间的条件或安全监控条件一旦不再满足，将中断正在执行的指令。
 
-As instruction sets can be nested, the loop conditions are also evaluated for the current instruction set and all loop conditions that are in a parent instruction set.  
-Let's take a look at the below example to give an example. The top level instruction set has a condition attached to loop until 12:24:09h. Then there are two further instruction sets inside that should loop 2 times and 3 times respectively.
-![Nested Conditions](../../images/sequencer/Sequencer_NestedConditions.png)
-The following will happen in this case:  
-- The first instruction set will loop 2 times. After each instruction the parent condition will be checked too, that the remaining time is still sufficient to continue.  
-- Afterwards the second instruction set will loop 3 times. After each instruction the parent condition will be checked too, that the remaining time is still sufficient to continue.  
-- Once both instruction sets are finished, the whole set will be reset again, as the "Loop Until Time" condition is still valid  
-- This behavior will repeat until the Time is up. Once this happens all items inside this whole set will be skipped  
+这些条件可以拖放到指令集内部的循环条件部分。
+![循环条件](../../images/sequencer/Sequencer_LoopConditions.png)
+循环条件也可以通过点击指令集内部循环条件区域旁边的 + 图标直接附加到指令集上。
+![添加循环条件](../../images/sequencer/Sequencer_AddLoopCondition.png)
+
+由于指令集可以嵌套，因此循环条件也会针对当前指令集以及所有上级指令集中的循环条件进行评估。
+让我们看看下面的例子。最顶层的指令集附加了一个条件，要求循环到 12:24:09 时间。然后内部还有两个指令集，应分别循环 2 次和 3 次。
+![嵌套条件](../../images/sequencer/Sequencer_NestedConditions.png)
+在这种情况下，将发生以下情况：
+- 第一个指令集将循环 2 次。在每条指令之后，也会检查上级条件，确认剩余时间是否仍然足够继续。
+- 然后第二个指令集将循环 3 次。在每条指令之后，也会检查上级条件，确认剩余时间是否仍然足够继续。
+- 一旦两个指令集都完成，整个指令集将再次重置，因为"循环直到时间"条件仍然有效。
+- 这种行为将重复直到时间到达。一旦时间到，整个指令集中的所有项目都将被跳过。
 
 
-## Triggers
-Triggers are instructions that should only happen when certain events occur. These triggers can be attached to an instruction set. When attached, they will get evaluated after each instruction inside the set, similar to how loop conditions are evaluated. When the defined event occurs, the trigger will execute its instruction. An example is to trigger something after a certain amount of exposures.
-The lightning icon next to an instruction on the right side will indicate that the instruction is in fact a trigger. These can only be dragged into the trigger section of an instruction set. Additionally a trigger can directly be added to an instruction set by clicking on the + button.
-![Add Triggers](../../images/sequencer/Sequencer_AddTrigger.png)
-![Triggers](../../images/sequencer/Sequencer_Triggers.png)
+## 触发器
+触发器是仅在特定事件发生时应该执行的指令。这些触发器可以附加到指令集上。附加后，它们将在指令集中每条指令执行后进行评估，类似于循环条件的评估方式。当定义的事件发生时，触发器将执行其指令。例如，在一定数量的曝光后触发某些操作。
+右侧指令旁边的闪电图标表示该指令实际上是一个触发器。这些只能拖到指令集的触发器区域。此外，可以通过点击 + 按钮直接向指令集添加触发器。
+![添加触发器](../../images/sequencer/Sequencer_AddTrigger.png)
+![触发器](../../images/sequencer/Sequencer_Triggers.png)
 
-As triggers are evaluated in the same fashion as loop conditions, you can set triggers on a higher level and they still get evaluated when the current instruction that is executed is part of a nested instruction set. In the example below, the trigger will fire after every 5 exposures, even though the trigger is defined on a higher level than the actual exposure item.
-![Nested Triggers](../../images/sequencer/Sequencer_NestedTriggers.png)
+由于触发器的评估方式与循环条件相同，你可以在更高级别设置触发器，当当前执行的是嵌套指令集中的指令时，这些触发器仍然会被评估。在下面的例子中，触发器将在每 5 次曝光后触发，即使触发器定义在比实际曝光项目更高的级别上。
+![嵌套触发器](../../images/sequencer/Sequencer_NestedTriggers.png)
 
-## Templates
-A template is a set of various customized instructions set up with predefined values to be re-used constantly. To be able to quickly set up a sequence for an imaging run, the templates will take a key part and enable the possibility to easily create specific types of sequences in a matter of no time.  
-Each instruction set is capable of being templated. When a set is templated, all its content and the values set inside are saved and put into the template. When the template is then added to the sequence again, it will create a copy of it and create an instruction set that is exactly set up like the templated set.  
+## 模板
+模板是一组各种自定义指令的集合，设置了预定义值以便反复使用。为了能够快速为拍摄运行设置序列，模板将发挥关键作用，使用户能够在极短时间内轻松创建特定类型的序列。
+每个指令集都可以被制成模板。当将指令集制成模板时，其所有内容和内部设置的值都将被保存并放入模板中。当模板再次添加到序列时，它将创建其副本，并创建一个与该模板设置完全相同的指令集。
 
-### Linked Templates
-By default, adding a template to a sequence creates an independent copy. If you want a sequence to follow future changes to the source template, hold Ctrl while dropping the template into the sequencer, or add it from the Linked Templates menu. This creates a Linked Template container instead of copying the template.
+### 链接模板
+默认情况下，将模板添加到序列会创建一个独立的副本。如果你希望序列跟随源模板的未来更改，在将模板拖入序列器时按住 Ctrl 键，或从"链接模板"菜单中添加它。这将创建一个链接模板容器，而不是复制模板。
 
-A linked template shows the current template contents directly in the sequence, but the materialized content is dimmed and read-only so it can be inspected without accidentally changing it. When the source template changes, the linked template refreshes automatically.
+链接模板会直接在序列中显示当前模板的内容，但实例化的内容为灰色且只读，以便你可以检查而不会意外更改。当源模板发生变化时，链接模板会自动刷新。
 
-To intentionally change the source template from the sequence, use Edit Template on the linked template. While editing, the materialized content becomes editable. Save Template writes the changes back to the user template; Cancel discards the edit and refreshes from the current source. Default templates cannot be edited directly.
+如需有意识地通过序列更改源模板，可以使用链接模板上的"编辑模板"功能。编辑时，实例化的内容变为可编辑状态。"保存模板"将更改写回用户模板；"取消"将放弃编辑并从当前源刷新。默认模板不能直接编辑。
 
-When a linked template is based on a Deep Sky Object Set, target information is stored on the linked template instance and not in the reusable template itself. Enter a target on the linked template or drop a target onto it. This target override is saved with that linked use and is reapplied whenever the template refreshes, so the same template can be reused for multiple targets.
+当链接模板基于深空天体指令集时，目标信息存储在链接模板实例上，而非可复用模板本身。在链接模板上输入目标或将目标拖放到其上。此目标覆盖将与该链接使用一起保存，并在模板每次刷新时重新应用，因此同一模板可以复用给多个目标。
 
-The templates are located on the right sidebar when switching to the templates tab. A couple of basic templates are provided with the application.  
-![Templates](../../images/sequencer/Sequencer_Templates.png)
+模板位于右侧边栏的模板选项卡中。应用程序提供了一些基本模板。
+![模板](../../images/sequencer/Sequencer_Templates.png)
 
-User specific templates are listed below the basic templates.
-![User Templates](../../images/sequencer/Sequencer_UserTemplate.png)
+用户特定的模板列在基本模板下方。
+![用户模板](../../images/sequencer/Sequencer_UserTemplate.png)
 
-To create a user template an instruction needs to be added to the sequencer. Then the desired instructions, triggers and loop conditions should be added to the instruction set. Once the instruction set is set up with all desired parameters a click on the save button next to the instruction set will save it as a template. Then the name of the instruction set will be taken for the template name and a new template will be shown in the sidebar. When a name is already taken, the application will ask if the existing template should be overwritten.
-![Save As Template](../../images/sequencer/Sequencer_SaveAsTemplate.png)
+要创建用户模板，需要先将指令集添加到序列器中。然后在指令集中添加所需的指令、触发器和循环条件。一旦指令集设置好所有所需参数，点击指令集旁边的保存按钮，即可将其保存为模板。指令集的名称将被用作模板名称，一个新的模板将显示在侧边栏中。如果名称已被占用，应用程序将询问是否应覆盖现有模板。
+![保存为模板](../../images/sequencer/Sequencer_SaveAsTemplate.png)
 
-Furthermore it is possible to just drag and drop the instruction set into the template area to create a new one.
-![Save As Template Drag Drop](../../images/sequencer/Sequencer_SaveAsTemplateDragDrop.png)
+此外，也可以直接将指令集拖放到模板区域来创建新模板。
+![拖放保存为模板](../../images/sequencer/Sequencer_SaveAsTemplateDragDrop.png)
 
-!!! tip
-    Templates using a Deep Sky Object Set will be available for selection in the sky atlas and framing assistant to be used to add targets to a sequence
+:::tip
+使用深空天体指令集的模板将可在天图集和构图助手中选择，用于将目标添加到序列中
+:::
 
-## Targets
-The targets tab offers the ability to store targets for later use. They contain a deep sky object sequence and can be dragged and dropped into the sequencer just like templates. In contrast to templates, these deep sky object sequences will auto populate the target coordinates and rotation info as they were saved.  
-![Templates](../../images/sequencer/Sequencer_TargetsTab.png)
+## 目标
+目标选项卡提供了将目标存储起来以备将来使用的功能。它们包含一个深空天体序列，可以像模板一样拖放到序列器中。与模板不同，这些深空天体序列将自动填充目标坐标和旋转信息，就像它们保存时一样。
+![模板](../../images/sequencer/Sequencer_TargetsTab.png)
 
-To use a target, simply drag it into the sequencer. Its underlying instructions will then be loaded into the sequencer.
-![Add Target](../../images/sequencer/Sequencer_AddTarget.png)
+要使用目标，只需将其拖入序列器。其底层的指令将被加载到序列器中。
+![添加目标](../../images/sequencer/Sequencer_AddTarget.png)
 
-An alternative to just dragging them into the sequence, it is also possible to update an existing deep sky object sequence with a specific target by dragging the target from the target tab into the target area of the deep sky object sequence. Then only the target information of that set is updated.    
-![Apply target to template](../../images/sequencer/Sequencer_ApplyTarget.png)
+除了直接将它们拖入序列之外，还可以通过将目标从目标选项卡拖到深空天体序列的目标区域，用特定目标更新现有的深空天体序列。这样只有该指令集的目标信息会被更新。
+![将目标应用于模板](../../images/sequencer/Sequencer_ApplyTarget.png)
 
-To save a target in the target area, simply click the save target button in the header of the deep sky object sequence.  
-![Add target to targets](../../images/sequencer/Sequencer_AddTargetToTargetTab.png)
+要将目标保存到目标区域，只需点击深空天体序列标题中的保存目标按钮。
+![将目标添加到目标选项卡](../../images/sequencer/Sequencer_AddTargetToTargetTab.png)
 
-Or drag it into the target tab drop area.  
-![Drop target to targets](../../images/sequencer/Sequencer_DropTargetToTab.png)
+或者将其拖到目标选项卡的放置区域中。
+![将目标拖放到目标选项卡](../../images/sequencer/Sequencer_DropTargetToTab.png)
 
-## Shortcuts
-| Key          | Command                                              | Note                                                                                |
-|--------------|------------------------------------------------------|-------------------------------------------------------------------------------------|
-| Ctrl+S       | Saves the current sequence                           |                                                                                     |
-| Ctrl+Shift+S | Saves the current sequence to a new file             |                                                                                     |
-| Ctrl+O       | Opens an existing sequence                           |                                                                                     |
-| Alt          | Duplicate the current instruction or instruction set | When in the process of dragging an instruction or instruction set to a new location |
+## 快捷键
+| 按键          | 命令                        | 备注                                                        |
+|--------------|-----------------------------|-------------------------------------------------------------|
+| Ctrl+S       | 保存当前序列                 |                                                             |
+| Ctrl+Shift+S | 将当前序列保存到新文件         |                                                             |
+| Ctrl+O       | 打开已有序列                 |                                                             |
+| Alt          | 复制当前指令或指令集           | 在将指令或指令集拖到新位置的过程中按住                       |

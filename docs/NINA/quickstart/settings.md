@@ -1,19 +1,20 @@
-This whole setup routine only has to be done once for a specific profile. 
-Once you have your default mount and camera set up you just need to press the connect button on the lower left after N.I.N.A. is started up to connect to the saved equipment automatically.
+以下整个设置流程只需针对特定配置文件执行一次。
+一旦你设置好了默认的赤道仪和相机，在 N.I.N.A. 启动后只需按下左下角的连接按钮，即可自动连接到已保存的设备。
 
-We have a few small steps to do before we can start with imaging. For that we need to switch to the options tab.
+在开始拍摄之前，我们还需要完成几个小步骤。为此，我们需要切换到选项选项卡。
 
-![N.I.N.A Configuration](../images/quickstart/settings1.png)
+![N.I.N.A 配置](../images/quickstart/settings1.png)
 
-In the options we go directly to the Equipment tab (1) and have to set a few things first. You should set your pixel size to the pixel size that your camera has, if it has not been set automatically, which is the case with most DSLR and some ASCOM drivers. Search online for the pixel size of your camera and enter the value in (2).  
-Bit depth will be kept at 16 bit for most cameras, as this does not refer to the sensor bit depth but at the actual raw data depth that the camera driver produces. Most drivers will scale this automatically to be 16 bit. In case you are using a DSLR and have the raw converter selected to be "FreeImage" (in the advanced settings) then you need to enter the real bit depth of your camera instead!
+在选项中，我们直接进入设备选项卡（1），首先需要设置一些内容。你应该将像素尺寸设置为你的相机实际像素尺寸（如果未自动设置的话，大多数 DSLR 和某些 ASCOM 驱动不会自动设置）。请在线搜索你相机的像素尺寸，并将值填入（2）中。
+对于大多数相机，位深保持在 16 位即可，因为这里指的并非传感器位深，而是相机驱动产生的实际原始数据位深。大多数驱动会自动将其缩放为 16 位。如果你使用的是 DSLR 并且将原始转换器选择为"FreeImage"（在高级设置中），则需要输入相机的实际位深！
 
-!!! tip
-    If you have an older Nikon camera you might not be able to use the native bulb mode, controlled via USB, for exposures that are longer than 30 second. If you have a RS232 (serial) shutter cable or your mount has a camera shutter control port, change the **Bulb Mode** inside the advanced settings (3). Please refer to the Advanced topic using RS232 or mount for bulb shutter.
+:::tip
+如果你使用的是较旧的 Nikon 相机，可能无法使用通过 USB 控制的原生 B 门模式进行超过 30 秒的曝光。如果你有 RS232（串口）快门线，或者你的赤道仪有相机快门控制端口，请在高级设置（3）中更改**B 门模式**。请参考使用 RS232 或赤道仪进行 B 门快门控制的高级主题。
+:::
 
-![N.I.N.A Configuration](../images/quickstart/settings2.png)
+![N.I.N.A 配置](../images/quickstart/settings2.png)
 
-Now we have to set a few other image-saving-related settings as well. To do that, switch to the Imaging tab (1). The images can be saved as TIFF (with two different compression algorithms, too), XISF, and FITS (2). FITS is a solid format that can be read by all astronomy-related software and this setting can be left unchanged. Feel free to change it though should you prefer a different format.
-Next you need to set the Image File path (3). This is the place where your images will be saved. And finally, if you want you can change the Image File Pattern (4). This is how the images will be named after. You can see variables that you can use below the panel and below the pattern you can check how your file pattern will look like. You can leave this setting on default or customize it as you like.
+现在，我们还需要设置一些与图像保存相关的其他选项。为此，请切换到拍摄选项卡（1）。图像可以保存为 TIFF（也支持两种不同的压缩算法）、XISF 和 FITS 格式（2）。FITS 是一种通用格式，所有天文相关软件都可以读取，可以保留默认设置。不过，如果你偏好其他格式，也可以随时更改。
+接下来，你需要设置图像文件路径（3）。这就是你保存图像的位置。最后，如果你愿意，可以更改图像文件命名模式（4）。这决定了图像文件的命名方式。你可以在面板下方看到可用的变量，在模式下方可以预览文件名的最终效果。你可以保留默认设置或按自己的喜好进行自定义。
 
-Once you have done that, we can move on to focusing and starting a sequence.
+完成这些设置后，我们就可以开始对焦并启动拍摄序列了。

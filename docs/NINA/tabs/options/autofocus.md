@@ -1,109 +1,108 @@
-![Autofocus options](../../images/tabs/options_autofocus.png)
+![自动对焦选项](../../images/tabs/options_autofocus.png)
 
-## General settings
-### Use FilterWheel Offsets
-Determines whether the focuser should move per the defined offset in the list at the bottom when the filter wheel changes filters. See below for more details.
+## 常规设置
+### 使用滤镜轮偏移
+决定当滤镜轮切换滤镜时，调焦器是否应根据底部列表中定义的偏移值进行移动。详见下文。
 
-### Autofocus Step Size
-The number of focuser steps that the autofocus routine will move by between autofocus points. This setting is highly dependent on the telescope and focuser.
-  
-### Autofocus Initial Offset Steps
-The number of focus points that will be used on each side of perfect focus by the autofocus routine.  
-*The default value should work for most cases*
+### 自动对焦步长
+自动对焦流程在各对焦点之间移动的调焦器步数。此设置高度依赖于望远镜和调焦器。
 
-### Default Autofocus Exposure Time
-The exposure time in seconds that will be used by autofocus, if filter-specific times in the list below are not set.
+### 自动对焦初始偏移步数
+自动对焦流程将在完美焦点两侧各使用的对焦点数量。
+*默认值在大多数情况下应该适用*
 
-### AF Method
-Method used to detect data points for autofocus.  
+### 默认自动对焦曝光时间
+如果下方列表中未设置按滤镜的曝光时间，自动对焦将使用的曝光时间（秒）。
 
-* Star HFR: This is the default method that will work reliably with images containing stars  
-* Contrast Detection: An alternative method to focus on terrestrial objects or planets  
+### 自动对焦方法
+自动对焦中用于检测数据点的方法。
 
-### AF disable Guiding
-Activate to pause guiding during AF routines. Enable this setting when using an Off-Axis Guider. For Guidescopes it is recommended to be left off.
+* 星点 HFR：这是默认方法，对包含星点的图像能够可靠地工作。
+* 对比度检测：一种针对地面物体或行星对焦的替代方法。
 
-### AF Curve Fitting
-Fitting that should be used to determine ideal focus position out of the measured data points. A traditional autofocus curve follows a hyperbolic shape, so Hyperbolic method is recommended.
+### 自动对焦时禁用导星
+激活后，在自动对焦流程期间暂停导星。使用离轴导星器时启用此设置。对于导星镜，建议保持关闭。
 
-### Focuser Settle Time
-The amount of time, in seconds, to wait after a focuser move before starting a new exposure. Some focusers will require a small settle time to avoid losing steps and to prevent vibrations.
-  
-### AF Number of Attempts
-The number of times the autofocus routine should be retried in case of unsuccessful focusing. Be careful when increasing this, as it can unnecessarily lengthen the AF routine when no focus can be achieved anyway, due to, for example, clouds. This is better handled with the [advanced sequencer](../../sequencer/advanced/advanced.md).
+### 自动对焦曲线拟合
+用于根据测量数据点确定理想对焦位置的拟合方法。传统自动对焦曲线遵循双曲线形状，因此推荐使用双曲线方法。
 
-### AF Number of Frames per Point
-The number of frames whose HFR or contrast will be averaged per focus point. Most of the time, only one frame per focus point is enough.
-  
-### Use brightest n stars
-The number of brightest stars that the autofocus routine will use. 0 means there is no limit and all stars are considered.
+### 调焦器稳定时间
+调焦器移动后、开始新曝光前等待的时间（秒）。某些调焦器需要短暂的稳定时间，以避免丢步和防止振动。
 
-### AF Inner Crop Ratio
-Inner ratio that will determine a centered region of interest for autofocus
+### 自动对焦尝试次数
+对焦不成功时重试自动对焦流程的次数。增大此值时要谨慎，因为这可能不必要地延长自动对焦流程——例如因云层遮挡等原因，无论如何都无法实现对焦时。这种情况最好通过[高级序列器](../../sequencer/advanced/advanced.md)来处理。
 
-### AF Outer Crop Ratio
-Outer ratio that will determine a centered region of interest for autofocus
-  
-### Backlash Compensation Method
-This controls the backlash compensation method used. The method can only be changed when the focuser is not connected!
+### 每对焦点帧数
+每个对焦点上用于平均 HFR 或对比度的帧数。大多数情况下，每个对焦点仅需一帧就足够了。
 
-* Absolute:
-  When the focuser changes directions, an absolute value will be added to the focuser movement.
-  Backlash IN: when the focuser changes from moving outwards to moving inwards, the Backlash IN value will be added.
-  Backlash OUT: when the focuser changes from moving inwards to moving outwards, the Backlash OUT value will be added.
-* Overshoot (recommended):
-  This method will compensate for backlash by overshooting the target position by a large amount and then moving the focuser back to the initially requested position.
-  Due to this compensation, the last movement of the focuser will always be in the same direction (either always inwards or always outwards).
-  
-### Backlash IN/OUT
-The focuser backlash in the IN (decreasing position) and OUT (increasing position) directions, expressed in focuser steps.
-  
-!!! tip
-    When Overshoot is chosen, only ONE value between Backlash IN and OUT must be set! When setting IN, the amount will be applied on each inward movement, so the final movement will always be outwards. For Backlash OUT, it will be the other way around.
-    The recommended direction is OUT, as then the autofocus routine will need less compensation. Use IN only when your equipment requires this direction to work properly.
+### 使用最亮的 n 颗星
+自动对焦流程将使用的最亮恒星数量。0 表示没有限制，将使用所有星点。
 
-### Binning
-The binning to be used for Autofocus exposures, if filter-specific binning in the list below is not set.
+### 自动对焦内裁剪比例
+用于确定自动对焦居中感兴趣区域的内比例。
 
-### R² Threshold
-This setting refers to the [coefficient of determination](https://en.wikipedia.org/wiki/Coefficient_of_determination) which is used to grade the [calculated fitting](./autofocus.md#af-curve-fitting) of an autofocus run to the actual data points. When an autofocus run leads to an R² value that is below this threshold, the autofocus run will be deemed as failed. This can happen due to bad parameters, clouds rolling in and other problems during an autofocus run. An ideal autofocus run will have an R² value that is easily beyond 0.95. 
+### 自动对焦外裁剪比例
+用于确定自动对焦居中感兴趣区域的外比例。
 
+### 回差补偿方法
+此选项控制使用的回差补偿方法。此方法只能在调焦器未连接时更改！
 
+* 绝对模式：
+  当调焦器改变方向时，将向调焦器移动添加一个绝对值。
+  向内回差：当调焦器从向外移动变为向内移动时，将添加向内回差值。
+  向外回差：当调焦器从向内移动变为向外移动时，将添加向外回差值。
+* 过冲模式（推荐）：
+  此方法通过大幅越过目标位置，然后将调焦器移回最初请求的位置来补偿回差。
+  由于这种补偿方式，调焦器的最后移动将始终朝着同一方向（始终向内或始终向外）。
 
-## Autofocus filter settings
+### 回差 向内/向外
+调焦器在向内（位置减小）和向外（位置增大）方向上的回差，以调焦器步数表示。
 
-### Filter offsets
+:::tip
+选择过冲模式时，向内回差和向外回差只需设置**一个**值！设置向内时，该值将应用于每次向内移动，因此最终移动将始终向外。对于向外回差，则反过来。
+推荐的方向是向外，这样自动对焦流程需要的补偿更少。只有当你的设备需要此方向才能正常工作时才使用向内。
+:::
 
-Most filters are not exactly parfocal, meaning that when changing filters, the ideal focus distance changes slightly. This will cause an imaging system that was in perfect focus with one filter to be slightly out of focus with another filter. This can be a big problem for precise imaging, requiring an additional autofocus run each time the filter is changed.
+### 像素合并
+用于自动对焦曝光的像素合并，如果下方列表中未设置按滤镜的像素合并值。
 
-To avoid this, it is possible to set filter offsets, which are the amount of focuser steps that the focuser should move by when switching from one filter to another.
+### R² 阈值
+此设置指的是[决定系数](https://en.wikipedia.org/wiki/Coefficient_of_determination)，用于评估自动对焦运行的[计算拟合](./autofocus.md#自动对焦曲线拟合)与实际数据点的吻合程度。当自动对焦运行得出的 R² 值低于此阈值时，该次自动对焦运行将被判定为失败。这可能由参数不佳、云层遮挡以及对焦过程中出现的其他问题导致。理想的自动对焦运行其 R² 值应轻松超过 0.95。
 
-For example, I could run the autofocus routine on each of my filters one after the other (with hopefully very little temperature change in between), with the following results:
+## 自动对焦滤镜设置
 
-* L filter achieves perfect focus at focuser position 5000
-* R filter achieves perfect focus at focuser position 4990 (10 steps fewer than L filter)
-* G filter achieves perfect focus at focuser position 5030 (30 steps more than L filter)
-* B filter achieves perfect focus at focuser position 5045 (45 steps more than L filter)
-* Ha filter achieves perfect focus at focuser position 4988 (12 steps fewer than L filter)
+### 滤镜偏移
 
-If we take the L filter as the reference filter, we can set up all the filter offsets relative to the L filter, as below:
+大多数滤镜并非完全齐焦，这意味着切换滤镜时，理想的对焦距离会略有变化。这会导致使用某个滤镜时对焦完美的成像系统，在更换另一个滤镜后略微失焦。对于精确拍摄来说，这可能是一个大问题，每次更换滤镜都需要额外进行一次自动对焦。
 
-* L filter offset 0 (reference filter)
-* R filter offset -10 (10 steps fewer than L)
-* G filter offset 30 (30 steps more than L)
-* B filter offset 45 (45 more steps than L)
-* HA filter offset -12 (12 steps fewer than L)
+为避免这种情况，可以设置滤镜偏移值，即从一个滤镜切换到另一个滤镜时，调焦器应移动的步数。
 
-This is what has been done in the above screenshot.
+例如，我可以逐一在每个滤镜上运行自动对焦流程（希望两次之间温度变化尽可能小），得到以下结果：
 
-Note that for this to work, the *Use FilterWheel Offsets* parameter under the Focuser Options needs to be set to On.
+* L 滤镜在调焦器位置 5000 处达到完美对焦
+* R 滤镜在调焦器位置 4990 处达到完美对焦（比 L 滤镜少 10 步）
+* G 滤镜在调焦器位置 5030 处达到完美对焦（比 L 滤镜多 30 步）
+* B 滤镜在调焦器位置 5045 处达到完美对焦（比 L 滤镜多 45 步）
+* Ha 滤镜在调焦器位置 4988 处达到完美对焦（比 L 滤镜少 12 步）
 
-### Autofocus Exposure Time
+如果以 L 滤镜作为参考滤镜，我们可以将所有滤镜偏移相对于 L 滤镜进行设置，如下所示：
 
-The ideal auto-focus time can change per filter, particularly between broadband and narrowband filters (in the above example, the narrowband filter requires an exposure time 5 times longer than the broadband filters). This can easily be set up here.
+* L 滤镜偏移 0（参考滤镜）
+* R 滤镜偏移 -10（比 L 少 10 步）
+* G 滤镜偏移 30（比 L 多 30 步）
+* B 滤镜偏移 45（比 L 多 45 步）
+* HA 滤镜偏移 -12（比 L 少 12 步）
 
-Finding a good exposure time for autofocus is further explained in the [Auto-Focus section](../../advanced/autofocus.md)
+以上截图就是依照此方式完成的。
 
-### Autofocus Filter
+请注意，要使此功能生效，调焦器选项中的*使用滤镜轮偏移*参数需要设置为开启。
 
-From the filter list, it is possible to set (or unset) an autofocus filter, which will be used by the autofocus routine (if the *Use FilterWheel Offsets* setting is enabled). This can be done by simply selecting a filter in the list, and clicking on the *Set as Default AF Filter* button. The same button can be used to unset the autofocus filter.
+### 自动对焦曝光时间
+
+理想的自动对焦时间可能因滤镜而异，特别是在宽带滤镜和窄带滤镜之间（在上例中，窄带滤镜需要的曝光时间是宽带滤镜的 5 倍）。这可以在此处轻松设置。
+
+如何找到合适的自动对焦曝光时间在[自动对焦部分](../../advanced/autofocus.md)中有进一步的说明。
+
+### 自动对焦滤镜
+
+从滤镜列表中，可以设置（或取消）一个自动对焦滤镜，自动对焦流程将使用该滤镜（前提是*使用滤镜轮偏移*设置已启用）。只需在列表中选择一个滤镜，然后点击*设为默认自动对焦滤镜*按钮即可。同一个按钮也可用于取消自动对焦滤镜。

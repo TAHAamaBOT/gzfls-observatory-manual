@@ -1,14 +1,14 @@
-The Rotator Tab lets you connect an ASCOM-compatible telescope mount.
+望远镜标签页允许您连接 ASCOM 兼容的望远镜赤道仪。
 
-![Telescope](../../images/tabs/equipment_scope.png)
+![望远镜](../../images/tabs/equipment_scope.png)
 
-1. Telescope information 
-2. Define manual target coordinates
-3. Slew to manual target coordinates
-4. Define movement rate
-5. Manual movement commands
-6. Park mount
-7. Set current position as parking position
-8. Set a specific tracking rate by selecting the desired tracking rate in the combo box
-9. Reverse the primary and/or secondary axis direction
+1. 望远镜信息
+2. 定义手动目标坐标
+3. GOTO 到手动目标坐标
+4. 定义移动速率
+5. 手动移动命令
+6. 停放赤道仪
+7. 将当前位置设为停放位置
+8. 通过在组合框中选择所需的跟踪速率来设置特定的跟踪速率
+9. 反转主轴和/或副轴方向
 
