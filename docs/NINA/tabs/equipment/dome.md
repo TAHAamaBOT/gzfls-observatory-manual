@@ -1,25 +1,26 @@
-The Dome Tab lets you connect an ASCOM-compatible Dome.
+圆顶选项卡用于连接 ASCOM 兼容的圆顶。
 
-![Dome](../../images/tabs/Equipment-Dome0.png)
-N.I.N.A. provides some useful capabilities when connected to a Dome. They include:
+![圆顶](../../images/tabs/Equipment-Dome0.png)
+连接到圆顶时，N.I.N.A. 提供了一些实用的功能，包括：
 
-1. **Telescope Following**
-<br/>When a Telescope is connected, enabling *Dome follows telescope* ensures that the Dome azimuth (where the opening of a Dome is) is centered wherever the Telescope is pointed. This covers several different cases:
-      * *Tracking* - As the telescope follows the rotation of the Earth, the Dome stays in sync with it.
-      * *External Slew* - If a program other than N.I.N.A. slews the telescope, then the Dome will rotate until the telescope stops and they are lined back up. This movement can be jerky however - some Domes (such as NexDome) don't allow changing the destination azimuth while it is rotating, so N.I.N.A. repeatedly sends slew commands based on wherever the telescope is pointing at the time. <i>You can disable this behavior in the Options tab.</i>
-      * *N.I.N.A. Slew* - If N.I.N.A. issues a slew command to the telescope (such as from the Framing Wizard), then the Dome will go directly to the target azimuth that would be in sync with the telescope at its destination.
+1. **望远镜跟随**
+<br/>当有望远镜连接时，启用*圆顶跟随望远镜*可确保圆顶的方位角（即圆顶开口所在方向）始终与望远镜指向的中心对齐。这涵盖了几种不同的场景：
+      * *跟踪* — 当望远镜跟随地球自转时，圆顶与其保持同步。
+      * *外部转向* — 如果 N.I.N.A. 以外的程序使望远镜转向，圆顶将旋转直到望远镜停止移动并重新对齐。不过，这种移动可能会显得断续——某些圆顶（如 NexDome）在旋转时不允许更改目标方位角，因此 N.I.N.A. 会根据望远镜当时的指向反复发送转向命令。<i>你可以在选项选项卡中禁用此行为。</i>
+      * *N.I.N.A. 转向* — 如果 N.I.N.A. 向望远镜发出转向命令（例如来自构图向导），圆顶将直接转到与望远镜目标位置同步的目标方位角。
 
-2. **Find Home Before Park**
-<br/>This setting can be found in the [Dome Options](../options/dome.md). Domes with a Home position (such as NexDome) use a sensor to synchronize the physical azimuth with what is in the software. This is conceptually similar to star alignment with a mount. Finding the home position before parking increases the reliability of finding the precise park location, which can be important if that is where batteries recharge.
+2. **归位前寻找原点**
+<br/>此设置位于[圆顶选项](../options/dome.md)中。具有原点位置的圆顶（如 NexDome）使用传感器将物理方位角与软件中的方位角同步。这在概念上类似于赤道仪的恒星校准。在归位前寻找原点位置可以提高找到精确归位位置的可靠性，如果要在此位置给电池充电，这一点可能很重要。
 
-3. **Wait for Dome Synchronization**
-<br/>When the telescope moves, the Dome typically needs extra time to follow it and re-synchronize their azimuths. N.I.N.A. waits until the telescope stops slewing *and* the Dome is synchronized with it before starting operations that take images (such as Plate Solving and Auto Focus).
+3. **等待圆顶同步**
+<br/>当望远镜移动时，圆顶通常需要额外的时间来跟随并重新同步方位角。N.I.N.A. 会等待望远镜停止转向*且*圆顶与之同步后，再开始进行需要拍照的操作（如解析和自动对焦）。
 
-4. **Manual Shutter Control**
-<br/>The Dome shutter can be directly opened and closed, and the dome can be rotated either directly to an azimuth or in configurable increments.
+4. **手动快门控制**
+<br/>可以直接打开和关闭圆顶快门，圆顶可以直接旋转到指定方位角，也可以按可配置的增量旋转。
 
-    !!! note
-        There is no rotation control where you hold a button until you're where you want to be. Unfortunately, the ASCOM standard doesn't provide operations that would make this possible.
+:::note
+没有按住按钮直到转到目标位置的持续旋转控制。遗憾的是，ASCOM 标准没有提供实现此功能的操作。
+:::
 
-5. **Sync Azimuth**
-<br/> Sometimes the dome rotation can get off a few degrees - for example if a gear slips or there aren't exactly the right number of gear teeth. If your dome supports "Sync Azimuth", then a "Sync" button will be available in the lower left corner that sets the dome azimuth to wherever the telescope is currently pointing. You'd use this by manually lining up the dome with the telescope before syncing. You should not have Dome Synchronization enabled while you do this, but you can turn it back on right afterwards.
+5. **同步方位角**
+<br/>有时圆顶的旋转可能偏离几度——例如齿轮打滑或齿轮齿数不精确时。如果你的圆顶支持"同步方位角"，左下角会显示一个"同步"按钮，该按钮可将圆顶方位角设置为望远镜当前指向的位置。使用时，需要先将圆顶手动对准望远镜，然后再进行同步。执行此操作时不应启用圆顶同步功能，但之后可以立即重新开启。

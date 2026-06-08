@@ -1,23 +1,23 @@
-The Guider tab lets you connect to supported guiders and configure the settings used for guiding and dithering.
+导星选项卡用于连接受支持的导星器，并配置导星和抖动所使用的设置。
 
-![Guider](../../images/tabs/equipment_guider.png)
+![导星器](../../images/tabs/equipment_guider.png)
 
-The header contains the usual guider controls for connecting, disconnecting, refreshing the device list, and opening the setup dialog when one is available.
+标题栏包含常规的导星器控制按钮，用于连接、断开、刷新设备列表，以及在可用时打开设置对话框。
 
-## Overview
+## 概览
 
-The left side of the page shows guider status and graph settings:
+页面左侧显示导星器状态和图表设置：
 
-* connected state
-* current guider state
-* guider pixel scale
-* guider dither distance
-* main camera pixel scale
-* equivalent main camera dither distance
-* guide graph correction visibility
-* RA and Dec guide graph colors
+* 连接状态
+* 当前导星器状态
+* 导星器像素比例
+* 导星器抖动距离
+* 主相机像素比例
+* 等效的主相机抖动距离
+* 导星图表中的校正显示
+* RA 和 Dec 导星图表颜色
 
-The right side contains the guider-specific settings page for the selected guider. Dedicated settings pages are available for:
+右侧包含所选导星器的专用设置页面。以下导星器有专属设置页面：
 
 * PHD2
 * MGEN
@@ -25,57 +25,59 @@ The right side contains the guider-specific settings page for the selected guide
 * Direct Guider
 * SkyGuard
 
-The graph at the bottom shows live guide drift, optional correction bars, and dither markers.
+底部的图表显示实时导星漂移、可选的校正条和抖动标记。
 
-## PHD2 Setup
-![Guider](../../images/tabs/guider_phdsetup.png)
+## PHD2 设置
+![导星器](../../images/tabs/guider_phdsetup.png)
 
-### PHD2 Path
-PHD2 installation path. This is used to start PHD2 when it is not already running.
+### PHD2 路径
+PHD2 安装路径。此路径用于在 PHD2 尚未运行时启动它。
 
-### PHD2 Server URL
-You can set the PHD2 server settings here.
-> Usually the defaults should work fine. You also need to enable PHD2 server in PHD2.
+### PHD2 服务器 URL
+可在此处设置 PHD2 服务器参数。
+> 通常情况下，默认设置即可正常工作。你还需要在 PHD2 中启用 PHD2 服务器。
 
-### PHD2 Server Port
-PHD server port. Usually the default 4400 works fine. If you are using multiple instances of PHD2, each instance will add 1 to the port number. So instance 2 will run on port 4401, instance 3 on 4402, etc.
+### PHD2 服务器端口
+PHD 服务器端口。通常默认值 4400 可以正常工作。如果你运行多个 PHD2 实例，每个实例的端口号会递增 1。例如，第二个实例使用端口 4401，第三个实例使用 4402，依此类推。
 
-### PHD2 Instance Number
-Use this when you run more than one PHD2 instance on the same machine.
+### PHD2 实例编号
+当你在同一台机器上运行多个 PHD2 实例时使用此项。
 
-## PHD2 Settings
-![Guider](../../images/tabs/guider_phdsettings.png)
+## PHD2 设置
+![导星器](../../images/tabs/guider_phdsettings.png)
 
-### Dither Pixels and Dither RA Only
-The amount of guide camera pixels to dither in PHD2. If "Dither RA only" is checked, the dither movements will only be performed in RA. 
-    
-!!!tip
-    Refer to [Dithering](../../advanced/dithering.md) in Advanced documentation topics for more information about Dithering and how to set the above parameters
-  
+### 抖动像素与仅 RA 抖动
+在 PHD2 中进行抖动的导星相机像素数。如果勾选"仅 RA 抖动"，抖动移动将仅在赤经（RA）方向上执行。
 
-### Settle Pixel Tolerance
-The threshold expressed in guide camera pixels that will determine a dither settling completion after a dither move.
+:::tip
+有关抖动以及如何设置上述参数的更多信息，请参阅高级文档主题中的[抖动](../../advanced/dithering.md)。
+:::
 
-!!!tip
-    A dither will be considered settled if, after the duration of "Minimum Settle Time" and before the "PHD2 Settle Timeout", the guide movements in PHD2 will be below the "PHD2 Settle Pixel Tolerance".
+### 稳定像素容差
+以导星相机像素表示的阈值，用于判断抖动移动后是否已完成稳定。
 
-### Minimum Settle Time
-The minimum time the settling should wait after a dithering process until the process is complete.
+:::tip
+如果在"最短稳定时间"之后、"PHD2 稳定超时"之前，PHD2 中的导星移动低于"PHD2 稳定像素容差"，则抖动将被视为已稳定。
+:::
 
-### Settle Timeout
-The maximum time N.I.N.A. should wait during a settling process until it starts the next action.
-### Guiding Start Retry
-If PHD2 fails to restart guiding, N.I.N.A. will send a new start guiding command again until guiding is successfully initiated.
-  
-### Guiding Start Timeout (seconds)
-Seconds to wait before sending a new start guiding command to PHD2.
+### 最短稳定时间
+抖动过程完成后，稳定阶段至少需要等待的时间。
 
-### ROI percentage to find guide star
-A region of interest expressed in a percentage of the full frame with the center of the frame as reference. If you want to prevent guide star selection near the edges of the frame, decrease this percentage.
+### 稳定超时
+N.I.N.A. 在稳定过程中等待的最长时间，超时后将启动下一个操作。
 
-### PHD2 profile
-Select from the list of available PHD2 profiles to switch to.
+### 导星启动重试
+如果 PHD2 未能重新启动导星，N.I.N.A. 将再次发送启动导星命令，直到导星成功启动。
 
-## Other Guider-Specific Pages
+### 导星启动超时（秒）
+向 PHD2 发送新的启动导星命令之前等待的秒数。
 
-If you select a guider other than PHD2, the settings panel changes to match that guider. For example, MetaGuide, MGEN, Direct Guider, and SkyGuard each expose their own dedicated controls when selected.
+### 查找导星的 ROI 百分比
+以全画幅百分比表示的感兴趣区域，以画面中心为参考点。如果希望避免在画面边缘附近选择导星，请减小此百分比。
+
+### PHD2 配置文件
+从可用的 PHD2 配置文件列表中选择要切换到的配置文件。
+
+## 其他导星器专属页面
+
+如果选择 PHD2 以外的导星器，设置面板将相应更改以匹配该导星器。例如，选择 MetaGuide、MGEN、Direct Guider 和 SkyGuard 时，各自会显示其专属控制选项。

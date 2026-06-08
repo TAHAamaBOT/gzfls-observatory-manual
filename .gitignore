@@ -5,6 +5,9 @@
 /build
 /deploy
 
+# Backup
+/NINA_bak
+
 # Generated files
 .docusaurus
 .cache-loader

@@ -1,7 +1,7 @@
-The N.I.N.A. source code itself is licensed under the Mozilla Public License Version 2.0. 
-However it depends on various third party libraries which carry their own copyright notices and license terms which are explained below.
+N.I.N.A. 源代码本身依据 Mozilla Public License Version 2.0 进行许可。
+然而，它依赖了多个第三方库，这些库各自携带版权声明和许可条款，说明如下。
 
-| Library              | Project Site       | License    |
+| 库                      | 项目网站       | 许可协议    |
 | -------------------- |:-----------|:----------|
 | Accord                   | [http://accord-framework.net/](http://accord-framework.net/) | [GNU Lesser General Public License version 2.1](https://www.gnu.de/documents/lgpl-2.1.de.html) |
 | ASCOM                    | [https://ascom-standards.org/](https://ascom-standards.org/) | [The MIT License](https://opensource.org/licenses/MIT) |
@@ -25,7 +25,7 @@ However it depends on various third party libraries which carry their own copyri
 | Nito.Mvvm.Async          | [https://github.com/StephenCleary/Mvvm](https://github.com/StephenCleary/Mvvm) | [The MIT License](https://opensource.org/licenses/MIT)                   |
 | NikonCSWrapper           | [https://sourceforge.net/projects/nikoncswrapper/](https://sourceforge.net/projects/nikoncswrapper/) | [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/de/legalcode) |
 | NJsonSchema              | [https://github.com/RicoSuter/NJsonSchema](https://github.com/RicoSuter/NJsonSchema) | [The MIT License](https://opensource.org/licenses/MIT)                   |
-| NOVAS 3.1                | [https://aa.usno.navy.mil/software/novasc_intro](https://aa.usno.navy.mil/software/novasc_intro) | No license requirements |
+| NOVAS 3.1                | [https://aa.usno.navy.mil/software/novasc_intro](https://aa.usno.navy.mil/software/novasc_intro) | 无许可要求 |
 | OxyPlot                  | [https://oxyplot.github.io/](https://oxyplot.github.io/) | [The MIT License](https://opensource.org/licenses/MIT)          |
 | Serilog                  | [https://serilog.net/](https://serilog.net/) | [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)          |
 | SharpGIS.NmeaParser      | [https://dotmorten.github.io/NmeaParser/](https://dotmorten.github.io/NmeaParser/) | [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) |
@@ -37,6 +37,3 @@ However it depends on various third party libraries which carry their own copyri
 | Trinet.Core.IO.Ntfs      | [https://github.com/RichardD2/NTFS-Streams](https://github.com/RichardD2/NTFS-Streams) | [The 2-Clause BSD License](https://opensource.org/licenses/BSD-2-Clause) |
 | VVVV.FreeImage           | [http://freeimage.sourceforge.net/](http://freeimage.sourceforge.net/) | [FreeImage Public License - Version 1.0](http://freeimage.sourceforge.net/freeimage-license.txt) |
 | Wpf Extended Toolkit     | [https://github.com/dotnetprojects/WpfExtendedToolkit](https://github.com/dotnetprojects/WpfExtendedToolkit) | [Microsoft Public License (MS-PL)](https://opensource.org/licenses/MS-PL) |
-
-
-

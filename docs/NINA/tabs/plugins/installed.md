@@ -1,28 +1,29 @@
-The **Installed** tab shows the plugins that are already present on your machine.
+**已安装**选项卡显示你机器上已存在的插件。
 
-![Installed plugins](../../images/tabs/Plugins_Installed.png)
+![已安装插件](../../images/tabs/Plugins_Installed.png)
 
-## Plugin List
+## 插件列表
 
-The list on the left shows the installed plugins with their thumbnail and name. Select a plugin to open its detail page.
+左侧列表显示已安装的插件及其缩略图和名称。选择一个插件即可打开其详情页面。
 
-## Selected Plugin Details
+## 选中插件详情
 
-The detail page for the selected plugin can show:
+所选插件的详情页面可显示：
 
-* name, author, and version
-* homepage and changelog links
-* short description
-* featured image
-* long description
+* 名称、作者和版本
+* 主页和更新日志链接
+* 简短描述
+* 特色图片
+* 详细描述
 
-## Plugin Options
+## 插件选项
 
-The **Options** section is reserved for plugin-specific settings. If the plugin provides an options panel, it appears here. If the plugin does not expose any user settings, this area remains empty.
+**选项**区域保留给插件特定的设置。如果插件提供了选项面板，将显示在此处。如果插件没有暴露任何用户设置，此区域将保持空白。
 
-## Uninstall
+## 卸载
 
-Use the **Uninstall** button to remove the selected plugin from the machine.
+使用**卸载**按钮从机器上移除所选插件。
 
-!!! important
-    Plugins are maintained by individual authors that may or may not be related to the core N.I.N.A. contributors. If a plugin causes a problem, contact the plugin maintainer first. If you need to isolate a problem, remove the plugin or restart N.I.N.A. without it.
+:::warning
+插件由个人作者维护，这些作者可能与 N.I.N.A. 核心贡献者有关，也可能无关。如果插件引发问题，请首先联系插件维护者。如果你需要隔离问题，可以移除插件或不安装该插件重启 N.I.N.A.。
+:::

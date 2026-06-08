@@ -1,30 +1,31 @@
-The Equipment tab is where one manages the hardware that N.I.N.A. controls. The classes of hardware devices that N.I.N.A. supports are separate sub-tabs.
+设备选项卡是管理 N.I.N.A. 所控制硬件的地方。N.I.N.A. 支持的硬件设备类型分别对应不同的子选项卡。
 
-## Selecting Equipment
+## 选择设备
 
-Each tab has a drop-down box that lists the devices and drives that were detected. Devices are organized into categories to denote differences between Native, ASCOM, N.I.N.A. internal devices, and so-on.
+每个选项卡都有一个下拉框，列出检测到的设备和驱动。设备按类别组织，以区分原生设备、ASCOM、N.I.N.A. 内部设备等不同类别。
 
-![Equipment Listing](../../images/tabs/equipment1.png)
+![设备列表](../../images/tabs/equipment1.png)
 
-In the above example of a list of cameras, the `ZWO ASI1600MM Pro` is listed under the `ZWOptical` category. You would select this device to connect to the camera directly. If connecting to the camera via ASCOM is desired, you would select the appropriate `ASI Camera` driver under the `ASCOM` section. Driver categories exist so that it is clear *how* the device is accessed and operated.
+以上方相机列表为例，`ZWO ASI1600MM Pro` 列在 `ZWOptical` 类别下。选择此设备即可直接连接相机。如果希望通过 ASCOM 连接相机，则需要在 `ASCOM` 区域下选择相应的 `ASI Camera` 驱动。驱动分类的存在是为了明确设备的*访问和操作方式*。
 
-## Management
+## 管理
 
-Next to the drop-down box is a series of buttons:
+下拉框旁边有一系列按钮：
 
-![Management](../../images/tabs/equipment2.png)
+![管理](../../images/tabs/equipment2.png)
 
-1. A drop-down box that lists all detected devices.
-2. Buttons to the right of the drop-down box may be used to:
+1. 列出所有检测到的设备的下拉框。
+2. 下拉框右侧的按钮可用于：
 <ol type="a">
-    <li>Configure the selected device or ASCOM driver</li>
-    <li>Refresh the list of identified devices</li>
-    <li>Connect to or disconnect from the selected device</li>
+    <li>配置选中的设备或 ASCOM 驱动</li>
+    <li>刷新已识别设备列表</li>
+    <li>连接或断开所选设备</li>
 </ol>
 
-!!! tip
-    If you connect a device to your computer after starting N.I.N.A., you may press the Refresh button (2b) to have N.I.N.A. perform a system scan and update the list of devices.
+:::tip
+如果你在启动 N.I.N.A. 之后才将设备连接到电脑，可以按下刷新按钮（2b），让 N.I.N.A. 执行系统扫描并更新设备列表。
+:::
 
-## Information and Controls
+## 信息与控制
 
-Any device tab also displays information that pertains to the device that was selected and connected. Specific devices may also display control functions in this area.
+任何设备选项卡还会显示与所选已连接设备相关的信息。特定设备还可能在此区域显示控制功能。

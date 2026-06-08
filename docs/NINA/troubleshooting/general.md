@@ -1,34 +1,34 @@
-## General Troubleshooting
+## 通用故障排查
 
-Should you encounter any bugs during your usage of N.I.N.A., please report them on the project's [Issue Tracker](https://github.com/isbeorn/nina/issues) or directly to the team on the [Discord chat](//discord.gg/fwpmHU4). If possible, attach the latest log file. It is also helpful to increase the application's logging verbosity to **Debug** or **Trace** under **Options > Log Level**. The logging level of **Trace** includes the most information and may lead to the accumulation of large log files. Therefore, it is not recommended to leave that level specified under normal conditions.
+如果您在使用 N.I.N.A. 期间遇到任何 bug，请在项目的[问题追踪器](https://github.com/isbeorn/nina/issues)上报告，或直接在 [Discord 聊天](//discord.gg/fwpmHU4)中联系团队。如有可能，请附上最新的日志文件。同时将应用程序的日志详细程度提高到**调试**或**跟踪**级别（位于**选项 > 日志级别**）也有助于排查。**跟踪**日志级别包含最多的信息，但可能导致大量日志文件积累。因此，不建议在正常情况下保持该级别。
 
-Log files may be found in the `%LOCALAPPDATA%\NINA\Logs\` folder.
+日志文件位于 `%LOCALAPPDATA%\NINA\Logs\` 文件夹中。
 
-## Installation Issues
+## 安装问题
 
-### Installation fails in general
+### 安装普遍失败
 
-Often, Anti-Virus software can interfere with the installation of N.I.N.A. and cause either an aborted installation or an incomplete one.
-In these cases, it is advisable to disable any AV software temporarily and retry the installation.
-The likelihood of running into installation issues can vary with the number and types of AV software in use, as well as how strict the AV software is set to operate.
-No significant problems have been encountered on Windows 10 when using only Microsoft's built-in Windows Defender suite.
+防病毒软件常常会干扰 N.I.N.A. 的安装，导致安装中止或不完整。
+在此类情况下，建议暂时禁用所有防病毒软件，然后重试安装。
+遇到安装问题的可能性因使用防病毒软件的数量和类型，以及防病毒软件的严格程度而异。
+在 Windows 10 上仅使用微软内置的 Windows Defender 套件时，未发现重大问题。
 
-### Error: "The feature you are trying to use is on a network resource that is unavailable"
+### 错误："您尝试使用的功能位于不可用的网络资源上"
 
-In case you get this error or are unable to uninstall the application, some of the registry keys got corrupted. Follow the advice on the following page to fix the corrupted keys:
+如果您遇到此错误或无法卸载应用程序，某些注册表项已损坏。请按照以下页面的建议修复损坏的注册表项：
 [https://support.microsoft.com/en-us/topic/fix-problems-that-block-programs-from-being-installed-or-removed-cca7d1b6-65a9-3d98-426b-e9f927e1eb4d](https://support.microsoft.com/en-us/topic/fix-problems-that-block-programs-from-being-installed-or-removed-cca7d1b6-65a9-3d98-426b-e9f927e1eb4d)
 
-## Application Crashes
+## 应用程序崩溃
 
-### Crashdump
-In case you encounter a hard crash, Windows will create a crash dump file to investigate the problem in detail. Should you encounter such an issue, please provide this crash dump file.
+### 崩溃转储
+如果您遇到硬崩溃，Windows 将创建崩溃转储文件以详细调查问题。如果您遇到此类问题，请提供此崩溃转储文件。
 
-The crash dump may be found in the `%LOCALAPPDATA%\NINA\CrashDump\` folder.
+崩溃转储位于 `%LOCALAPPDATA%\NINA\CrashDump\` 文件夹中。
 
-### Event Viewer  
-![Event Viewer](../images/troubleshooting/eventviewer.png)
-You can check the Windows Event Viewer for root causes of hard application crashes.  
-To open event viewer, go to the windows search bar, enter "Event Viewer" and open the app.  
+### 事件查看器
+![事件查看器](../images/troubleshooting/eventviewer.png)
+您可以检查 Windows 事件查看器以查找应用程序硬崩溃的根本原因。
+要打开事件查看器，请转到 Windows 搜索栏，输入"事件查看器"并打开该应用程序。
 
-Once inside the app, go to the "Windows Logs -> Application" (1). Then go to "Filter Current Log..." (2) and narrow down the "Event Sources" (3) to only select ".NET Runtime" in the pop up window and click "OK".  
-After the filter is applied, you will find all event sources in the list in the middle (4). Look for the message that contains "Application: NINA.exe" in the Detail section (5). This will show the complete stack trace of why the application crashed. This is useful information that can be posted to the contributors who can analyze this further.
+进入应用程序后，转到"Windows 日志 -> 应用程序"（1）。然后进入"筛选当前日志..."（2），缩小"事件来源"范围（3），在弹出的窗口中只选中".NET Runtime"，点击"确定"。
+应用筛选后，您可以在中间列表中找到所有事件来源（4）。在详细信息部分（5）中查找包含"Application: NINA.exe"的消息。这将显示应用程序崩溃的完整堆栈跟踪。这是有用的信息，可以发布给贡献者进行进一步分析。

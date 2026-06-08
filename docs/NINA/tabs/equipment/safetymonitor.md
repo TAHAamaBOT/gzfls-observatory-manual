@@ -1,23 +1,23 @@
-The Safety Monitor tab lets you connect and monitor compatible safety monitors. These devices report whether conditions are currently safe for imaging.
+安全监测器选项卡用于连接和监视兼容的安全监测设备。这些设备报告当前条件是否适合安全拍摄。
 
-![Safety Monitor](../../images/tabs/equipment_safety.png)
+![安全监测器](../../images/tabs/equipment_safety.png)
 
-The header contains the usual device controls for connecting, disconnecting, refreshing the device list, and opening the setup dialog when one is available.
+标题栏包含常规的设备控制按钮，用于连接、断开、刷新设备列表，以及在可用时打开设置对话框。
 
-## Device Information
+## 设备信息
 
-The left side of the page shows the information reported by the selected safety monitor:
+页面左侧显示所选安全监测器报告的信息：
 
-* name
-* description
-* driver information
-* driver version
-* current **Is Safe** state
+* 名称
+* 描述
+* 驱动信息
+* 驱动版本
+* 当前**是否安全**状态
 
-## Settings
+## 设置
 
-The right side shows device-specific settings when the selected safety monitor provides them. If the selected safety monitor does not expose any extra settings, this area remains empty.
+当所选安全监测器提供设备特定设置时，右侧将显示这些设置。如果所选安全监测器没有额外的设置项，此区域将保持空白。
 
-## Imaging Workspace
+## 拍摄工作区
 
-The Imaging tab can also show a compact Safety Monitor panel so you can keep the current safe state visible while imaging.
+拍摄选项卡还可以显示一个紧凑的安全监测器面板，以便在拍摄时随时查看当前安全状态。
