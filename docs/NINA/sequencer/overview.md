@@ -1,11 +1,11 @@
-N.I.N.A. offers a broad range of capabilities to automate your imaging run.
-To do so there are two different approaches available.
+N.I.N.A. 提供了丰富的功能来自动化你的拍摄运行。
+为此，有两种不同的方法可用。
 
-## Approach 1   
-[The Legacy Sequencer](./simple/simple.md)    
-This kind of sequencer is targeted for the more traditional approach like intervalometers with a restricted set of capabilities to offer automation for the most common types of equipment and workflows that will run for a specific number of images. While limited it offers a good starting point for beginners to set up a new sequence and get it running quickly.
+## 方法一
+[传统序列器](./simple/simple.md)
+这类序列器面向更传统的方式（类似于间隔拍摄器），功能集有限，为最常见的设备类型和工作流程提供自动化，运行指定数量的图像。虽然功能有限，但它为初学者设置新序列并快速运行提供了良好的起点。
 
-## Approach 2  
-[The Advanced Sequencer](./advanced/advanced.md)  
-Due to the vast range of different equipment and use cases in the astrophotography area, the needs of the legacy sequencer couldn't serve the more specialized use cases. Adding more and more edge cases to the legacy sequencer was no option as that would clog up the user interface for the majority of users that won't even need these special features. Out of this need the advanced sequencer was born. This new approach offers a completely different way of setting up sequences on a fine granular level.  
-Instead of restricting the user to a specific workflow, the workflow itself can be customized to specialized requirements with simple building blocks that can be arranged together.
+## 方法二
+[高级序列器](./advanced/advanced.md)
+由于天体摄影领域设备和使用场景的广泛多样性，传统序列器的功能无法满足更专业的使用需求。向传统序列器添加越来越多的边界场景是不可行的，因为这会堵塞大多数用户根本不需要这些特殊功能的界面。基于这一需求，高级序列器应运而生。这一新方法提供了一种完全不同的方式，以细粒度的层次设置序列。
+它不限制用户使用特定的工作流程，而是允许用户通过简单的构件块自定义工作流程，以满足特定需求，这些构件块可以组合排列在一起。

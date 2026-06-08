@@ -1,20 +1,20 @@
-# Glossary
+# 术语表
 
-The following is a list of terms and abbreviations found throughout the documentation with their meanings.
+以下是本文档中出现的术语和缩写的释义列表。
 
-|Term           | Description
+| 术语           | 说明
 |---------------|:---
-|ADU            | Analog Digital Unit. The lightness value of pixels.
-|ASCOM          | Astronomy Common Object Model. A Windows-centric API for astronomy-related device drivers.
-|Bahtinov Mask  | A mask which has a specific pattern of light-diffracting openings that may be used to aid in achieving precise focus. Invented by Pavel Bahtinov in 2005.
-|Dithering      | Moving the guiding output by a few pixels thereby shifting how light falls on the sensor. This technique minimizes fixed noise patterns and missing data due to hot or cold pixels.
-|DSO            | Deep Space Object. Anything that is not an individual star or a Sol system object.
-|DSLR           | Digital Single Lens Reflex Camera. Typically a hand-held camera with interchangeable lenses and a mirror for the viewfinder.
-|GEM            | German Equatorial Mount. A common mount design.
-|Guiding        | Using a second camera to lock on to a specific star. The star then acts as a reference point for correcting any unwanted mount movement.
-|HFR            | Half-Flux Radius. A measurement (in pixels) which determines how focussed the average star is. Lower values indicate sharper stars. Focus precision and seeing conditions both affect HFR values.
-|J2000 and JNOW | [Epochs](//en.wikipedia.org/wiki/Epoch_(astronomy)) (temporal reference points) based on the position of stellar objects as they were at January 1, 2000 11:58:55.816 UTC (J2000) or at the current moment (JNOW). It is expected that the next epoch will be J2050.
-|LRGB           | Luminance, Red, Green, Blue. A typical color filter combination for creating color images using a monochrome camera.
-|OSC            | One-Shot-Color. An astronomy camera equipped with a color sensor.
-|Plate Solving  | Determining exactly where a telescope is pointing in the sky by comparing an image's stellar field to a database.
-|SNR            | Signal to noise ratio.
+| ADU            | 模数转换单位（Analog Digital Unit），表示像素的亮度值。
+| ASCOM          | 天文通用对象模型（Astronomy Common Object Model），一套面向 Windows 的天文设备驱动 API。
+| Bahtinov Mask  | 鱼骨对焦板（巴提诺夫对焦罩），一种具有特定光线衍射图案的遮罩，可用于辅助实现精确对焦。由 Pavel Bahtinov 于 2005 年发明。
+| Dithering      | 抖动，将导星输出移动几个像素，从而改变光线落在传感器上的位置。这种技术可以最大限度地减少固定噪声模式以及因热像素或坏像素导致的数据缺失。
+| DSO            | 深空天体（Deep Space Object），指不是单颗恒星或太阳系内天体的任何天体。
+| DSLR           | 数码单镜头反光相机（Digital Single Lens Reflex Camera），通常指具有可更换镜头和光学取景器的手持相机。
+| GEM            | 德式赤道仪（German Equatorial Mount），一种常见的赤道仪设计。
+| Guiding        | 导星，使用第二个相机锁定一颗特定恒星，以该恒星为参考点，对赤道仪的任何不良运动进行校正。
+| HFR            | 半通量半径（Half-Flux Radius），一种以像素为单位的测量值，用于判断恒星的聚焦程度。数值越低表示星点越锐利。对焦精度和视宁度条件都会影响 HFR 值。
+| J2000 与 JNOW   | [历元](//en.wikipedia.org/wiki/Epoch_(astronomy))（时间参考点），基于恒星天体在 2000 年 1 月 1 日 11:58:55.816 UTC 时的位置（J2000）或当前时刻的位置（JNOW）。预计下一个历元将是 J2050。
+| LRGB           | 亮度（Luminance）、红（Red）、绿（Green）、蓝（Blue），一种使用单色相机创建彩色图像的典型彩色滤镜组合方式。
+| OSC            | 一次性彩色相机（One-Shot-Color），配备彩色传感器的天文相机。
+| Plate Solving  | 解析（天图解析），通过将图像的星场与数据库进行比对，精确确定望远镜在天空中指向的位置。
+| SNR            | 信噪比（Signal to Noise Ratio）。

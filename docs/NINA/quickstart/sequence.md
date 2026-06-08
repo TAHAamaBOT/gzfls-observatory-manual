@@ -1,30 +1,30 @@
-Once you nailed your focus you can switch to the Sequence tab. There you should create a new target.
+对焦调整到位后，你可以切换到序列选项卡。在这里，你需要创建一个新的目标。
 
-![Sequence](../images/quickstart/sequence0.png)
+![序列](../images/quickstart/sequence0.png)
 
-![Sequence](../images/quickstart/sequence1.png)
+![序列](../images/quickstart/sequence1.png)
 
-Here we can find various options. 
-For One-Shot-Color users, it's a relatively simple matter.
-Enter the amount of images you want to shoot in Total # (1), enter the time for a single image (2) and the type (3), which likely will be LIGHT at that point. 
-You may also want to change your gain for the sequence in the gain column (4).  
+这里我们可以看到各种选项。
+对于一次性彩色相机（OSC）用户来说，操作相对简单。
+在"总数 #"（1）中输入你想拍摄的图像数量，输入单张图像的曝光时间（2），选择类型（3），此时通常为 LIGHT（亮场）。
+你可能还想在增益列（4）中为该序列调整增益值。
 
-Now open up the Target Options (5) and enable "Slew to Target" so that your mount will slew to the specified target. In addition, enable unparking the mount and enabling the meridian flip in (6). To also park the mount after everything is done, enable the Park Mount option in (7).
-Now for the slew to actually slew to a specific target, enter the coordinates and name in (8).  
+现在打开"目标选项"（5），启用"转到目标"，这样赤道仪就会转向指定的目标。此外，在（6）中启用赤道仪解锁和中天翻转功能。如果要在全部完成后也归位赤道仪，请在（7）中启用"归位赤道仪"选项。
+现在，为了让赤道仪实际转向一个特定目标，请在（8）中输入坐标和名称。
 
-You can see an estimation when the sequence is likely going to end (9). This value will change during the sequence depending on the average download time of your camera.  
-Finally press Start Sequence at the bottom right to start the imaging sequence. 
-Now that your sequence is running, head back to the imaging tab on the left side bar.  
+你可以看到序列预计完成时间的估算值（9）。该值会在序列运行过程中根据相机的平均下载时间而变化。
+最后，按下右下角的"开始序列"按钮以启动拍摄序列。
+序列运行后，返回左侧边栏的拍摄选项卡。
 
-![Sequence](../images/quickstart/sequence2.png)
+![序列](../images/quickstart/sequence2.png)
 
-Here you will see some small changes about the status of the sequence. 
-At the bottom left (1) you see the current status of the camera which will change depending on what it is doing. 
-In the sequence tab (2) you will see the estimated finish time and information about the image that is getting shot currently. 
-You can also cancel the sequence prematurely using the button at the bottom of the sequence tab. 
-Finally in the Image History (3) you will see the past images you shot and you can open them from there to review them. 
-From here on it's waiting until the sequence completes.
+在这里，你会看到序列状态的一些细微变化。
+在左下角（1）处，你可以看到相机的当前状态，该状态会根据相机正在执行的操作而变化。
+在序列选项卡（2）中，你可以看到预计完成时间以及当前正在拍摄的图像信息。
+你还可以使用序列选项卡底部的按钮提前取消序列。
+最后，在图像历史记录（3）中，你可以看到之前拍摄的图像，并可以从那里打开它们进行查看。
+接下来，就是等待序列完成了。
 
-Good luck and clear skies!
+祝你拍摄顺利，晴空万里！
 
-For more in-depth information about sequencing head to the [Sequence Overview](../sequencer/overview.md)
+有关序列拍摄的更深入信息，请参阅[序列概述](../sequencer/overview.md)

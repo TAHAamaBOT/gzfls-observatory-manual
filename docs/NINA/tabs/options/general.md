@@ -1,133 +1,135 @@
-The General Settings tab contains application-wide settings that do not belong to a single device or workflow.
+常规设置选项卡包含不属于单个设备或工作流的应用程序全局设置。
 
-![The general settings tab](../../images/tabs/OptionsGeneralv10.png)
+![常规设置选项卡](../../images/tabs/OptionsGeneralv10.png)
 
-## Profiles
+## 配置文件
 
-The profile list shows the profiles available on your system, including their active state, name, description, and ID.
+配置文件列表显示系统上可用的配置文件，包括其激活状态、名称、描述和 ID。
 
-### Profile Buttons
+### 配置文件按钮
 
-Use the buttons below the list to:
+使用列表下方的按钮可以：
 
-* add a new profile
-* duplicate the selected profile
-* delete the selected profile
-* load the selected profile
+* 添加新配置文件
+* 复制所选配置文件
+* 删除所选配置文件
+* 加载所选配置文件
 
-!!! important
-    A different profile cannot be loaded while equipment is connected.
+:::warning
+在设备保持连接的状态下，无法加载其他配置文件。
+:::
 
-## General
+## 常规
 
-### Name, Description, Language and Font
+### 名称、描述、语言和字体
 
-* The active profile name and description can be edited here.
-* The language selector changes most labels, tooltips, and buttons throughout the application.
-* The font selectors let you choose both the font family and the font face used by the user interface.
+* 可在此处编辑当前配置文件的名称和描述。
+* 语言选择器可更改应用程序中的大多数标签、工具提示和按钮文本。
+* 字体选择器用于选择用户界面使用的字体族和字形。
 
-> If you want to contribute to localization, check out the [localization guide](../../contributing/localization.md).
+> 如果你想参与本地化翻译，请参阅[本地化指南](../../contributing/localization.md)。
 
-### Sky Survey Cache Directory
+### 天图缓存目录
 
-This directory is used for downloaded survey images, such as images fetched while using the Framing Assistant.
+此目录用于存储下载的天图图像，例如在使用构图助手时获取的图像。
 
-### Profile Chooser On Startup
+### 启动时显示配置文件选择器
 
-This option controls whether N.I.N.A. opens with the profile chooser or reuses the saved profile selection automatically.
+此选项控制 N.I.N.A. 启动时是显示配置文件选择器，还是自动使用上次保存的配置文件。
 
-### Advanced Settings
+### 高级设置
 
-The **Advanced Settings** expander contains the following application-wide options:
+**高级设置**展开区域包含以下应用程序全局选项：
 
-#### Auto Update Source
+#### 自动更新源
 
-Selects which update channel N.I.N.A. checks. Available channels are **Nightly**, **Beta**, and **Release**.
-* Currently there are 3 version branches, Nightly, Beta and Release
+选择 N.I.N.A. 检查更新的渠道。可用渠道有**每日构建（Nightly）**、**测试版（Beta）**和**正式版（Release）**。
+* 目前有 3 个版本分支：每日构建版、测试版和正式版
 
-    > Nightly offers the latest developments including bugfixes and feature additions. These builds are not as well tested as the beta or released versions but should be stable for imaging runs
+    > 每日构建版提供最新的开发成果，包括错误修复和新增功能。这些构建版本的测试不如测试版或正式版充分，但应该足以稳定运行拍摄任务。
 
-    > Beta versions are considered feature complete and are typically very stable. They will undergo a series of testing and bug fixing with incremental updates before becoming a release version
+    > 测试版被认为是功能完整的版本，通常非常稳定。在成为正式版之前，它们将经历一系列测试和错误修复，并逐步进行增量更新。
 
-    > Release offers the most reliability and stability for your imaging runs 
+    > 正式版为拍摄任务提供了最高的可靠性和稳定性。
 
-#### Single Imaging Layout
+#### 单一拍摄布局
 
-Use this when you want the Imaging tab layout to be shared across profiles instead of keeping separate Imaging layouts per profile.
+如果希望拍摄选项卡的布局在配置文件之间共享，而不是每个配置文件各自保留独立的布局，请启用此选项。
 
-#### Logging
+#### 日志
 
-* Sets the application log level
-* The recommended log level for general usage is `Info`
-* Opens the log folder directly from the button beside the selector
+* 设置应用程序日志级别
+* 一般使用推荐日志级别为 `Info`
+* 通过选择器旁边的按钮可直接打开日志文件夹
 
-Available log levels are `Error`, `Warning`, `Info`, `Debug`, and `Trace`.
+可用日志级别有 `Error`、`Warning`、`Info`、`Debug` 和 `Trace`。
 
-#### Notification Work Area and Notification Corner
+#### 通知工作区域与通知角落
 
-These settings control where N.I.N.A. shows toast notifications on the screen.
+这些设置控制 N.I.N.A. 在屏幕上显示弹出通知的位置。
 
-#### Device Polling Interval
+#### 设备轮询间隔
 
-Sets the device polling interval in seconds.
+设置设备轮询间隔（秒）。
 
-#### Save Queue Size
+#### 保存队列大小
 
-Controls the size of the image save queue.
+控制图像保存队列的大小。
 
-#### Hardware Acceleration
+#### 硬件加速
 
-Turns hardware-accelerated rendering on or off for the application.
+为此应用程序开启或关闭硬件加速渲染。
 
-!!! note
-    Changing **Single Imaging Layout**, **Save Queue Size**, or **Hardware Acceleration** requires restarting N.I.N.A.
+:::note
+更改**单一拍摄布局**、**保存队列大小**或**硬件加速**后需要重启 N.I.N.A.。
+:::
 
-## Color Schemes
+## 配色方案
 
-### Current UI Color Scheme
+### 当前界面配色方案
 
-* Selects the primary color scheme used by the application
-* Lets you switch to one of the built-in themes
-* Lets you copy the current scheme into a custom scheme and then edit the individual colors
+* 选择应用程序使用的主配色方案
+* 可切换到内置主题之一
+* 可将当前方案复制为自定义方案，然后编辑各颜色项
 
-### Alternative UI Color Scheme
+### 备选界面配色方案
 
-This is a second full color scheme that you can configure separately from the current one.
+这是第二套完整的配色方案，可以与当前方案分开配置。
 
-### Color Scheme Toggle
+### 配色方案切换
 
-The eye button toggles between the current and alternative color scheme.
+眼睛按钮可在当前配色方案和备选配色方案之间切换。
 
-## Astrometry Settings
+## 天文测量设置
 
-This section contains your observing site information:
+此部分包含你的观测地点信息：
 
-* latitude
-* longitude
-* elevation
-* observer name
-* observatory name
-* site name
+* 纬度
+* 经度
+* 海拔
+* 观测者姓名
+* 天文台名称
+* 地点名称
 
-### GNSS Button
+### GNSS 按钮
 
-Loads coordinates from the currently selected GNSS source.
+从当前选择的 GNSS 源加载坐标。
 
-> GNSS source configuration is done in [Options > Equipment](equipment.md).
+> GNSS 源配置在[选项 > 设备](equipment.md)中完成。
 
-### Planetarium Button
+### 星图按钮
 
-Loads coordinates from the currently selected planetarium application.
+从当前选择的星图应用程序加载坐标。
 
-> Planetarium software selection and connection details are configured in [Options > Equipment](equipment.md).
+> 星图软件的选择和连接详情在[选项 > 设备](equipment.md)中配置。
 
-### Custom Horizon
+### 自定义地平线
 
-Use a custom horizon file when you want local obstructions to be reflected in altitude-based displays and sequence logic.
+如果你希望基于高度的显示和序列逻辑能反映本地的遮挡情况，请使用自定义地平线文件。
 
-The file format is a list of azimuth/altitude pairs. Gaps between azimuth values are interpolated. At least two azimuth/altitude pairs are required.
+文件格式为方位角/高度角数据对列表。方位角值之间的空白会进行插值处理。至少需要两组方位角/高度角数据。
 
-Example:
+示例：
 
 ```
 # Az Alt
@@ -150,20 +152,21 @@ Example:
 360 14
 ```
 
-Once a horizon file is configured, it is shown in altitude charts across the application.
+配置地平线文件后，它将在整个应用程序的高度角图表中显示。
 
-![Altitude chart with horizon](../../images/tabs/altitudechartwithhorizon.png)
+![带地平线的高度角图表](../../images/tabs/altitudechartwithhorizon.png)
 
-### World Map
+### 世界地图
 
-The world map provides a quick visual check of the currently configured observing location.
+世界地图提供当前配置观测地点的快速可视化确认。
 
-## Plugin Repositories
+## 插件仓库
 
-At the bottom of the page you can manage the list of plugin repositories used by the **Available** plugins tab.
+在页面底部，可以管理**可用**插件选项卡使用的插件仓库列表。
 
-* Use the **+** button to add an additional repository URL.
-* Use the trash button to remove a repository you no longer want to query.
+* 使用 **+** 按钮添加额外的仓库 URL。
+* 使用删除按钮移除不再需要的仓库。
 
-!!! note
-    The main N.I.N.A. plugin repository is always kept in the list and cannot be removed from this view.
+:::note
+N.I.N.A. 主插件仓库始终保留在列表中，且无法从此视图中移除。
+:::

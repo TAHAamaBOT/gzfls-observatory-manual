@@ -1,46 +1,46 @@
-## Introduction
+## 引言
 
-Dual gain cameras from Altair include the 294C and the new 269C. These cameras have two gain settings, LCG (Low Conversion Gain) and HCG (High Conversion Gain). The High Conversion Gain mode effectively gives a gain boost, by a multiplier (usually x2). Cameras using the same dual-gain sensors from most other manufacturers have these settings hidden in their driver; they automatically switch at a certain gain setting, and if you analyze the sensor you can see where it happens. Altair cameras do not make this switch automatically, which is why this tech note exists.
+Altair 的双增益相机包括 294C 和新的 269C。这些相机有两种增益设置：LCG（低转换增益）和 HCG（高转换增益）。高转换增益模式通过一个倍率（通常为 x2）有效地提供增益提升。大多数其他使用相同双增益传感器的相机厂商，在其驱动中隐藏了这些设置；它们会在达到某个增益值时自动切换，如果您分析传感器特性就能看出切换点在哪里。Altair 相机不会自动进行此切换，这也是本技术说明存在的原因。
 
-## Configuration
+## 配置
 
-If your Altair camera has a dual-gain sensor, an option for _High Gain Mode_ will appear in the Camera Settings screen. The default is to use High Conversion Gain. To change from HCG to LCG, simply flip this switch. Like all Camera Settings, once set this will be remembered - so if you swap to LCG to "just try something out", make sure to switch back to HCG once you have finished testing!
+如果您的 Altair 相机具有双增益传感器，相机设置界面中会出现一个*高增益模式*的选项。默认使用高转换增益。要从 HCG 切换到 LCG，只需拨动此开关。与所有相机设置一样，一旦设置将被记住——因此如果您切换到 LCG 只是"试一下"，务必在测试完成后切换回 HCG！
 
-![High Gain Mode](../images/troubleshooting/altair_dualgain/camsettings.png)
+![高增益模式](../images/troubleshooting/altair_dualgain/camsettings.png)
 
-Note that switching from HCG to LCG or vice versa does not change the gain _value_ that you have set anywhere else in N.I.N.A. - for example, if you have a sequence set up to take images at gain 430, the camera will be instructed to use gain 430 irrespective of the high/low gain toggle. The same is true for any location in N.I.N.A. where camera gain is set (including the imaging tab, plate solving, autofocus, etc).
+请注意，从 HCG 切换到 LCG 或反之，不会改变您在 N.I.N.A. 中其他任何地方设置的增益*值*——例如，如果您设置了一个序列以增益 430 拍摄图像，无论高/低增益开关设置如何，相机都会被指示使用增益 430。N.I.N.A. 中任何设置相机增益的地方（包括拍摄标签页、解析、自动对焦等）也是如此。
 
-## Comparison with Other Imaging Software
+## 与其他拍摄软件的比较
 
-N.I.N.A. presents Camera Gain to the user in exactly the format that the camera SDK returns. For other brands of camera which automatically switch from LCG to HCG and back, the switch is inherent in the value and transparent to the user. In those cameras, it is impossible to use LCG above the switch point or HCG below the switch point. Altair cameras however allow you the flexibility to use whichever combination you desire, and this is why N.I.N.A., in common with many other suites of Imaging Software (including Altair's very own AltairCapture program), presents the raw Gain value and offers a manual switch to toggle between LCG and HCG.
+N.I.N.A. 以相机 SDK 返回的精确格式向用户显示相机增益。对于其他品牌的相机（会自动从 LCG 切换到 HCG 并切换回来），这种切换隐含在数值中，对用户透明。在这些相机中，不可能在切换点以上使用 LCG 或在切换点以下使用 HCG。然而，Altair 相机允许您自由使用任何想要的组合，这就是为什么 N.I.N.A.（与许多其他拍摄软件一样，包括 Altair 自家的 AltairCapture 程序）显示原始增益值并提供手动开关在 LCG 和 HCG 之间切换。
 
-There is one major piece of imaging software which does not present a manual switch: SharpCap. In order to try and be consistent with the other brands of camera that automatically switch their dual-gain sensors from LCG to HCG, SharpCap implements logic to automatically perform the switch. The way it does this is to present a single scale with the multiplier, above which point HCG is automatically enabled. This is best explained by means of an example.
+有一款主流拍摄软件不显示手动开关：SharpCap。为了努力与其他自动切换双增益传感器从 LCG 到 HCG 的相机品牌保持一致，SharpCap 实现了自动执行切换的逻辑。其做法是提供一个包含倍率的单一刻度，超过该点 HCG 自动启用。通过示例最能解释这一点。
 
-## Example: The Altair 269C
+## 示例：Altair 269C
 
-Let's take as our example the Altair 269C, a camera which uses the dual gain IMX269 chip from Sony. This camera has a HCG/LCG switch with a multiplier of x2 and reports gain values of 100-2000.  Sharpcap performs the following logic:
+以 Altair 269C 为例，这是一款使用索尼 IMX269 双增益芯片的相机。该相机具有 HCG/LCG 开关，倍率为 x2，报告增益值为 100-2000。SharpCap 执行以下逻辑：
 
-- For gain 100-199, use LCG mode
-- At gain 200 and above, switch to HCG mode
-- Once in HCG mode, go up to gain 2 x max normal gain
+- 增益 100-199，使用 LCG 模式
+- 增益 200 及以上，切换到 HCG 模式
+- 进入 HCG 模式后，最高可达 2 × 最大正常增益
 
-This means that SharpCap is able to present this camera as having a single gain setting of 100-4000, even though the camera itself only presents values of 100-2000 for gain. This is roughly equivalent to what the manufacturers of other camera drivers do in their SDK.
+这意味着 SharpCap 能够将此相机呈现为具有单一增益设置 100-4000，尽管相机本身仅显示增益值 100-2000。这大致相当于其他相机驱动厂商在其 SDK 中所做的处理。
 
-This approach does make a lot of sense. In practise it is unlikely that anyone would want to use LCG except to access the lower gain levels and get the maximum possible dynamic range and well depth from the camera. Once gain reaches the point at which the camera gain can be divided by two and HGC enabled, using HCG gives better results with significantly lower read noise. 
+这种方法确实很有道理。在实践中，除了访问较低增益水平以获得相机最大可能的动态范围和井深外，不太可能有人想使用 LCG。一旦增益达到可以通过除以二并启用 HCG 的点，使用 HCG 会带来更好的结果，读出噪声显著降低。
 
-So what does this mean for N.I.N.A. and other software which allows the user the full flexibility that the camera maker provides via the SDK? Well, it means that SharpCap gain values will be different to equivalent gain settings in N.I.N.A., which is important because SharpCap contains a very powerful sensor analysis routine which is often used to calculate unity gain or make decisions about what gain settings to image at based on well depth and read noise. In order to use SharpCap gain values in other software for these dual-gain altair cameras, we will need to translate the values.
+那么这对 N.I.N.A. 和其他允许用户使用相机厂商通过 SDK 提供的完整灵活性的软件意味着什么？这意味着 SharpCap 的增益值将与 N.I.N.A. 中等效的增益设置不同，这一点很重要，因为 SharpCap 包含非常强大的传感器分析程序，通常用于计算单位增益或根据井深和读出噪声决定使用什么增益设置进行拍摄。要在其他软件中为这些双增益 Altair 相机使用 SharpCap 的增益值，我们需要转换这些数值。
 
-Going back to our Altair 269C, SharpCap presents "Unity Gain", where one electron produced in a pixel results in 1 ADU at the ADC output, as being approximately Gain 564. To set an equivalent gain in N.I.N.A., the user would have to halve this value (as it is above 200, the point at which SharpCap automatically switches to high gain mode) and switch to High Conversion Gain.  Thus Unity Gain for the Altair 269C is 282 HCG.
+回到我们的 Altair 269C，SharpCap 显示的"单位增益"（一个像素产生一个电子在 ADC 输出端为 1 ADU）约为增益 564。要在 N.I.N.A. 中设置等效增益，用户需要将此值减半（因为它高于 200，即 SharpCap 自动切换到高增益模式的点）并切换到高转换增益模式。因此，Altair 269C 的单位增益是 282 HCG。
 
-## Known Altair dual-gain cameras
+## 已知的 Altair 双增益相机
 
-At time of writing, the following dual-gain Altair cameras exist:
+撰写本文时，存在以下双增益 Altair 相机：
 
-| Camera       | Sensor      | Multiplier |
+| 相机型号      | 传感器       | 倍率 |
 | ------------ |:-----------:| ----------:|
 | 269C         | IMX269      |         x2 |
 | 290(M/C)     | IMX290      |         x2 |
 | 294C\*         | IMX294      |       x4.5 |
 | 385C         | IMX385      |         x2 |
 
-\*note that the 294C should not be used with HCG below a native gain of 200 as the sensor will fail to fully saturate (the histogram will look unsaturated, but it will really be saturated, which will make flats extremely problematic!)
+\*注意：294C 不应在原生增益低于 200 的情况下使用 HCG，因为传感器将无法完全饱和（直方图看起来不饱和，但实际上已经饱和，这将使平场处理极为困难！）

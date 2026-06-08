@@ -1,115 +1,115 @@
 # FITS
 
-Flexible Image Transport System (FITS) is a flexible open file format for images, spectra, photon lists, data cubes etc. The data is stored in N-dimensional arrays or tables. 
+灵活图像传输系统（Flexible Image Transport System，简称 FITS）是一种灵活的开放文件格式，用于存储图像、光谱、光子列表、数据立方体等。数据以 N 维数组或表格形式存储。
 
-N.I.N.A. is capable of saving images in FITS format. The FITS format offers a variety of header meta information and N.I.N.A. will populate all available information into this header. A detailed list of all available Headers and their conditions is described below.
-Many applications can make use of these headers (e.g. PixInsight during processing).
+N.I.N.A. 支持以 FITS 格式保存图像。FITS 格式提供多种文件头元信息，N.I.N.A. 会将所有可用信息填充到该文件头中。下面列出了所有可用文件头及其条件的详细说明。
+许多应用程序都可以利用这些文件头（例如 PixInsight 在处理过程中）。
 
-## Standard FITS Headers
+## 标准 FITS 文件头
 
 - SIMPLE: true
 - BITPIX: 16
 - NAXIS: 2
-- NAXIS1: image width
-- NAXIS2: image height
+- NAXIS1: 图像宽度
+- NAXIS2: 图像高度
 - BZERO: 32768
 - EXTEND: true
 - SWCREATE: N.I.N.A. `<version>` `<architecture>`
 
-## Image Headers
+## 图像文件头
 
-- IMAGETYP: Type of exposure (LIGHT, DARK etc.)
-- EXPOSURE: Exposure duration in seconds
-- EXPTIME: Exposure duration in seconds
-- DATE-LOC: Locale time at exposure start
-- DATE-UTC: UTC time at exposure start
-- DATE-AVG: Averaged midpoint time (UTC)
-- ROWORDER: TOP-DOWN orientation of the image starting point. [Details at free-astro.org](https://free-astro.org/index.php?title=Siril:FITS_orientation)
+- IMAGETYP: 曝光类型（LIGHT、DARK 等）
+- EXPOSURE: 曝光时长（秒）
+- EXPTIME: 曝光时长（秒）
+- DATE-LOC: 曝光开始时的本地时间
+- DATE-UTC: 曝光开始时的 UTC 时间
+- DATE-AVG: 平均中点时间（UTC）
+- ROWORDER: TOP-DOWN 图像起点方向。[详见 free-astro.org](https://free-astro.org/index.php?title=Siril:FITS_orientation)
 
-## Observer Headers
-Taken from the Astrometry Options
+## 观测者文件头
+取自天体测量选项
 
-- SITEELEV: Elevation (currently taken from a connected telescope)
-- SITELAT: Latitude specified in astrometry options
-- SITELONG: Longitude specified in astrometry options
-- OBSERVER: Observer name specified in astrometry options
-- OBSERVAT: Observatory name specified in astrometry options
-- SITENAME: Site name specified in astrometry options
+- SITEELEV: 海拔高度（当前取自连接的望远镜）
+- SITELAT: 天体测量选项中指定的纬度
+- SITELONG: 天体测量选项中指定的经度
+- OBSERVER: 天体测量选项中指定的观测者姓名
+- OBSERVAT: 天体测量选项中指定的天文台名称
+- SITENAME: 天体测量选项中指定的地点名称
 
-## Target Headers
-Available when a target is set inside a sequence.
+## 目标文件头
+当序列中设置了目标时可用。
 
-- OBJECT: Name of object
-- OBJCTRA: Right ascension of target
-- OBJCTDEC: Declination of target
-- OBJCTROT: Planned rotation of imaged object
+- OBJECT: 目标名称
+- OBJCTRA: 目标的赤经
+- OBJCTDEC: 目标的赤纬
+- OBJCTROT: 拍摄目标的计划旋转角度
 
-## Camera Headers
-Requires a camera to be connected
+## 相机文件头
+需要连接相机
 
-- CAMERAID: The camera id provided by the driver
-- INSTRUME: Name of camera
-- XBINNING: X binning factor
-- YBINNING: Y binning factor
-- GAIN: Gain
-- OFFSET: Offset (if camera can set an offset)
-- EGAIN: Electrons per A/D unit (only available for some cameras)
-- XPIXSZ: X-Pixel size
-- YPIXSZ: Y-Pixel size
-- SET-TEMP: temperature set point (requires a cooling unit)
-- CCD-TEMP: actual sensor temperature (requires a cooling unit)
-- READOUTM: Sensor readout mode
-- BAYERPAT: Sensor bayer pattern
-- XBAYROFF: Bayer pattern X axis offset
-- YBAYROFF: Bayer pattern Y axis offset
+- CAMERAID: 驱动程序提供的相机 ID
+- INSTRUME: 相机名称
+- XBINNING: X 方向合并因子
+- YBINNING: Y 方向合并因子
+- GAIN: 增益
+- OFFSET: 偏置（如果相机可以设置偏置）
+- EGAIN: 每 A/D 单位的电子数（仅部分相机可用）
+- XPIXSZ: X 方向像素尺寸
+- YPIXSZ: Y 方向像素尺寸
+- SET-TEMP: 温度设定点（需要制冷装置）
+- CCD-TEMP: 实际传感器温度（需要制冷装置）
+- READOUTM: 传感器读出模式
+- BAYERPAT: 传感器 Bayer 阵列模式
+- XBAYROFF: Bayer 阵列 X 轴偏移
+- YBAYROFF: Bayer 阵列 Y 轴偏移
 
-## Telescope Headers
-Requires a telescope to be connected
+## 望远镜文件头
+需要连接望远镜
 
-- TELESCOP: Name of telescope
-- FOCALLEN: Focal length (taken from equipment options)
-- FOCRATIO: Focal ratio (taken from equipment options)
-- RA: Current telescope's right ascension coordinates
-- DEC: Current telescope's declination coordinates
-- PIERSIDE: The side of pier reported by the driver
+- TELESCOP: 望远镜名称
+- FOCALLEN: 焦距（取��设备选项）
+- FOCRATIO: 焦比（取自设备选项）
+- RA: 望远镜当前赤经坐标
+- DEC: 望远镜当前赤纬坐标
+- PIERSIDE: 驱动程序报告的望远镜所在立柱侧
 
 
-## Filter wheel Headers
-Requires a filter wheel to be connected
+## 滤镜轮文件头
+需要连接滤镜轮
 
-- FWHEEL: Name of filter wheel
-- FILTER: Current active filter
+- FWHEEL: 滤镜轮名称
+- FILTER: 当前激活的滤镜
 
-## Focuser Headers
-Requires a focuser to be connected
+## 调焦器文件头
+需要连接调焦器
 
-- FOCNAME: Name of focuser
-- FOCPOS: Current step position
-- FOCUSPOS: Current step position
-- FOCUSSZ: Step size
-- FOCTEMP: Temperature (requires temperature probe on focuser)
-- FOCUSTEM: Temperature (requires temperature probe on focuser)
+- FOCNAME: 调焦器名称
+- FOCPOS: 当前步进位置
+- FOCUSPOS: 当前步进位置
+- FOCUSSZ: 步长
+- FOCTEMP: 温度（需要调焦器上的温度传感器）
+- FOCUSTEM: 温度（需要调焦器上的温度传感器）
 
-## Rotator Headers
-Requires a rotator to be connected
+## 旋转器文件头
+需要连接旋转器
 
-- ROTNAME: Name of rotator
-- ROTATOR: Rotator angle in degrees
-- ROTATANG: Rotator angle in degrees
-- ROTSTPSZ: Step size
+- ROTNAME: 旋转器名称
+- ROTATOR: 旋转器角度（度）
+- ROTATANG: 旋转器角度（度）
+- ROTSTPSZ: 步长
 
-## Weather Data Headers
-Requires a weather data source to be connected
+## 气象数据文件头
+需要连接气象数据源
 
-- CLOUDCVR: Cloud cover percentage
-- DEWPOINT: Dew point in Celsius
-- HUMIDITY: Humidity percentage
-- PRESSURE: Air pressure in hPa
-- SKYBRGHT: Sky brightness in lux
-- MPSAS: Sky quality in mags/arcsecs^2
-- SKYTEMP: Sky temperature in Celsius
-- STARFWHM: Star FWHM
-- AMBTEMP: Ambient air temperature in Celsius
-- WINDDIR: Wind direction: 0=N, 180=S, 90=E, 270=W
-- WINDGUST: Wind gust in kph
-- WINDSPD: Wind speed in kph
+- CLOUDCVR: 云量百分比
+- DEWPOINT: 露点（摄氏度）
+- HUMIDITY: 湿度百分比
+- PRESSURE: 气压（hPa）
+- SKYBRGHT: 天光亮度（lux）
+- MPSAS: 天空质量（星等/角秒^2）
+- SKYTEMP: 天空温度（摄氏度）
+- STARFWHM: 星点半高全宽
+- AMBTEMP: 环境温度（摄氏度）
+- WINDDIR: 风向：0=北，180=南，90=东，270=西
+- WINDGUST: 阵风风速（公里/小时）
+- WINDSPD: 风速（公里/小时）

@@ -1,76 +1,77 @@
-If you have a Nikon DSLR that does not allow bulb exposure time over USB this is a solution for you. 
-Instead of native USB mode you can use a self made RS232 shutter cable or use the mounts snap port for shutter (if available).
-You can test whether you need or don't need an external shutter cable by trying taking an exposure of more than 30s.
-This will trigger bulb mode on a Nikon DSLR. If your camera won't take a picture you need to look at this section.
+如果你有一台 Nikon DSLR 不支持通过 USB 进行 B 门超长曝光，这里有一个解决方案。
+你可以不使用原生的 USB 模式，而是使用自制的 RS232 快门线，或者使用赤道仪的快门控制端口（如果可用）来控制快门。
+你可以通过尝试拍摄一张超过 30 秒的曝光来测试是否需要外部快门线。
+这将触发 Nikon DSLR 的 B 门模式。如果你的相机无法拍摄，就需要阅读本节内容。
 
-!!! tip
-    Prerequisite for any method of this functionality is that your DSLR has a shutter port!
+:::tip
+使用此功能的任何方法的前提条件是：你的 DSLR 必须有快门控制端口！
+:::
 
-You can find the necessary settings in the Camera settings.
+你可以在相机设置中找到必要的设置。
 
-![N.I.N.A. Camera Settings](../images/advanced/bulbshutter/usage-bulbshutter-settings.png)
+![N.I.N.A. 相机设置](../images/advanced/bulbshutter/usage-bulbshutter-settings.png)
 
-If your mount has a snap port it is advised to test out the mount for bulb shutter functionality before using the RS232 method for bulb shutter.
+如果你的赤道仪有快门控制端口，建议先测试使用赤道仪进行 B 门快门控制，然后再尝试 RS232 方法。
 
-## RS232 for Bulb Shutter
+## 使用 RS232 进行 B 门快门控制
 
-One way to trigger the shutter mechanism of your DSLR is utilizing a self-made RS232 to bulb shutter cable. 
-There are already some pre-made cables to be bought online for this issue or you can DIY.
+触发 DSLR 快门机制的一种方法是使用自制的 RS232 转 B 门快门线。
+网上已经有一些预制的此类线缆可供购买，你也可以自己 DIY。
 
-!!! tip
-    DSUSB cables are not supported since they don't expose a COM Port!
+:::tip
+DSUSB 线缆不受支持，因为它们不暴露 COM 端口！
+:::
 
-You can find some tutorials on how to build a DIY shutter cable here:
+你可以在这里找到一些关于如何制作 DIY 快门线的教程：
 
-[Nikon MC-DC2](https://www.cloudynights.com/topic/457536-usb-corded-shutter-control-for-nikon/)  
+[Nikon MC-DC2](https://www.cloudynights.com/topic/457536-usb-corded-shutter-control-for-nikon/)
 
-Once you have built a RS232-Shutter cable you need to connect it to the PC, install drivers for your RS232 adapter and check which COM port is used for it.
-In N.I.N.A. you need to change the "Bulb Mode" setting to "Serial Port" and change the COM port to the port your RS232 cable is using.
+制作好 RS232 快门线后，你需要将它连接到电脑上，安装 RS232 适配器的驱动程序，并检查它使用的是哪个 COM 端口。
+在 N.I.N.A. 中，你需要将"B 门模式"设置更改为"串口"，并将 COM 端口更改为你的 RS232 线缆使用的端口。
 
-![N.I.N.A. Serial Port Settings](../images/advanced/bulbshutter/usage-bulbshutter-serial.png)
+![N.I.N.A. 串口设置](../images/advanced/bulbshutter/usage-bulbshutter-serial.png)
 
-After that you can try and snap an image with an exposure time of longer than 30s. 
-If it works you are done and can now expose for any time that you wish.
+之后，你可以尝试拍摄一张曝光时间超过 30 秒的图像。
+如果成功了，就大功告成了，现在你可以进行任意时长的曝光了。
 
-Should you face issues with the RS232-Shutter exposure in N.I.N.A. feel free to contact us on our [Discord](http://discord.gg/fwpmHU4).
+如果你在 N.I.N.A. 中使用 RS232 快门曝光时遇到问题，欢迎到我们的 [Discord](http://discord.gg/fwpmHU4) 上联系我们。
 
-## Mount for Bulb Shutter
+## 使用赤道仪进行 B 门快门控制
 
-In case your mount is having a snap port and there is some way to trigger it using command strings you can use that to trigger the bulb shutter mechanism.
-To enable using the snap port you need to change the "Bulb Mode" setting to "Telescope Snap Port".
+如果你的赤道仪有快门控制端口，并且有某种方式可以通过命令字符串来触发它，你可以使用它来触发 B 门快门机制。
+要启用快门控制端口，你需要将"B 门模式"设置更改为"赤道仪快门端口"。
 
-!!! notice
-    Currently confirmed and tested mounts for Mount Bulb Shutter are the SkyWatcher NEQ6-R and AZ-EQ-6-GT using EQMOD V200q, and a SkyWatcher Star Adventurer GTI using GSS.
+:::note
+目前已确认并测试可通过赤道仪快门控制的赤道仪有：SkyWatcher NEQ6-R 和 AZ-EQ-6-GT（使用 EQMOD V200q），以及 SkyWatcher Star Adventurer GTI（使用 GSS）。
+:::
 
-![N.I.N.A. Mount Snap Port](../images/advanced/bulbshutter/usage-bulbshutter-mountsnapport.png)
+![N.I.N.A. 赤道仪快门端口](../images/advanced/bulbshutter/usage-bulbshutter-mountsnapport.png)
 
+首先，你需要从赤道仪的快门控制端口连接一条快门线到你的 DSLR。
+为此，你可能需要一条 3.5mm 插头到你相机特定快门端口的线缆。
+所有物理连接完成后，你需要将相机和赤道仪连接到 N.I.N.A.。
+如果你的赤道仪有两个 SNAP 端口，你可以使用任意一个。两个都可以使用，具体取决于下一项设置。
+下一步是设置与快门端口通信的命令字符串。
 
-First you need to connect a shutter cable from the snap port of your mount to your DSLR. 
-For that you will likely need a 3.5mm jack to your camera's specific shutter port cable.
-Once everything is physically connected you need to connect the camera and mount to N.I.N.A.. 
-If your mount has two SNAP ports you can use either. Both will work depending on the next setting.
-The next step is to set up the command string to communicate with the snap port.
+![N.I.N.A. 快门端口](../images/advanced/bulbshutter/usage-bulbshutter-snapport.png)
 
-![N.I.N.A. Snap Port](../images/advanced/bulbshutter/usage-bulbshutter-snapport.png)
-
-The default settings might already work for you, so feel free to try and take a snap shot that is longer than 30s in N.I.N.A..
-If the shutter is triggered, you are done and can take longer exposures than 30s now.
+默认设置可能已经适用于你，所以可以自由尝试在 N.I.N.A. 中拍摄一张超过 30 秒的快照。
+如果快门被触发，你就完成了设置，现在可以拍摄超过 30 秒的曝光了。
 
 ### EQMOD
-By default, the Snap Port start and stop commands are specified using EQMOD standard explained [here](http://eq-mod.sourceforge.net/docs/EQASCOM_compliancy.pdf)
+默认情况下，快门端口启动和停止命令使用 EQMOD 标准，详细信息见[此处](http://eq-mod.sourceforge.net/docs/EQASCOM_compliancy.pdf)。
 
-|                 | On\Start  | Off\Stop  |
+|                 | 开启\开始  | 关闭\停止  |
 | :-------------- | :------:  | :------:  |
-| **Snap port 1** | :SNAP1,1# | :SNAP1,0# |
-| **Snap port 2** | :SNAP2,1# | :SNAP2,0# |
+| **快门端口 1** | :SNAP1,1# | :SNAP1,0# |
+| **快门端口 2** | :SNAP2,1# | :SNAP2,0# |
 
 ### Green Swamp Server (GSS)
-For GSS, you can find the Snap port commands [here](https://greenswamp.org/?docs=gs-server-overview/snap-tab)
+对于 GSS，快门端口命令详见[此处](https://greenswamp.org/?docs=gs-server-overview/snap-tab)。
 
-|                 | On\Start | Off\Stop |
+|                 | 开启\开始 | 关闭\停止 |
 | :-------------- | :------: | :------: |
-| **Snap port 1** | :O11     | :O10     |
-| **Snap port 2** | :O21     | :O20     |
+| **快门端口 1** | :O11     | :O10     |
+| **快门端口 2** | :O21     | :O20     |
 
-
-Should your bulb exposure still not trigger please contact us on our [Discord](http://discord.gg/fwpmHU4).
+如果你的 B 门曝光仍然无法触发，请到我们的 [Discord](http://discord.gg/fwpmHU4) 上联系我们。

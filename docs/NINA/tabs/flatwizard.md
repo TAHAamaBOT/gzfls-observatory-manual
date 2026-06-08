@@ -1,97 +1,98 @@
-The Flat Wizard offers the possibility to automate flat image capture. It takes multiple exposures until it finds an optimal exposure time for the settings specified. There is also [Multi Mode](flatwizard.md#multi-mode). Multi Mode automates flat acquisition for each filter for users with electronic filter wheels.
+平场向导提供了自动化平场图像采集的功能。它会拍摄多次曝光，直到为指定设置找到最佳的曝光时间。此外还有[多滤镜模式](flatwizard.md#多滤镜模式)。多滤镜模式可为配备了电动滤镜轮的用户自动采集每个滤镜的平场。
 
-Flat Wizard takes 3 test exposures and attempts to calculate the optimal exposure time for a flat image by using linear extrapolation. Should that not be sufficient to derive a suitable exposure time, it will continue to take test exposures until it can determine the optimal exposure time or will ask to adjust the parameters when it fails to find one.
+平场向导先拍摄 3 张测试曝光，并尝试通过线性外推法计算出平场图像的最佳曝光时间。如果这还不足以得出合适的曝光时间，它将继续拍摄测试曝光，直到能够确定最佳曝光时间为止，或者在无法找到合适曝光时间时提示你调整参数。
 
-![The Flatwizard tab](../images/tabs/flatwizard1.png)
+![平场向导选项卡](../images/tabs/flatwizard1.png)
 
-## Settings
+## 设置
 
-### Target Name
-You can manually specify a name in this field and that name will then be used to populate the image file pattern $$TARGETNAME$$ for the FLAT and DARK frames
+### 目标名称
+你可以在此字段中手动指定一个名称，该名称将用于填充 FLAT 和 DARK 帧的图像文件命名模式中的 `$$TARGETNAME$$`。
 
-### Flats to take
-The number of flats to take for each filter
+### 拍摄平场数量
+每个滤镜要拍摄的平场数量。
 
-### Darks to take
-The number of darks to take for each exposure time
+### 拍摄暗场数量
+每种曝光时间要拍摄的暗场数量。
 
-!!! note
-    Taking darks is not available for "Sky Flats" mode, as the exposure time for flats in this mode varies between each frame
+:::note
+"天空平场"模式下无法拍摄暗场，因为该模式下平场的曝光时间在每帧之间都在变化。
+:::
 
-### Slew To Zenith
-Depending on the selected value inside the combobox next to the button the telescope will slew to zenith with pier side east or west
+### 转向天顶
+根据按钮旁下拉框中选择的值，望远镜将转向天顶，中天柱位于东侧或西侧。
 
-### Wizard Mode
-This mode will switch the operational behavior for the flat wizard for different scenarios
+### 向导模式
+此模式将根据不同的场景切换平场向导的操作行为：
 
-- Dynamic Exposure
-    - In this mode the flat wizard will try to find an exposure time (for a fixed panel brightness if a flat panel is connected)
-    - The algorithm will start with an exposure time of `((Max Exposure Time + Min Exposure Time) / 2)`
-        - If the exposure is too bright the algorithm will use this exposure time as the new maximum and repeat
-        - If the exposure is too dim the algorithm will use this exposure time as the new minimum and repeat
-- Dynamic Brightness
-    - For a fixed exposure time the flat wizard will try to find a flat panel brightness to match the desired exposure time. This requires a controllable flat panel to be connected.    
-    - The algorithm will start with an exposure time of `((Max Panel Brightness + Min Panel Brightness) / 2)`
-        - If the exposure is too bright the algorithm will use this panel brightness as the new maximum and repeat
-        - If the exposure is too dim the algorithm will use this panel brightness as the new minimum and repeat
-- Sky Flats
-    - A mode when no flat panel is available, but rather the sky at dusk or dawn should be used to take flat exposures. During the runtime of the flat wizard the exposure time will be constantly adjusted for the changing sky brightness, so the exposures will all have a different exposure time
-    - The algorithm will start with an exposure time of `((Max Exposure Time + Min Exposure Time) / 2)`
-        - If the exposure is too bright the algorithm will use this exposure time as the new maximum and repeat
-        - If the exposure is too dim the algorithm will use this exposure time as the new minimum and repeat
-    - Once an exposure time is found it will calculate the sky flux change between the exposures and adjust the time for the new exposure accordingly. If the new exposure is not within tolerance, the process repeats again by finding an initial exposure time again.
+- 动态曝光
+    - 在此模式下，平场向导将尝试找到合适的曝光时间（如果连接了平场板，则使用固定亮度）。
+    - 算法从曝光时间 `((最大曝光时间 + 最小曝光时间) / 2)` 开始：
+        - 如果曝光过亮，算法将使用此曝光时间作为新的最大值并重复。
+        - 如果曝光过暗，算法将使用此曝光时间作为新的最小值并重复。
+- 动态亮度
+    - 对于固定曝光时间，平场向导将尝试找到匹配所需曝光时间的平场板亮度。这需要连接可控制的平场板。
+    - 算法从亮度 `((最大面板亮度 + 最小面板亮度) / 2)` 开始：
+        - 如果曝光过亮，算法将使用此面板亮度作为新的最大值并重复。
+        - 如果曝光过暗，算法将使用此面板亮度作为新的最小值并重复。
+- 天空平场
+    - 当没有平场板时使用的模式，而是使用黄昏或黎明时的天空来拍摄平场。在平场向导运行期间，曝光时间会根据不断变化的天空亮度持续调整，因此每张曝光的时间都会不同。
+    - 算法从曝光时间 `((最大曝光时间 + 最小曝光时间) / 2)` 开始：
+        - 如果曝光过亮，算法将使用此曝光时间作为新的最大值并重复。
+        - 如果曝光过暗，算法将使用此曝光时间作为新的最小值并重复。
+    - 一旦找到曝光时间，算法将计算曝光之间的天空通量变化，并相应地调整新曝光的时间。如果新曝光不在容差范围内，该过程将重新开始寻找初始曝光时间。
 
-## Single Mode
+## 单滤镜模式
 
-### Filter
--  If a filter wheel is connected, a filter can be chosen for single mode
+### 滤镜
+-  如果连接了滤镜轮，可以为单滤镜模式选择滤镜。
 
-### Binning
--  Sets camera binning level for the exposures
+### 像素合并
+-  设置曝光的相机像素合并级别。
 
-### Gain
--  Sets the gain of the camera to use for the exposures. The camera and driver needs to support gain control
+### 增益
+-  设置曝光使用的相机增益。相机和驱动需要支持增益控制。
 
-### Offset
--  Sets the offset of the camera to use for the exposures. The camera and driver needs to support offset control
+### 偏置
+-  设置曝光使用的相机偏置。相机和驱动需要支持偏置控制。
 
-### Flat Min Exposure / Min. flat panel brightness
--  The minimum exposure time Flat Wizard should use or the minimum flat panel brightness (depending on the selected mode)
+### 平场最小曝光 / 最小平场板亮度
+-  平场向导应使用的最小曝光时间或最小平场板亮度（取决于所选模式）。
 
-### Flat Max Exposure / Max. flat panel brightness
--  The maximum exposure time Flat Wizard should use or the maximum flat panel brightness (depending on the selected mode)
+### 平场最大曝光 / 最大平场板亮度
+-  平场向导应使用的最大曝光时间或最大平场板亮度（取决于所选模式）。
 
-### Histogram Mean Target
--  Sets the mean ADU that the flat image histogram should use.
--  A percentage can be specified on the right or with using the slider. The number left of the percentage displays the ADU value of the desired percentage
+### 直方图均值目标
+-  设置平场图像直方图应使用的平均 ADU 值。
+-  可以在右侧或使用滑块指定百分比。百分比左侧的数字显示所需百分比对应的 ADU 值。
 
-### Mean Tolerance
--  Determines how large the tolerance of the flat mean from the mean target (12) should be
--  A percentage can be specified on the right or with using the slider. The number left of the percentage displays the ADU range of the desired tolerance percentage based on the mean target (12). A tolerance value of 20-30% should be typical
+### 均值容差
+-  确定平场均值与均值目标（12）的容差大小。
+-  可以在右侧或使用滑块指定百分比。百分比左侧的数字显示基于均值目标（12）的所需容差百分比所对应的 ADU 范围。20-30% 的容差值较为典型。
 
-### Start Flat Wizard
--  This button starts the flat acquisition process using the current settings
--  First, Flat Wizard will calculate the optimal exposure time using test exposures, and then take flat the full course of flats as set in (2). You will be prompted to extinguish any light source prior to taking Darks.
+### 启动平场向导
+-  此按钮使用当前设置启动平场采集流程。
+-  首先，平场向导将使用测试曝光计算最佳曝光时间，然后按照（2）中设置的数量拍摄全部平场。在拍摄暗场之前，系统会提示你熄灭所有光源。
 
-### Image Preview
--  On the right side the most recent flat image is displayed in this area while determining the optimal flat exposure time. Note that this area will not be updated once the optimal exposure time is determined. This is to speed up the flat acquisition process.
+### 图像预览
+-  右侧区域在确定最佳平场曝光时间期间显示最新的平场图像。请注意，一旦确定了最佳曝光时间，此区域将不再更新，以加快平场采集流程。
 
-### Calculated Target Exposure Time
--  Once Flat Wizard determines the necessary exposure time, it will use that to take all flats
+### 计算得出的目标曝光时间
+-  平场向导确定必要的曝光时间后，将使用该时间拍摄所有平场。
 
-### Calculated Target Histogram Mean
--  Once Flat Wizard determines the necessary exposure time and resulting ADU, the ADU mean will be displayed here
+### 计算得出的目标直方图均值
+-  平场向导确定必要的曝光时间和得到的 ADU 后，ADU 均值将显示在此处。
 
-## Multi Mode
+## 多滤镜模式
 
-![The Flatwizard multi mode menu](../images/tabs/flatwizard2.png)
+![平场向导多滤镜模式菜单](../images/tabs/flatwizard2.png)
 
-In essence, Multi Mode works just like Single Mode, but for multiple filters. The majority of controls are identical to [Single Mode](flatwizard.md#single-mode).
+本质上，多滤镜模式与单滤镜模式的工作方式相同，但适用于多个滤镜。大多��控件与[单滤镜模式](flatwizard.md#单滤镜模式)相同。
 
-In Multi Mode, Flat Wizard settings are saved on a per-filter basis and do not transfer to Single Mode.
+在多滤镜模式下，平场向导设置是按滤镜保存的，不会传递到单滤镜模式。
 
-### Filter Toggle
-- Enables a specific filter for flat capture
+### 滤镜开关
+- 启用特定滤镜以进行平场采集。
 
-### Filter List
-- Displays all available filters by name and can be expanded by clicking the > icon
+### 滤镜列表
+- 按名称显示所有可用滤镜，点击 > 图标可展开。
