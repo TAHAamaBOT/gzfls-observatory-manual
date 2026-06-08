@@ -1,48 +1,49 @@
-The **Available** tab queries the configured plugin repositories and shows the plugins that can be installed for your current N.I.N.A. version.
+**可用**选项卡查询已配置的插件仓库，并显示可为当前 N.I.N.A. 版本安装的插件。
 
-![Available plugins](../../images/tabs/Plugins_Available.png)
+![可用插件](../../images/tabs/Plugins_Available.png)
 
-## Plugin List
+## 插件列表
 
-The list on the left shows each available plugin with its thumbnail, name, and current state. Plugins with updates available are shown before plugins that are already up to date.
+左侧列表显示每个可用插件的缩略图、名称和当前状态。有可用更新的插件会显示在已是最新版本的插件之前。
 
-The buttons below the list let you:
+列表下方的按钮可用于：
 
-* check all configured plugin repositories again
-* update every plugin that currently has an update available
+* 重新检查所有已配置的插件仓库
+* 更新所有当前有可用更新的插件
 
-The repositories used here are managed under **Options > General > Plugin Repositories**.
+此处使用的仓库在**选项 > 常规 > 插件仓库**中进行管理。
 
-## Selected Plugin Details
+## 选中插件详情
 
-Selecting a plugin shows a detailed information page on the right. Depending on the manifest provided by the plugin author, this page can include:
+选择一个插件后，右侧会显示详细的信息页面。根据插件作者提供的清单，此页面可能包括：
 
-* name, author, and version
-* homepage and changelog links
-* short description and tags
-* featured image
-* installation method and download URL
-* long description
-* source repository
-* license name and license URL
-* screenshots
+* 名称、作者和版本
+* 主页和更新日志链接
+* 简短描述和标签
+* 特色图片
+* 安装方式和下载 URL
+* 详细描述
+* 源代码仓库
+* 许可协议名称和许可链接
+* 截图
 
-## Install, Update and Restart
+## 安装、更新与重启
 
-The action button on the right changes with the current plugin state:
+右侧的操作按钮会随插件当前状态而变化：
 
-* **Install** for plugins that are not yet installed
-* **Update** for plugins with a newer version available
-* **Installed** when the selected version is already in place
-* **Requires Restart** after an install or update has completed and N.I.N.A. needs to be restarted
+* 对于尚未安装的插件显示**安装**
+* 对于有新版本的插件显示**更新**
+* 当所选版本已安装时显示**已安装**
+* 安装或更新完成后、N.I.N.A. 需要重启时显示**需要重启**
 
-During long-running actions, the update and install buttons can be cancelled.
+长时间运行的操作期间，更新和安装按钮可以被取消。
 
-### State Icons
+### 状态图标
 
-* ![Update](../../images/tabs/plugins/update.png) Update available
-* ![Restart](../../images/tabs/plugins/restart.png) Installed or updated, restart required
-* ![Installed](../../images/tabs/plugins/installed.png) Installed and up to date
+* ![更新](../../images/tabs/plugins/update.png) 有可用更新
+* ![重启](../../images/tabs/plugins/restart.png) 已安装或已更新，需要重启
+* ![已安装](../../images/tabs/plugins/installed.png) 已安装且为最新版本
 
-!!! important
-    Plugins are maintained by individual authors. If a plugin causes a problem, contact the plugin maintainer first. If you need to rule out plugin-related issues, restart N.I.N.A. without that plugin installed.
+:::warning
+插件由个人作者维护。如果插件引发问题，请首先联系插件维护者。如果你需要排除插件相关问题，可以在不安装该插件的情况下重启 N.I.N.A.。
+:::

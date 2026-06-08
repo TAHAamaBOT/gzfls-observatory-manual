@@ -1,92 +1,94 @@
-## Overview
+## 概述
 
-Dithering is an important part of the modern image acquisition process. CMOS and CCD sensors suffer from various types of electronic noise, such as fixed-pattern noise, and defects such hot and cold pixels. Photons of light from stellar objects fall onto the sensor and will effectively be lost if the photon falls on a dead or hot pixel. The act of dithering is a commanded move of the mount between successive exposures that very slightly alters, on the pixel scale, where photons fall on the sensor. This means that one exposure can capture light (ie, data) from an object where that same light fell on a dead or hot pixel in the previous exposure. Image alignment issues are easily handled by most astronomy stacking and image post-processing applications.
-The different positions of single light frames will make it more effective for image integration algorithm that implement an outlier rejection method (like sigma-clipping) to reject fixed-pattern noise ans well as hot and cold pixels. This is because hot and cold pixels are always in the same position in the camera sensor and dither will make them appear in different places for each frame after a dither move.
+抖动是现代图像采集流程中的重要环节。CMOS 和 CCD 传感器会受到各种类型的电子噪声影响，如固定模式噪声，以及热像素和坏像素等缺陷。来自天体的光子落在传感器上，但如果光子落在坏像素或热像素上，这些数据就实质上丢失了。抖动的操作是在连续曝光之间向赤道仪发出指令，使其进行非常微小的移动——在像素尺度上改变光子落在传感器上的位置。这意味着上一张曝光中光子落在坏像素或热像素上的位置，在下一张曝光中同一光源的光子可以落在不同的位置。大多数天文叠加和图像后处理应用都能轻松处理图像对齐问题。
+单张亮场的位置各不相同，这将使采用离群值剔除方法（如 sigma-clipping）的图像叠加算法能够更有效地剔除固定模式噪声以及热像素和坏像素。这是因为热像素和坏像素在相机传感器上的位置始终不变，而抖动会使它们在每次抖动移动后出现在每帧的不同位置。
 
-Because dithering is an operation that must be coordinated with guiding (remember, the mount is being purposefully moved by a few pixels, which guiding would reflexively attempt to counteract), the dithering operation is managed by the guiding applications themselves. The process is simple. N.I.N.A. suspends imaging and commands the guiding application to execute a dither operation. It performs the dither, and then informs N.I.N.A. when the operation is complete. Any required adjustments to guiding are automatically handled by the guiding application. N.I.N.A. then resumes commanding normal exposures. Normally, a dither operation takes a few tens of seconds (at most) to complete.
+由于抖动是一项必须与导星协调的操作（请记住，赤道仪被有意移动了几个像素，而导星会本能地试图抵消这种移动），因此抖动操作由导星应用程序本身来管理。过程很简单。N.I.N.A. 暂停拍摄，命令导星应用程序执行抖动操作。导星应用程序执行抖动，然后通知 N.I.N.A. 操作完成。导星的任何必要调整由导星应用程序自动处理。N.I.N.A. 然后恢复正常的曝光指令。通常，一次抖动操作最多需要几十秒即可完成。
 
-## Dithering in N.I.N.A.
+## N.I.N.A. 中的抖动
 
-N.I.N.A. offers three different ways to perform dithering:
+N.I.N.A. 提供了三种不同的抖动方式：
 
-1. Standard dithering through PHD2, MGEN2, or MetaGuide
-2. Built-in dithering using N.I.N.A.'s Mount Dither function
+1. 通过 PHD2、MGEN2 或 MetaGuide 进行标准抖动
+2. 使用 N.I.N.A. 的内置赤道仪抖动功能
 
-The desired way of dithering is based on the connected device in the **Equipment > Guider** tab.
+所需的抖动方式取决于**设备 > 导星器**选项卡中连接的设备。
 
-### Standard Dithering
+### 标准抖动
 
-This is the typical scenario for most users. The user has a single main camera, a guide camera, and a supported guiding application. At the intervals configured in the sequence, N.I.N.A. will pause operations with the main camera and trigger a dither operation. Photography resumes when the dither operation is completed.
+这是大多数用户的典型场景。用户拥有一台主相机、一台导星相机以及一款受支持的导星应用程序。在序列中配置的间隔时间点，N.I.N.A. 将暂停主相机的操作并触发抖动操作。抖动操作完成后，拍摄即恢复。
 
-### Built-in Dithering
+### 内置抖动
 
-There are some cases where guiding equipment isn't needed or available, but you still want to dither. This can happen if you have a very high end mount with encoders or with small portable setups. N.I.N.A. can perform dithers directly via its **Mount Dither** which manually slews the telescope very small distances.
+在某些情况下，不需要或没有导星设备，但你仍希望进行抖动。当你拥有带编码器的高端赤道仪，或者使用小型便携设备时，就可能出现这种情况。N.I.N.A. 可以通过其**赤道仪抖动**功能直接执行抖动，该功能会手动将望远镜移动非常小的距离。
 
-## Requirements
+## 要求
 
-N.I.N.A. supports dithering using its direct communication with PHD2 and makes it easy to set up as a part of a sequence. There are a few prerequisites to dither during a sequence:
+N.I.N.A. 支持通过与 PHD2 的直接通信来进行抖动，并且可以方便地将其作为序列的一部分进行设置。在序列中进行抖动需要满足一些前提条件：
 
- * A mount needs to be connected
- * A supported guiding application needs to be be running, actively guiding, and also communicating with N.I.N.A.
-     * PHD2
-     * MGEN2
-     * MetaGuide
- * The [guiding-related settings](guiding.md) in the Equipment Settings need to be correctly set up
- * If you need dithering, it should be enabled in the sequence
+* 需要连接赤道仪
+* 需要有一款受支持的导星应用程序正在运行、正在主动导星，并与 N.I.N.A. 保持通信：
+    * PHD2
+    * MGEN2
+    * MetaGuide
+* 设备设置中与[导星相关的设置](guiding.md)需要正确配置
+* 如果需要进行抖动，应在序列中启用
 
-## PHD2 Settings
+## PHD2 设置
 
-In order for N.I.N.A. to communicate with PHD2 and command operations such as dithering and for receiving guiding telemetry, PHD2's internal server must be enabled. To enable PHD2's internal server, go to PHD2's **Tools** menu and ensure that **Enable Server** is selected.
+为了让 N.I.N.A. 能够与 PHD2 通信并命令其执行抖动等操作、接收导星遥测数据，必须启用 PHD2 的内部服务器。要启用 PHD2 的内部服务器，请前往 PHD2 的**工具**菜单，确保**启用服务器**已选中。
 
-![PHD2 Enable Server](../images/advanced/dithering1.png)
+![PHD2 启用服务器](../images/advanced/dithering1.png)
 
-## N.I.N.A Settings
+## N.I.N.A. 设置
 
-### Settings for PHD2
+### PHD2 设置
 
-Settings related to guiding and dithering can be found in the **Equipment > Guider** tab by clicking on the ⚙️ Gears button. The defaults are suitable for most cases. You will need to specify the full path to `phd2.exe` if PHD2 was installed in a non-standard location. This is so N.I.N.A. can automatically start PHD2 as a part of the equipment connection process.
+与导星和抖动相关的设置可在**设备 > 导星器**选项卡中点击 ⚙️ 齿轮按钮找到。默认值适用于大多数情况。如果 PHD2 安装在非标准位置，则需要指定 `phd2.exe` 的完整路径。这样 N.I.N.A. 就可以在设备连接过程中自动启动 PHD2。
 
-![N.I.N.A. PHD2 Settings](../images/tabs/guider_phdsetup.png)
+![N.I.N.A. PHD2 设置](../images/tabs/guider_phdsetup.png)
 
-An explanation of the two most important dithering-related settings follows:
+以下是最重要的两个抖动相关设置的解释：
 
- * **PHD2 Dither Pixels**: The amount of pixels (on the guiding camera) that the dithering action will shift. This value should take into account the guiding imaging scale and main camera imaging scale, in arcsec/pixels. To select the appropriate value you need to consider how many imaging camera pixels will shift between two exposures as a consequence of a dither move. Obviously, 2 pixels at one focal length and pixel size will cover a different amount of sky than another setup with a different focal length and pixel size.
- It is usually recommended to dither a number of guide camera pixels that will shift the main imaging camera of about 10 pixels.  
-   
-!!! tip
-    Let's assume to have a guide camera with a pixel size of 3.8µm and a 260mm focal length guide scope, resulting in a guide scale of about 3 arcsec/pixel. The imaging optical train is composed by a camera with a pixel size of 3.8µm and a 520mm focal length scope, resulting in an imaging scale of about 1.5 arcsec/pixel. A guide camera shift of 5 pixels corresponds to a motion of 15 arcsec or 10 pixels of shift for the main imaging camera. In this case a PHD2 Dither Pixels of 5 pixels is therefore appropriate.
+* **PHD2 抖动像素**：抖动操作将移动的导星相机像素量。此值应考虑到导星成像比例和主相机成像比例（单位为角秒/像素）。要选择合适的值，你需要考虑两次曝光之间因抖动移动导致的主相机像素位移量。显然，在某个焦距和像素尺寸下的 2 个像素所覆盖的天空面积，与具有不同焦距和像素尺寸的其他设备是不同的。
+通常建议抖动的主相机像素位移量为主相机的约 10 个像素。
 
-!!! note
-    The PHD2 Dither Pixel value will be multiplied by PHD2 by the "Scale" value found under Advance Setup>Dither Settings of PHD2. This value will be multiplied by the Dither Pixel set in N.I.N.A. to determine the final pixel shift amount. It is recommended to leave it at 1 and only change the amount of dither pixels in N.I.N.A.
-        ![phdscale](../images/advanced/PHD2Scale.PNG)
+:::tip
+假设导星相机的像素尺寸为 3.8µm，导星镜焦距为 260mm，导星比例约为 3 角秒/像素。主成像光路由像素尺寸 3.8µm 的相机和焦距 520mm 的望远镜组成，成像比例约为 1.5 角秒/像素。导星相机移动 5 个像素，相当于 15 角秒或主相机移动 10 个像素。这种情况下，PHD2 抖动像素设置为 5 像素是合适的。
+:::
 
- * **Dither RA Only**: This will cause dithering to happen on the RA axis only and allow the declination axis to continue guiding.
-   
-!!! note
-    This option should only be checked in the following cases:  
-    - your mount does not support DEC guiding (i.e. skytracker)  
-    - a mount that suffers from a high declination backlash   
-    - you are guiding in one direction only in DEC  
+:::note
+PHD2 抖动像素值将由 PHD2 按 PHD2 的"高级设置>抖动设置"下的"比例"值相乘。此值将与 N.I.N.A. 中设置的抖动像素值相乘，以确定最终的像素位移量。建议将其保持为 1，仅通过 N.I.N.A. 中的抖动像素值进行调整。
+![phdscale](../images/advanced/PHD2Scale.PNG)
+:::
 
-!!! tip
-    The pixel scale of your guide camera can be calculated using online tools. By inputting the focal length of your guiding optical train and the pixel size of your guide camera's sensor, you will know how many arcseconds of sky is covered by each pixel (arcseconds per pixel). Such a tool is the [CCD Resolution Calculator](//astronomy.tools/calculators/ccd).
+* **仅 RA 抖动**：这将使抖动仅在赤经（RA）轴上发生，而赤纬（Dec）轴继续导星。
 
-* **Dither Settle Pixel Tolerance and Settle Time**: these are important parameters that define the successful end of a dither move. When a dither is initiated by PHD2 a random move of the mount in RA/DEC is issued,  the maximum amount of the random move is defined by **PHD2 Dither Pixels**. The mount then resumes its tracking operations, but depending on the mechanical stability of the gears it might take a couple of seconds to return to its normal guiding conditions. This time represents the settle time and N.I.N.A. lets you define a **Minimum Settle Time** during which the mount has to be inside the pixel tolerance. If the mount is moving outside this tolerance during this time frame, the minimum settle time timer will restart again. 
-The successful completion of a dither settling is achieved when guiding after a dither move remains within the tolerance defined by the **PHD2 Settle Pixel Tolerance**  expressed in guide camera pixels. Once settling is complete N.I.N.A. can continue and start a new capture.
-Should settling not be achieved after the period defined in **PHD2 Settle Timeout**, the settling will be declared failed and N.I.N.A. will start a new capture.  
-**PHD2 Dither Pixels** depend on your mount guiding capabilities and guiding scale and should be determined by looking at PHD2 logs. A great tool to analyze PHD2 logs is PHD2 Log Viewer that can be downloaded from [here](http://adgsoftware.com/phd2utils/)
+:::note
+此选项仅在以下情况下勾选：
+- 你的赤道仪不支持 Dec 导星（如星野赤道仪）
+- 赤道仪存在较大的赤纬回差
+- 你仅在一个方向上对 Dec 进行导星
+:::
 
-** Example of a successful dither after one failed settle attempt **
-![Settling](../images/advanced/phd2/settling.png)
-** Example of a failed settle due to timeout **
-![Settle Timeout](../images/advanced/phd2/settle_timeout.png)
+:::tip
+导星相机的像素比例可使用在线工具计算。输入导星光路的焦距和导星相机传感器的像素尺寸，你就能知道每个像素覆盖多少角秒的天空（角秒/像素）。[CCD 分辨率计算器](//astronomy.tools/calculators/ccd)就是这样一个工具。
+:::
 
+* **抖动稳定像素容差和稳定时间**：这些是定义抖动移动成功完成的重要参数。当 PHD2 发起抖动时，会向赤道仪发出 RA/Dec 方向的随机移动指令，随机移动的最大量由**PHD2 抖动像素**定义。赤道仪随后恢复其跟踪操作，但根据齿轮的机械稳定性，可能需要几秒钟才能恢复到正常导星状态。这段时间代表了稳定时间，N.I.N.A. 允许你定义一个**最短稳定时间**，在此期间赤道仪必须保持在像素容差范围内。如果赤道仪在此时间段内移出此容差，最短稳定时间计时器将重新开始计时。
+抖动稳定成功完成的标志是：抖动移动后的导星维持在**PHD2 稳定像素容差**（以导星相机像素表示）所定义的容差范围内。一旦稳定完成，N.I.N.A. 即可继续并开始新的拍摄。
+如果在**PHD2 稳定超时**定义的时间段后仍未实现稳定，稳定将被宣告失败，N.I.N.A. 将开始新的拍摄。
+**PHD2 抖动像素**取决于你的赤道仪导星能力和导星比例，应通过查看 PHD2 日志来确定。分析 PHD2 日志的一个优秀工具是 PHD2 Log Viewer，可从[此处](http://adgsoftware.com/phd2utils/)下载。
 
-### Settings in Sequences
+** 一次失败稳定尝试后成功抖动的示例 **
+![稳定](../images/advanced/phd2/settling.png)
+** 因超时导致稳定失败的示例 **
+![稳定超时](../images/advanced/phd2/settle_timeout.png)
 
-Regardless of the dither method in use, initiating dithering during the course of a running sequence is simple. Dithering operations can be activated for each step in a sequence, and be initiated every *Nth* frame in each step. That is, if a step in a sequence specifies that 20 exposures be taken with a dither operation every second exposure, two normal exposures will be taken, a dither operation performed, and then the next two exposures will be taken, etc. N.I.N.A. manages these operations itself in conjunction with PHD2 and the process is entirely hands-off.
+### 序列中的设置
 
+无论使用哪种抖动方法，在运行序列过程中启动抖动都很简单。抖动操作可以为序列中的每个步骤激活，并在每个步骤中每隔*第 N* 帧启动一次。也就是说，如果序列中的某个步骤指定拍摄 20 张曝光，同时每隔一张曝光执行一次抖动操作，则先拍摄两张正常曝光，执行一次抖动操作，然后拍摄接下来的两张曝光，以此类推。N.I.N.A. 自行与 PHD2 协调管理这些操作，整个过程完全无需人手干预。
 
-![N.I.N.A. Dithering in Sequences](../images/advanced/dithering3.png)
+![N.I.N.A. 序列中的抖动](../images/advanced/dithering3.png)
 
-Dithering operations happen while the previous image is downloading from the camera. If you have a camera with slow download speeds, it might be that the dithering operation is completed in time for the camera to be ready for the next exposure.
+抖动操作在前一张图像从相机下载时进行。如果你的相机下载速度较慢，抖动操作可能会在相机准备好进行下一次曝光之前就已完成。

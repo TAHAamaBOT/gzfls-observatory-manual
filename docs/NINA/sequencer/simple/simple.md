@@ -1,159 +1,162 @@
 
-The legacy sequencer offers the traditional experience of planning complete sequences for the most common use cases. The capabilities range from cooled cameras, goto mounts, automated focusers, filter wheels and guiders. 
-With this sequencer you can plan straight forward sequences with a set amount of exposures for specific filters and some basic added automation like centering of targets and keeping the objects in focus using auto focus.  
-For more advanced use cases refer to the [advanced sequencer](../advanced/advanced.md) which offers a lot more planning granularity, capabilities and supports more types of equipment.
+传统序列器提供传统的体验，为最常见的使用场景规划完整的序列。其功能涵盖制冷相机、GOTO 赤道仪、自动调焦器、滤镜轮和导星器。
+使用此序列器，你可以规划简单的序列，包括为特定滤镜设置固定数量的曝光，以及一些基本的自动化功能，如目标对中和通过自动对焦保持目标清晰。
+对于更高级的使用场景，请参阅[高级序列器](../advanced/advanced.md)，它提供更精细的规划粒度、更多功能，并支持更多类型的设备。
 
-![The sequencing tab](../../images/sequencer/simple/Sequencer_Screen.png)
+![序列选项卡](../../images/sequencer/simple/Sequencer_Screen.png)
 
-### Sequence Target Set Options
+### 序列目标集选项
 
-![Sequence Target Set Options](../../images/sequencer/simple/Target_Set_Options.png)
+![序列目标集选项](../../images/sequencer/simple/Target_Set_Options.png)
 
-In this section you can adjust which instructions should be considered for the complete set of targets.   
-When *Cool Camera* and *Unpark Mount* are enabled, these instructions will be executed before the *first* target.  
-The same applies to the *Warm Camera* and the *Park Mount* option, except that they will be run after the *last* target.  
-In addition to that there is the option to enable the [auto meridian flip](../../advanced/meridianflip.md) feature that will be enabled for the complete sequence run.  
-
-
-### Sequence Target Tab List  
-  
-![Sequence Target Tab List](../../images/sequencer/simple/Target_Tabs.png)
-Multiple sequences can be loaded into N.I.N.A., with each residing in its own tab at the top of the Sequence window. When multiple sequences are opened, N.I.N.A. will run each sequence in order after the prior sequence is completed. This allows you to specify multiple targets to image over the course of a night, each with their own settings and behaviors.
-
-1.  **Target tabs**
-    * Clicking on a tab will switch to that target's sequence
-    * Sequence settings are specific to the target
-    * Hovering the cursor over a tab will reveal the Reset Progress and Delete buttons
-2. **Prioritize target**  
-    Move the current target further to the left in the list of targets
-3. **Deprioritize target**  
-    Move the current target further to the right in the list of targets
-4. **Save target**  
-    Save the current target
-5. **Add target**  
-    Add a new empty target  
-
-!!!tip 
-    If a **Sequence Template** file is specified under **Options > Imaging > Sequence**, that template will be automatically loaded in the new tab.
+在此部分，你可以调整哪些指令应应用于整个目标集。
+当启用*相机冷却*和*赤道仪解除锁定*时，这些指令将在*第一个*目标之前执行。
+同样适用于*相机回温*和*赤道仪锁定*选项，不同之处在于它们将在*最后一个*目标之后运行。
+此外，还可以启用[自动中天翻转](../../advanced/meridianflip.md)功能，该功能将在整个序列运行期间启用。
 
 
-### Target General Options
+### 序列目标选项卡列表
 
-![Target General Options](../../images/sequencer/simple/Target_General.png)
+![序列目标选项卡列表](../../images/sequencer/simple/Target_Tabs.png)
+N.I.N.A. 中可以加载多个序列，每个序列驻留于序列窗口顶部自己的标签页中。当打开多个序列时，N.I.N.A. 将在前一个序列完成后依次运行每个序列。这允许你指定在一晚中拍摄多个目标，每个目标都有各自的设置和行为。
 
-1. **Delay start**  
-    Specifies a delay (in seconds) before the first operation when the sequence starts.
+1.  **目标选项卡**
+    * 点击一个选项卡将切换到该目标的序列
+    * 序列设置针对每个目标独立
+    * 将光标悬停在选项卡上将显示"重置进度"和"删除"按钮
+2. **提升目标优先级**
+    将当前目标在目标列表中向左移动
+3. **降低目标优先级**
+    将当前目标在目标列表中向右移动
+4. **保存目标**
+    保存当前目标
+5. **添加目标**
+    添加一个新的空目标
 
-2. **Sequence Mode**  
-    Specify the preferred mode of sequence entry advancement.
-
-    * **One after another**: N.I.N.A. processes each sequence entry in full before advancing to the next sequence entry.
-    * **Loop**: N.I.N.A. takes a single exposure from the sequence entry and then advances to the next entry. The entire sequence will loop until all sequence entries are completed.
-
-3. **Estimated Download Time**  
-    By default, the value here will be automatically populated with the average download time of a single image from the camera, as measured by N.I.N.A. If the user wishes, this value may be changed by editing it. This time specified here will effect the Estimated Finish Time.
-
-4.  **Estimated Finish Time and Estimates time for this target**  
-    Displays the time and duration (in the computer's configured time zone) that N.I.N.A. estimates the entire sequence/active sequence will complete. This estimation takes into account the number and length of the sequence/sequences exposures, as well as the time required to download each exposure from the camera (See Also: Estimated Download Time.)
-
-### Target Information
-
-![Target Information](../../images/sequencer/simple/Target_Information.png)
-
-1. **Target coordinates**  
-    Displays the target name, right ascension, declination, and desired rotation angle. These may be edited as needed. The right ascension, declination, and rotation angle specified will be used to slew, center and rotate on target start (if enabled)
-
-2. **Target altitude**  
-    Displays the target object's altitude, the direction point at which it will transit, the darkness phase of the current day, and includes a vertical marker for the current time.  The accuracy of the altitude curve requires that the latitude and longitude be set under **Options > General > Astrometry**.
-
-3. **Send to framing assistant**  
-    This button will send the current coordinates and rotation back to the framing assistant to re-plan the target
-
-4. **Import from planetarium**  
-    Using this button, the application will import the selected coordinates and rotation from the planetarium that is set up
-
-### Target start options
-
-![Target start options](../../images/sequencer/simple/Target_Start_Options.png)
-
-1. **Slew to target**  
-    At the beginning of the sequence, N.I.N.A. will command the mount to slew to the coordinates that are specified in RA and Dec fields. This does not plate solve to verify it is on target.
-
-2. **Center target**  
-    When set to on, N.I.N.A. will use the configured [plate solver](../../advanced/platesolving.md) to ensure that the target is centered on the specified RA and Dec coordinates. 
-
-3. **Rotate Target**  
-    If a rotation angle is specified and a rotator is configured and connected (See Also: **Equipment > Rotator**), N.I.N.A. will rotate the camera to the desired angle.
-    If the Manual Rotator is in use, the sequence will be paused and the user prompted to manually rotate the camera. The prompt will specify the necessary amount of degrees clockwise or anti-clockwise to rotate the camera, and N.I.N.A. will verify the rotation angle again until the angle is within the tolerances configured under **Options > Plate Solving > Rotation Tolerance**.
-
-4. **Start Guiding**  
-    When Start Guiding is set to On, N.I.N.A. will command PHD2 to choose a guide star and begin guiding when the sequence starts. N.I.N.A must be connected to PHD2 (See Also: **Equipment > Guider**.)
-
-    !!! Note
-        Since sequences typically start with a slew and centering process, the guider will be stopped at the beginning of the sequence and only restarted if this option is set to On.
-
-### Auto Focus behavior
-
-![Auto Focus behavior](../../images/sequencer/simple/Target_Autofocus.png)
-
-Due to the large number of auto focus options that can be configured in a sequence, they are grouped under an expandable menu. When the menu is not expanded, a summary of the activated options will be displayed. Expanding the menu by clicking on the arrow will reveal the auto focus settings and make them available for altering.
-
-Many of the options are self-explanatory, however two in particular may require some clarification:
-
-* **After temperature change**  
-    Triggers an auto focus operation if the temperature changes the specified amount since the previous auto focus operation. The temperature used is sourced from the focuser, if it provides it. This option does not yet use a Weather source if the focuser does not have a temperature reporting capability.
- 
-* **After HFR increase**  
-    If measured HFR from the previous exposures is more than the specified percent of the baseline, an auto focus operation will be triggered. The baseline HFR is determined from the first exposure after an auto focus operation.
-
-### Sequence entries
-
-![Sequence entries](../../images/sequencer/simple/Imaging_Details.png)
-
-Sequence entries define the image acquisition order and behavior of N.I.N.A. Each sequence entry consists of up to 11 columns which determine how the images will be exposed:
-
-* **Progress**: Displays the current progress of the sequence entry in terms of exposures completed out of the total number specified
-* **Total #**: Specifies the number of frames to expose
-* **Time**: Specifies the exposure time, in seconds
-* **Type**: Specifies the type of the exposure and sequence entry. BIAS, DARK, LIGHT, FLAT.
-* **Filter**: Specifies the filter to be used
-* **Binning**: Specifies the camera binning level
-* **Dither**: When enabled, N.I.N.A. will command a dither operation. To save time, dither operations are initiated while the preceding image is being downloaded from the camera
-
-!!! important
-    Dithering will work only when a guider is connected. See **Equipment > Guider**
-
-* **Dither Every # Frame**: Initiates a dither operation after the specified number of frames are exposed
-* **Gain**: Specifies the camera gain to use for the entry. This option is available only if camera is capable of setting exposure gain
-* **Offset**: Specifies the camera offset to use for the entry. This option is available only if camera is capable of setting an exposure offset
+:::tip
+如果在**选项 > 拍摄 > 序列**中指定了**序列模板**文件，该模板将在新选项卡中自动加载。
+:::
 
 
+### 目标通用选项
 
-### Sequence Buttons
+![目标通用选项](../../images/sequencer/simple/Target_General.png)
 
-On the bottom left area the target specific buttons can be found. Explained from left to right:  
+1. **延迟启动**
+    指定序列启动时首次操作前的延迟时间（秒）。
 
-1. Go back to the [sequence dashboard](../../tabs/sequencer.md)  
-2. Adds a new row to the sequence (new rows will be defaulted to the previous one)  
-3. Deletes the active sequence entry  
-4. Resets the progress of the selected sequence entry to 0  
-5. Moves the selected entry up  
-6. Moves the selected entry down  
-7. Saves target to the previous location
-8. Saves target as a XML file in the specified folder  
-9. Loads a saved Sequence. The opened sequence's settings will overwrite all settings in the current sequence.  
+2. **序列模式**
+    指定序列条目推进的首选模式。
 
-On the bottom right are the target set buttons.
-  
-1. **Build Sequence**
+    * **依次执行**：N.I.N.A. 完整处理每个序列条目的所有曝光，然后再推进到下一个序列条目。
+    * **循环模式**：N.I.N.A. 从序列条目中拍摄一张曝光，然后推进到下一个条目。整个序列将循环执行，直到所有序列条目完成。
 
-    Pressing this button will generate an advanced sequence and send it to the [advanced sequencer](../advanced/advanced.md). This will allow a much more granular adjustment of the sequence.
+3. **预计下载时间**
+    默认情况下，此处的值将自动填充 N.I.N.A. 测量的从相机下载单张图像的平均时间。如果用户希望，可以通过编辑来更改此值。此处指定的时间将影响预计完成时间。
 
-    !!! note
-        Pressing the build sequence button after having changed something on the advanced sequencer will overwrite the whole advanced sequence that was already present in the advanced sequencer tab!
+4.  **预计完成时间及此目标的预计时间**
+    显示 N.I.N.A. 预计整个序列/活动序列将完成的时间和时长（以电脑配置的时区为准）。此估计考虑了序列/多个序列曝光的数量和时长，以及从相机下载每张曝光所需的时间（另见：预计下载时间）。
 
-2. **Start Sequence**
+### 目标信息
 
-    Pressing the start button starts the sequence, either from the beginning or from where it was last stopped. Once a sequence is started.
-    Cancel will abort any active operation (including any in-progress exposures) and stop the sequence.
+![目标信息](../../images/sequencer/simple/Target_Information.png)
 
+1. **目标坐标**
+    显示目标名称、赤经、赤纬和所需的旋转角度。这些可以按需编辑。指定的赤经、赤纬和旋转角度将用于目标开始时的转向、对中和旋转（如果已启用）
+
+2. **目标高度角**
+    显示目标天体的高度角、它将过中天的方向点、当天的黑暗阶段，并包含一个当前时间的垂直标记。高度角曲线的准确性要求在**选项 > 通用 > 天体测量**中设置纬度和经度。
+
+3. **发送至构图助手**
+    此按钮将当前的坐标和旋转发送回构图助手，以重新规划目标
+
+4. **从星图软件导入**
+    使用此按钮，应用程序将从已设置的星图软件导入选定的坐标和旋转
+
+### 目标开始选项
+
+![目标开始选项](../../images/sequencer/simple/Target_Start_Options.png)
+
+1. **转向目标**
+    在序列开始时，N.I.N.A. 将命令赤道仪转向赤经和赤纬字段中指定的坐标。这不会进行解析来验证它是否对准了目标。
+
+2. **对中目标**
+    当设为开启时，N.I.N.A. 将使用配置的[解析器](../../advanced/platesolving.md)确保目标对中到指定的赤经和赤纬坐标。
+
+3. **旋转目标**
+    如果指定了旋转角度，并且配置并连接了旋转器（另见：**设备 > 旋转器**），N.I.N.A. 将把相机旋转到所需的角度。
+    如果使用手动旋转器，序列将暂停，并提示用户手动旋转相机。提示将指定需要顺时针或逆时针旋转相机的度数，N.I.N.A. 将再次验证旋转角度，直到角度进入**选项 > 解析 > 旋转容差**中配置的容差范围内。
+
+4. **启动导星**
+    当启动导星设为开启时，N.I.N.A. 将命令 PHD2 选择一颗导星并在序列开始时启动导星。N.I.N.A 必须已连接到 PHD2（另见：**设备 > 导星器**）。
+
+:::note
+由于序列通常以转向和对中流程开始，导星器将在序列开始时停止，仅当此选项设为开启时才会重新启动。
+:::
+
+### 自动对焦行为
+
+![自动对焦行为](../../images/sequencer/simple/Target_Autofocus.png)
+
+由于序列中可以配置大量自动对焦选项，它们被分组在一个可展开的菜单下。当菜单未展开时，将显示已激活选项的摘要。点击箭头展开菜单将显示自动对焦设置并使其可供修改。
+
+许多选项是不言自明的，但其中两个可能需要一些说明：
+
+* **温度变化后**
+    如果自上一次自动对焦操作以来温度变化超过指定量，则触发自动对焦操作。所用温度来源于调焦器（如果它提供温度数据）。如果调焦器没有温度报告能力，此选项目前还不会使用气象数据源。
+
+* **HFR 上升后**
+    如果之前曝光的测量 HFR 超过基线指定百分比以上，将触发自动对焦操作。基线 HFR 是根据自动对焦操作后的第一次曝光确定的。
+
+### 序列条目
+
+![序列条目](../../images/sequencer/simple/Imaging_Details.png)
+
+序列条目定义了 N.I.N.A. 的图像采集顺序和行为。每个序列条目最多由 11 列组成，这些列决定了图像的曝光方式：
+
+* **进度**：显示序列条目的当前进度，即已完成的曝光数占总指定曝光数的比例
+* **总帧数 #**：指定要曝光的帧数
+* **时间**：指定曝光时间，以秒为单位
+* **类型**：指定曝光和序列条目的类型。BIAS、DARK、LIGHT、FLAT。
+* **滤镜**：指定要使用的滤镜
+* **合并**：指定相机的合并级别
+* **抖动**：启用后，N.I.N.A. 将命令执行抖动操作。为节省时间，抖动操作在前一张图像从相机下载期间启动
+
+:::warning
+抖动仅在连接了导星器的情况下生效。参见**设备 > 导星器**
+:::
+
+* **每帧抖动 #**：在曝光指定帧数后启动一次抖动操作
+* **增益**：指定此条目要使用的相机增益。此选项仅在相机支持设置曝光增益时可用
+* **偏置**：指定此条目要使用的相机偏置。此选项仅在相机支持设置曝光偏置时可用
+
+
+
+### 序列按钮
+
+在左下角区域可以找到特定于目标的按钮。从左到右说明如下：
+
+1. 返回[序列仪表盘](../../tabs/sequencer.md)
+2. 向序列添加新行（新行将默认沿用前一行设置）
+3. 删除当前序列条目
+4. 将选定序列条目的进度重置为 0
+5. 将选定的条目上移
+6. 将选定的条目下移
+7. 将目标保存到之前的位置
+8. 将目标保存为指定文件夹中的 XML 文件
+9. 加载已保存的序列。打开的序列的设置将覆盖当前序列中的所有设置。
+
+右下角是目标集按钮。
+
+1. **构建序列**
+
+    按下此按钮将生成一个高级序列并将其发送到[高级序列器](../advanced/advanced.md)。这将允许对序列进行更精细的调整。
+
+:::note
+在高级序列器中进行了更改后再按下构建序列按钮，将覆盖高级序列器选项卡中已有的整个高级序列！
+:::
+
+2. **启动序列**
+
+    按下启动按钮将启动序列，可以从头开始或从上次停止的位置继续。序列启动后，
+    取消将中止任何活动操作（包括任何正在进行的曝光）并停止序列。

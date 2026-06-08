@@ -1,36 +1,34 @@
-N.I.N.A. offers a built in camera simulator which enables some basic debug utilities to simulate a camera.  
-It will act like an actual camera, but has the ability to generate images from different sources.  
-To use the simulator, you can connect to it like you would typically connect to a real camera.
+N.I.N.A. 内置了一个相机模拟器，提供一些基本的调试工具，用于模拟一台相机。
+它的行为类似于真实的相机，但能够从不同来源生成图像。
+要使用该模拟器，你可以像通常连接真实相机一样连接它。
 
-![Camera Simulator Selection](../images/advanced/camerasimulator/selection.png)
+![相机模拟器选择](../images/advanced/camerasimulator/selection.png)
 
-## Simulator Setup
+## 模拟器设置
 
-Use the gears icon to open the setup screen for the simulator. On the top you can select between different ways to generate an image.
+使用齿轮图标打开模拟器的设置界面。在顶部，你可以选择不同的图像生成方式。
 
-### Source: Random
+### 来源：随机
 
-![Random](../images/advanced/camerasimulator/random.png)  
-Using this source the simulator will generate an image of the given size with random values for the pixels based on the specified mean and standard deviation.
+![随机](../images/advanced/camerasimulator/random.png)
+使用此来源时，模拟器将根据指定的均值和标准差生成给定尺寸、像素值随机的图像。
 
-### Source: Image
+### 来源：图像
 
-![Image](../images/advanced/camerasimulator/image.png)  
-This source will use an existing image as the output. Simply click on the "Load Image" button and it will preload the image into memory. Later when taking an exposure this image will be shown.
+![图像](../images/advanced/camerasimulator/image.png)
+此来源将使用现有图像作为输出。只需点击"加载图像"按钮，即可将图像预加载到内存中。之后拍摄曝光时，将显示此图像。
 
-### Source: SkySurvey
+### 来源：天图
 
-![SkySurvey](../images/advanced/camerasimulator/skysurvey.png)  
-A telescope connection is required when using this source. It will download an image from an online sky survey (similar to the framing tab) based on the current telescope coordinates.
+![天图](../images/advanced/camerasimulator/skysurvey.png)
+使用此来源时需要连接望远镜。它将根据当前望远镜坐标从在线巡天天图（类似于构图选项卡）下载图像。
 
-### Source: Directory
-![Directory](../images/advanced/camerasimulator/directory.png)  
-Similar to the Source: Image this will load images from a directory instead of one static image. Click on "Load Directory" and specify a target directory. Then it will iterate through all images in a directory and start from the beginning again.
-With this source you can easily replicate an imaging run.
+### 来源：目录
+![目录](../images/advanced/camerasimulator/directory.png)
+与"来源：图像"类似，此来源将从目录中加载图像，而不是单一静态图像。点击"加载目录"并指定一个目标目录，然后它将遍历目录中的所有图像，完成后从头开始。
+使用此来源可以轻松重现一次拍摄运行。
 
-## Simulator Usage
+## 模拟器使用
 
-The simulator will not automatically populate areas like the imaging tab or others, as it really is a simulation of a camera.
-To display an image of the simulator, you need to take an exposure like you would with a real camera.
-
-    
+模拟器不会自动填充拍摄选项卡或其他区域的内容，因为它本质上是对相机的模拟。
+要显示模拟器的图像，你需要像使用真实相机一样拍摄一张曝光。

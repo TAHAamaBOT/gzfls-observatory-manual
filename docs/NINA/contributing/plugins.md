@@ -1,28 +1,28 @@
-Plugins are intended to add functionality that is useful for a more specialized workflow without having to add it to the core application.
+插件旨在为更专业的工作流程添加功能，而无需将其加入核心应用程序。
 
-## Getting Started
+## 入门指南
 
-The usual starting point for a new plugin is the [Plugin Template Repository](https://github.com/isbeorn/nina.plugin.template). It provides the base structure and the setup expected by the plugin system.
+新插件的通常起点是[插件模板仓库](https://github.com/isbeorn/nina.plugin.template)。它提供了插件系统所期望的基础结构和设置。
 
-## Making a Plugin Available in N.I.N.A.
+## 让插件在 N.I.N.A. 中可用
 
-To make a plugin available from the **Available** plugins tab, submit a manifest to the main [Plugin Manifest Repository](https://github.com/isbeorn/nina.plugin.manifests).
+要使插件出现在**可用**插件标签页中，请提交一个清单到主[插件清单仓库](https://github.com/isbeorn/nina.plugin.manifests)。
 
-The **Available** tab reads plugin repositories and shows the metadata supplied there, so the manifest is what users will see before they install your plugin.
+**可用**标签页读取插件仓库并显示其中提供的元数据，因此清单就是用户在安装插件之前看到的内容。
 
-## What Users See
+## 用户看到的内容
 
-The plugin pages inside N.I.N.A. can display:
+N.I.N.A. 中的插件页面可以显示：
 
-* plugin name, author, and version
-* homepage and changelog links
-* short and long descriptions
-* tags
-* installation method and download link
-* source repository
-* license information
-* screenshots
+* 插件名称、作者和版本
+* 主页和更新日志链接
+* 简短和详细描述
+* 标签
+* 安装方法和下载链接
+* 源代码仓库
+* 许可证信息
+* 截图
 
-If your plugin exposes user-configurable options, they appear on the **Installed** tab after the plugin has been loaded.
+如果您的插件公开了用户可配置的选项，这些选项将在插件加载后出现在**已安装**标签页中。
 
-For manifest format details and submission instructions, use the README in the plugin manifest repository.
+有关清单格式的详细信息和提交说明，请参阅插件清单仓库中的 README。
