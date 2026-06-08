@@ -1,54 +1,54 @@
-The Plate Solving tab contains configuration options for each supported plate solver.
-N.I.N.A. currently supports Astrometry.Net, Local Platesolver, Platesolve2, Platesolve3, All Sky Plate Solver, ASTAP, TheSkyX Imagelink, and PinPoint as primary plate solvers. Blind solver options are Astrometry.Net, Local Platesolver, All Sky Plate Solver, ASTAP, Platesolve3, and PinPoint.
+解析选项卡包含每个受支持解析器的配置选项。
+N.I.N.A. 目前支持 Astrometry.Net、Local Platesolver、Platesolve2、Platesolve3、All Sky Plate Solver、ASTAP、TheSkyX Imagelink 以及 PinPoint 作为主解析器。盲解析选项包括 Astrometry.Net、Local Platesolver、All Sky Plate Solver、ASTAP、Platesolve3 和 PinPoint。
 
-For usage of the Plate Solver, refer to [Advanced Topics: Plate Solving](../../advanced/platesolving.md).
+关于解析器的使用，请参考[高级主题：解析](../../advanced/platesolving.md)。
 
-![The platesolving options tab](../../images/tabs/OptionsPlateSolving10.png)
+![解析选项选项卡](../../images/tabs/OptionsPlateSolving10.png)
 
-## Plate Solving
+## 解析
 
-### Plate Solver
-* This drop-down menu selects the primary plate solver to use
-> [ASTAP](https://www.hnsky.org/astap.htm) is recommended
+### 解析器
+* 此下拉菜单选择要使用的主解析器。
+> 推荐使用 [ASTAP](https://www.hnsky.org/astap.htm)。
 
-### Blind Solver
-* This drop-down menu selects the blind solver that is used for initial solves and/or backup solving
-> The blind solver will be used in the framing assistant and normal plate solving should the primary solver fail.
+### 盲解析器
+* 此下拉菜单选择用于初始解析和/或备份解析的盲解析器。
+> 盲解析器将在构图助手和普通解析中使用，前提是主解析器失败。
 
-### Use Blind Solver For Failures
-* When a plate solve fails, a fallback to the blind solver is attempted. This behavior can be disabled so that no fallback will be used. This can be useful when it is used in combination with a number of retries.
+### 失败时使用盲解析器
+* 当解析失败时，会尝试回退到盲解析器。可以禁用此行为，这样就不会进行回退。与一定次数的重试结合使用时，这可能是很有用的。
 
-### Exposure Time
-* The default exposure time for plate solving frames
+### 曝光时间
+* 解析帧的默认曝光时间。
 
-### Filter
-* The default filter to be used for plate solving
+### 滤镜
+* 用于解析的默认滤镜。
 
-### Binning
-* The default binning to be used for plate solving
+### 像素合并
+* 用于解析的默认像素合并。
 
-### Gain
-* The default gain to be used for plate solving
-> If empty, the current camera gain will be used
+### 增益
+* 用于解析的默认增益。
+> 如果留空，将使用当前的相机增益。
 
-### Pointing Tolerance
-* The threshold of acceptable error for re-centering in arcminutes
+### 指向容差
+* 重新对中时可接受误差的阈值，单位为角分。
 
-### Rotation Tolerance
-* The threshold of acceptable error in the rotation axis in degrees
+### 旋转容差
+* 旋转轴上可接受误差的阈值，单位为度。
 
-### Number of Attempts
-* Defines the number of attempts for plate solving
-> The value of 1 will not retry a completely failed plate solve
+### 尝试次数
+* 定义解析的尝试次数。
+> 值为 1 时不会重试完全失败的解析。
 
-### Delay between attempts
-* The delay between plate solving retries in minutes, when the number of attempts is greater than 1
+### 尝试间隔
+* 当尝试次数大于 1 时，解析重试之间的延迟时间，单位为分钟。
 
-## Plate Solver Settings
+## 解析器设置
 
-### Plate Solver Settings Selection
-* This menu displays the currently supported plate solvers in N.I.N.A.
-* Clicking on each entry will display the corresponding solvers' settings to the right (10)
+### 解析器设置选择
+* 此菜单显示 N.I.N.A. 中当前支持的解析器。
+* 点击每个条目将在右侧（10）显示相应解析器的设置。
 
-### Plate Solver Settings
-* Depending on the selected solver, this area shows install paths, host and port fields, catalog settings, or API settings.
+### 解析器设置
+* 根据所选的解析器，此区域显示安装路径、主机和端口字段、星表设置或 API 设置。

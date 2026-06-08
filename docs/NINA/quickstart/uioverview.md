@@ -1,14 +1,15 @@
-Once you start N.I.N.A. for the first time you will be greeted with this screen. 
-Let's go over the basics for a moment to accustom you with the usage of this software.
+首次启动 N.I.N.A. 时，你将看到如下界面。
+让我们花几分钟了解一下基本布局，以便熟悉该软件的使用。
 
-![UI Overview](../images/quickstart/uioverview1.png)
+![界面概览](../images/quickstart/uioverview1.png)
 
-The UI is divided in 2 panes. 
-On the left side tabs section (1) you will find all the necessary tabs to connect your equipment, 
-on the right side you usually find the detailed information about the currently selected tab. 
-The currently selected tab is highlighted on the left side (1) so you always know where you are. 
-Feel free to click through all of them; the detailed descriptions for all tabs are provided in the Tabs section. 
-For now, let's assume you have a One-Shot-Color camera and mount with no filter wheel or any extras and just want to start a legacy sequence.
+界面分为两个区域。
+在左侧的选项卡区域（1）中，你可以找到连接设备所需的所有选项卡，
+右侧通常显示当前选中选项卡的详细信息。
+当前选中的选项卡在左侧会高亮显示（1），这样你随时都能知道自己的位置。
+你可以随意点击浏览所有选项卡；所有选项卡的详细说明请参阅"选项卡"章节。
+现在，我们假设你拥有一台一次性彩色相机（OSC）和赤道仪，没有滤镜轮或其他额外设备，只是想启动一个传统序列。
 
-!!! note
-    This Quick Start guide assumes you know how to connect your equipment to the computer and have the appropriate drivers for ASCOM and your camera (if necessary) already installed. If you do not, don't hesitate to ask us on the official N.I.N.A. Discord server.
+:::note
+本快速入门指南假设你已经知道如何将设备连接到电脑，并已安装了相应的 ASCOM 驱动程序和相机驱动（如有必要）。如果你还没有完成这些准备工作，欢迎在 N.I.N.A. 官方 Discord 服务器上向我们提问。
+:::

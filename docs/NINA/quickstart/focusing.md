@@ -1,43 +1,44 @@
-To start imaging you first want to focus. For that, let's switch to the Imaging tab (1).
+开始拍摄之前，你需要先进行对焦。为此，让我们切换到拍摄选项卡（1）。
 
-![Focusing](../images/quickstart/focusing1.png)
+![对焦](../images/quickstart/focusing1.png)
 
-Once there, you will be greeted with this view. 
-There is a lot of information and panels around, but in general it's divided in two spaces. 
-First, where you can view and interact with the panels (2) and a second where you can enable and disable various panels (3). 
-Since we only use a One-Shot-Color camera and a mount, let us disable a lot of those panels to get a better overview.
-Feel free to enable and disable your panels at will, in this example I will disable the following panels by clicking on their icon:
+进入后，你会看到如下界面。
+界面上有不少信息和面板，但总体上分为两个区域：
+第一个区域用于查看面板并与之交互（2），第二个区域用于启用和禁用各种面板（3）。
+由于我们只使用一台一次性彩色相机（OSC）和赤道仪，为了更清晰地查看界面，让我们先禁用一部分面板。
+你可以根据自己的需要自由启用或禁用面板，在本示例中，我将通过点击图标来禁用以下面板：
 
-![Focusing](../images/quickstart/focusing2.png)
+![对焦](../images/quickstart/focusing2.png)
 
-You can leave those panels enabled, or disable any other at your will. 
-Feel free to experiment around to see what you like. 
-You can also drag the panels around inside the imaging window and rearrange and customize your look and feel. 
-For tutorial reasons, I will leave that be for now.
+你既可以保留这些面板的启用状态，也可以根据自己的意愿禁用其他面板。
+欢迎你随意尝试，找到自己喜欢的布局。
+你还可以在拍摄窗口内拖动面板，重新排列和自定义你的界面风格。
+出于教程目的，这里暂时保持当前布局。
 
-![Focusing](../images/quickstart/focusing3.png)
+![对焦](../images/quickstart/focusing3.png)
 
-Since our target now is to focus our telescope to get pinpoint stars, we have to use the following currently enabled panels.
+由于我们当前的目标是对望远镜进行对焦以获得锐利的星点，因此需要使用以下当前已启用的面板。
 
-!!! tip
-    An alternative to focus is to use a Bahtinov Mask. You can try our experimental feature for Bahtinov Detection by enabling the icon in the Image panel.
+:::tip
+另一种对焦方法是使用 Bahtinov 对焦罩（鱼骨板）。你可以通过启用图像面板中的对应图标来尝试我们实验性的鱼骨板检测功能。
+:::
 
-With the HFR History (1) you will be able to see how your stars perform in terms of HFR. 
-This is also represented in the Statistics panel (2). 
-The lower your HFR value, the better focused your image will be. 
-To start the manual focus procedure, you have to select the Imaging tab (3) and press on the start capture button (4). 
-Your exposure time for that snapshot can be adjusted as well, should you choose to do so (5).
+通过 HFR 历史记录面板（1），你可以查看星点在 HFR（半通量半径）方面的表现。
+统计面板（2）中也会呈现相同信息。
+HFR 值越低，说明图像对焦越好。
+要开始手动对焦流程，你需要选择拍摄选项卡（3）并按下开始拍摄按钮（4）。
+如果需要，你也可以调整该快照的曝光时间（5）。
 
-To enable star detection and HFR analysis, you need to press on the Star Analysis button (6). 
-This will yield a full analysis of the image and will enter the HFR values in the Statistics (2). 
-You will notice that the AutoStretch button (7) will be enabled as well once you enable the Star Analysis button (6).
+要启用星点检测和 HFR 分析，你需要按下星点分析按钮（6）。
+这将对图像进行全面分析，并将 HFR 值填入统计面板（2）中。
+你会注意到，启用星点分析按钮（6）后，自动拉伸按钮（7）也会随之启用。
 
-Here are two examples of a focused and defocused star field.
+以下是合焦和失焦星场的两个示例。
 
-![Focusing](../images/quickstart/focusing4.png)
+![对焦](../images/quickstart/focusing4.png)
 
-![Focusing](../images/quickstart/focusing5.png)
+![对焦](../images/quickstart/focusing5.png)
 
-As you can see, the values for HFR have been entered in the statistics. 
-The second image is definitely defocused with a HFR of 6.09, while the first image is in as good focus as possible. 
-Your HFR values will vary because they depend on the focal length of the telescope as well as on the pixel size of the sensor, but you should try and focus your telescope until the HFR is as low as possible.
+如你所见，HFR 值已经显示在统计数据中。
+第二张图像明显处于失焦状态，HFR 为 6.09，而第一张图像达到了尽可能好的对焦状态。
+你的 HFR 值会有所不同，因为它们取决于望远镜的焦距和传感器的像素尺寸，但你应该尽量调整望远镜的对焦，直到 HFR 值尽可能低。

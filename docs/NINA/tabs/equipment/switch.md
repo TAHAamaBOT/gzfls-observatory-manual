@@ -1,26 +1,26 @@
-The Switch tab lets you connect and control compatible switches.
+开关选项卡用于连接和控制兼容的开关设备。
 
-![Switch](../../images/tabs/equipment_switches.png)
+![开关](../../images/tabs/equipment_switches.png)
 
-The header contains the usual device controls for connecting, disconnecting, refreshing the device list, and opening the setup dialog when one is available.
+标题栏包含常规的设备控制按钮，用于连接、断开、刷新设备列表，以及在可用时打开设置对话框。
 
-## Gauges
+## 仪表盘
 
-The **Gauges** section shows the read-only switch values reported by the device.
+**仪表盘**区域显示设备报告的只读开关值。
 
-Each entry shows:
+每个条目显示：
 
-* switch name
-* current value
-* description
+* 开关名称
+* 当前值
+* 描述
 
-## Switches
+## 开关
 
-The **Switches** section shows the writable switches.
+**开关**区域显示可写开关。
 
-Depending on the switch type:
+根据开关类型：
 
-* boolean switches can be toggled directly
-* numeric switches can be adjusted with a stepper control and then applied with the checkmark button
+* 布尔型开关可以直接切换
+* 数值型开关可以通过步进控件调整，然后使用勾选按钮应用更改
 
-Each writable switch also shows its description below the control.
+每个可写开关在其控件下方还显示描述信息。

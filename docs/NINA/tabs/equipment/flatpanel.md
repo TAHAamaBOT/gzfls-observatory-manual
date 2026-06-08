@@ -1,61 +1,59 @@
-The Flat Panel tab lets you connect and control compatible flat devices.
+平场板选项卡用于连接和控制兼容的平场设备。
 
-![Flats](../../images/tabs/equipment_flats.png)
+![平场](../../images/tabs/equipment_flats.png)
 
-The header contains the usual device controls for connecting, disconnecting, refreshing the device list, and opening the setup dialog when one is available.
+标题栏包含常规的设备控制按钮，用于连接、断开、刷新设备列表，以及在可用时打开设置对话框。
 
-## Device Information and Manual Control
+## 设备信息与手动控制
 
-The left side of the page shows the information reported by the flat device, including:
+页面左侧显示平场设备报告的信息，包括：
 
-* name
-* description
-* driver information
-* driver version
+* 名称
+* 描述
+* 驱动信息
+* 驱动版本
 
-Manual controls are shown when the device supports them:
+当设备支持手动控制时，将显示以下控制：
 
-* light on/off state and a **Toggle** button
-* brightness with its supported range and a **Set Brightness** button
-* cover state
-* **Open** and **Close** buttons for devices with a motorized cover
+* 灯光开/关状态和**切换**按钮
+* 亮度及其支持的范围，以及**设置亮度**按钮
+* 盖板状态
+* 带有电动盖板的设备具有**打开**和**关闭**按钮
 
-## Settings
+## 设置
 
-The settings area below the device information contains:
+设备信息下方的设置区域包含：
 
-* the flat device settle time
-* any additional device-specific settings exposed by the selected flat device
+* 平场设备稳定时间
+* 所选平场设备所暴露的任何其他设备特定设置
 
-## Trained Flat Exposure Times
+## 已训练的平场曝光时间
 
-The trained exposure table is populated automatically by the [Flat Wizard](../flatwizard.md). It stores the trained flat settings per filter and can include:
+已训练的曝光时间表由[平场向导](../flatwizard.md)自动填充。它按滤镜存储已训练的平场设置，可包括：
 
-* filter
-* binning
-* gain
-* offset
-* flat device brightness
-* exposure time
+* 滤镜
+* 像素合并
+* 增益
+* 偏置
+* 平场设备亮度
+* 曝光时间
 
-You can also manage this table manually:
+你也可以手动管理此表格：
 
-* add rows with the **+** button
-* remove rows with the trash button
-* edit the values directly in the table
+* 使用 **+** 按钮添加行
+* 使用删除按钮移除行
+* 直接在表格中编辑值
 
-!!! note
-    The visible columns depend on the connected camera capabilities. For example, gain and offset columns are only shown when they are relevant.
+:::note
+可见的列取决于所连接相机的能力。例如，增益和偏置列仅在相关时显示。
+:::
 
-!!! tip
-    To automate flat acquisition in a sequence:
+:::tip
+要在序列中自动化平场采集：
+:::
 
-    1. Populate the **Trained Exposure Times** table.
-    2. Create or load an [advanced sequence](../../sequencer/advanced/advanced.md).
-    3. Add the trained flat exposure instruction for the filters you want to capture.
+    1. 填充**已训练的曝光时间**表。
+    2. 创建或加载[高级序列](../../sequencer/advanced/advanced.md)。
+    3. 为要拍摄的滤镜添加已训练平场曝光指令。
 
-    When the sequence reaches that instruction, N.I.N.A. can reuse the trained exposure time and flat panel brightness automatically.
-
-    
-
- 
+    当序列执行到该指令时，N.I.N.A. 可以自动复用已训练的曝光时间和平场板亮度。

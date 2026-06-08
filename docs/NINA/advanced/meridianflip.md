@@ -1,54 +1,51 @@
-## Overview
+## 概述
 
-Mount operations known as Meridian Flips are important when using a German Equatorial Mount (GEM).
-The meridian is an imaginary line that divides the sky into east and west halves.
-It starts at 180 degrees (south) and passes directly overhead to 0 degrees (north).
-It is static and does not move with the sky.
-Imaging an object typically begins when it is in the east half of the sky.
-As the night progresses, the object will approach the meridian, cross it, and then be in the west half of the sky.
+使用德式赤道仪（GEM）时，称为中天翻转的赤道仪操作非常重要。
+中天是一条将天空分为东西两半的假想线。
+它从 180 度（南方）开始，直接经过头顶到 0 度（北方）。
+它是固定的，不随天球移动。
+拍摄天体通常从它在天空的东半部分时开始。
+随着夜晚的推进，天体将接近中天、穿过中天，然后处于天空的西半部分。
 
-When a GEM's RA axis approaches the meridian, with the telescope on the west side of the mount and looking east, a "flip" must be performed to swap the side of the mount that the telescope is on.
-This is to avoid the mount tracking past the meridian.
-Otherwise the counterweights will be higher than the telescope (an undesirable situation on some mounts) and the telescope (or some part of it) contacting the pier or tripod legs.
-Some mounts and equipment configurations are more tolerant than others to these conditions.
-Some mounts can track for hours after passing the meridian in a counterweight-up condition.
-Some telescopes are both short enough in length and height that they will not crash into the pier or tripod legs.
-Every situation is different, so it is up to the user to know when a meridian flip should be commanded.
+当 GEM 的 RA 轴接近中天时，如果望远镜位于赤道仪的西侧并朝向东方，则必须执行"翻转"以交换望远镜所在赤道仪的一侧。
+这是为了避免赤道仪跟踪过中天。
+否则，配重将高于望远镜（这在某些赤道仪上是不可取的状态），而且望远镜（或其部分组件）可能会碰到立柱或三脚架的腿。
+不同的赤道仪和设备配置对这些条件的容忍度各不相同。某些赤道仪在配重朝上的状态下可以在过中天后跟踪数小时。有些望远镜的长度和高度都很短，不会撞到立柱或三脚架腿。每种情况都不同，因此用户需要自行了解何时应命令执行中天翻转。
 
-## Automating Meridian Flips
+## 自动化中天翻转
 
-An Automatic Meridian Flip operation swaps the telescope to the west side of the mount.
-Meridian flips prevent that your telescope and camera bump into the mount and do major damage to your equipment.
-N.I.N.A. has built-in functionality for the automated flip, even if your mount does not support it in firmware.
-After a flip, N.I.N.A. verifies that it is still imaging the desired area of sky through [Plate Solving](platesolving.md), and the imaging session continues.
+自动中天翻转操作将望远镜交换到赤道仪的西侧。
+中天翻转可以防止望远镜和相机撞到赤道仪，从而对你的设备造成严重损害。
+N.I.N.A. 内置了自动翻转功能，即使你的赤道仪在固件中不支持自动翻转。
+翻转后，N.I.N.A. 通过[解析](platesolving.md)验证它仍在拍摄所需的天空区域，然后拍摄会话继续进行。
 
-To enable the Automated Meridian Flip you need to enable it in the legacy sequence target set options or when using the advanced sequencer, the meridian flip trigger needs to be added to the sequence. For customizing the behavior of the meridian flip, the [meridian flip settings](../tabs/options/imaging.md#auto-meridian-flip) can be customized.
+要启用自动中天翻转，你需要在传统序列的目标集选项中启用它，或者在使用高级序列器时，需要将中天翻转触发器添加到序列中。要自定义中天翻转的行为，可以自定义[中天翻转设置](../tabs/options/imaging.md#自动中天翻转)。
 
-## Meridian flip settings in detail
+## 中天翻转设置详解
 
-The meridian flip settings offer a variety of settings that will affect how a meridian flip is performed. Most notable are the `Minutes after meridian`, `Max. Minutes after Meridian` and `Pause before meridian`. These will lead to three different kind of scenarios, depending on how they are set up.
+中天翻转设置提供了多种会影响中天翻转执行方式的选项。最值得注意的是`过中天后分钟数`、`过中天后最大分钟数`和`中天前暂停`。根据它们的配置方式，将导致三种不同的场景。
 
-### Min and Max time after meridian are equal
-![min and max are equal](../images/advanced/meridianflip/minequalsmax.PNG)
+### 过中天后最短和最长时间相等
+![最短和最长时间相等](../images/advanced/meridianflip/minequalsmax.PNG)
 
-In earlier versions of N.I.N.A. there was no `Max. Minutes after meridian` setting and it is synonymous to having both settings set to an equal value.  
-As you can see in the picture above, the `Minutes after meridian` settings will define the point in time where a flip must happen.  
-N.I.N.A. will try fit in exposures until one exposure is longer than the remaining time to `Minutes after meridian`. When this happens, the application will pause the tracking of the mount and will wait for the point in time to come to actually flip the mount. Once the `Minutes after meridian` time has been reached, the telescope will flip and the sequence will continue afterwards.  
-  
-A setup like this will result in a little downtime, as some time is spent just waiting until the flip can happen.
+在 N.I.N.A. 的早期版本中，没有`过中天后最大分钟数`设置，这等同于将两个设置设为相同的值。
+如上图所示，`过中天后分钟数`设置将定义必须翻转的时间点。
+N.I.N.A. 会尽量安排曝光，直到某次曝光时间超过剩余到达`过中天后分钟数`的时间。当这种情况发生时，应用程序将暂停赤道仪的跟踪，并等待该时间点到来，然后实际翻转赤道仪。一旦达到`过中天后分钟数`时间，望远镜将翻转，然后序列继续执行。
 
-### Min and Max time after meridian define a time range
-![min and max define a range](../images/advanced/meridianflip/minmaxrange.PNG)
+这种设置会导致一些停机时间，因为部分时间被用来等待翻转可以发生。
 
-When you set different points in time for `Minutes after meridian` and `Max. minutes after meridian` you can basically define a time range where a flip *could* happen. Anywhere inside this time range a flip can happen safely.  
-N.I.N.A. will try to fit in exposures until an exposure ends inside this time range. When the application detects that it is now inside this flip time range, the next exposure will not happen, but instead a flip will immediately be executed without any wait time. Afterwards the sequence will continue as normal.
+### 过中天后最短和最长时间定义一个范围
+![最短和最长时间定义一个范围](../images/advanced/meridianflip/minmaxrange.PNG)
 
-The big advantage with a configuration like this is that there is absolutely no downtime between exposures except for the actual flip. No time is wasted to waiting.
+当你为`过中天后分钟数`和`过中天后最大分钟数`设置不同的时间点时，你实际上定义了一个翻转*可以*发生的时间范围。在此时间范围内的任何时刻都可以安全翻转。
+N.I.N.A. 会尽量安排曝光，直到某次曝光在这个时间范围内结束。当应用程序检测到它现在处于此翻转时间范围内时，下一张曝光将不会发生，而是立即执行翻转，无需任何等待时间。之后序列将正常继续。
 
-### A pause before meridian is used
-![pause before meridian](../images/advanced/meridianflip/pausebefore.PNG)
+这种配置的一大优势是，除了实际的翻转时间外，两次曝光之间完全没有停机时间。不会因为等待而浪费时间。
 
-Setting a `Pause before meridian` time as non-zero will result in creating an obstruction zone. This means that your equipment will hit the tripod before actually passing the meridian (e.g. you have a very long telescope tube). During this period of time, no imaging must happen as the telescope cannot safely track past this time before crossing the meridian.  
-N.I.N.A. will try to fit in exposures until one exposure is longer than the remaining time to `Pause before meridian`. When this happens, the application will pause the tracking of the mount and will wait for the point in time to come to actually flip the mount at `Minutes after meridian`. Once the `Minutes after meridian` time has been reached, the telescope will flip and the sequence will continue afterwards.  
+### 使用中天前暂停
+![中天前暂停](../images/advanced/meridianflip/pausebefore.PNG)
 
-Use this setting only when your equipment hits the tripod before crossing the meridian, as it will result in a long downtime to wait for the object to get out of the obstruction zone!
+将`中天前暂停`时间设置为非零值会导致创建一个障碍区域。这意味着你的设备将在实际通过中天之前就碰到三脚架（例如，你有非常长的望远镜镜筒）。在此期间，不能进行任何拍摄，因为望远镜在到达中天之前就无法安全跟踪通过该时间点。
+N.I.N.A. 会尽量安排曝光，直到某次曝光时间超过到达`中天前暂停`的剩余时间。当这种情况发生时，应用程序将暂停赤道仪的跟踪，并等待时间点到来，然后在`过中天后分钟数`处实际翻转赤道仪。一旦达到`过中天后分钟数`时间，望远镜将翻转，然后序列继续执行。
+
+仅当你的设备在通过中天之前就会碰到三脚架时才使用此设置，因为这将导致长时间停机，只能等待目标离开障碍区域！

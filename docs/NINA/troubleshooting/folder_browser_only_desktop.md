@@ -1,7 +1,7 @@
-In case you run into the issue where the folder browser only lets you choose from the desktop you can fix it by going through the steps described here:  
+如果您遇到文件夹浏览器只能选择桌面的问题，可以通过以下步骤修复：
 
-[https://www.winhelponline.com/blog/browse-for-folder-dialog-empty-in-windows-11/](https://www.winhelponline.com/blog/browse-for-folder-dialog-empty-in-windows-11/)  
+[https://www.winhelponline.com/blog/browse-for-folder-dialog-empty-in-windows-11/](https://www.winhelponline.com/blog/browse-for-folder-dialog-empty-in-windows-11/)
 
 
-Basically this is caused by a bug in the Windows 11 22H2 build and is fixed in a later patch.  
-To get around the problem you need to disable OneDrive sync for the desktop folder.  
+基本上，这是由于 Windows 11 22H2 版本的一个 bug 引起的，该问题在后续补丁中已修复。
+要绕过此问题，您需要禁用桌面文件夹的 OneDrive 同步。

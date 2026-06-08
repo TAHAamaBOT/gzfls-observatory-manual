@@ -1,81 +1,81 @@
-Framing Assistant allows you to frame the next shot perfectly via several online sky survey services, a built-in planetarium, or a user-supplied image. It can utilize plate solving to perfectly align your telescope and rotator (if equipped) to match the position of the framing rectangle.
+构图助手让你可以通过多个在线巡天天图服务、内置星图或用户提供的图像来精确构图下一次拍摄。它可以利用解析功能将望远镜和旋转器（如果配备）完美对准，以匹配构图矩形的位置。
 
-For further information about using the Framing Assistant refer to the [Advanced Framing](../advanced/framingassistant.md) topic.
+有关使用构图助手的更多信息，请参考[高级构图](../advanced/framingassistant.md)主题。
 
-![The Framing Tab](../images/tabs/Framing10.png)
+![构图选项卡](../images/tabs/Framing10.png)
 
-## Image source 
+## 图像来源
 
-### Image Source selection menu
-* Allows you to specify the source of an image to utilize in the Framing Assistant. Possible options are:
-    * **Digital Sky Survey**: Fetch an image of the object from a sky survey server. This requires an internet connection
-    * **Offline Sky Map**: N.I.N.A.'s own database of objects. Circles representing approximate target sizes will be displayed
-        * If you have images in your Sky Survey Cache, they will be shown in the offline sky map
-        * A pre-rendered cache of cache images spanning the whole sky can be downloaded on the homepage. This cache can be used to have a fast and complete offline framing tool.
-    * **From File**: Load an existing JPEG, GIF, PNG or TIFF image of an object. When an image is provided through **From File**, the configured [Solver](../advanced/platesolving.md) is used to determine the coordinates and orientation of the image. Alternatively, for FITS and XISF files the WCS header coordinates are used if present.
-    * **Cache**: Load images directly from a local cache of images that have already been downloaded from one of the Digital Sky Survey servers or loaded in from files
-* Successfully-solved or downloaded local and sky survey images are cached automatically
+### 图像来源选择菜单
+* 指定在构图助手中使用的图像来源。可选来源有：
+    * **Digitized Sky Survey**：从巡天服务器获取目标图像。这需要互联网连接。
+    * **离线天图**：N.I.N.A. 自带的天体数据库。将显示近似目标大小的圆形标记。
+        * 如果你的天图缓存中有图像，它们将在离线天图中显示。
+        * 可以从官网主页下载覆盖全天的预渲染缓存图像包。使用此缓存可以获得快速而完整的离线构图工具。
+    * **从文件**：加载现有的 JPEG、GIF、PNG 或 TIFF 格式目标图像。当通过**从文件**提供图像时，N.I.N.A. 会使用已配置的[解析器](../advanced/platesolving.md)来确定图像的坐标和方向。此外，对于 FITS 和 XISF 文件，如果存在 WCS 头坐标，则会直接使用它们。
+    * **缓存**：从本地缓存中直接加载已从巡天天图服务器下载或从文件加载过的图像。
+* 成功解析或下载的本地和巡天天图图像会自动缓存。
 
-### Planetarium Sync
-* Pressing the Planetarium Sync button fetches the coordinates of a selected object from the configured external planetarium program. If no objects are selected in the planetarium the center of frame coordinates are selected as a fallback.
+### 星图同步
+* 按下星图同步按钮，可从已配置的外部星图程序中获取所选天体的坐标。如果星图中没有选中任何天体，则会回退使用画面中心坐标。
 
-## Camera parameters
+## 相机参数
 
-### Coordinates
-* The RA, Dec, and Field of View of a location in the sky may be manually entered here 
-* RA, Dec and Field of View are initially unavailable when loading an image from file, however these fields will be populated once the image has been automatically solved
+### 坐标
+* 可在此处手动输入天空中某个位置的赤经、赤纬和视场角。
+* 从文件加载图像时，赤经、赤纬和视场角最初不可用，但图像自动解析后这些字段将被填充。
 
-### Load Image
-* Starts the image download when using a sky survey 
-* Starts the plate solving mechanism when using **From File**. If the uploaded file already contains WCS headers, these will be used instead of attempting a new plate solve.
-* Attempts to load an image from the cache using the provided coordinates
+### 加载图像
+* 使用巡天天图时，启动图像下载。
+* 使用**从文件**时，启动解析机制。如果上传的文件中已经包含 WCS 头信息，则使用这些信息，不再尝试新的解析。
+* 尝试使用提供的坐标从缓存中加载图像。
 
-### Width, Height, Pixel Size and Focal Length
-* Values will be set from the connected camera automatically, if available 
-* These settings are not available to DSLR users
-* The specified Focal Length is **not** synchronized to the your Telescope settings. This allows you to experiment with various focal lengths
-* These parameters determine the size of the framing rectangle (15)
-> These parameters are only used for displaying the framing rectangle. For camera and focal length parameters used in plate solving, refer to [Options](../tabs/options/equipment.md).
+### 宽度、高度、像素尺寸和焦距
+* 如果可用，这些值将从已连接的相机自动设置。
+* DSLR 用户无法使用这些设置。
+* 指定的焦距**不会**与望远镜设置同步。这允许你尝试不同的焦距。
+* 这些参数决定了构图矩形（15）的大小。
+> 这些参数仅用于显示构图矩形。解析中使用的相机和焦距参数请参考[选项](../tabs/options/equipment.md)。
 
-## Targets
+## 目标
 
-### Mosaic Panels and rotation
-* Rotation can be set freely and should match your camera's orientation as determined by plate solving 
-* You can specify the number of panels for an N x M size mosaic 
-* You can specify the % overlap between each panel 
-* Furthermore it is possible to enable "preserve alignment" which becomes relevant the further away from the celestial equator (declination at 0) the object is. Having this option enabled will adjust each mosaic panel separately with its own rotation to perfectly align to a big rectangle. Keep in mind that this will require separate rotation between each panel.
-    ![Mosaic](../images/tabs/framing_mosaic.PNG)
+### 马赛克面板与旋转
+* 旋转角度可以自由设置，应与解析确定的相机方向匹配。
+* 你可以指定 N x M 马赛克的画板数量。
+* 你可以指定每个画板之间的重叠百分比。
+* 此外，还可以启用"保持对齐"，该选项在目标距离天赤道（赤纬 0 度）越远时越重要。启用此选项后，每个马赛克画板将分别以其自身的旋转进行调整，以完美对齐到一个大矩形。请注意，这需要在各画板之间单独旋转。
+    ![马赛克](../images/tabs/framing_mosaic.PNG)
 
-### Rotation from camera
-* This will take an exposure from your connected camera, plate solve it, and determine the rotation of the frame. Afterwards, the rotation of the framing is updated.
+### 从相机获取旋转
+* 这将从已连接的相机拍摄一张曝光、进行解析，并确定画框的旋转角度。之后，构图的旋转角度将会更新。
 
-### Slew and center
-* Slews the mount to the coordinates of the center of the framing rectangle (16) and uses plate solving to recenter the mount to be precisely on target
-* In addition when clicking on the arrow the operation can be adjusted to only slew to the target without solving or also consider the rotation (when a rotator is connected)
+### 转向并对中
+* 将赤道仪转向构图矩形（16）中心的坐标，并使用解析重新对中赤道仪，使其精确对准目标。
+* 此外，点击箭头可将操作调整为仅转向目标而不进行解析，或者同时考虑旋转（当连接了旋转器时）。
 
-### Add target to sequence
-* Takes the name, the RA and Dec coordinates, and the angle of the framing window, and adds it as a sequence target for either the legacy sequencer or the advanced sequencer using a deep sky object template
-* In addition when clicking on the arrow and clicking on "Add target to target list", the target can be added to the advanced sequencer's target tab instead
-* A third option is to click on "Update Existing Target in Sequencer" which becomes available when there is already a target inside the sequencer and the target should be updated with the new framing instead
+### 将目标添加到序列
+* 获取构图窗口的名称、赤经赤纬坐标和角度，并使用深空天体模板将其添加为传统序列器或高级序列器的序列目标。
+* 此外，点击箭头并点击"添加到目标列表"，可以将目标添加到高级序列器的目标选项卡中。
+* 第三个选项是点击"更新序列器中的现有目标"，当序列器中已有目标且希望用新构图更新该目标时，此选项可用。
 
-### Altitude browser
-* Displays the altitude of the target over time, indicating current position and meridian 
+### 高度角浏览器
+* 显示目标随时间推移的高度角，指示当前位置和中天位置。
 
-## Main tab
+## 主选项卡
 
-### Image display controls
-* From left to right: Zoom in, zoom out, fit image to screen, show image in original resolution 
+### 图像显示控件
+* 从左到右：放大、缩小、适应屏幕、以原始分辨率显示图像。
 
-### Annotation controls
-* From left to right: Rotate image instead of rectangle, Opacity of framing rectangle, constellation boundaries, constellation annotation, equatorial grid, annotate DSOs 
+### 标注控件
+* 从左到右：旋转图像而非矩形、构图矩形透明度、星座边界、星座标注、赤道网格、标注 DSO。
 
-### Image
-* The image as downloaded from the sky survey, cache, Sky Atlas or provided by **From File** 
+### 图像
+* 从巡天天图、缓存、天图集下载的图像，或通过**从文件**提供的图像。
 
-### Framing rectangle
-* Depends on the camera and focal length parameters (5) 
-* Can be dragged around with the mouse 
-* Can be rotated with (6) 
+### 构图矩形
+* 取决于相机和焦距参数（5）。
+* 可以用鼠标拖动。
+* 可以使用（6）旋转。
 
-### RA/DEC Coordinates
-* The coordinates of the center of the framing rectangle. These are used as a sequence target's coordinates.
+### 赤经/赤纬坐标
+* 构图矩形中心的坐标。这些坐标用作序列目标的坐标。

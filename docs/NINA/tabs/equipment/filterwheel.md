@@ -1,8 +1,8 @@
-The Filter Wheel tab lets you connect an ASCOM-compatible filter wheel.
+滤镜轮标签页允许您连接 ASCOM 兼容的滤镜轮。
 
-![Filter_wheel](../../images/tabs/equipments_fw.png)
+![滤镜轮](../../images/tabs/equipments_fw.png)
 
-1. Filter Wheel information
-2. Select a filter from the combo box you want to switch to and select the change filter button afterwards.
-3. List of current filters as imported from the ASCOM driver and specified in the [Filter Wheel Options](../options/equipment.md#filter-wheel)
+1. 滤镜轮信息
+2. 从组合框中选择要切换到的滤镜，然后点击切换滤镜按钮
+3. 从 ASCOM 驱动导入并在[滤镜轮选项](../options/equipment.md#滤镜轮)中指定的当前滤镜列表
 

@@ -1,82 +1,79 @@
-The Camera tab lets you connect an ASCOM-compatible camera or one of the native camera integrations supported by N.I.N.A.
+相机选项卡用于连接 ASCOM 兼容的相机或 N.I.N.A. 原生支持的相机集成。
 
-![Camera](../../images/tabs/equipment_camera.png)
+![相机](../../images/tabs/equipment_camera.png)
 
-The header contains the usual device controls for connecting, disconnecting, refreshing the device list, and opening the driver setup dialog when one is available.
+标题栏包含常规的设备控制按钮，用于连接、断开、刷新设备列表，以及在可用时打开驱动设置对话框。
 
-## Camera Information
+## 相机信息
 
-The left side of the page shows the current camera information. Depending on the connected camera, this can include:
+页面左侧显示当前相机信息。根据连接的相机不同，可能包含：
 
-* camera state
-* camera name and description
-* driver information and version
-* sensor type and sensor name
-* sensor width and height
-* minimum and maximum exposure times
-* maximum binning values
-* pixel size
-* battery level
-* gain and offset
+* 相机状态
+* 相机名称和描述
+* 驱动信息和版本
+* 传感器类型和传感器名称
+* 传感器宽度和高度
+* 最小和最大曝光时间
+* 最大像素合并值
+* 像素尺寸
+* 电池电量
+* 增益和偏置
 
-Some native camera integrations can also show additional driver-specific information or settings.
+某些原生相机集成还可以显示额外的驱动特定信息或设置。
 
-## Camera Settings
+## 相机设置
 
-The camera settings area contains the default settings that are used throughout the application unless a sequence or tool overrides them.
+相机设置区域包含在整个应用程序中使用的默认设置，除非序列或工具对其进行了覆盖。
 
-The exact controls in this area depend on the selected camera and driver.
+该区域中的具体控制选项取决于所选的相机和驱动。
 
-### File Camera Setup
+### 文件相机设置
 
-When you use the File Camera integration, its setup dialog lets you configure:
+使用文件相机集成时，其设置对话框可用于配置：
 
-* the folder to watch for incoming images
-* the expected file extension
-* whether to use bulb mode
-* whether incoming images are Bayered
-* whether N.I.N.A. should keep listening continuously
-* an optional download delay
+* 监控新图像的文件夹
+* 预期的文件扩展名
+* 是否使用 B 门模式
+* 新图像是否为 Bayer 格式
+* N.I.N.A. 是否应持续监听
+* 可选的文件下载延迟
 
-## Temperature Control
+## 温度控制
 
-When a cooled camera is connected, the right side of the page provides camera cooling control and monitoring.
+连接制冷相机后，页面右侧提供相机制冷控制与监测功能。
 
-### Status
+### 状态
 
-The status area can show:
+状态区域可显示：
 
-* dew heater state, if the camera supports a dew heater
-* cooler on/off state
-* cooler power
-* current chip temperature
-* target chip temperature while cooling is active
+* 结露加热器状态（如果相机支持）
+* 制冷器开/关状态
+* 制冷器功率
+* 当前芯片温度
+* 制冷激活时的目标芯片温度
 
-### Cooling
+### 制冷
 
-The **Cooling** section lets you:
+**制冷**区域可以：
 
-* set a target temperature
-* set an optional minimum cooling duration
-* start or cancel the cooling run
+* 设置目标温度
+* 设置可选的最短制冷时长
+* 开始或取消制冷流程
 
-### Warming
+### 升温
 
-The **Warming** section lets you:
+**升温**区域可以：
 
-* set an optional minimum warming duration
-* start or cancel the warm-up
+* 设置可选的最短升温时长
+* 开始或取消升温流程
 
-### Charts
+### 图表
 
-The charts below the controls show:
+控件下方的图表显示：
 
-* camera cooler power
-* chip temperature
+* 相机制冷器功率
+* 芯片温度
 
-!!! note
-    Not every camera exposes every field or every control. The visible information depends on the selected driver and the hardware capabilities it reports.
-   
-
-   
-
+:::note
+并非每台相机都会暴露所有字段或控件。可见的信息取决于所选的驱动及其报告的硬件能力。
+:::

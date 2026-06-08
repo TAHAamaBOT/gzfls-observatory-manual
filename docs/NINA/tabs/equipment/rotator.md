@@ -1,33 +1,35 @@
-The Rotator tab lets you connect an ASCOM-compatible rotator.
-A Manual Rotator option is also available.
+旋转器选项卡用于连接 ASCOM 兼容的旋转器。
+还提供一个手动旋转器选项。
 
-![Rotator](../../images/tabs/equipment_rotator.png)
+![旋转器](../../images/tabs/equipment_rotator.png)
 
-1. Rotator information
-2. Reverse the direction of the rotator (if available). Enable this option when the rotator moves in the wrong direction during centering and rotation. This is required, for example, on setups like a Hyperstar where the horizontal image axis is flipped.
-3. Move the rotator to the selected angle
+1. 旋转器信息
+2. 反转旋转器方向（如果可用）。当旋转器在对中和旋转过程中朝错误方向移动时，请启用此选项。例如，在 Hyperstar 这类水平图像轴翻转的配置中就需要这样做。
+3. 将旋转器移动到所选角度
 
-!!! note
-     The rotator angle will be synced to the sky angle after centering and rotation and will display the sky angle instead of the mechanical angle.
+:::note
+旋转器角度将在对中和旋转后与天空角度同步，并显示天空角度而非机械角度。
+:::
 
-## Manual Rotator
+## 手动旋转器
 
-Manual Rotator is a very useful tool for setups that do not have a motorized rotator but still want to be able to match the framing angle as defined in the [Framing tab](../framing.md).
+手动旋转器对于没有电动旋转器但仍希望匹配[构图选项卡](../framing.md)中定义的构图角度的配置来说，是一个非常实用的工具。
 
-To enable manual rotator you must:
+要启用手动旋转器，必须：
 
-1. Define a _Rotator Tolerance_ in [Options -> Plate Solving](../options/platesolving.md)
-2. Connect the manual rotator in the Rotator tab
-3. Frame your object in [Framing](../framing.md) and Add as Sequence Target
-4. Enable _Rotate Target_ in the [legacy sequencer](../../sequencer/simple/simple.md) or use the _Slew, center and rotate_ instruction in the [advanced sequencer](../../sequencer/advanced/advanced.md)
-5. Start the sequence
+1. 在[选项 -> 解析](../options/platesolving.md)中定义*旋转器容差*
+2. 在旋转器选项卡中连接手动旋转器
+3. 在[构图](../framing.md)中构图目标，并添加到序列目标
+4. 在[传统序列器](../../sequencer/simple/simple.md)中启用*旋转目标*，或在[高级序列器](../../sequencer/advanced/advanced.md)中使用*转向、对中并旋转*指令
+5. 启动序列
 
-Once the sequence is started and the mount has finished slewing to the target, N.I.N.A. will perform plate solving to determine the current framing coordinates and rotation angle. If the difference between the angle determined by plate solving and the angle specified in _Sequence -> Rotation_ is above the _Rotator Tolerance_, a pop-up will appear indicating the degrees and direction you need to rotate the camera.
-Rotate the camera and close the manual rotator window, and a new plate solve will be performed. If the angle is still above the _Rotator Tolerance_, the process will be repeated.
+序列启动且赤道仪完成转向目标后，N.I.N.A. 将进行解析以确定当前的构图坐标和旋转角度。如果解析确定的角度与*序列 -> 旋转*中指定的角度之间的差异超过*旋转器容差*，将弹出窗口指示你需要旋转相机的角度和方向。
+旋转相机并关闭手动旋转器窗口后，将执行一次新的解析。如果角度仍然超过*旋转器容差*，该过程将重复进行。
 
-![TargetSettings](../../images/tabs/targetsettings.png)
+![目标设置](../../images/tabs/targetsettings.png)
 
-![ManualRotator](../../images/tabs/manualrotator.PNG)
+![手动旋转器](../../images/tabs/manualrotator.PNG)
 
-!!! tip
-     If you want to set camera rotation before starting the main imaging sequence, you can use a dummy sequence with a 1s exposure to start the manual rotator.
+:::tip
+如果希望在主拍摄序列开始前设置相机旋转角度，可以使用一个 1 秒曝光的虚拟序列来启动手动旋转器。
+:::

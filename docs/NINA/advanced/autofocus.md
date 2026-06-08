@@ -1,270 +1,272 @@
-## Overview
+## 概述
 
-Proper focusing is a critical part of astro-imaging. Poor focus will yield softer images and lower SNR. As such it is common for imagers to focus with precision tools such as a Bahtinov mask prior to imaging.
-However, most optical assemblies will suffer from focus shift throughout the night whether it be because of temperature shift or other causes. Additionally, the popularity of monochrome sensors used together with narrowband or broadband filters has led to the need to refocus between filters, due to the slight focus shifts introduced.
-There is therefore a need for automated focusing procedures which can run at the beginning of a sequence, but also throughout the night.
+精确对焦是天体摄影中至关重要的环节。对焦不佳会导致图像偏软、信噪比降低。因此，拍摄者通常会在拍摄前使用鱼骨板等精确工具进行对焦。
+然而，大多数光学组件在整个夜晚都会因温度变化或其他原因而出现焦点漂移。此外，随着单色传感器配合窄带或宽带滤镜的普及，由于滤镜会引入微小的焦点偏移，拍摄者需要在滤镜之间重新对焦。
+因此，需要能够在序列开始时以及整个夜晚期间运行的自动化对焦流程。
 
-## Requirements
+## 要求
 
-For Auto-Focus to be available for use in N.I.N.A. the following must be available and connected via the Equipment tab:
+要在 N.I.N.A. 中使用自动对焦，必须通过设备选项卡连接以下设备：
 
-* An ASCOM compatible autofocuser with absolute positioning, properly set up to make sure it has minimal backlash and minimal slippage.
-* A camera that is using the imaging train to which the autofocuser is connected.
+* 一台支持绝对定位的 ASCOM 兼容自动调焦器，并已正确设置以确保回差最小、打滑最少。
+* 一台使用与该自动调焦器相同成像链的相机。
 
-## N.I.N.A. Autofocus
+## N.I.N.A. 自动对焦
 
-N.I.N.A. is unique in that it provides multiple ways to autofocus on star fields, bright objects such as the moon or planets, or terrestrial objects. This is done using two methods to measure how far from focus an image is.
+N.I.N.A. 的独特之处在于它提供了多种对焦方式，可以对星场、明亮目标（如月球或行星）或地面物体进行自动对焦。这通过两种方法来衡量图像的离焦程度。
 
-### Star HFR
+### 星点 HFR
 
-With this method, N.I.N.A. will move far out of focus, take an exposure, detect the stars in the image, compute the Half Flux Radius (HFR) of the stars and take the average HFR across the frame. Then, moving the focuser by some defined amount (the Auto Focus Step Size), N.I.N.A. can repeat the process until a usable focus curve is available, and the minimum (point of best focus) can be found by different types of fitting (trend lines, hyperbolic, or parabolic). The obtained curve looks like the example below.
+使用此方法时，N.I.N.A. 会先大幅移出对焦位置，拍摄一张曝光图像，检测图像中的星点，计算星点的半通量半径（HFR），并取整个画幅的平均 HFR。然后，将调焦器移动一个预定义量（即自动对焦步长），N.I.N.A. 重复此过程，直到获得一条可用的对焦曲线，并通过不同类型的拟合（趋势线、双曲线或抛物线）找到最小值（最佳对焦点）。得到的曲线如下例所示。
 
-![Autofocus Curve Example - Star HFR](../images/advanced/autofocuscurve1.png)
+![自动对焦曲线示例 - 星点 HFR](../images/advanced/autofocuscurve1.png)
 
-Each of the focus points above represents the HFR at its respective focus position. In addition, the red bars on each point represent the potential error on each of the focus points - wind and other factors can cause this error to be large. The line and curve fitting used to find best focus make use of those errors to take into account points with smaller error more than points with bigger error. The routine is therefore resistant to noise and other factors such as wind.
+上方的每个对焦点代表了相应对焦位置上的 HFR。此外，每个点上的红色条表示每个对焦点的潜在误差——风和其他因素可能导致此误差较大。用于寻找最佳对焦的线条和曲线拟合会利用这些误差，更多地考虑误差较小的点，而较少考虑误差较大的点。因此，该流程对噪声和风等因素具有较强的鲁棒性。
 
-Note however that for Star HFR measurement to work, stars must be detected in the field of view - as such, the routine will have issues with short exposures and far from focus, where out of focus stars will tend to be very large. The Auto-Focus Exposure time is therefore an important parameter to the autofocus routine.
+然而需要注意的是，星点 HFR 测量必须在视场中检测到星点才能正常工作——因此，在曝光时间较短且远离对焦位置的情况下（离焦星点往往非常大），该流程会面临挑战。因此，自动对焦曝光时间是自动对焦流程中的一个重要参数。
 
-It is also important to note that if the N.I.N.A. Step Size were too big (in the above example we can see it is equal to 10 focuser steps), the curve could become too coarse to be analyzed. The N.I.N.A. Step Size therefore needs to be selected judiciously.
+同样重要的是，如果 N.I.N.A. 步长过大（在上例中我们可以看到它等于 10 个调焦器步数），曲线可能过于粗糙而无法分析。因此，N.I.N.A. 步长需要谨慎选择。
 
-### Contrast Detection
+### 对比度检测
 
-A second method is to detect the contrast available in the image, in the same way that a smartphone or mirrorless camera does to perform autofocus. The focuser is moved per the Auto Focus Step Size, exposures are taken per the Auto-Focus exposure time, and contrast is measured via different techniques. The curve obtained is close to a Gaussian Curve, where the maximum of the curve is the point of highest contrast and therefore best focus. An example is shown below.
+第二种方法是通过检测图像中的对比度来进行对焦，其原理类似于智能手机或无反相机进行自动对焦的方式。调焦器按自动对焦步长移动，按自动对焦曝光时间拍摄图像，并通过不同技术测量对比度。得到的曲线接近高斯曲线，曲线的最高点即为对比度最高、因此对焦最佳的点。示例如下。
 
-![Autofocus Curve Example - Contrast Detection](../images/advanced/autofocuscurve2.png)
+![自动对焦曲线示例 - 对比度检测](../images/advanced/autofocuscurve2.png)
 
-As is visible on the image, N.I.N.A. fits a Gaussian Curve to the focus points to find the maximum, the point of best contrast. Because this method doesn't rely on detecting stars, it can use very short exposures, and use up very little computing time - this makes it good for very quick focus. Note however that the peak can be quite narrow and would be easy to miss entirely - as such the Auto Focus Step Size would need to be narrower than with the Star HFR technique. Getting more points near best focus is also recommended.
-Since this method uses contrast detection, it will also work on the Moon, solar system objects, or terrestrial objects. However it can be more sensitive to adverse conditions than the Star HFR method, and is still currently experimental.
+如图所示，N.I.N.A. 将高斯曲线拟合到对焦点上，以找到曲线的最高点——即最佳对比度点。由于此方法不依赖星点检测，因此可以使用非常短的曝光时间，且计算时间极少——这使得它非常适合快速对焦。但请注意，曲线峰值可能相当窄，很容易完全错过——因此，自动对焦步长需要比星点 HFR 方法更窄。还建议在最佳对焦附近获取更多数据点。
+由于此方法使用对比度检测，因此它也适用于月球、太阳系天体或地面物体。然而，与星点 HFR 方法相比，它对不利条件的敏感度可能更高，且目前仍处于实验阶段。
 
-Please note that both methods above assume that the focus is reasonably near to best focus at the start - please make sure that stars are decently small before launching the routine.
+请注意，以上两种方法都假定在开始时对焦已大致接近最佳位置——请确保在启动对焦流程之前，星点的大小已经足够小。
 
-## Basic Settings
+## 基本设置
 
-The main settings for autofocus are under Options -> Equipment -> Focuser section.
+自动对焦的主要设置位于选项 -> 设备 -> 调焦器区域。
 
-![Autofocus Curve Basic Settings](../images/advanced/autofocusbasicsettings.png)
+![自动对焦曲线基本设置](../images/advanced/autofocusbasicsettings.png)
 
-As we have seen above, the two main parameters to successful auto-focus are here:
+正如上文所述，成功自动对焦的两个主要参数在此处：
 
-* Default Auto Focus Exposure Time (in seconds)
-* Auto Focus Step Size (in focuser steps)
+* 默认自动对焦曝光时间（秒）
+* 自动对焦步长（调焦器步数）
 
-Some additional parameters are available:
+还有一些额外参数可供设置：
 
-* Auto Focus Initial Offset Steps (in N.I.N.A. Auto Focus Step Sizes, and not focuser steps)
-* Use FilterWheel Offsets (which does not directly affect auto-focus)
+* 自动对焦初始偏移步数（以 N.I.N.A. 自动对焦步长为单位，而非调焦器步数）
+* 使用滤镜轮偏移（不直接影响自动对焦）
 
-!!! Note
-	The Default Auto Focus Exposure Time won't be used if a filter wheel is connected, and Auto Focus Exposure Times have been set up in the Filter wheel section of the Options -> Equipment view. Instead, the per-filter exposure times will be used depending on the filter set at the time. This can be very convenient for imagers doing both broadband and narrowband (such as HaRGB). More details on how to set this up are available in the [Equipment Options Section](../tabs/options/equipment.md#filter-wheel-configuration).
+:::note
+如果连接了滤镜轮并且在选项 -> 设备视图的滤镜轮区域中设置了自动对焦曝光时间，则不会使用默认自动对焦曝光时间。取而代之的是根据当时的滤镜使用按滤镜设定的曝光时间。对于同时拍摄宽带和窄带（如 HaRGB）的拍摄者来说，这可能非常方便。有关如何设置此功能的更多详情，请参见[设备选项部分](../tabs/options/equipment.md#滤镜轮配置)。
+:::
 
-## Auto-Focus algorithm
+## 自动对焦算法
 
-The autofocus logic is as follows:
+自动对焦逻辑如下：
 
-1. For Star HFR, N.I.N.A. takes an exposure at current focuser position, and computes the Star HFR. This will be the "benchmark to beat", and the final focus point will be checked against this benchmark to ensure better focus has been achieved.
-2. Move the focuser outwards (to a higher focuser position value than current) by *Auto Focus Initial Offset Steps* multiplied by *Auto Focus Step Size*. In the above example, the focuser would be moved by 5 * 10 = 50 focuser steps to the right.
-3. Start moving the focuser inwards (to lower focuser position values), one *Auto Focus Step Size* (e.g. 10 focuser steps in the above example) at a time, measuring the contrast or HFR at each step.
-4. Keep moving inwards until it has found a minimum (for HFR) or maximum (for Contrast) point, and at least *Auto Focus Initial Offset Steps* (5 in this example) points on each side of that minimum or maximum. If N.I.N.A. finds that it doesn't have enough focus points to the right of the minimum/maximum, it will move back outwards to the rightmost point, then proceed again, one *Auto Focus Step Size* at a time, until it has enough points right of the minimum/maximum as well.
-5. Perform a fitting on the points (trend lines, parabolic, hyperbolic, or Gaussian) to find the point of best focus, and move the focuser to it.
-6. For Star HFR, a final validation exposure is taken, the HFR computed, and compared to the benchmark taken in Step 1. If the final HFR is worse than the initial HFR by 15% or more, the autofocus routine is deemed a failure and the focuser returns to its initial focus position, or an additional auto-focus run is attempted.
+1. 对于星点 HFR，N.I.N.A. 在当前调焦器位置拍摄一张曝光，并计算星点 HFR。这将成为"需要超越的基准"，最终对焦结果将与该基准对比，以确保实现了更好的对焦。
+2. 将调焦器向外移动（移动到比当前值更高的调焦器位置），移动量为*自动对焦初始偏移步数*乘以*自动对焦步长*。在上述示例中，调焦器将向右移动 5 * 10 = 50 个调焦器步数。
+3. 开始将调焦器向内移动（移动到更低的调焦器位置值），每次移动一个*自动对焦步长*（例如上述示例中的 10 个调焦器步数），在每个位置测量对比度或 HFR。
+4. 继续向内移动，直到找到最小值（HFR）或最大值（对比度）点，并且在该最小值或最大值两侧各有至少*自动对焦初始偏移步数*（本例中为 5）个数据点。如果 N.I.N.A. 发现最小值/最大值右侧没有足够的对焦点，它会移回最右侧的点，然后再次前进，每次一个*自动对焦步长*，直到右侧也有足够的数据点。
+5. 对数据点进行拟合（趋势线、抛物线、双曲线或高斯曲线），找到最佳对焦位置，并将调焦器移动到该位置。
+6. 对于星点 HFR，会拍摄一张最终验证曝光，计算 HFR，并与第 1 步中获取的基准进行比较。如果最终 HFR 比初始 HFR 差 15% 或更多，自动对焦流程将被判定为失败，调焦器将返回其初始对焦位置，或者尝试再次运行自动对焦。
 
-## Determining ideal parameters
+## 确定理想参数
 
-As we have seen, there are three important parameters that are used in the autofocus algorithm. It is time to set them up properly - a rule of thumb is as below.
+如上所述，自动对焦算法中使用三个重要参数。现在是时候正确设置它们了——以下是一些经验法则。
 
-### Auto Focus Initial Offset Steps
-This is typically good at the default value of 4 for Star HFR. For contrast measurement, a value of 6 is preferable.
+### 自动对焦初始偏移步数
+对于星点 HFR，默认值 4 通常效果良好。对于对比度测量，值 6 更为合适。
 
-### Auto Focus Step Size
-To determine the correct Auto Focus Step Size, a user could start with the focuser slightly out of focus outwards from best focus. Then move the focuser outwards by, say, 10 steps. If there is an obvious difference to the eye, and the star diameter has increased by around 20-30% or so, this is likely a good step size.
-Another method is the following: starting from a good focus position (e.g. by focusing with a Bahtinov mask) the user can progressively move the focuser inward (or outward) until N.I.N.A. is not able to determine star HFR in the image. The total increment represents the maximum initial offset. To be on the safe side, the user can take 80% of the max initial offset and divide it by the _Auto Focus Initial Offset Steps_ (default = 4). The resulting value represents a good Auto Focus Step Size. [Star HFR](../tabs/imaging.md) detection and [Annotate Image](../tabs/options/imaging.md) must be turned ON during the process.
-> Example: assuming a starting point of good focus of 4000 steps, we will move the focuser outward by an amount of 10 steps at a time, and take a new exposure at the end of each increment to check the measured HFR. Let's say that after 12 moves (120 focuser steps) no or just a couple of very defocused stars will still be detected by N.I.N.A. The value of 120 steps will therefore represent the max increment. Scaling it by 80% (roughly 100) and dividing it by the Initial Offset (4) will give us an _Auto Focus Step Size_ of 25.
+### 自动对焦步长
+要确定正确的自动对焦步长，用户可以从最佳对焦位置略微向外偏焦开始。然后将调焦器向外移动，比如说 10 步。如果肉眼能观察到明显差异，且星点直径增加了大约 20-30%，那么这可能是一个不错的步长。
+另一种方法如下：从良好的对焦位置开始（例如使用鱼骨板对焦），用户可以逐步向内（或向外）移动调焦器，直到 N.I.N.A. 无法在图像中检测到星点 HFR。总增量代表最大初始偏移量。为安全起见，用户可以取最大初始偏移量的 80%，除以*自动对焦初始偏移步数*（默认值 = 4）。得到的值即为一个良好的自动对焦步长。在此过程中，必须开启[星点 HFR](../tabs/imaging.md) 检测和[标注图像](../tabs/options/imaging.md)功能。
+> 示例：假设良好的对焦起始位置为 4000 步，我们将调焦器向外移动，每次 10 步，每次增量后拍摄新曝光以检查测量的 HFR。假设经过 12 次移动（120 个调焦器步数）后，N.I.N.A. 只能检测到零颗或极少数几颗非常模糊的星点。那么 120 步的值即为最大增量。将其缩放 80%（约为 100），除以初始偏移量（4），得到*自动对焦步长*为 25。
 
-Otherwise, the user should keep experimenting until they find a step size that shifts the focus by the right amount.
+除此之外，用户应不断尝试，直到找到能够以适当幅度移动对焦的步长。
 
-The above Step Size (in focuser steps) will be correct for Star HFR measurement. For contrast measurement based on Sobel or Laplace methods, this should also work fine. For Statistics-based contrast measurement, it may be appropriate to divide the Step Size by 2 or 3 and use that (as we saw in the previous example, the peak in that case is quite narrow).
+上述步长（以调焦器步数为单位）对于星点 HFR 测量是正确的。对于基于 Sobel 或 Laplace 方法的对比度测量，这同样应该有效。对于基于统计学的对比度测量，可能需要将步长除以 2 或 3 再使用（正如我们在前一个示例中看到的，这种情况下峰值相当窄）。
 
-### Default Auto Focus Exposure Time
-Under Options -> Imaging -> Image Options, set the "Annotate Image" parameter to On.
+### 默认自动对焦曝光时间
+在选项 -> 拍摄 -> 图像选项下，将"标注图像"参数设置为开启。
 
-For your filter of interest, take an exposure near best focus on an area with many stars. An ideal exposure time for Star HFR  would be an exposure that almost saturates the brightest stars, but keeps the majority under the saturation threshold. The stars should be easily visible and identifiable to you. Now enable the Star icon (HFR measurement) on the Image pane of the Imaging tab - N.I.N.A. will highlight the detected stars. If many stars are detected, this exposure time is likely fine.
+对于你感兴趣的滤镜，在接近最佳对焦的位置，对星点丰富的区域拍摄一张曝光。星点 HFR 的理想曝光时间应当是：几乎使最亮的星点饱和，但大多数星点保持在饱和阈值以下。星点应清晰可见且易于识别。现在在拍摄选项卡的图像窗格中启用星点图标（HFR 测量）——N.I.N.A. 将高亮显示检测到的星点。如果检测到很多星点，这个曝光时间很可能就是合适的。
 
-Then, move the focuser out of focus, by the *Auto Focus Initial Offset Steps* multiplied by *Auto Focus Step Size*. Take a frame with the same exposure time, and check that some of the out of focus shapes are still quite bright, with some very obvious borders. Again, using the Star icon, have N.I.N.A. highlight the detected stars - are some of the brightest stars correctly detected? If so, you have the right exposure time.
+然后，将调焦器移出对焦位置，移动量为*自动对焦初始偏移步数*乘以*自动对焦步长*。使用相同的曝光时间拍摄一帧，检查是否有些离焦形状仍然较亮，且有明显的边界。再次使用星点图标，让 N.I.N.A. 高亮显示检测到的星点——是否有些最亮的星点被正确检测到了？如果是，说明曝光时间是合适的。
 
-If both of the above are OK, you have found the correct default auto-focus exposure time for Star HFR. Note that this can change depending on your Imaging Auto-Stretch Settings. If you find that you have problems detecting stars far out of focus, you may want to increase the exposure time, and potentially decrease your Auto Stretch Factor.
+如果以上两点都满足，你就找到了星点 HFR 的正确默认自动对焦曝光时间。请注意，这可能会因你的拍摄自动拉伸设置而变化。如果发现在远离对焦的位置检测星点有困难，可能需要增加曝光时间，并可能降低自动拉伸因子。
 
-Note that for contrast detection methods, it is generally safe to use an exposure time that is shorter than the one used for Star HFR.
+请注意，对于对比度检测方法，通常使用比星点 HFR 更短的曝光时间也是安全的。
 
-### Use FilterWheel Offsets
+### 使用滤镜轮偏移
 
-Even parfocal filters can cause small changes to focus, due to the filter itself, or the optical system and how it deals with different light wavelengths. As such it is possible to set offsets, in focuser steps, for each filter relative to one another. If a filter wheel is used, and offsets are properly defined per filter, this setting should be turned on. Otherwise, it should be kept off. This setting doesn't affect autofocus directly, unless an Auto-Focus filter is set. Defining filter offsets is further explained in the [Equipment Options Section](../tabs/options/equipment.md#filter-wheel-configuration).
+即使齐焦滤镜也可能因滤镜本身或光学系统对不同波长的光的处理方式而引起微小的焦点变化。因此，可以设置每个滤镜相对于其他滤镜的偏移量（以调焦器步数为单位）。如果使用了滤镜轮，并且已按滤镜正确定义了偏移量，则此设置应开启。否则，应保持关闭。此设置不直接影响自动对焦，除非设置了自动对焦滤镜。定义滤镜偏移量的详细说明请参见[设备选项部分](../tabs/options/equipment.md#滤镜轮配置)。
 
-## Important considerations
+## 重要注意事项
 
-The basic parameters above should provide good auto-focus. The star HFR measurement and contrast detection calculation are however affected by other settings, which are located under Options -> Imaging -> Image Options
+以上基本参数应能提供良好的自动对焦效果。然而，星点 HFR 测量和对比度检测计算还受其他设置的影响，这些设置位于选项 -> 拍摄 -> 图像选项下。
 
-![Autofocus Curve Basic Settings](../images/advanced/imageoptions.png)
+![自动对焦曲线基本设置](../images/advanced/imageoptions.png)
 
-### Autostretch factor and Black point clipping
+### 自动拉伸因子与黑色裁剪
 
-These settings are used for stretching images automatically so that the target features are visible by human eyes. The stretch factor determines how bright the image becomes (the higher the brighter), and the black clipping determines whether some of the background should be clipped to black, increasing contrast.
+这些设置用于自动拉伸图像，使目标特征肉眼可见。拉伸因子决定图像亮度（值越高越亮），黑色裁剪决定是否将部分背景裁剪为黑色以增加对比度。
 
-Some of the routines used by autofocus use the stretched images as well (for edge detection for example), and are thus affected by this setting. This includes:
+自动对焦使用的某些程序也会使用拉伸后的图像（例如边缘检测），因此受此设置的影响。这包括：
 
-* StarHFR routine: stars are detected based on the stretched image
-* Contrast Detection routine, with the Sobel and Laplace measurement methods: contrast is measured on the stretched image
+* 星点 HFR 流程：基于拉伸后的图像检测星点。
+* 对比度检测流程（Sobel 和 Laplace 测量方法）：在拉伸后的图像上测量对比度。
 
-In light polluted conditions, if running into issues, it may be worth trying to lower the stretch ratio to values such as 0.1 and the clipping to values such as -2. This will depend on each observer's conditions however, and each user needs to find out their best settings using the techniques highlighted above.
+在光污染条件下，如果遇到问题，可以尝试将拉伸比率降低到 0.1 之类的值，将裁剪降低到 -2 之类的值。不过这取决于每个观测者的实际条件，每位用户需要利用上述技术找出自己的最佳设置。
 
-### Debayer Image, Debayered HFR and Unlinked Stretch
+### Debayer 图像、Debayered HFR 与非联动拉伸
 
-The recommended (and default) value for these parameters is On.
+这些参数的推荐值（也是默认值）为开启。
 
-The Debayer setting is for OSC (one shot color) cameras, and will be ignored for monochrome cameras. If enabled, the sensor data (which is monochrome at this stage) will be debayered into a color image and displayed as such in N.I.N.A. In addition, if Unlinked Stretch is set to On, when stretching the image each color channel will be stretched separately, according to its own statistics. This helps achieve images with higher contrast, so it is recommended to keep this On, unless the computer used for capture is very slow.
+Debayer 设置适用于 OSC（一次性彩色）相机，对单色相机无影响。启用后，传感器数据（此时为单色）将被 Debayer 处理为彩色图像，并以此显示在 N.I.N.A. 中。此外，如果非联动拉伸设置为开启，拉伸图像时每个色彩通道将根据其自身的统计数据分别拉伸。这有助于获得对比度更高的图像，因此建议保持开启，除非拍摄的电脑非常慢。
 
-Since, just as described above, many autofocus measurement methods depend on the stretched image, having this parameter correctly set will help with autofocus. Generally, it is better to leave these set to On.
+正如上文所述，许多自动对焦测量方法依赖于拉伸后的图像，正确设置此参数将有助于自动对焦。一般来说，最好保持这些设置开启。
 
-Similarly, the Debayered HFR option provides a better way to perform HFR calculation when set to On. If set to Off, the Bayered sensor data will be used for Star HFR calculation, which can lead to small focus error.
+类似地，Debayered HFR 选项在开启时提供了更好的 HFR 计算方式。如果关闭，Bayer 格式的传感器数据将用于星点 HFR 计算，这可能导致微小的对焦误差。
 
-### Star Sensitivity
+### 星点灵敏度
 
-Star sensitivity is a parameter that takes effect during Star Detection, and therefore affects the Star HFR autofocus methodology. More aggressive settings will typically detect more stars, but will become more sensitive to noise as a result, which could lead to missing stars. With the Annotate Stars setting set to On it is possible for the user to see the effects of this setting both in and out of focus. Typically, a value of Normal or High will provide good results.
+星点灵敏度参数在星点检测过程中生效，因此会影响星点 HFR 自动对焦方法。更激进的设置通常会检测到更多星点，但同时也会对噪声更敏感，这可能导致漏检星点。将标注星点设置为开启后，用户可以看到此设置在合焦和离焦情况下的效果。通常，Normal 或 High 的值会提供良好的结果。
 
-As making this parameter more aggressive increases noise sensitivity, it can be used efficiently with the Noise Reduction parameter described below.
+由于使此参数更激进会增加对噪声的敏感度，因此可以与下文描述的降噪参数有效配合使用。
 
-### Noise Reduction
+### 降噪
 
-This parameter determines how noise reduction is applied on the image prior to star detection, or some of the methods of contrast detections (Sobel and Laplace). It is only effective on the following autofocus methods:
+此参数决定在星点检测之前，或某些对比度检测方法（Sobel 和 Laplace）之前，对图像应用多强的降噪处理。它仅对以下自动对焦方法有效：
 
-* StarHFR routine
-* Contrast Detection routine, with the Sobel and Laplace measurement methods
+* 星点 HFR 流程
+* 对比度检测流程（Sobel 和 Laplace 测量方法）
 
-The possible values are as below:
+可选值如下：
 
-* None: no additional noise reduction is applied prior to star detection or contrast measurement
-* Median: a 3x3 Median filter is applied on the full size image prior to star or contrast detection. This is extremely effective at getting rid of hot pixels (which could be recognized as stars), but adds some processing time
-* Normal: A Gaussian smoothing is applied to the image prior to star or contrast detection. This is effective at reducing thermal noise. Processing time impact is minimum, but detectable.
-* High: A stronger Gaussian smoothing is applied to the image
-* Highest: An even stronger Gaussian smoothing is applied to the image
+* None：星点检测或对比度测量前不应用额外的降噪处理。
+* Median：在星点或对比度检测前，对全尺寸图像应用 3x3 中值滤波。这对消除热像素（可能被误认为星点）极其有效，但会略微增加处理时间。
+* Normal：在星点或对比度检测前，对图像应用高斯平滑。这对减少热噪声有效。处理时间影响最小，但仍然可察觉。
+* High：对图像应用更强的���斯平滑。
+* Highest：对图像应用更强的的高斯平滑。
 
-Noise reduction can be very effective when combined with star sensitivity settings - but which values are ideal depend on each user's setup. Good results have been found with Star Sensitivity Normal or High and Noise Reduction Normal.
+降噪与星点灵敏度设置配合使用时可能非常有效——但哪组值最理想取决于每位用户的设备。Star Sensitivity Normal 或 High 配合 Noise Reduction Normal 的结果已被证明效果良好。
 
-## Launching Auto-Focus
+## 启动自动对焦
 
-Now that the basic settings of the autofocus routine have been set, it is time to launch an autofocus run. Of course, prior to doing that, the telescope should be pointed to the night sky, and tracking. There are multiple ways to do this:
+现在自动对焦流程的基本设置已经完成，是时候启动一次自动对焦了。当然，在此之前，望远镜应已指向夜空并处于跟踪状态。有多种方式可以启动自动对焦：
 
-* Start autofocus manually, from the Imaging tab. To make sure the autofocus window is available, the top right AF button needs to be clicked first. That should create a tab in the imaging pane.
+* 从拍摄选项卡手动启动自动对焦。为确保自动对焦窗口可用，需要先点击右上角的 AF 按钮。这将在拍摄窗格中创建一个选项卡。
 
-![Launching Auto Focus](../images/advanced/LaunchingAutoFocus.png)
+![启动自动对焦](../images/advanced/LaunchingAutoFocus.png)
 
-If both camera and focuser are properly connected, the "Start Autofocus" button will be available, and clicking it will launch the routine, as described in [the introduction section](#nina-autofocus).
+如果相机和调焦器均已正确连接，"启动自动对焦"按钮将可用，点击它将启动自动对焦流程，如[介绍部分](#nina-自动对焦)所述。
 
-* Start autofocus as part of an imaging sequence (at start, after a certain number of frames, after a user-defined time, after worsening of HFR, etc.). This can be configured from the sequence tab, and is described in more details in the relevant [Sequence Section](../tabs/sequencer.md)
+* 作为拍摄序列的一部分启动自动对焦（在开始时、拍摄一定帧数后、用户定义的时间后、HFR 恶化后等）。这可以从序列选项卡配置，详细说明请参见相关[序列部分](../tabs/sequencer.md)。
 
-## Advanced Options
+## 高级选项
 
-Under the Focuser options, there are a range of advanced options that will affect autofocus. The available options are different depending on the focus methodology being used. See [Options->Equipment](../tabs/options/equipment.md) for further details.
+在调焦器选项下，有一系列会影响自动对焦的高级选项。可用的选项因使用的对焦方法而异。更多详情请参见[选项->设备](../tabs/options/equipment.md)。
 
-![AF Advanced](../images/advanced/AF_advanced10.PNG)
+![AF 高级](../images/advanced/AF_advanced10.PNG)
 
-### AF Method
+### 自动对焦方法
 
-The method used for autofocus. This is either Star HFR or Contrast Detection, both of which have been described in this document. Default is Star HFR.
+用于自动对焦的方法。可选择星点 HFR 或对比度检测，两者均已在本文档中描述。默认为星点 HFR。
 
-### AF Disable Guiding
+### 自动对焦时禁用导星
 
-Determines whether guiding should be disabled when autofocusing. For OAG or belt focuser users, it may be better to have this option set to On. Otherwise, it can be set to Off.
+决定自动对焦时是否应禁用导星。对于使用 OAG（离轴导星器）或皮带调焦器的用户，将此选项设为开启可能更好。否则，可以设为关闭。
 
-### AF Curve Fitting
+### 自动对焦曲线拟合
 
-This option is only available when the Star HFR autofocus method is selected (for contrast detection, a Gaussian curve is always used). It determines what methodology should be used for fitting the focus points to a smooth curve.
+此选项仅在选择了星点 HFR 自动对焦方法时可用（对比度检测始终使用高斯曲线）。它决定应将哪种方法用于将对焦点拟合到平滑曲线上。
 
-* Trend Lines: this is the default option, and uses error-weighted trend lines for the left and right side of focus. The intersection of the trend lines is the point of best focus.
-* Parabolic: an error-weighted parabolic fit will be done on the focus points, and its minimum determines the point of best focus. This is most appropriate for users whose autofocus step size and offset steps keep them in the vicinity of the CFZ (critical focus zone), so that the asymptotes of the focus curve are usually not reached.
-* Hyperbolic: an error-weighted hyperbolic fit will be done on the focus points, and its minimum determines the point of best focus. This is appropriate for most users, for whom the focus curve will resemble a hyperbola, with clear asymptotes on each side of focus.
-* Parabolic + Trends or Hyperbolic + Trends: This will fit the focus points with both trend lines and a parabolic or hyperbolic fitting. The point of best focus is then an average between the trend line intersection and the hyperbolic or parabolic minimum.
-	
-!!! Note
-	Which fitting method works best depends on the user and their particular conditions. Poor seeing conditions in particular can make parabolic fitting very appropriate, while Hyperbolic fitting (or hyperbolic + trends) should work best for most users
+* 趋势线：这是默认选项，使用误差加权的趋势线来拟合对焦的左右两侧。趋势线的交点即为最佳对焦点。
+* 抛物线：将对焦点进行误差加权的抛物线拟合，其最小值确定最佳对焦点。这对于自动对焦步长和偏移步数使其保持在 CFZ（临界对焦区）附近的用户最为适用，这样通常不会触及对焦曲线的渐近线。
+* 双曲线：将对焦点进行误差加权的双曲线拟合，其最小值确定最佳对焦点。这适用于大多数用户，其对应的对焦曲线类似于双曲线，每侧各有清晰的渐近线。
+* 抛物线 + 趋势线 或 双曲线 + 趋势线：将同时使用趋势线和抛物线或双曲线拟合对焦点。最佳对焦点是趋势线交点与双曲线或抛物线最小值的平均值。
 
-### Focuser Settle Time
+:::note
+:::
+哪种拟合方法效果最好取决于用户及其具体条件。特别是在视宁度较差的条件下，抛物线拟合可能非常合适，而双曲线拟合（或双曲线 + 趋势线）对大多数用户效果最好。
 
-This is the time, in seconds, to wait after a focuser movement and before the next exposure. This can be useful for focusing systems that can make the imaging train vibrate, like some belt focusers. For most users, this can be kept at zero.
+### 调焦器稳定时间
 
-### AF Number of attempts
+调焦器移动后、下一次曝光前等待的时间（秒）。这对于可能导致成像链振动的调焦系统（如某些皮带调焦器）可能很有用。对于大多数用户，可以保持为 0。
 
-If a focus run is deemed unsuccessful (which can happen with the Star HFR methodology, which compares the final Star HFR to the initial Star HFR), and there are Auto Focus Attempts left, a new focus run will be attempted. When all the attempts are exhausted, the autofocus routine will declare failure, return to its original focuser position, and imaging will continue as usual. For most users, a value of 1 (single attempt, no retry in case of failure) or 2 (one retry in case of failure) is appropriate.
+### 自动对焦尝试次数
 
-### AF Number of Frames per point
+如果对焦运行被判定为不成功（在星点 HFR 方法中可能发生，该方法会比较最终的星点 HFR 和初始的星点 HFR），并且还有剩余的自动对焦尝试次数，则会尝试一次新的对焦运行。当所有尝试次数用尽后，自动对焦流程将宣告失败，返回到原始调焦器位置，拍摄继续进行。对于大多数用户，值 1（单次尝试，失败不重试）或 2（失败时重试一次）是合适的。
 
-For users for whom extremely precise focus is critical (such as users in good seeing conditions and high resolution imaging trains), getting very accurate focus points and thus focus curve fitting is necessary. To accomplish that, the Auto Focus Routine can take multiple exposures (as per this parameter) per focuser position (rather than a single one) and average their Star HFR or contrast measurement - this leads to smoother, more precise focusing curves, at the cost of more time spent autofocusing. For most users, a value of 1 works well.
+### 每对焦点帧数
 
-### Use Brightest n Stars
+对于需要极其精确对焦的用户（例如视宁度良好、成像分辨率高的用户），获取非常精确的对焦点从而得到精确的对焦曲线拟合是必要的。为此，自动对焦流程可以在每个调焦器位置拍摄多张曝光（根据此参数），并平均它们的星点 HFR 或对比度测量值——这会产生更平滑、更精确的对焦曲线，代价是花费更多的自动对焦时间。对于大多数用户，值 1 效果良好。
 
-This setting, which is only available for the Star HFR focusing method, will detect the top n brightest stars in the FOV, and use only those stars during the whole auto-focusing sequence. As the positions of the stars can change in unstable imaging trains, or imaging trains subject to mirror shift, this should only be used for very stable imaging setups. For most users, a value of 0 (meaning all the detected stars in the FOV will be used) works best.
+### 使用最亮的 n 颗星
 
-### AF Inner Crop Ratio and AF Outer Crop Ratio
+此设置仅适用于星点 HFR 对焦方法，它将检测视场中最亮的 n 颗星，并在整个自动对焦序列中仅使用这些星点。由于星点位置在不稳定的成像链或受镜面偏移影响的成像链中可能会变化，因此这应仅用于非常稳定的成像设备。对于大多数用户，值 0（即使用视场中所有检测到的星点）效果最好。
 
-These settings (numbers between 0.2 and 1) are used to define a region of interest for the autofocusing method. For Star HFR, this is how it works:
+### 自动对焦内裁剪比例与外裁剪比例
 
-* If both ratios are set to 1, nothing is done, the whole frame is used for autofocus
-* If Inner Crop Ratio is set to a value below one, such as 0.5, and Outer Crop Ratio is set to 1, a central ROI (Region of Interest - in this case corresponding to 50% of the full frame size) will be used for star detection. If the camera is able to subsample to that particular ROI, it will do so. Otherwise, the full frame will be captured, but only the stars within the ROI will be used. If Annotate Image is set to true, the effect of the setting will then be readily visible, as per the following screenshot.
-	
-![Inner Crop Ratio](../images/advanced/innercropratio.png)
+这些设置（0.2 到 1 之间的数值）用于为自动对焦方法定义感兴趣区域（ROI）。对于星点 HFR，其工作原理如下：
 
-* If Inner Crop Ratio and Outer Crop Ratio are both set to values less than 1 (note that the Outer Crop Ratio value cannot be smaller than the Inner Crop Ratio), a "doughnut" of sorts is created between the inner rectangle and the outer rectangle - this will be ROI for autofocus. This is good for some optical systems which are best focused at 2/3 of the field of view, like some Takahashi refractors. The result is as below (inner = 0.5 and outer = 0.8).
+* 如果两个比例都设置为 1，则不进行任何裁剪，使用整个画幅进行自动对焦。
+* 如果内裁剪比例设置为小于 1 的值（如 0.5），外裁剪比例设置为 1，则将使用中央 ROI（感兴趣区域——本例中对应全幅尺寸的 50%）进行星点检测。如果相机能够对该特定 ROI 进行子采样，它就会这样做。否则，将拍摄全幅，但仅使用 ROI 内的星点。如果"标注图像"设置为开启，该设置的效果将清晰可见，如下截图所示。
 
-![Outer Crop Ratio](../images/advanced/outercropratio.png)
+![内裁剪比例](../images/advanced/innercropratio.png)
 
-Note that it is possible to set the inner crop ratio to some value, and the outer crop ratio to a value such as 0.99 to take into account only the outside of the center. This can be useful for centered, very dense globular clusters, although they should not pose a big issue to the N.I.N.A. star detection routines.
+* 如果内裁剪比例和外裁剪比例都设置为小于 1 的值（注意外裁剪比例值不能小于内裁剪比例），则在内矩形和外矩形之间形成一个"环形"——这将成为自动对焦的 ROI。这对于某些在视场 2/3 处对焦最佳的光学系统（如某些 Takahashi 折射镜）很有效。结果如下（inner = 0.5，outer = 0.8）。
 
-Note that for Contrast Detection methods, only the inner crop ratio is available. In addition, for the Statistics contrast detection method, it will only work if the camera can subsample to the required ROI.
+![外裁剪比例](../images/advanced/outercropratio.png)
 
-### Backlash 
+请注意，可以将内裁剪比例设置为某个值，而外裁剪比例设置为 0.99 这样的值，以仅使用中心以外的区域。这对于居中且非常密集的球状星团可能有用，不过 N.I.N.A. 的星点检测程序通常不会因此遇到太大问题。
 
-Most focusers suffer from some degree of backlash, which is a certain amount of "slippage" when reversing directions. That backlash can be precisely measured and compensated in software. For most focusers, the IN (when the focuser switches back to an inwards direction after moving outwards) and OUT (when focuser switches back to an outwards direction after moving inwards) are identical. 
+请注意，对于对比度检测方法，仅内裁剪比例可用。此外，对于基于统计学的对比度检测方法，仅当相机能够对所需的 ROI 进行子采样时才有效。
 
-#### Identifying backlash
+### 回差
 
-It is critical for autofocus that all backlash is removed during a focus run. Without it the final focus position will never be reached properly. Therefore the backlash needs to be identified.  
-An easy way to see this, is by looking at the Autofocus chart itself. The backlash will be prominent on the right side from the starting position and will show as a horizontal line in the chart.
+大多数调焦器都存在某种程度的回差，即在反转方向时会有一定的"打滑"量。该回差可以在软件中精确测量并进行补偿。对于大多数调焦器，向内回差（调焦器从向外切换回向内方向时）和向外回差（调焦器从向内切换回向外方向时）是相同的。
 
-![Typical Backlash](../images/advanced/backlash.png)
+#### 识别回差
 
-In the above example the amount of backlash is at least 100 steps. Let's explain why the right side will show the backlash like that.  
-The initial focuser position for the above example was around step 9000. To begin the autofocus routine, the focuser will move outwards to position 9300. The first measurement is taken. Then the focuser needs to travel to position 9200. Here the direction is changed from outwards to inwards. Every time a change of direction happens, the backlash needs to be compensated. As there was no compensation for the above example, the focuser thinks that it moved to position 9200, but due to the backlash the physical movement of the draw tube was none. Therefore the next measurement point will have the same HFR value as before, resulting in a flat line until the backlash was overcome. Finally when the focuser was moving inwards to the last autofocus point at position 8600 it needs to change directions again to move to the calculated focus point. Here again the backlash was not compensated and the focus position will be missed, resulting in a bad end result.
+自动对焦的关键在于确保在对焦运行期间消除所有回差。否则，最终的对焦位置将永远无法正确到达。因此需要识别回差。
+一个简单的查看方法是观察自动对焦图表本身。回差在起始位置的右侧会很明显，并在图表中呈现为一条水平线。
 
-#### Compensating backlash
+![典型的回差](../images/advanced/backlash.png)
 
-N.I.N.A. offers two backlash compensation methods:
+在上例中，回差量至少为 100 步。让我们解释一下为什么右侧会以这种方式显示回差。
+上述示例的初始调焦器位置大约在 9000 步。为了开始自动对焦流程，调焦器将向外移动到 9300 位置。进行第一次测量。然后调焦器需要移动到 9200 位置。在这里，方向从向外变为向内。每次发生方向变化时，都需要补偿回差。由于上述示例没有进行补偿，调焦器以为它移动到了 9200 位置，但由于回差，调焦管的物理移动为零。因此，下一个测量点将具有与之前相同的 HFR 值，导致出现一条水平线，直到回差被克服。最后，当调焦器向内移动到最后一个对焦点 8600 位置时，它需要再次改变方向以移动到计算出的对焦点。这里回差再次未被补偿，对焦位置将被错过，导致最终结果不佳。
 
-* Absolute:
-  When the focuser changes directions, an absolute value will be added to the focuser movement.
-  Backlash IN: when the focuser changes from moving outwards to moving inwards, the Backlash IN value will be added.
-  Backlash OUT: when the focuser changes from moving inwards to moving outwards, the Backlash OUT value will be added.
-* Overshoot:
-  This method will compensate for backlash by overshooting the target position by a large amount and then moving the focuser back to the initially requested position.
-  Due to this compensation, the last movement of the focuser will always be in the same direction (either always inwards or always outwards).
+#### 补偿回差
 
-> Absolute is indicated for focusers with relatively small backlash and requires a more accurate measurement of the amount of backlash, while Overshoot is more forgiving and can be safely used for most focusers.
+N.I.N.A. 提供两种回差补偿方法：
 
-**Backlash IN/OUT**
-* The focuser backlash in the IN (decreasing position) and OUT (increasing position) directions, expressed in focuser steps.
-  
-> When Overshoot is chosen, only ONE value between Backlash IN and OUT must be set! When setting IN, the amount will be applied on each inward movement, so the final movement will always be outwards. For Backlash OUT, it will be the other way around.
+* 绝对模式：
+  当调焦器改变方向时，将向调焦器移动添加一个绝对值。
+  向内回差：当调焦器从向外移动变为向内移动时，将添加向内回差值。
+  向外回差：当调焦器从向内移动变为向外移动时，将添加向外回差值。
+* 过冲模式：
+  此方法通过大幅越过目标位置，然后将调焦器移回最初请求的位置来补偿回差。
+  由于这种补偿方式，调焦器的最后移动将始终朝着同一方向（始终向内或始终向外）。
 
-### Binning
+> 绝对模式适用于回差相对较小的调焦器，需要更精确地测量回差量，而过冲模式容错性更好，对大多数调焦器都可以安全使用。
 
-Autofocus can sometimes work more efficiently on binned images. This is a number between 1 and 4, representing 1x1, 2x2, 3x3, and 4x4 binning. This will attempt to bin the camera image to that particular value. For most users, a value of 1 is appropriate.
+**向内/向外回差**
+* 调焦器在向内（位置减小）和向外（位置增大）方向上的回差，以调焦器步数表示。
 
-## Auto-Focus Filter
+> 选择过冲模式时，向内回差和向外回差只需设置**一个**值！设置向内时，该值将应用于每次向内移动，因此最终移动将始终向外。对于向外回差，则反过来。
 
-Another parameter that affects the auto-focus routine is the Auto-Focus Filter. It is possible to set an auto-focus filter, as described in the [Equipment Options Section](../tabs/options/equipment.md). If set, and the *Use FilterWheel Offsets* setting is set to On, the autofocus routine will use the Auto-Focus filter rather than the currently set filter in the filter wheel, and make sure the focuser offset is applied when switching to the autofocus filter, and when switching back to the imaging filter. This can be particularly useful for Narrowband imagers, where the filters can force long exposures for autofocus, such as 10 to 30 seconds.
+### 像素合并
 
-![Auto-Focus Filter](../images/advanced/Autofocusfilter.png)
+自动对焦有时在合并后的图像上工作效率更高。这是 1 到 4 之间的数字，分别代表 1x1、2x2、3x3 和 4x4 合并。这将尝试将相机图像合并到该特定值。对于大多数用户，值 1 是合适的。
 
-## Auto-Focus Logs
+## 自动对焦滤镜
 
-For each successful Auto-Focus that has been performed, a JSON log file is created containing detailed information about the autofocus run. There you can find the used filter, all the steps that were measured, and other useful information to evaluate an Auto-Focus run from the past. Furthermore, these logs can help greatly in analyzing potential issues with Auto-Focus by sharing this file with other people.
-  
-These logs are stored inside `%LOCALAPPDATA%\NINA\Autofocus\`
+另一个影响自动对焦流程的参数是自动对焦滤镜。可以如[设备选项部分](../tabs/options/equipment.md)所述设置一个自动对焦滤镜。如果设置了自动对焦滤镜，并且*使用滤镜轮偏移*设置设为开启，自动对焦流程将使用自动对焦滤镜而非滤镜轮中当前设置的滤镜，并确保在切换到自动对焦滤镜以及切回拍摄滤镜时应用调焦器偏移量。这对于窄带拍摄者尤其有用，因为窄带滤镜可能需要较长的自动对焦曝光时间，例如 10 到 30 秒。
+
+![自动对焦滤镜](../images/advanced/Autofocusfilter.png)
+
+## 自动对焦日志
+
+对于每次已成功执行的自动对焦，都会创建一个 JSON 日志文件，其中包含关于该次自动对焦运行的详细信息。你可以在其中找到所使用的滤镜、所有测量的步骤以及其他用于评估过往自动对焦运行的有用信息。此外，通过与他人分享此文件，这些日志可以极大地帮助分析自动对焦可能存在的问题。
+
+这些日志存储在 `%LOCALAPPDATA%\NINA\Autofocus\` 中。

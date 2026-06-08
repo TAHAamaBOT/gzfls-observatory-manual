@@ -1,20 +1,20 @@
 # TIFF
 
-Tagged Image File Format (TIFF) is an image file format originally created by Aldus. 
-Currently there is no metadata stored by N.I.N.A. for this specific format.
+标记图像文件格式（Tagged Image File Format，简称 TIFF）是一种最初由 Aldus 公司创建的图像文件格式。
+目前，N.I.N.A. 不会为此格式存储任何元数据。
 
-## TIFF raw
+## TIFF 原始
 
-This format stores the image in its pure raw format without using any compression. This type is the fastest, but also largest in size.
+此格式以纯粹的原始格式存储图像，不使用任何压缩。这种类型处理速度最快，但文件体积也最大。
 
-## TIFF compressed
+## TIFF 压缩
 
-TIFF is capable of storing the image in a lossless compressed format. 
-This will reduce the file size considerable without altering the image in any way, but the downside is increased processing time when saving and loading the image.
-Some software might also not be compatible with compressed TIFF files.
+TIFF 能够以无损压缩格式存储图像。
+这将在不改变图像任何内容的情况下显著减小文件体积，但缺点是保存和加载图像时的处理时间会增加。
+某些软件也可能不兼容压缩后的 TIFF 文件。
 
-### zip vs lzw
+### zip 与 lzw
 
-Zip and lzw are different algorithms for compression and the result is highly depending on the input data. 
-It could even be possible that the file size increases when the data is laid out in a worst case scenario for the algorithm.
-For deciding on an algorithm it is advised to try out which one works best for your specific camera and data.
+Zip 和 lzw 是不同的压缩算法，其效果高度依赖于输入数据。
+在最坏的情况下，数据排列方式甚至可能导致文件体积反而增大。
+在选择算法时，建议尝试哪种算法对你的特定相机和数据效果最好。
