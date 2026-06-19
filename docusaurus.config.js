@@ -22,7 +22,7 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://manual.novas.top',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -88,14 +88,14 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/social-card.png',
       colorMode: {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: '广外天文社',
+        title: '译星者天文社',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Steller Decoder Logo',
           src: 'img/logo.png',
         },
         items: [
@@ -156,7 +156,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} 广州外国语学校天文社 Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} 广州外国语学校译星者天文社 Built with Docusaurus. <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2026076742号</a>`,
       },
       prism: {
         theme: prismThemes.github,
