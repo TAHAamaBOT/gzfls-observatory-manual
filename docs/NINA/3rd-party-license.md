@@ -5,7 +5,7 @@ N.I.N.A. 源代码本身依据 Mozilla Public License Version 2.0 进行许可�
 | -------------------- |:-----------|:----------|
 | Accord                   | [http://accord-framework.net/](http://accord-framework.net/) | [GNU Lesser General Public License version 2.1](https://www.gnu.de/documents/lgpl-2.1.de.html) |
 | ASCOM                    | [https://ascom-standards.org/](https://ascom-standards.org/) | [The MIT License](https://opensource.org/licenses/MIT) |
-| AsyncEnumerator          | [https://github.com/Dasync/AsyncEnumerable]() | [The MIT License](https://opensource.org/licenses/MIT)                   |
+| AsyncEnumerator          | [https://github.com/Dasync/AsyncEnumerable](https://github.com/Dasync/AsyncEnumerable) | [The MIT License](https://opensource.org/licenses/MIT)                   |
 | Castle Core              | [https://github.com/castleproject/Core](https://github.com/castleproject/Core) | [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) |
 | CommunityToolkit.Mvvm    | [https://github.com/CommunityToolkit/dotnet](https://github.com/CommunityToolkit/dotnet) | [The MIT License](https://opensource.org/licenses/MIT) |
 | CoreWCF.WebHttp          | [https://github.com/CoreWCF/CoreWCF](https://github.com/CoreWCF/CoreWCF) | [The MIT License](https://opensource.org/licenses/MIT) |
@@ -31,7 +31,7 @@ N.I.N.A. 源代码本身依据 Mozilla Public License Version 2.0 进行许可�
 | SharpGIS.NmeaParser      | [https://dotmorten.github.io/NmeaParser/](https://dotmorten.github.io/NmeaParser/) | [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) |
 | Swashbuckle.AspNetCore   | [https://github.com/domaindrivendev/Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) | [The MIT License](https://opensource.org/licenses/MIT) |
 | SOFA                     | [https://www.iausofa.org/](https://www.iausofa.org/) | [SOFA Software License](https://www.iausofa.org/tandc.html) |
-| System.Data.SQLite       | [https://system.data.sqlite.org/](https://system.data.sqlite.org/) | [https://www.sqlite.org/copyright.html](https://www.sqlite.org/copyright.html)
+| System.Data.SQLite       | [https://system.data.sqlite.org/](https://system.data.sqlite.org/) | [https://www.sqlite.org/copyright.html](https://www.sqlite.org/copyright.html)|
 | ToastNotifications       | [https://github.com/raflop/ToastNotifications](https://github.com/raflop/ToastNotifications) | [GNU Lesser General Public License version 3](https://www.gnu.de/documents/lgpl-3.0.de.html) |
 | ToggleSwitch             | [https://archive.codeplex.com/?p=toggleswitch](https://archive.codeplex.com/?p=toggleswitch) | [Microsoft Public License (MS-PL)](https://opensource.org/licenses/MS-PL) |
 | Trinet.Core.IO.Ntfs      | [https://github.com/RichardD2/NTFS-Streams](https://github.com/RichardD2/NTFS-Streams) | [The 2-Clause BSD License](https://opensource.org/licenses/BSD-2-Clause) |
