@@ -91,7 +91,7 @@ sidebar_position: 1
 
 :::info
 
-实际上，本台望远镜的光学参数与[Celestron CPC 800 GPS (XLT)](#🧰Celestron CPC 800 GPS (XLT))几乎完全一致
+实际上，本台望远镜的光学参数与[Celestron CPC 800 GPS (XLT)](#celestron-cpc-800-gps-xlt)几乎完全一致
 
 本台望远镜的寻星镜支架是损坏的
 
