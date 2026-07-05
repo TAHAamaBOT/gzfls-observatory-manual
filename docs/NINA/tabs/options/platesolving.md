@@ -1,3 +1,5 @@
+# 解析选项
+
 解析选项卡包含每个受支持解析器的配置选项。
 N.I.N.A. 目前支持 Astrometry.Net、Local Platesolver、Platesolve2、Platesolve3、All Sky Plate Solver、ASTAP、TheSkyX Imagelink 以及 PinPoint 作为主解析器。盲解析选项包括 Astrometry.Net、Local Platesolver、All Sky Plate Solver、ASTAP、Platesolve3 和 PinPoint。
 

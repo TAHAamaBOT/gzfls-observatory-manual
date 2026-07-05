@@ -1,3 +1,5 @@
+# 调焦器
+
 调焦器选项卡用于连接 ASCOM 兼容的调焦器。
 
 ![调焦器](../../images/tabs/equipment_focuser.PNG)
