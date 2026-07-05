@@ -1,3 +1,5 @@
+# 自动对焦选项
+
 ![自动对焦选项](../../images/tabs/options_autofocus.png)
 
 ## 常规设置

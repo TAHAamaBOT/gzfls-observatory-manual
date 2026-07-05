@@ -1,3 +1,5 @@
+# 设备选项
+
 此选项卡用于设置与设备相关的所有参数。
 
 ![设备设置](../../images/tabs/OptionsEquipment10.png)
