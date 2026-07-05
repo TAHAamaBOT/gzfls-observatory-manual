@@ -1,3 +1,5 @@
+# 相机
+
 相机选项卡用于连接 ASCOM 兼容的相机或 N.I.N.A. 原生支持的相机集成。
 
 ![相机](../../images/tabs/equipment_camera.png)
