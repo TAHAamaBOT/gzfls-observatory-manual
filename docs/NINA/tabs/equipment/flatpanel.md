@@ -1,3 +1,5 @@
+# 平场板
+
 平场板选项卡用于连接和控制兼容的平场设备。
 
 ![平场](../../images/tabs/equipment_flats.png)

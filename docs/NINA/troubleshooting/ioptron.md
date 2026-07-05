@@ -1,3 +1,5 @@
+# iOptron 赤道仪设置
+
 本说明旨在作为 iOptron 赤道仪搭配 N.I.N.A. 进行深空天体拍摄的快速参考。
 
 本指南基于 iOptron ASCOM Commander v 3.73。

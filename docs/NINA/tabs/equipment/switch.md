@@ -1,3 +1,5 @@
+# 开关
+
 开关选项卡用于连接和控制兼容的开关设备。
 
 ![开关](../../images/tabs/equipment_switches.png)

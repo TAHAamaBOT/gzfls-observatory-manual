@@ -1,3 +1,5 @@
+# 望远镜
+
 望远镜标签页允许您连接 ASCOM 兼容的望远镜赤道仪。
 
 ![望远镜](../../images/tabs/equipment_scope.png)
