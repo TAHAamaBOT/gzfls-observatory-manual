@@ -1,3 +1,5 @@
+# 已安装插件
+
 **已安装**选项卡显示你机器上已存在的插件。
 
 ![已安装插件](../../images/tabs/Plugins_Installed.png)

@@ -1,3 +1,5 @@
+# 文件夹浏览器仅显示桌面
+
 如果您遇到文件夹浏览器只能选择桌面的问题，可以通过以下步骤修复：
 
 [https://www.winhelponline.com/blog/browse-for-folder-dialog-empty-in-windows-11/](https://www.winhelponline.com/blog/browse-for-folder-dialog-empty-in-windows-11/)
