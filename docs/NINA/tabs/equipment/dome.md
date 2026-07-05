@@ -1,3 +1,5 @@
+# 圆顶
+
 圆顶选项卡用于连接 ASCOM 兼容的圆顶。
 
 ![圆顶](../../images/tabs/Equipment-Dome0.png)

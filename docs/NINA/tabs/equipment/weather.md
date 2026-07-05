@@ -1,3 +1,5 @@
+# 气象
+
 此标签页允许您连接兼容或 ASCOM 合规的气象观测站。
 
 ![气象](../../images/tabs/weather.PNG)

@@ -1,3 +1,5 @@
+# 滤镜轮
+
 滤镜轮标签页允许您连接 ASCOM 兼容的滤镜轮。
 
 ![滤镜轮](../../images/tabs/equipments_fw.png)

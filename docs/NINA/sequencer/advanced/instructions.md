@@ -1,3 +1,5 @@
+# 指令
+
 ## 概述
 ![通用指令](../../images/sequencer/instructions/instruction_generic.png)
 指令是应用程序要执行的单个命令。每个指令有不同的目的，可以控制各种设备类型、设置参数或提供辅助功能以自动化拍摄过程。
