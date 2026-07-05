@@ -7,6 +7,7 @@
 
 # Backup
 /NINA_bak
+/backup
 
 # Generated files
 .docusaurus
