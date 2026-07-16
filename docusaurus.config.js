@@ -12,8 +12,8 @@ import rehypeKatex from 'rehype-katex';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: '译星者天文社',
-  tagline: '欢迎来到广州外国语学校译星者天文社网站',
+  title: '译星者天文协会',
+  tagline: '欢迎来到广州外国语学校译星者天文协会网站',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -93,7 +93,7 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: '译星者天文社',
+        title: '译星者天文协会',
         logo: {
           alt: 'Steller Decoder Logo',
           src: 'img/logo.png',
