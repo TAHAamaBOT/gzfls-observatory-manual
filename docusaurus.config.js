@@ -95,7 +95,7 @@ const config = {
       navbar: {
         title: '译星者天文协会',
         logo: {
-          alt: 'Steller Decoder Logo',
+          alt: 'Stellar Decoder Logo',
           src: 'img/logo.png',
         },
         items: [
