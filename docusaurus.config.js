@@ -97,6 +97,7 @@ const config = {
         logo: {
           alt: 'Stellar Decoder Logo',
           src: 'img/logo.png',
+          srcDark: 'img/logo-dark.png',
         },
         items: [
           {
@@ -163,6 +164,18 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
+  // 星空背景脚本（异步加载，不阻塞页面渲染）
+  scripts: [
+    {
+      src: '/js/starfield.js',
+      async: true,
+      defer: true,
+    },
+  ],
+
+  // 客户端模块（图片缩放等）
+  clientModules: [require.resolve('./src/clientModules/mediumZoom')],
+
   stylesheets: [
     {
       href: 'https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css',
