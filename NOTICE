@@ -1,0 +1,68 @@
+# 许可证声明 / License Notice
+
+本项目采用多许可证结构，请注意不同部分适用不同的许可证。
+
+This project uses a multi-license structure. Different parts of the project
+are covered by different licenses.
+
+---
+
+## 源代码 / Source Code
+
+本项目的源代码（包括但不限于 `src/`、配置文件、构建脚本等）
+适用 **GNU GPLv3**。
+
+The source code of this project (including but not limited to `src/`,
+configuration files, build scripts, etc.) is licensed under the
+**GNU General Public License v3.0**.
+
+完整许可证文本请参阅根目录下的 [LICENSE](LICENSE) 文件。
+See the [LICENSE](LICENSE) file in the project root for the full license text.
+
+---
+
+## N.I.N.A. 文档 / N.I.N.A. Documentation
+
+`docs/NINA/` 目录下的文档是对 [N.I.N.A.](https://github.com/isbeorn/nina)
+官方文档的中文翻译，适用 **Mozilla Public License 2.0 (MPL-2.0)**。
+
+The documentation under `docs/NINA/` is a Chinese translation of the
+[N.I.N.A.](https://github.com/isbeorn/nina) official documentation,
+licensed under the **Mozilla Public License 2.0 (MPL-2.0)**.
+
+完整许可证文本请参阅 [docs/NINA/LICENSE](docs/NINA/LICENSE) 文件。
+See the [docs/NINA/LICENSE](docs/NINA/LICENSE) file for the full license text.
+
+上游项目：https://github.com/isbeorn/nina
+Upstream project: https://github.com/isbeorn/nina
+
+---
+
+## 原创文档与内容 / Original Documentation and Content
+
+本项目中的原创文档与内容（包括但不限于 `docs/theory/`、`docs/equipment/`
+及其他自行编写的 .md / .mdx 文件）适用
+**知识共享 署名—非商业性使用—相同方式共享 4.0 协议国际版 (CC BY-NC-SA 4.0)**。
+
+Original documentation and content in this project (including but not limited
+to `docs/theory/`, `docs/equipment/`, and other self-authored .md/.mdx files)
+are licensed under the
+**Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+License (CC BY-NC-SA 4.0)**.
+
+完整许可证文本请参阅：
+https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans
+Full license text:
+https://creativecommons.org/licenses/by-nc-sa/4.0/deed
+
+---
+
+## 第三方依赖 / Third-Party Dependencies
+
+本项目使用 [Docusaurus](https://docusaurus.io/)（MIT 许可证）构建。
+其他第三方依赖的许可证信息请参阅 `package.json` 及 `node_modules/` 中
+各包的 LICENSE 文件。
+
+This project is built with [Docusaurus](https://docusaurus.io/) (MIT License).
+For license information of other third-party dependencies, refer to
+`package.json` and the LICENSE files within each package in `node_modules/`.
