@@ -156,7 +156,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} 广州外国语学校译星者天文社 Built with Docusaurus. <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2026076742号</a>`,
+        copyright: `Copyright © ${new Date().getFullYear()} 本站内容采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"> 授权 | Built with Docusaurus. <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2026076742号</a>`,
       },
       prism: {
         theme: prismThemes.github,
