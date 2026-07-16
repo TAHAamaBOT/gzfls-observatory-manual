@@ -60,7 +60,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/TAHAamaBOT/gzfls-observatory-manual/tree/master/',
+            'https://github.com/TAHAamaBOT/gzfls-observatory-manual/edit/master/',
         },
         blog: {
           showReadingTime: true,
