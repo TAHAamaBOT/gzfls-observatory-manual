@@ -44,7 +44,7 @@
 
   function resize() {
     width = window.innerWidth;
-    height = document.documentElement.scrollHeight;
+    height = window.innerHeight;
     canvas.width = width;
     canvas.height = height;
     // reposition stars after resize
@@ -117,6 +117,7 @@
     canvas.id = 'starfield-canvas';
     canvas.style.cssText =
       'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;';
+    canvas.setAttribute('aria-hidden', 'true');
     document.body.prepend(canvas);
     ctx = canvas.getContext('2d');
 

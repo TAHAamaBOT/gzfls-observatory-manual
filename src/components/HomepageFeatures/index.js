@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
@@ -41,11 +42,11 @@ const FeatureList = [
 function Feature({icon, title, description, to}) {
   return (
     <div className={clsx('col col--4')}>
-      <a href={to} className={clsx('feature-card', styles.featureCard)}>
+      <Link to={to} className={clsx('feature-card', styles.featureCard)}>
         <span className="feature-icon">{icon}</span>
         <Heading as="h3">{title}</Heading>
         <p>{description}</p>
-      </a>
+      </Link>
     </div>
   );
 }

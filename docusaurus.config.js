@@ -168,7 +168,6 @@ const config = {
   scripts: [
     {
       src: '/js/starfield.js',
-      async: true,
       defer: true,
     },
   ],
