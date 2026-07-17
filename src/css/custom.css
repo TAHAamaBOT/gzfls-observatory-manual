@@ -407,21 +407,6 @@ article a:not([class]):hover {
   background: rgba(142, 168, 240, 0.4);
 }
 
-/* ===== 返回顶部按钮 ===== */
-/* HACK: Docusaurus BackToTopButton uses CSS Modules with hashed class names.
- * These attribute selectors match the hashed suffix.
- * Verify the class name pattern still matches after major Docusaurus upgrades. */
-[class^='backToTopButton_'],
-[class*=' backToTopButton_'] {
-  border-radius: 50%;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease;
-}
-
-[class^='backToTopButton_']:hover,
-[class*=' backToTopButton_']:hover {
-  transform: translateY(-2px);
-}
 
 /* ===== 上一篇/下一篇导航 ===== */
 .pagination-nav__link {

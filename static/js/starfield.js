@@ -32,10 +32,11 @@
   // ===== 模块状态 =====
   let canvas, ctx;                 // Canvas 元素及 2D 绘图上下文
   let stars = [];                 // 星星数据数组 [{x, y, r, baseAlpha, phase, speed}, ...]
+  let cachedLines = [];           // 预计算的星座连线 [{i, j, dist}, ...]，星星位置不变时复用
   let animationId;                // requestAnimationFrame 返回的动画帧 ID
   let currentTheme = 'light';     // 当前主题（'light' | 'dark'），影响星星颜色
   let width, height;              // Canvas 实际像素尺寸（跟随视口）
-  let mouseX = -1000, mouseY = -1000; // 鼠标坐标（初始在屏幕外，避免加载时出现光晕）
+  let mouseX = -1, mouseY = -1;     // 鼠标坐标（初始 -1，加载时不显示光晕）
 
   /**
    * 生成或更新星星数据
@@ -76,6 +77,32 @@
           phase: Math.random() * Math.PI * 2,
           speed: TWINKLE_SPEED * (0.5 + Math.random()),
         });
+      }
+    }
+    computeLines();  // 星星位置改变后重新计算连线缓存
+  }
+
+  /**
+   * 预计算星座连线数据
+   *
+   * 星星位置在帧间是静态的（仅在 resize 时改变），因此 O(n²) 距离
+   * 计算只需执行一次并缓存结果。每帧 draw() 直接遍历 cachedLines
+   * 绘制连线，跳过重复的 Math.sqrt 计算。
+   *
+   * cachedLines 结构：[{i, j, dist}, ...]
+   *   - i, j  : stars 数组索引
+   *   - dist  : 两星之间的欧几里得距离
+   */
+  function computeLines() {
+    cachedLines = [];
+    for (let i = 0; i < stars.length; i++) {
+      for (let j = i + 1; j < stars.length; j++) {
+        const dx = stars[i].x - stars[j].x;
+        const dy = stars[i].y - stars[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < MAX_LINE_DIST) {
+          cachedLines.push({ i, j, dist });
+        }
       }
     }
   }
@@ -169,28 +196,22 @@
     }
 
     // --- 绘制星座连线 ---
-    // 两两配对（O(n²)），仅当距离 < MAX_LINE_DIST 时才绘制连线
-    for (let i = 0; i < stars.length; i++) {
-      for (let j = i + 1; j < stars.length; j++) {
-        const dx = stars[i].x - stars[j].x;
-        const dy = stars[i].y - stars[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < MAX_LINE_DIST) {
-          // 连线透明度随距离线性衰减：越近越亮
-          const lineAlpha = LINE_OPACITY * (1 - dist / MAX_LINE_DIST);
-          ctx.beginPath();
-          ctx.moveTo(stars[i].x, stars[i].y);
-          ctx.lineTo(stars[j].x, stars[j].y);
-          ctx.strokeStyle = `rgba(${colors.line},${lineAlpha})`;
-          ctx.lineWidth = 0.4;
-          ctx.stroke();
-        }
-      }
+    // 使用预计算的 cachedLines，避免每帧 O(n²) 距离计算
+    for (let k = 0; k < cachedLines.length; k++) {
+      const { i, j, dist } = cachedLines[k];
+      // 连线透明度随距离线性衰减：越近越亮
+      const lineAlpha = LINE_OPACITY * (1 - dist / MAX_LINE_DIST);
+      ctx.beginPath();
+      ctx.moveTo(stars[i].x, stars[i].y);
+      ctx.lineTo(stars[j].x, stars[j].y);
+      ctx.strokeStyle = `rgba(${colors.line},${lineAlpha})`;
+      ctx.lineWidth = 0.4;
+      ctx.stroke();
     }
 
     // --- 鼠标光晕 ---
     // 以鼠标为中心绘制径向渐变光晕，半径 160px
-    if (mouseX > 0 && mouseY > 0 && mouseX < width && mouseY < height) {
+    if (mouseX >= 0 && mouseY >= 0 && mouseX < width && mouseY < height) {
       const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 160);
       gradient.addColorStop(0, `rgba(${colors.star},0.06)`);
       gradient.addColorStop(1, `rgba(${colors.star},0)`);

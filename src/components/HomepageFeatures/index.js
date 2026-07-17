@@ -25,6 +25,7 @@ import styles from './styles.module.css';
  * 特性卡片数据
  *
  * 每个卡片包含：
+ *   - id          : 唯一标识符（用作 React key）
  *   - title       : 卡片标题
  *   - icon        : Emoji 图标（纯装饰，通过 aria-hidden 对屏幕阅读器隐藏）
  *   - description : 卡片描述文字（JSX，支持换行）
@@ -32,6 +33,7 @@ import styles from './styles.module.css';
  */
 const FeatureList = [
   {
+    id: 'theory',
     title: '天文理论',
     icon: '🔭',
     description: (
@@ -43,6 +45,7 @@ const FeatureList = [
     to: '/docs/theory/celestial-coordinates',
   },
   {
+    id: 'equipment',
     title: '设备手册',
     icon: '📡',
     description: (
@@ -54,6 +57,7 @@ const FeatureList = [
     to: '/docs/equipment/list',
   },
   {
+    id: 'nina',
     title: 'N.I.N.A. 文档',
     icon: '🖥️',
     description: (
@@ -75,6 +79,7 @@ const FeatureList = [
  *   - styles.featureCard   CSS Module 类（当前为空，保留用于未来扩展）
  *
  * @param {object}  props
+ * @param {string}  props.id          唯一标识符
  * @param {string}  props.icon        Emoji 图标
  * @param {string}  props.title       卡片标题
  * @param {JSX}     props.description 卡片描述
@@ -103,8 +108,8 @@ export default function HomepageFeatures() {
     <section className={styles.features}>
       <div className="container">
         <div className="row">
-          {FeatureList.map((props) => (
-            <Feature key={props.title} {...props} />
+          {FeatureList.map(({id, ...props}) => (
+            <Feature key={id} {...props} />
           ))}
         </div>
       </div>
