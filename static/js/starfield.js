@@ -4,7 +4,7 @@
  * 在页面最底层创建一个全屏 <canvas> 元素，绘制以下内容：
  *   1. 随机分布的 120 颗闪烁星星（模拟夜空）
  *   2. 近距离星星之间的半透明连线（模拟星座）
- *   3. 鼠标附近的径向光晕（交互反馈）
+ *   3. 指针附近的径向光晕（交互反馈，同时支持鼠标与触摸）
  *
  * 加载方式：
  *   - 通过 docusaurus.config.js 的 scripts 配置以 defer 方式加载
@@ -28,6 +28,7 @@
   const MAX_LINE_DIST = 120;       // 星座连线最大距离（px），超过此距离不连线
   const LINE_OPACITY = 0.18;       // 连线基础透明度
   const TWINKLE_SPEED = 0.008;     // 闪烁速度（值越大越快，控制 sin 波的频率）
+  const GLOW_FADE_SPEED = 0.025;   // 光晕每帧衰减量（60fps 下约 1.5 秒完全消失）
 
   // ===== 模块状态 =====
   let canvas, ctx;                 // Canvas 元素及 2D 绘图上下文
@@ -36,7 +37,9 @@
   let animationId;                // requestAnimationFrame 返回的动画帧 ID
   let currentTheme = 'light';     // 当前主题（'light' | 'dark'），影响星星颜色
   let width, height;              // Canvas 实际像素尺寸（跟随视口）
-  let mouseX = -1, mouseY = -1;     // 鼠标坐标（初始 -1，加载时不显示光晕）
+  let mouseX = -1, mouseY = -1;   // 指针坐标（初始 -1，加载时不显示光晕）
+  let glowAlpha = 0;              // 光晕当前亮度（0~1），由 draw() 逐帧驱动淡入/淡出
+  let isGlowFading = false;       // 光晕是否处于衰减阶段（松手/离开后为 true）
 
   /**
    * 生成或更新星星数据
@@ -161,7 +164,7 @@
    *   2. 绘制 120 颗闪烁星星（alpha 由 sin 波驱动，异步闪烁）
    *   3. 较大星星（r > 1.2）额外绘制明亮核心
    *   4. 绘制近距离星星之间的半透明连线（距离越近越亮）
-   *   5. 绘制鼠标周围的径向光晕
+   *   5. 绘制指针周围的径向光晕（含逐帧淡入/淡出动画）
    *   6. 通过 requestAnimationFrame 递归调度下一帧
    *
    * 闪烁算法：
@@ -209,11 +212,21 @@
       ctx.stroke();
     }
 
-    // --- 鼠标光晕 ---
-    // 以鼠标为中心绘制径向渐变光晕，半径 160px
-    if (mouseX >= 0 && mouseY >= 0 && mouseX < width && mouseY < height) {
+    // --- 指针光晕（含逐帧淡入/淡出） ---
+    // 衰减阶段：每帧减小 glowAlpha，降至 0 后清除坐标
+    if (isGlowFading) {
+      glowAlpha = Math.max(0, glowAlpha - GLOW_FADE_SPEED);
+      if (glowAlpha === 0) {
+        mouseX = -1;
+        mouseY = -1;
+        isGlowFading = false;
+      }
+    }
+
+    // 光晕可见时绘制（glowAlpha > 0 即淡入/保持/淡出阶段均绘制）
+    if (glowAlpha > 0 && mouseX >= 0 && mouseY >= 0) {
       const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 160);
-      gradient.addColorStop(0, `rgba(${colors.star},0.06)`);
+      gradient.addColorStop(0, `rgba(${colors.star},${(0.06 * glowAlpha).toFixed(4)})`);
       gradient.addColorStop(1, `rgba(${colors.star},0)`);
       ctx.fillStyle = gradient;
       ctx.fillRect(mouseX - 160, mouseY - 160, 320, 320);
@@ -246,7 +259,7 @@
    *   3. 获取 2D 绘图上下文
    *   4. 检测并记录当前主题
    *   5. 设置 Canvas 尺寸、生成星星、启动动画循环
-   *   6. 注册 resize / mousemove / theme-change 事件监听
+   *   6. 注册 resize / pointermove / pointerleave / theme-change 事件监听
    *
    * Canvas 样式说明：
    *   - position: fixed — 固定定位，不随滚动移动
@@ -292,10 +305,40 @@
       }
     });
 
-    // 鼠标追踪：用于在 draw() 中绘制鼠标附近的径向光晕
-    document.addEventListener('mousemove', (e) => {
+    // 指针追踪（同时覆盖鼠标与触摸）
+    //
+    // 桌面端（鼠标）：移动时光晕跟随，离开窗口时立即消失
+    // 移动端（触摸）：点按/拖动时光晕跟随触点（glowAlpha 瞬间 → 1），
+    //                松手后进入衰减阶段，逐帧淡出直至完全消失
+    document.addEventListener('pointerdown', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+      glowAlpha = 1;
+      isGlowFading = false;
+    });
+    document.addEventListener('pointermove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      // 指针移动期间保持满亮度，并终止任何进行中的衰减
+      glowAlpha = 1;
+      isGlowFading = false;
+    });
+    document.addEventListener('pointerup', (e) => {
+      if (e.pointerType === 'touch') {
+        isGlowFading = true;  // 松手：进入衰减阶段，draw() 逐帧减小 glowAlpha
+      }
+    });
+    document.addEventListener('pointerleave', (e) => {
+      if (e.pointerType === 'mouse') {
+        // 鼠标离开窗口：立即消失
+        mouseX = -1;
+        mouseY = -1;
+        glowAlpha = 0;
+        isGlowFading = false;
+      } else if (e.pointerType === 'touch' && !isGlowFading) {
+        // 触摸被系统手势中断（未触发 pointerup）：直接进入衰减
+        isGlowFading = true;
+      }
     });
 
     // 主题切换监听：通过 MutationObserver 监听 <html> 的 data-theme 属性变化
