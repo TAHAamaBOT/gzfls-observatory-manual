@@ -33,7 +33,6 @@ import styles from './styles.module.css';
  */
 const FeatureList = [
   {
-    id: 'theory',
     title: '天文理论',
     icon: '🔭',
     description: (
@@ -45,7 +44,6 @@ const FeatureList = [
     to: '/docs/theory/celestial-coordinates',
   },
   {
-    id: 'equipment',
     title: '设备手册',
     icon: '📡',
     description: (
@@ -57,7 +55,6 @@ const FeatureList = [
     to: '/docs/equipment/list',
   },
   {
-    id: 'nina',
     title: 'N.I.N.A. 文档',
     icon: '🖥️',
     description: (
@@ -79,7 +76,6 @@ const FeatureList = [
  *   - styles.featureCard   CSS Module 类（当前为空，保留用于未来扩展）
  *
  * @param {object}  props
- * @param {string}  props.id          唯一标识符
  * @param {string}  props.icon        Emoji 图标
  * @param {string}  props.title       卡片标题
  * @param {JSX}     props.description 卡片描述
@@ -97,19 +93,13 @@ function Feature({icon, title, description, to}) {
   );
 }
 
-/**
- * 特性卡片列表容器
- *
- * 使用 CSS Module 的 .features 类创建 flex 容器，
- * 内部通过 Bootstrap row > col--4 实现三列等宽响应式布局。
- */
 export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
       <div className="container">
         <div className="row">
-          {FeatureList.map(({id, ...props}) => (
-            <Feature key={id} {...props} />
+          {FeatureList.map((props, idx) => (
+            <Feature key={idx} {...props} />
           ))}
         </div>
       </div>
