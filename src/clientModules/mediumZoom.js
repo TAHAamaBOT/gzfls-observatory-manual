@@ -21,7 +21,6 @@
  */
 
 import mediumZoom from 'medium-zoom';
-import 'medium-zoom/dist/style.css';
 
 // CSS 选择器：匹配文档内容中的图片，排除标记了 data-zoom-disabled 的图片
 const selector = '.markdown img:not([data-zoom-disabled]), article img:not([data-zoom-disabled])';
