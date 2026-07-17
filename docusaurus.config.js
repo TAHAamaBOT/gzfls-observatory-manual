@@ -90,8 +90,6 @@ const config = {
       // Replace with your project's social card
       image: 'img/social-card.png',
       colorMode: {
-        // 尊重用户系统偏好（Windows / macOS 的深色/浅色模式设置）
-        // 同时允许用户在网站上手动切换（覆盖系统偏好）
         respectPrefersColorScheme: true,
       },
       navbar: {
