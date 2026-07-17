@@ -1,8 +1,35 @@
 /**
- * 译星者天文协会 — 自定义主题样式
+ * 译星者天文协会 — 全局自定义主题样式
+ *
+ * 在 Docusaurus Infima 主题基础上进行深度定制，采用天文主题配色方案。
+ *
+ * 设计系统概览：
+ *   配色      — 深蓝紫主色（#2d4ec9）+ 暖橙点缀（#c8752e），深/浅双模式
+ *   导航栏    — 毛玻璃效果（backdrop-filter）+ 渐变底部边框
+ *   首页 Hero — 星空背景图 + 半透明径向渐变叠加 + 标题发光
+ *   特性卡片  — 顶部暖色装饰线 + hover 上浮动效
+ *   滚动条    — 自定义窄滚动条（WebKit）+ 品牌色滑块
+ *   代码块    — 圆角 + 微阴影
+ *   无障碍    — prefers-reduced-motion 支持（关闭动效时禁用所有过渡/动画）
+ *
+ * 依赖：
+ *   - Infima 设计系统（Docusaurus 内置），通过 CSS 变量覆盖默认值
+ *   - static/img/hero-bg.jpg  首页 Hero 背景图片
+ *
+ * 与 CSS Module 的协作：
+ *   全局样式（本文件）  → 视觉样式（颜色、边框、阴影、过渡）
+ *   CSS Module          → 布局样式（内边距、flex、容器尺寸）
  */
 
-/* ===== 浅色模式 ===== */
+
+/**
+ * ===== 浅色模式 CSS 变量 =====
+ *
+ * 通过 :root 定义全局 CSS 自定义属性，覆盖 Infima 默认值。
+ * 变量命名：
+ *   --ifm-*      Infima 主题变量（被 Docusaurus 组件读取）
+ *   --accent-*   自定义点缀色变量（在 custom.css 中使用）
+ */
 :root {
   --ifm-color-primary: #2d4ec9;
   --ifm-color-primary-dark: #2846b5;
@@ -27,7 +54,13 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.06);
 }
 
-/* ===== 深色模式 ===== */
+/**
+ * ===== 深色模式 CSS 变量 =====
+ *
+ * 当 <html> 元素具有 data-theme="dark" 属性时生效。
+ * Docusaurus 根据系统偏好或用户手动切换来设置此属性。
+ * 主色切换为柔和的淡蓝紫，降低对比度以适配暗色背景。
+ */
 [data-theme='dark'] {
   --ifm-color-primary: #8ea8f0;
   --ifm-color-primary-dark: #6d8feb;
@@ -49,7 +82,13 @@
   --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.06);
 }
 
-/* ===== 文档主体 z-index 高于 starfield canvas ===== */
+/**
+ * 文档主体层级
+ *
+ * 设置 z-index: 1 确保所有页面内容位于 starfield-canvas（z-index: 0）之上，
+ * 同时不影响导航栏、侧边栏等更高层级元素的正常显示。
+ * position: relative 是 z-index 生效的必要条件。
+ */
 #__docusaurus {
   position: relative;
   z-index: 1;

@@ -1,3 +1,10 @@
+/**
+ * 首页特性区域 — CSS Module
+ *
+ * .features 容器使用 flex 布局使卡片在行内居中排列。
+ * 卡片的视觉样式（背景、边框、阴影、hover 动效）在 custom.css 的 .feature-card 中定义。
+ */
+
 .features {
   display: flex;
   align-items: center;

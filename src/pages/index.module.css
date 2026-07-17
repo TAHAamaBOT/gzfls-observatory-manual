@@ -1,3 +1,14 @@
+/**
+ * 首页 Hero 区域 — CSS Module
+ *
+ * 与 custom.css 中的 .hero--primary 全局样式配合使用：
+ *   - custom.css    定义背景图片、渐变、颜色、标题特效
+ *   - index.module.css  定义布局相关的内边距、居中、按钮间距
+ *
+ * 分离原因：布局样式与具体页面耦合，不适合放在全局 CSS 中。
+ */
+
+/* Hero 横幅外容器 */
 .heroBanner {
   padding: 5rem 0;
   text-align: center;
@@ -5,16 +16,19 @@
   overflow: hidden;
 }
 
+/* 移动端缩减内边距 */
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2.5rem 1rem;
   }
 }
 
+/* 副标题下方间距 */
 .heroSubtitle {
   margin-bottom: 2rem;
 }
 
+/* CTA 按钮容器 — flex 居中排列 */
 .buttons {
   display: flex;
   align-items: center;

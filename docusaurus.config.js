@@ -90,6 +90,8 @@ const config = {
       // Replace with your project's social card
       image: 'img/social-card.png',
       colorMode: {
+        // 尊重用户系统偏好（Windows / macOS 的深色/浅色模式设置）
+        // 同时允许用户在网站上手动切换（覆盖系统偏好）
         respectPrefersColorScheme: true,
       },
       navbar: {
@@ -163,17 +165,38 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
-  // 星空背景脚本（异步加载，不阻塞页面渲染）
+  /**
+   * 星空背景脚本
+   *
+   * 使用 <script defer> 异步加载，不阻塞页面首次渲染。
+   * 脚本通过 Canvas 2D API 在页面底层绘制动态星空效果。
+   * 文件：static/js/starfield.js
+   */
   scripts: [
     {
       src: '/js/starfield.js',
-      defer: true,
+      defer: true,     // 延迟执行：DOM 解析完成后、DOMContentLoaded 之前
     },
   ],
 
-  // 客户端模块（图片缩放等）
+  /**
+   * 客户端模块 — 图片点击放大
+   *
+   * Docusaurus clientModules 机制自动在客户端 bundle 中加载此模块。
+   * 首次加载和每次路由切换时，模块通过 onRouteDidUpdate 钩子自动
+   * 将 medium-zoom 灯箱效果挂载到文档图片上。
+   * 文件：src/clientModules/mediumZoom.js
+   *
+   * 依赖包：medium-zoom（已在 package.json 中声明）
+   */
   clientModules: [require.resolve('./src/clientModules/mediumZoom')],
 
+  /**
+   * KaTeX 数学公式样式表
+   *
+   * 从 CDN 加载，配合 remark-math + rehype-katex 插件使用。
+   * 支持 Markdown 中的 LaTeX 数学公式渲染（行内 $...$ 和块级 $$...$$）。
+   */
   stylesheets: [
     {
       href: 'https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css',
