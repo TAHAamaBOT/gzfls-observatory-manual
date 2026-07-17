@@ -36,7 +36,8 @@
   let cachedLines = [];           // 预计算的星座连线 [{i, j, dist}, ...]，星星位置不变时复用
   let animationId;                // requestAnimationFrame 返回的动画帧 ID
   let currentTheme = 'light';     // 当前主题（'light' | 'dark'），影响星星颜色
-  let width, height;              // Canvas 实际像素尺寸（跟随视口）
+  let dpr = 1;                     // 设备像素比（devicePixelRatio），高清屏 > 1
+  let width, height;              // Canvas CSS 像素尺寸（跟随视口）
   let mouseX = -1, mouseY = -1;   // 指针坐标（初始 -1，加载时不显示光晕）
   let glowAlpha = 0;              // 光晕当前亮度（0~1），由 draw() 逐帧驱动淡入/淡出
   let isGlowFading = false;       // 光晕是否处于衰减阶段（松手/离开后为 true）
@@ -142,17 +143,20 @@
    * 更新 Canvas 尺寸以匹配视口大小
    *
    * Canvas 的 width/height 属性控制其像素分辨率，必须与 CSS 尺寸同步
-   * 才能避免图像模糊。此处直接读取 window.innerWidth/Height 设置像素尺寸。
+   * 才能避免图像模糊。此处将 CSS 像素尺寸乘以 devicePixelRatio 作为位图
+   * 分辨率，在 draw() 中通过 setTransform 缩放坐标系，使所有绘制坐标
+   * 保持 CSS 像素，避免高清屏下画面模糊。
    *
    * @returns {{oldWidth: number, oldHeight: number}} 缩放前的尺寸，供 createStars 做比例缩放
    */
   function resize() {
     const oldWidth = width;
     const oldHeight = height;
+    dpr = window.devicePixelRatio || 1;
     width = window.innerWidth;
     height = window.innerHeight;
-    canvas.width = width;             // 像素级同步，避免模糊
-    canvas.height = height;
+    canvas.width = Math.round(width * dpr);   // 高清屏：位图像素 = CSS 像素 × DPR
+    canvas.height = Math.round(height * dpr);
     return { oldWidth, oldHeight };
   }
 
@@ -175,6 +179,10 @@
    */
   function draw(timestamp) {
     const colors = getColors();
+
+    // 按 devicePixelRatio 缩放坐标系，使所有绘制坐标保持 CSS 像素，
+    // Canvas 内部自动映射到高清位图像素，避免 Retina 屏下模糊
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, width, height);
 
     // --- 绘制星星 ---
