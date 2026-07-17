@@ -96,8 +96,7 @@ const config = {
         title: '译星者天文协会',
         logo: {
           alt: 'Stellar Decoder Logo',
-          src: 'img/logo.png',
-          srcDark: 'img/logo-dark.png',
+          src: 'img/logo.jpg',
         },
         items: [
           {

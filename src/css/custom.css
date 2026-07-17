@@ -55,13 +55,6 @@
   z-index: 1;
 }
 
-/* ===== Logo 暗色模式 ===== */
-/* 如果你的 logo 是深色的，请创建亮色版本 logo-dark.png 替换 srcDark */
-/*
-[data-theme='dark'] .navbar__logo img {
-}
-*/
-
 /* ===== 导航栏 ===== */
 .navbar {
   backdrop-filter: blur(12px);
