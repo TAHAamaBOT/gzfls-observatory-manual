@@ -96,7 +96,7 @@ const config = {
         title: '译星者天文协会',
         logo: {
           alt: 'Stellar Decoder Logo',
-          src: 'img/logo.png',
+          src: 'img/logo.jpg',
         },
         items: [
           {
@@ -163,6 +163,18 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
+  // 星空背景脚本（异步加载，不阻塞页面渲染）
+  scripts: [
+    {
+      src: '/js/starfield.js',
+      defer: true,     // 延迟执行：DOM 解析完成后、DOMContentLoaded 之前
+    },
+  ],
+
+  // 客户端模块 — 图片点击放大 mediumZoom 加载
+  clientModules: ['./src/clientModules/mediumZoom'],
+  
+  // KaTeX 数学公式
   stylesheets: [
     {
       href: 'https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css',
