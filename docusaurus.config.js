@@ -171,8 +171,8 @@ const config = {
     },
   ],
 
-  // 客户端模块 — 图片点击放大
-  clientModules: [require.resolve('./src/clientModules/mediumZoom')],
+  // 客户端模块 — 图片点击放大 mediumZoom 加载
+  clientModules: ['./src/clientModules/mediumZoom'],
   
   // KaTeX 数学公式
   stylesheets: [

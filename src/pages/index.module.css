@@ -1,4 +1,7 @@
 /**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ * 
  * 首页 Hero 区域 — CSS Module
  *
  * 与 custom.css 中的 .hero--primary 全局样式配合使用：

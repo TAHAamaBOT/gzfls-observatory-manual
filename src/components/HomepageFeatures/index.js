@@ -7,7 +7,7 @@
  *   3. N.I.N.A. 文档 → /docs/NINA
  *
  * 样式分离：
- *   - custom.css (.feature-card)  全局视觉样式（背景、边框、阴影、hover 动效）
+ *   - custom.css (.feature-card .feature-icon)  全局视觉样式（背景、边框、阴影、hover 动效）
  *   - styles.module.css (.features)  局部布局样式（flex 容器）
  *
  * 依赖：
@@ -25,7 +25,6 @@ import styles from './styles.module.css';
  * 特性卡片数据
  *
  * 每个卡片包含：
- *   - id          : 唯一标识符（用作 React key）
  *   - title       : 卡片标题
  *   - icon        : Emoji 图标（纯装饰，通过 aria-hidden 对屏幕阅读器隐藏）
  *   - description : 卡片描述文字（JSX，支持换行）

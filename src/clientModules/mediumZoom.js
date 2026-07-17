@@ -26,8 +26,7 @@ import mediumZoom from 'medium-zoom';
 const selector = '.markdown img:not([data-zoom-disabled]), article img:not([data-zoom-disabled])';
 
 // mediumZoom 实例（懒初始化 — 首次调用 getZoom() 时才创建）
-// 不能直接在模块顶层创建，因为 mediumZoom 构造函数会访问 window，
-// 而 Docusaurus SSR 构建时 window 不可用
+// 不能直接在模块顶层创建，因为 mediumZoom 构造函数会访问 window，而 Docusaurus SSR 构建时 window 不可用
 let zoom = null;
 
 /**
@@ -49,7 +48,7 @@ function getZoom() {
  * 先解除旧绑定（detach），再重新绑定（attach），确保导航后图片正确绑定
  */
 function attachZoom() {
-  getZoom().detach();           // 解除上一页图片的绑定
+  getZoom().detach();            // 解除上一页图片的绑定
   getZoom().attach(selector);    // 绑定当前页图片
 }
 
