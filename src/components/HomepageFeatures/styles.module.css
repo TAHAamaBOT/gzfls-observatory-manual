@@ -5,14 +5,3 @@
   width: 100%;
 }
 
-.featureCard {
-  display: block;
-  text-decoration: none !important;
-  color: inherit;
-  height: 100%;
-}
-
-.featureCard:hover {
-  text-decoration: none;
-  color: inherit;
-}

@@ -43,7 +43,7 @@ function Feature({icon, title, description, to}) {
   return (
     <div className={clsx('col col--4')}>
       <Link to={to} className={clsx('feature-card', styles.featureCard)}>
-        <span className="feature-icon">{icon}</span>
+        <span className="feature-icon" aria-hidden="true">{icon}</span>
         <Heading as="h3">{title}</Heading>
         <p>{description}</p>
       </Link>
@@ -56,8 +56,8 @@ export default function HomepageFeatures() {
     <section className={styles.features}>
       <div className="container">
         <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
+          {FeatureList.map((props) => (
+            <Feature key={props.title} {...props} />
           ))}
         </div>
       </div>

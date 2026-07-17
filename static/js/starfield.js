@@ -13,17 +13,28 @@
   let width, height;
   let mouseX = -1000, mouseY = -1000; // off-screen by default
 
-  function createStars() {
-    stars = [];
-    for (let i = 0; i < STAR_COUNT; i++) {
-      stars.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        r: 0.4 + Math.random() * 1.6, // radius 0.4–2.0
-        baseAlpha: 0.3 + Math.random() * 0.7,
-        phase: Math.random() * Math.PI * 2,
-        speed: TWINKLE_SPEED * (0.5 + Math.random()),
+  function createStars(oldWidth, oldHeight) {
+    if (oldWidth && oldHeight && stars.length > 0) {
+      // Proportional scaling — keep stars at their relative positions
+      const scaleX = width / oldWidth;
+      const scaleY = height / oldHeight;
+      stars.forEach((s) => {
+        s.x = Math.min(width, s.x * scaleX);
+        s.y = Math.min(height, s.y * scaleY);
       });
+    } else {
+      // First creation: full random distribution
+      stars = [];
+      for (let i = 0; i < STAR_COUNT; i++) {
+        stars.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: 0.4 + Math.random() * 1.6, // radius 0.4–2.0
+          baseAlpha: 0.3 + Math.random() * 0.7,
+          phase: Math.random() * Math.PI * 2,
+          speed: TWINKLE_SPEED * (0.5 + Math.random()),
+        });
+      }
     }
   }
 
@@ -43,15 +54,13 @@
   }
 
   function resize() {
+    const oldWidth = width;
+    const oldHeight = height;
     width = window.innerWidth;
     height = window.innerHeight;
     canvas.width = width;
     canvas.height = height;
-    // reposition stars after resize
-    stars.forEach((s) => {
-      s.x = Math.random() * width;
-      s.y = Math.random() * height;
-    });
+    return { oldWidth, oldHeight };
   }
 
   function draw(timestamp) {
@@ -65,14 +74,14 @@
 
       ctx.beginPath();
       ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${colors.star},${Math.max(0.08, alpha).toFixed(3)})`;
+      ctx.fillStyle = `rgba(${colors.star},${Math.max(0.08, alpha)})`;
       ctx.fill();
 
       // Brighter core for bigger stars
       if (s.r > 1.2) {
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r * 0.4, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${colors.star},${Math.min(1, alpha * 1.4).toFixed(3)})`;
+        ctx.fillStyle = `rgba(${colors.star},${Math.min(1, alpha * 1.4)})`;
         ctx.fill();
       }
     }
@@ -88,7 +97,7 @@
           ctx.beginPath();
           ctx.moveTo(stars[i].x, stars[i].y);
           ctx.lineTo(stars[j].x, stars[j].y);
-          ctx.strokeStyle = `rgba(${colors.line},${lineAlpha.toFixed(3)})`;
+          ctx.strokeStyle = `rgba(${colors.line},${lineAlpha})`;
           ctx.lineWidth = 0.4;
           ctx.stroke();
         }
@@ -113,6 +122,12 @@
   }
 
   function init() {
+    // Respect user's reduced-motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (prefersReducedMotion.matches) {
+      return;
+    }
+
     canvas = document.createElement('canvas');
     canvas.id = 'starfield-canvas';
     canvas.style.cssText =
@@ -126,9 +141,16 @@
     createStars();
     animationId = requestAnimationFrame(draw);
 
+    let resizePending = false;
     window.addEventListener('resize', () => {
-      resize();
-      createStars();
+      if (!resizePending) {
+        resizePending = true;
+        requestAnimationFrame(() => {
+          const { oldWidth, oldHeight } = resize();
+          createStars(oldWidth, oldHeight);
+          resizePending = false;
+        });
+      }
     });
 
     // Track mouse for subtle glow
