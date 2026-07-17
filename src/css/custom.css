@@ -348,7 +348,6 @@ blockquote {
 /* ===== 表格 ===== */
 table {
   border-radius: 8px;
-  overflow: hidden;
 }
 
 th {
