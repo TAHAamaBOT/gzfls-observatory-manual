@@ -105,6 +105,7 @@ const config = {
             position: 'left',
             label: '天文台指南📚',
           },
+          {to: '/about', label: '关于我们', position: 'left'},
 //          {to: '/blog', label: '观测记录', position: 'left'},
           {
             href: 'https://github.com/TAHAamaBOT/gzfls-observatory-manual',
