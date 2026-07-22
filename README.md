@@ -79,10 +79,10 @@ USE_SSH=true npm run deploy
 
 ## 许可证
 
-本项目采用多许可证结构，详见 [NOTICE](NOTICE) 文件：
+本项目采用多许可证结构，详见 [LICENSE](LICENSE) 文件：
 
 | 部分 | 许可证 |
 |:-----|:-------|
-| 源代码（`src/`、配置文件等） | [GNU GPLv3](LICENSE) |
+| 源代码（`src/`、配置文件等） | [GNU GPLv3](LICENSE-GPLv3) |
 | N.I.N.A. 文档（`docs/NINA/`） | [MPL-2.0](docs/NINA/LICENSE) |
 | 原创文档与内容（`docs/theory/`、`docs/equipment/`、`blog/` 等其他原创 .md 文件） | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans) |
