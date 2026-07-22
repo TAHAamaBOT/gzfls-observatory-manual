@@ -45,3 +45,21 @@
   gap: 1rem;
   flex-wrap: wrap;
 }
+
+/* 招新 CTA 使用暖金色填充，与 Hero 的星空背景形成清晰对比 */
+.recruitButton {
+  background: #f0c860;
+  border-color: #f0c860;
+  color: #17152d;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(240, 200, 96, 0.28);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.recruitButton:hover {
+  background: #f6d778;
+  border-color: #f6d778;
+  color: #17152d;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 20px rgba(240, 200, 96, 0.4);
+}

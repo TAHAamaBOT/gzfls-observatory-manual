@@ -48,6 +48,11 @@ function HomepageHeader() {
             to="/docs">
             开始探索
           </Link>
+          <Link
+            className={clsx('button button--lg', styles.recruitButton)}
+            to="/about">
+            加入我们
+          </Link>
         </div>
       </div>
     </header>
