@@ -121,35 +121,30 @@ const config = {
             title: '指南',
             items: [
               {
-                label: '天球坐标系介绍',
+                label: '天球坐标系',
                 to: '/docs/theory/celestial-coordinates',
+              },
+              {
+                label: '梅西耶星表',
+                to: '/docs/theory/messier-catalog',
+              },
+              {
+                label: '设备列表',
+                to: '/docs/equipment/list',
+              },
+              {
+                label: 'N.I.N.A. 文档',
+                to: '/docs/NINA',
               },
             ],
           },
-          // {
-            // title: '社团',
-            // items: [
-              // {
-                // label: 'Stack Overflow',
-                // href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              // },
-              // {
-                // label: 'Discord',
-                // href: 'https://discordapp.com/invite/docusaurus',
-              // },
-              // {
-                // label: 'X',
-                // href: 'https://x.com/docusaurus',
-              // },
-            // ],
-          // },
           {
             title: '更多',
             items: [
-              // {
-                // label: 'Blog',
-                // to: '/blog',
-              // },
+              {
+                label: '关于我们',
+                to: '/about',
+              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/TAHAamaBOT/gzfls-observatory-manual',
