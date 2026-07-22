@@ -359,6 +359,14 @@ th {
   background: rgba(142, 168, 240, 0.08);
 }
 
+/* 表格内图片保持合理显示尺寸，避免移动端过小 */
+.markdown table img {
+  min-width: 64px;
+  width: 100px;
+  height: auto;
+  border-radius: 4px;
+}
+
 /* ===== 链接 ===== */
 a {
   transition: color 0.2s ease;
