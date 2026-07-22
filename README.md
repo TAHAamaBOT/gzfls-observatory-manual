@@ -110,6 +110,55 @@ npm run build
 
 生成静态文件到 `./build` 目录，可部署到任意静态托管服务。
 
+## 提交规范
+
+本项目要求所有 commit 遵循 [约定式提交](https://www.conventionalcommits.org/zh-hans/v1.0.0/) 规范。
+
+### 格式
+
+```
+<类型>[可选 范围]: <描述>
+
+[可选 正文]
+
+[可选 脚注]
+```
+
+### 类型
+
+| 类型 | 说明 |
+|:-----|:-----|
+| `feat` | 新增功能（对应 SemVer `MINOR`） |
+| `fix` | 修复 bug（对应 SemVer `PATCH`） |
+| `build` | 修改项目构建系统，例如修改依赖库、外部接口或者升级 Node 版本等 |
+| `chore` | 对非业务性代码进行修改，例如修改构建流程或者工具配置等 |
+| `ci` | 修改持续集成流程，例如修改 CI/CD 工作流配置等 |
+| `docs` | 修改文档，例如修改 README 文件、API 文档等 |
+| `style` | 修改代码样式，例如调整缩进、空格、空行等 |
+| `refactor` | 重构代码，例如修改代码结构、变量名、函数名等但不修改功能逻辑 |
+| `perf` | 优化性能，例如提升代码的性能、减少内存占用等 |
+| `test` | 修改测试用例，例如添加、删除、修改代码的测试用例等 |
+| `revert` | 回滚之前的提交 |
+
+破坏性变更在类型/范围后加 `!`，或在脚注中标注 `BREAKING CHANGE:`。
+
+### 示例
+
+```bash
+git commit -m "docs: 修正对极轴步骤的描述"
+git commit -m "feat(equipment): 新增行星冲日观测指南"
+git commit -m "fix: 修正梅西耶星表图片链接"
+git commit -m "feat!: 重构 API 接口
+
+BREAKING CHANGE: 原有 /v1/ 端点已升级为 /v2/"
+```
+
+### 自动检查
+
+项目配置了 [commitlint](https://commitlint.js.org/) + [Husky](https://typicode.github.io/husky/)，`git commit` 时自动校验消息格式。格式错误会提示原因并拒绝提交。
+
+协作者执行 `npm install` 后自动生效，无需额外配置。
+
 ## 部署
 
 使用 GitHub Pages：
