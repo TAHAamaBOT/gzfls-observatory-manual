@@ -12,6 +12,7 @@
 # Generated files
 .docusaurus
 .cache-loader
+.contributors-cache.json
 
 # Misc
 .DS_Store

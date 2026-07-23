@@ -516,6 +516,103 @@ article a:not([class]):hover {
   }
 }
 
+/* ===== 文档页脚贡献者署名 ===== */
+.doc-contributors {
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* 头部：GitHub 图标 + 标题 */
+.doc-contributors__header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ifm-font-color-secondary);
+}
+
+.doc-contributors__icon {
+  color: var(--ifm-font-color-secondary);
+  flex-shrink: 0;
+}
+
+.doc-contributors__title {
+  font-weight: 600;
+}
+
+/* 卡片列表 */
+.doc-contributors__cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* 单个贡献者卡片 */
+.doc-contributors__card {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem 0.4rem 0.5rem;
+  border-radius: 8px;
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  color: inherit;
+}
+
+.doc-contributors__card:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 2px 8px rgba(45, 78, 201, 0.12);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+[data-theme='dark'] .doc-contributors__card:hover {
+  box-shadow: 0 2px 8px rgba(142, 168, 240, 0.18);
+}
+
+/* 头像 */
+.doc-contributors__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--ifm-color-emphasis-200);
+  object-fit: cover;
+}
+
+/* 头像 404 或无 GitHub 用户名时的首字母占位 */
+.doc-contributors__avatar--fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ifm-font-color-secondary);
+  background: var(--ifm-color-emphasis-300);
+  line-height: 1;
+}
+
+/* 用户名 */
+.doc-contributors__username {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ifm-font-color-base);
+  white-space: nowrap;
+}
+
+.doc-contributors__card:hover .doc-contributors__username {
+  color: var(--ifm-color-primary);
+}
+
 /* ===== 无障碍：尊重用户减少动效偏好 ===== */
 @media (prefers-reduced-motion: reduce) {
   *,

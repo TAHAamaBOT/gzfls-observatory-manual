@@ -48,6 +48,10 @@ const config = {
 
   themes: ['@docusaurus/theme-mermaid'],
 
+  plugins: [
+    './src/plugins/doc-contributors',
+  ],
+
   presets: [
     [
       'classic',
