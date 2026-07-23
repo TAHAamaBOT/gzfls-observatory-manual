@@ -2,6 +2,10 @@
 
 ![N.I.N.A. Logo](./images/nina-logo.png)
 
+:::info[译者声明]
+本文档由**译星者天文协会**从 [N.I.N.A. 官方文档](https://nighttime-imaging.eu/docs) 翻译为中文。翻译工作由社团成员自愿完成，旨在降低国内天文爱好者使用 N.I.N.A. 的门槛。如发现翻译错误或有改进建议，欢迎[参与贡献](https://github.com/TAHAamaBOT/gzfls-observatory-manual)。
+:::
+
 ## 关于 N.I.N.A.
 
 欢迎来到 N.I.N.A. — Nighttime Imaging 'N' Astronomy（夜间拍摄与天文学）。如果你正在阅读本文档，你很可能已经[下载](//nighttime-imaging.eu/download/)了这个软件——恭喜你！
