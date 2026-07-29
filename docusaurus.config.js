@@ -16,6 +16,24 @@ const config = {
   tagline: '欢迎来到广州外国语学校译星者天文协会网站',
   favicon: 'img/favicon.ico',
 
+  // Google 站点验证 meta 标签
+  headTags: [
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'google-site-verification',
+        content: 'u0u3iZI9lMPDTB3KQRDAuxWRLuItzoB7pQskxJaBo3M',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'baidu-site-verification',
+        content: 'codeva-XyA9g4x0H2',
+      },
+    },
+  ],
+
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
