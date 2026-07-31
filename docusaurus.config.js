@@ -93,6 +93,13 @@ const config = {
     ({
       // Replace with your project's social card
       image: 'img/social-card.png',
+      metadata: [
+        { name: 'keywords', content: '天文,望远镜,天文摄影,天文台,NINA,N.I.N.A.,广州外国语学校,译星者,Stellar Decoder,梅西耶,深空天体,赤道仪,天文竞赛,CNAO' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:locale', content: 'zh_CN' },
+        { property: 'og:site_name', content: '译星者天文协会' },
+      ],
       colorMode: {
         respectPrefersColorScheme: true,
       },
@@ -163,6 +170,51 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
+  headTags: [
+    // DNS prefetch for external resources
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://cdn.jsdelivr.net',
+      },
+    },
+    // JSON-LD structured data: Organization
+    {
+      tagName: 'script',
+      attributes: {
+        type: 'application/ld+json',
+      },
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: '译星者天文协会',
+        alternateName: 'Stellar Decoder',
+        url: 'https://sdaa.novas.top/',
+        logo: 'https://sdaa.novas.top/img/logo.jpg',
+        description: '广州外国语学校译星者天文协会（Stellar Decoder）致力于在校园内推广天文科普，定期组织天台观星活动，带领社员探索宇宙的奥秘。',
+        foundingDate: '2025',
+        parentOrganization: {
+          '@type': 'EducationalOrganization',
+          name: '广州外国语学校',
+          url: 'https://www.gzfls.edu.cn/',
+        },
+      }),
+    },
+    // JSON-LD structured data: WebSite
+    {
+      tagName: 'script',
+      attributes: {
+        type: 'application/ld+json',
+      },
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        url: 'https://sdaa.novas.top/',
+      }),
+    },
+  ],
+
   // 星空背景脚本（异步加载，不阻塞页面渲染）
   scripts: [
     {

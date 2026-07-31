@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sdaa.novas.top/sitemap.xml

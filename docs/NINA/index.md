@@ -1,3 +1,8 @@
+---
+description: N.I.N.A.（Nighttime Imaging 'N' Astronomy）天文摄影自动化软件中文文档——由译星者天文协会翻译，涵盖安装配置、设备连接、自动对焦、构图助手、高级序列编排及故障排查。
+keywords: [NINA, Nighttime Imaging 'N' Astronomy, 天文摄影, 自动化拍摄, 深空摄影, 序列器, 解析, 自动对焦, 导星, 中天翻转]
+---
+
 # 介绍
 
 ![N.I.N.A. Logo](./images/nina-logo.png)
