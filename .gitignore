@@ -23,6 +23,7 @@
 # Agents
 CLAUDE.md
 AGENTS.md
+.reasonix
 
 npm-debug.log*
 yarn-debug.log*
